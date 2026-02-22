@@ -72,7 +72,7 @@ from agents.shared.utils import (
     save_json,
     setup_logging,
 )
-from agents.legislative.email_sender import build_and_send_email
+from agents.legislative.email_sender import build_and_send_email, build_status_page
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -220,6 +220,13 @@ class BillTracker:
                 logger=self.logger,
             )
 
+        # ------------------------------------------------------------------
+        # Stage 6: Build web status page (docs/index.html for GitHub Pages)
+        # ------------------------------------------------------------------
+        page_path = self._build_status_page(new_bills, changed_bills, merged)
+        if page_path:
+            self.logger.info(f"Stage 6 complete — status page: {page_path}")
+
         self.logger.info("=" * 60)
 
         # Print summary for the terminal
@@ -231,6 +238,8 @@ class BillTracker:
         print(f"  Total tracked  : {len(merged)}")
         print(f"  Report         : {report_path.relative_to(PROJECT_ROOT)}")
         print(f"  Bill data      : {self.bills_path.relative_to(PROJECT_ROOT)}")
+        if page_path:
+            print(f"  Status page    : {page_path.relative_to(PROJECT_ROOT)}")
         if send_email:
             status = "sent" if email_sent else "FAILED (check logs)"
             env_recip = os.environ.get("EMAIL_RECIPIENTS", "").strip()
@@ -1383,6 +1392,45 @@ class BillTracker:
 
         lines.append("")
         return lines
+
+    # -----------------------------------------------------------------------
+    # Stage 6: Web status page
+    # -----------------------------------------------------------------------
+
+    def _build_status_page(
+        self,
+        new_bills: list[dict],
+        changed_bills: list[dict],
+        all_bills: dict,
+    ) -> Optional[Path]:
+        """
+        Build docs/index.html — a public status dashboard for GitHub Pages.
+
+        Written every run so the page always reflects the latest data.
+        GitHub Pages serves it at: https://<user>.github.io/<repo>/
+
+        To enable GitHub Pages:
+          Settings → Pages → Source: Deploy from a branch →
+          Branch: main, Folder: /docs → Save
+
+        Returns the output Path on success, None on failure.
+        """
+        output_path = PROJECT_ROOT / "docs" / "index.html"
+        try:
+            page_path = build_status_page(
+                new_bills=new_bills,
+                changed_bills=changed_bills,
+                all_bills=all_bills,
+                config=self.config,
+                output_path=output_path,
+            )
+            self.logger.info(
+                f"Status page written → {page_path.relative_to(PROJECT_ROOT)}"
+            )
+            return page_path
+        except Exception as exc:
+            self.logger.warning(f"Status page generation failed: {exc}")
+            return None
 
     # -----------------------------------------------------------------------
     # Demo data

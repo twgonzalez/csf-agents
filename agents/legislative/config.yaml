@@ -132,3 +132,10 @@ email:
     - ""                       # Add your email address here
   # Optional: include full bill index table at the bottom of the email
   include_full_index: true
+
+# ---------------------------------------------------------------------------
+# GitHub repository info (used for the GitHub Pages status page)
+# ---------------------------------------------------------------------------
+github:
+  repo_url: "https://github.com/twgonzalez/csf-agents"
+  pages_url: "https://twgonzalez.github.io/csf-agents/"

@@ -115,9 +115,10 @@ jobs:
           git config user.name  "CSF Legislative Tracker"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Stage bill data and weekly report (not logs, ZIPs, or email previews)
+          # Stage bill data, weekly report, and GitHub Pages status page
           git add data/bills/tracked_bills.json
           git add outputs/weekly_reports/
+          git add docs/index.html
 
           # Only commit if something actually changed
           if git diff --staged --quiet; then

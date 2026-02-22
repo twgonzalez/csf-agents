@@ -49,3 +49,4 @@ data/legiscan/CA_*.zip
 !outputs/weekly_reports/.gitkeep
 !logs/.gitkeep
 !data/legiscan/.gitkeep
+!docs/.gitkeep

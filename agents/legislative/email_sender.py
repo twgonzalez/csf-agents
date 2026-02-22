@@ -35,9 +35,10 @@ from __future__ import annotations
 import logging
 import os
 import smtplib
-from datetime import datetime
+from datetime import datetime, timedelta
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from pathlib import Path
 from typing import Optional
 
 
@@ -125,6 +126,74 @@ def build_and_send_email(
     except Exception as exc:
         log.error(f"Failed to send email: {exc}")
         return False
+
+
+def build_status_page(
+    new_bills: list[dict],
+    changed_bills: list[dict],
+    all_bills: dict,
+    config: dict,
+    output_path: Path,
+) -> Path:
+    """
+    Build a standalone HTML status page and write it to output_path.
+
+    Designed for GitHub Pages hosting — place at docs/index.html and enable
+    GitHub Pages from the /docs folder to publish at:
+        https://<user>.github.io/<repo>/
+
+    Reuses the same HTML section components as the email builder, but:
+      - Wider layout (900px max-width vs 620px for email)
+      - Full <style> block (not inline-only like email)
+      - Adds a "Watching — No Recent Activity" section for stalled bills
+      - Footer links back to the GitHub repository
+
+    Args:
+        new_bills:    Bills first seen this run.
+        changed_bills: Bills whose status changed this run.
+        all_bills:    Full dict of all tracked bills {bill_number: bill}.
+        config:       Tracker config dict (from config.yaml).
+        output_path:  Where to write the HTML file (e.g. docs/index.html).
+
+    Returns:
+        The resolved Path where the file was written.
+    """
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    lookback = config["legislative"]["lookback_days"]
+    repo_url = config.get("github", {}).get(
+        "repo_url", "https://github.com/twgonzalez/csf-agents"
+    )
+
+    # Identify stalled bills: tracked but no status update in the lookback window.
+    # Sorted oldest-first so the most dormant bills appear at the top.
+    today = datetime.now().date()
+    cutoff = today - timedelta(days=lookback)
+    stalled: list[dict] = []
+    for bill in all_bills.values():
+        sd = bill.get("status_date", "")
+        if sd:
+            try:
+                if datetime.strptime(sd, "%Y-%m-%d").date() < cutoff:
+                    stalled.append(bill)
+            except ValueError:
+                pass
+    stalled.sort(key=lambda b: b.get("status_date", ""))
+
+    html = _build_page_html(
+        new_bills=new_bills,
+        changed_bills=changed_bills,
+        all_bills=all_bills,
+        stalled_bills=stalled,
+        config=config,
+        date_str=date_str,
+        repo_url=repo_url,
+    )
+
+    output_path.write_text(html, encoding="utf-8")
+    return output_path
 
 
 # ---------------------------------------------------------------------------
@@ -566,6 +635,189 @@ def _html_footer(date_str: str) -> str:
   </div>
 """, bg=_COLOR_CARD, padding="0")}
 {_spacer(height=24, bg=_COLOR_BG)}"""
+
+
+# ---------------------------------------------------------------------------
+# Status page helpers (standalone web page, not email)
+# ---------------------------------------------------------------------------
+
+def _html_stalled_section(stalled_bills: list[dict], lookback_days: int) -> str:
+    """
+    Render the 'Watching — No Recent Activity' table.
+
+    Shows bills that are being tracked but have had no status update in the
+    last `lookback_days` days. Intended for the status web page, not the email.
+    """
+    if not stalled_bills:
+        return ""
+
+    today = datetime.now().date()
+
+    header_style = (
+        f"padding:8px 10px; background:{_COLOR_ACCENT}; color:#fff; "
+        f"font-size:11px; font-weight:600; text-align:left; {_FONT}"
+    )
+    cell_style = (
+        f"padding:8px 10px; font-size:12px; color:{_COLOR_TEXT}; "
+        f"border-bottom:1px solid {_COLOR_BORDER}; vertical-align:top; {_FONT}"
+    )
+    muted_cell = (
+        f"padding:8px 10px; font-size:12px; color:{_COLOR_MUTED}; "
+        f"border-bottom:1px solid {_COLOR_BORDER}; vertical-align:top; {_FONT}"
+    )
+
+    rows = ""
+    for bill in stalled_bills:
+        num = bill.get("bill_number", "")
+        url = bill.get("text_url", "")
+        bill_cell = (
+            f'<a href="{url}" style="color:{_COLOR_ACCENT}; font-weight:600; '
+            f'{_FONT}">{num}</a>'
+            if url else f'<strong style="{_FONT}">{num}</strong>'
+        )
+        author = (bill.get("author") or "")[:28]
+        status = (bill.get("status") or "—")[:55]
+        title = (bill.get("title") or "")[:60]
+        sd = bill.get("status_date", "")
+
+        days_ago = sd  # fallback: show raw date
+        if sd:
+            try:
+                bill_date = datetime.strptime(sd, "%Y-%m-%d").date()
+                days = (today - bill_date).days
+                days_ago = f"{days}d ago"
+            except ValueError:
+                pass
+
+        rows += f"""
+        <tr>
+          <td style="{cell_style} white-space:nowrap;">{bill_cell}</td>
+          <td style="{cell_style}">{title}</td>
+          <td style="{muted_cell}">{author}</td>
+          <td style="{muted_cell}">{status}</td>
+          <td style="{muted_cell} white-space:nowrap; text-align:right;">{days_ago}</td>
+        </tr>"""
+
+    return (
+        _section_header(f"Watching — No Recent Activity ({len(stalled_bills)})")
+        + _row(f"""
+  <div style="padding:4px 32px 16px 32px;">
+    <p style="margin:0 0 12px 0; font-size:12px; color:{_COLOR_MUTED}; {_FONT}">
+      Bills with no status update in the last {lookback_days} days.
+      These bills may be stalled in committee or awaiting floor action.
+    </p>
+    <div style="overflow-x:auto;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+             style="border-collapse:collapse; border:1px solid {_COLOR_BORDER};">
+        <thead>
+          <tr>
+            <th style="{header_style}">Bill</th>
+            <th style="{header_style}">Title</th>
+            <th style="{header_style}">Author</th>
+            <th style="{header_style}">Last Status</th>
+            <th style="{header_style}; text-align:right;">Last Activity</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    </div>
+  </div>
+""", bg=_COLOR_CARD, padding="0")
+    )
+
+
+def _page_footer(date_str: str, repo_url: str) -> str:
+    """Footer for the standalone web status page (includes GitHub repo link)."""
+    return f"""
+{_spacer(bg=_COLOR_BG)}
+{_row(f"""
+  <div style="padding:20px 32px; border-radius:0 0 8px 8px; text-align:center;">
+    <p style="margin:0 0 6px 0; font-size:12px; color:{_COLOR_MUTED}; {_FONT}">
+      <strong style="color:{_COLOR_ACCENT};">California Stewardship Fund</strong>
+      &nbsp;·&nbsp; Legislative Intelligence Tracker
+    </p>
+    <p style="margin:0 0 6px 0; font-size:11px; color:{_COLOR_MUTED}; {_FONT}">
+      Last updated: {date_str}
+      &nbsp;·&nbsp;
+      Data: <a href="https://legiscan.com" style="color:{_COLOR_ACCENT};">LegiScan</a>
+    </p>
+    <p style="margin:0; font-size:11px; {_FONT}">
+      <a href="{repo_url}" style="color:{_COLOR_ACCENT};">
+        View source on GitHub →
+      </a>
+    </p>
+  </div>
+""", bg=_COLOR_CARD, padding="0")}
+{_spacer(height=24, bg=_COLOR_BG)}"""
+
+
+def _build_page_html(
+    new_bills: list[dict],
+    changed_bills: list[dict],
+    all_bills: dict,
+    stalled_bills: list[dict],
+    config: dict,
+    date_str: str,
+    repo_url: str,
+) -> str:
+    """Assemble the full standalone HTML status page string."""
+    lookback = config["legislative"]["lookback_days"]
+
+    sections = [
+        _html_header(date_str, lookback),
+        _html_summary(len(new_bills), len(changed_bills), len(all_bills)),
+    ]
+
+    if stalled_bills:
+        sections.append(_html_stalled_section(stalled_bills, lookback))
+
+    if new_bills:
+        sections.append(_html_bill_section(
+            f"New Bills This Week ({len(new_bills)})",
+            new_bills,
+            badge_color=_COLOR_GREEN,
+            badge_label="NEW",
+        ))
+
+    if changed_bills:
+        sections.append(_html_changes_section(changed_bills))
+
+    sections += [_html_hearings_section(all_bills)]
+    sections.append(_html_index_section(all_bills))
+    sections.append(_page_footer(date_str, repo_url))
+
+    body_content = "\n".join(sections)
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CA Housing Policy Intelligence — CSF Legislative Tracker</title>
+  <style>
+    body {{ margin: 0; padding: 0; background-color: {_COLOR_BG}; {_FONT} }}
+    a {{ color: {_COLOR_ACCENT}; text-decoration: none; }}
+    a:hover {{ text-decoration: underline; }}
+    @media (max-width: 680px) {{
+      .outer-td {{ padding: 12px 4px !important; }}
+    }}
+  </style>
+</head>
+<body>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+         style="background-color:{_COLOR_BG};">
+    <tr>
+      <td align="center" class="outer-td" style="padding: 24px 12px;">
+        <!-- Status page: 900px wide for desktop browsers -->
+        <table role="presentation" width="900" cellpadding="0" cellspacing="0"
+               style="max-width:900px; width:100%;">
+          {body_content}
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>"""
 
 
 # ---------------------------------------------------------------------------
