@@ -993,8 +993,21 @@ class BillTracker:
 
             time.sleep(1.0)  # be respectful of the public server
 
-        self.logger.info(f"leginfo scraper: {len(seen)} unique bills")
-        return list(seen.values())
+        # leginfo's JSF form ignores GET keyword params — it returns all session bills.
+        # Apply the same keyword filter we use for the ZIP and API paths.
+        keywords_lower = [kw.lower() for kw in keywords]
+        filtered = {
+            num: bill for num, bill in seen.items()
+            if any(
+                kw in (bill.get("title", "") + " " + bill.get("status", "")).lower()
+                for kw in keywords_lower
+            )
+        }
+        self.logger.info(
+            f"leginfo scraper: {len(seen)} raw bills, "
+            f"{len(filtered)} after keyword filter"
+        )
+        return list(filtered.values())
 
     def _parse_leginfo_results(self, html: str, session_year: str) -> list[dict]:
         """

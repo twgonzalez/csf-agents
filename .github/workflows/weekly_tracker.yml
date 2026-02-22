@@ -8,9 +8,11 @@
 # Pipeline:
 #   1. Check out the repo (includes tracked_bills.json and prior reports)
 #   2. Install Python dependencies
-#   3. Run the tracker — auto-downloads the latest LegiScan ZIP, processes
-#      bills, generates a markdown report, and emails the digest
-#   4. Commit updated bill data and report back to the repo
+#   3. Restore cached LegiScan ZIP (persists across runs within the same week)
+#   4. Run the tracker — auto-downloads the latest LegiScan ZIP if not cached,
+#      processes bills, generates a markdown report, and emails the digest
+#   5. Save updated ZIP to cache for subsequent runs this week
+#   6. Commit updated bill data and report back to the repo
 #
 # Required GitHub secrets (Settings → Secrets and variables → Actions):
 #   LEGISCAN_USER      legiscan.com login email (for ZIP auto-download)
@@ -65,7 +67,27 @@ jobs:
         run: pip install -r requirements.txt
 
       # -----------------------------------------------------------------------
-      # 3. Run the tracker
+      # 3. Restore cached LegiScan ZIP
+      #
+      # Cache key includes the ISO week number so it refreshes each Monday,
+      # aligned with LegiScan's Sunday publish schedule.
+      # restore-keys falls back to the previous week's ZIP if this week's
+      # isn't cached yet (e.g. on the first run of a new week).
+      # -----------------------------------------------------------------------
+      - name: Get weekly cache key
+        id: cache-key
+        run: echo "week=$(date -u +'%Y-W%V')" >> $GITHUB_OUTPUT
+
+      - name: Restore LegiScan ZIP cache
+        id: zip-cache
+        uses: actions/cache@v4
+        with:
+          path: data/legiscan/
+          key: legiscan-zip-${{ steps.cache-key.outputs.week }}
+          restore-keys: legiscan-zip-
+
+      # -----------------------------------------------------------------------
+      # 4. Run the tracker
       # -----------------------------------------------------------------------
       - name: Run legislative tracker
         env:
@@ -82,7 +104,7 @@ jobs:
           python agents/legislative/bill_tracker.py --email
 
       # -----------------------------------------------------------------------
-      # 4. Commit updated outputs back to the repo
+      # 5. Commit updated outputs back to the repo
       #
       # tracked_bills.json accumulates history across weekly runs —
       # committing it back is what makes "new bill" and "status change"
