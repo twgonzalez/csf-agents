@@ -678,6 +678,7 @@ def _html_stalled_section(stalled_bills: list[dict], lookback_days: int) -> str:
         author = (bill.get("author") or "")[:28]
         status = (bill.get("status") or "—")[:55]
         title = (bill.get("title") or "")[:60]
+        introduced = bill.get("introduced_date", "")
         sd = bill.get("status_date", "")
 
         days_ago = sd  # fallback: show raw date
@@ -694,6 +695,7 @@ def _html_stalled_section(stalled_bills: list[dict], lookback_days: int) -> str:
           <td style="{cell_style} white-space:nowrap;">{bill_cell}</td>
           <td style="{cell_style}">{title}</td>
           <td style="{muted_cell}">{author}</td>
+          <td style="{muted_cell} white-space:nowrap;">{introduced}</td>
           <td style="{muted_cell}">{status}</td>
           <td style="{muted_cell} white-space:nowrap; text-align:right;">{days_ago}</td>
         </tr>"""
@@ -714,6 +716,7 @@ def _html_stalled_section(stalled_bills: list[dict], lookback_days: int) -> str:
             <th style="{header_style}">Bill</th>
             <th style="{header_style}">Title</th>
             <th style="{header_style}">Author</th>
+            <th style="{header_style}">Introduced</th>
             <th style="{header_style}">Last Status</th>
             <th style="{header_style}; text-align:right;">Last Activity</th>
           </tr>
