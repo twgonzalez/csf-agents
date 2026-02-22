@@ -323,9 +323,25 @@ class BillTracker:
                 "(free login required) and place it in data/legiscan/"
             )
 
-        # --- leginfo scraper (last resort) ---
-        self.logger.info("Fetching via leginfo.legislature.ca.gov scraper (last resort)")
-        return self._fetch_leginfo()
+        # --- leginfo scraper (last resort — disabled by default) ---
+        # leginfo returns all session bills regardless of keyword GET params (JSF site).
+        # Even with post-filtering it produces unreliable results with no status_date,
+        # causing all results to appear as "new" every run.
+        # Only enable explicitly via config: data_source.use_leginfo_fallback: true
+        if self.config["data_source"].get("use_leginfo_fallback", False):
+            self.logger.info("Fetching via leginfo.legislature.ca.gov scraper (last resort)")
+            return self._fetch_leginfo()
+
+        self.logger.warning(
+            "No data source available (LegiScan API key not set, no dataset ZIP found). "
+            "Options:\n"
+            "  1. Add LEGISCAN_USER + LEGISCAN_PASSWORD to .env for auto-download\n"
+            "  2. Manually download a ZIP from https://legiscan.com/CA/datasets "
+            "and place it in data/legiscan/\n"
+            "  3. Set LEGISCAN_API_KEY once approved\n"
+            "Skipping fetch — existing tracked bills unchanged."
+        )
+        return []
 
     # ------------------------------------------------------------------
     # LegiScan API
@@ -584,12 +600,26 @@ class BillTracker:
                 "User-Agent": (
                     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
                     "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                )
+                    "Chrome/121.0.0.0 Safari/537.36"
+                ),
+                "Accept": (
+                    "text/html,application/xhtml+xml,application/xml;"
+                    "q=0.9,image/avif,image/webp,*/*;q=0.8"
+                ),
+                "Accept-Language": "en-US,en;q=0.9",
+                "Accept-Encoding": "gzip, deflate, br",
+                "Connection": "keep-alive",
+                "Upgrade-Insecure-Requests": "1",
+                "Sec-Fetch-Dest": "document",
+                "Sec-Fetch-Mode": "navigate",
+                "Sec-Fetch-Site": "none",
+                "Sec-Fetch-User": "?1",
             })
 
             # Step 1: GET login page to harvest Drupal CSRF tokens
+            # Brief pause helps avoid Cloudflare rate limiting on cloud IPs
             self.logger.info("LegiScan auto-download: authenticating")
+            time.sleep(2)
             resp = sess.get("https://legiscan.com/user/login", timeout=30)
             resp.raise_for_status()
 

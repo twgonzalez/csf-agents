@@ -34,6 +34,10 @@ data_source:
   openstates_api_key: ""       # Set via OPENSTATES_API_KEY env var — never commit keys!
   legiscan_dataset_zip: ""     # Optional: path to CA dataset ZIP from legiscan.com/CA/datasets
                                # Leave blank to auto-discover from data/legiscan/CA_*.zip
+  use_leginfo_fallback: false  # Last-resort CA LegInfo scraper — disabled by default.
+                               # leginfo's JSF site ignores keyword filters and returns all
+                               # session bills with no status_date, flooding the tracker.
+                               # Only enable if you understand the limitations.
 
 # ---------------------------------------------------------------------------
 # CA Legislature settings
