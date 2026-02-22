@@ -1,0 +1,106 @@
+# =============================================================================
+# CSF Legislative Bill Tracker — Weekly GitHub Actions Workflow
+# =============================================================================
+#
+# Runs every Monday morning (after LegiScan publishes Sunday's updated ZIP).
+# Can also be triggered manually from the GitHub Actions UI.
+#
+# Pipeline:
+#   1. Check out the repo (includes tracked_bills.json and prior reports)
+#   2. Install Python dependencies
+#   3. Run the tracker — auto-downloads the latest LegiScan ZIP, processes
+#      bills, generates a markdown report, and emails the digest
+#   4. Commit updated bill data and report back to the repo
+#
+# Required GitHub secrets (Settings → Secrets and variables → Actions):
+#   LEGISCAN_USER      legiscan.com login email (for ZIP auto-download)
+#   LEGISCAN_PASSWORD  legiscan.com password
+#   EMAIL_USER         Gmail address to send the digest from
+#   EMAIL_PASSWORD     Gmail App Password (16-char, not your account password)
+#   EMAIL_RECIPIENTS   Comma-separated recipient list (e.g. alice@x.com,bob@x.com)
+#
+# Optional secrets (leave unset to skip that data source):
+#   LEGISCAN_API_KEY   LegiScan API key (real-time data, free, ~1-2 day approval)
+#   OPENSTATES_API_KEY OpenStates API key (alternative real-time source)
+# =============================================================================
+
+name: Weekly Legislative Tracker
+
+on:
+  schedule:
+    # Every Monday at 6:00 AM Pacific (14:00 UTC)
+    # LegiScan publishes updated ZIPs on Sundays — Monday run gets fresh data
+    - cron: '0 14 * * 1'
+
+  # Allow manual runs from the Actions tab (useful for testing or on-demand scans)
+  workflow_dispatch:
+
+jobs:
+  track-bills:
+    name: Fetch, process, and report CA housing bills
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # Required to push updated tracked_bills.json back to the repo
+
+    steps:
+      # -----------------------------------------------------------------------
+      # 1. Checkout
+      # -----------------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # Full history ensures git push works cleanly
+
+      # -----------------------------------------------------------------------
+      # 2. Python setup
+      # -----------------------------------------------------------------------
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # -----------------------------------------------------------------------
+      # 3. Run the tracker
+      # -----------------------------------------------------------------------
+      - name: Run legislative tracker
+        env:
+          LEGISCAN_USER:      ${{ secrets.LEGISCAN_USER }}
+          LEGISCAN_PASSWORD:  ${{ secrets.LEGISCAN_PASSWORD }}
+          LEGISCAN_API_KEY:   ${{ secrets.LEGISCAN_API_KEY }}
+          OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
+          EMAIL_USER:         ${{ secrets.EMAIL_USER }}
+          EMAIL_PASSWORD:     ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENTS:   ${{ secrets.EMAIL_RECIPIENTS }}
+        run: |
+          # --email sends the HTML digest if EMAIL_USER + EMAIL_PASSWORD are set.
+          # If credentials are missing the email step fails gracefully (logged, no crash).
+          python agents/legislative/bill_tracker.py --email
+
+      # -----------------------------------------------------------------------
+      # 4. Commit updated outputs back to the repo
+      #
+      # tracked_bills.json accumulates history across weekly runs —
+      # committing it back is what makes "new bill" and "status change"
+      # detection work correctly on subsequent runs.
+      # -----------------------------------------------------------------------
+      - name: Commit updated bill data and report
+        run: |
+          git config user.name  "CSF Legislative Tracker"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Stage bill data and weekly report (not logs, ZIPs, or email previews)
+          git add data/bills/tracked_bills.json
+          git add outputs/weekly_reports/
+
+          # Only commit if something actually changed
+          if git diff --staged --quiet; then
+            echo "No changes to commit — bill data is unchanged since last run."
+          else
+            git commit -m "chore: weekly bill tracker update $(date -u +%Y-%m-%d)"
+            git push
+          fi

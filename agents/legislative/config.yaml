@@ -1,0 +1,130 @@
+# =============================================================================
+# Legislative Bill Tracker — Configuration
+# California Stewardship Fund
+# =============================================================================
+# All paths are relative to the project root (csf-agents/).
+# Set API keys via environment variables — never put real keys in this file.
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Data source
+# Sources are tried in priority order:
+#   1. legiscan API key  → legiscan → openstates → legiscan dataset ZIP → leginfo scraper
+#
+# LegiScan setup (primary — recommended):
+#   1. Register free at https://legiscan.com/legiscan
+#   2. export LEGISCAN_API_KEY=your_key
+#   Free tier: 30,000 queries/month. NPO discount available on paid tiers.
+#   NOTE: LegiScan keys require human review (1-2 business days).
+#
+# LegiScan Dataset ZIP (bridge — use while waiting for API key approval):
+#   1. Create a free account at https://legiscan.com/legiscan
+#   2. Go to https://legiscan.com/CA/datasets (requires login, NOT approved API key)
+#   3. Download the current session ZIP (e.g. CA_2025-2026_XXXXXX.zip)
+#   4. Place it in data/legiscan/ — it will be auto-discovered, OR set the path below.
+#   Updated weekly every Sunday. Re-download each week for fresh data.
+#
+# OpenStates setup (secondary):
+#   1. Register free at https://openstates.org/accounts/signup/
+#   2. export OPENSTATES_API_KEY=your_key
+#   Free tier: 500 queries/day.
+# ---------------------------------------------------------------------------
+data_source:
+  legiscan_api_key: ""         # Set via LEGISCAN_API_KEY env var — never commit keys!
+  openstates_api_key: ""       # Set via OPENSTATES_API_KEY env var — never commit keys!
+  legiscan_dataset_zip: ""     # Optional: path to CA dataset ZIP from legiscan.com/CA/datasets
+                               # Leave blank to auto-discover from data/legiscan/CA_*.zip
+
+# ---------------------------------------------------------------------------
+# CA Legislature settings
+# ---------------------------------------------------------------------------
+legislative:
+  jurisdiction: ca
+  session: "2025-2026"         # Current CA legislative session (update each biennium)
+  lookback_days: 14            # Find bills introduced or updated in last N days
+                               # Use 14 when working from weekly dataset ZIPs (data can be up to 8 days old)
+                               # Use 7 when running against live APIs (real-time data)
+
+# ---------------------------------------------------------------------------
+# Keywords — bills matching ANY keyword are tracked
+# Add or remove keywords here to tune the filter.
+# Multi-word phrases should be quoted.
+# ---------------------------------------------------------------------------
+keywords:
+  housing:
+    - housing
+    - zoning
+    - "YIMBY"
+    - "NIMBY"
+    - development
+    - density
+    - affordability
+    - affordable
+    - "ADU"
+    - "accessory dwelling"
+    - residential
+    - "local control"
+    - "by-right"
+    - ministerial
+    - "mixed use"
+    - "transit oriented"
+    - "transit-oriented"
+    - inclusionary
+    - "rent control"
+    - "rent stabilization"
+    - "tenant protection"
+    - eviction
+    - homelessness
+    - "housing element"
+    - "density bonus"
+    - "RHNA"
+    - "infill"
+    - "upzoning"
+
+# ---------------------------------------------------------------------------
+# Output paths (relative to project root)
+# ---------------------------------------------------------------------------
+paths:
+  data_dir: data/bills
+  bills_file: data/bills/tracked_bills.json
+  reports_dir: outputs/weekly_reports
+  legiscan_dir: data/legiscan    # Drop LegiScan dataset ZIPs here for auto-discovery
+
+# ---------------------------------------------------------------------------
+# HTTP client
+# ---------------------------------------------------------------------------
+http:
+  timeout: 30                  # Request timeout in seconds
+  max_retries: 3               # Retry attempts on failure
+  retry_delay: 2               # Base seconds between retries (doubles each attempt)
+
+# ---------------------------------------------------------------------------
+# Logging
+# ---------------------------------------------------------------------------
+logging:
+  level: INFO                  # DEBUG | INFO | WARNING | ERROR
+  file: logs/legislative_tracker.log   # Set to null/empty to disable file logging
+
+# ---------------------------------------------------------------------------
+# Email distribution
+# Set credentials via environment variables — never put them in this file.
+#
+# Gmail setup:
+#   1. Enable 2-Step Verification on your Google account
+#   2. Go to myaccount.google.com → Security → App passwords
+#   3. Generate an app password for "Mail"
+#   4. export EMAIL_USER=you@gmail.com
+#   5. export EMAIL_PASSWORD=your-16-char-app-password
+#
+# To add recipients later, just append to the list below.
+# ---------------------------------------------------------------------------
+email:
+  smtp_host: smtp.gmail.com
+  smtp_port: 587               # 587 = STARTTLS (recommended); 465 = SSL
+  from_name: "CSF Legislative Tracker"
+  from_address: ""             # Set via EMAIL_USER env var
+  subject_template: "CA Housing Intelligence — Week of {date}"
+  recipients:
+    - ""                       # Add your email address here
+  # Optional: include full bill index table at the bottom of the email
+  include_full_index: true
