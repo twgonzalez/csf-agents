@@ -228,6 +228,7 @@ def _build_html(
     """Assemble the full HTML email string."""
     lookback = config["legislative"]["lookback_days"]
     include_index = config["email"].get("include_full_index", True)
+    pages_url = config.get("github", {}).get("pages_url", "")
 
     sections = [
         _html_header(date_str, lookback),
@@ -250,7 +251,7 @@ def _build_html(
     if include_index:
         sections.append(_html_index_section(all_bills))
 
-    sections.append(_html_footer(date_str))
+    sections.append(_html_footer(date_str, pages_url=pages_url))
 
     body_content = "\n".join(sections)
 
@@ -308,7 +309,7 @@ def _html_header(date_str: str, lookback: int) -> str:
           CA Housing Policy Intelligence
         </h1>
         <p style="margin:0; color:#a8c4e0; font-size:13px; {_FONT}">
-          Week of {date_str} &nbsp;·&nbsp; {lookback}-day lookback
+          Week of {date_str} &nbsp;·&nbsp; Weekly digest
         </p>
       </td>
     </tr>
@@ -622,7 +623,20 @@ def _html_index_section(all_bills: dict) -> str:
     )
 
 
-def _html_footer(date_str: str) -> str:
+def _html_footer(date_str: str, pages_url: str = "") -> str:
+    dashboard_link = ""
+    if pages_url:
+        dashboard_link = f"""
+    <p style="margin:14px 0 0 0;">
+      <a href="{pages_url}" target="_blank"
+         style="display:inline-block; background:{_COLOR_ACCENT};
+                color:#ffffff; text-decoration:none; font-size:12px;
+                font-weight:600; padding:8px 20px; border-radius:4px;
+                {_FONT}">
+        View Live Status Dashboard →
+      </a>
+    </p>"""
+
     return f"""
 {_spacer(bg=_COLOR_BG)}
 {_row(f"""
@@ -636,6 +650,7 @@ def _html_footer(date_str: str) -> str:
       Data: LegiScan (legiscan.com) &nbsp;·&nbsp;
       To update recipients, set <code>EMAIL_RECIPIENTS</code> in your .env file
     </p>
+    {dashboard_link}
   </div>
 """, bg=_COLOR_CARD, padding="0")}
 {_spacer(height=24, bg=_COLOR_BG)}"""
