@@ -48,6 +48,9 @@ legislative:
   lookback_days: 14            # Find bills introduced or updated in last N days
                                # Use 14 when working from weekly dataset ZIPs (data can be up to 8 days old)
                                # Use 7 when running against live APIs (real-time data)
+  stalled_days: 7              # "Watching — No Recent Activity" threshold on the status page.
+                               # Bills with no status update in the last N days appear in that section.
+                               # Should be shorter than lookback_days so fresh-fetch bills can still qualify.
 
 # ---------------------------------------------------------------------------
 # Keywords — bills matching ANY keyword are tracked

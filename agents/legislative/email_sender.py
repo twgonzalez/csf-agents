@@ -163,14 +163,17 @@ def build_status_page(
 
     date_str = datetime.now().strftime("%Y-%m-%d")
     lookback = config["legislative"]["lookback_days"]
+    # stalled_days is intentionally shorter than lookback_days so that bills fetched
+    # within the current window can still qualify as "no recent activity".
+    stalled_days = config["legislative"].get("stalled_days", 7)
     repo_url = config.get("github", {}).get(
         "repo_url", "https://github.com/twgonzalez/csf-agents"
     )
 
-    # Identify stalled bills: tracked but no status update in the lookback window.
+    # Identify stalled bills: tracked but no status update in the last stalled_days.
     # Sorted oldest-first so the most dormant bills appear at the top.
     today = datetime.now().date()
-    cutoff = today - timedelta(days=lookback)
+    cutoff = today - timedelta(days=stalled_days)
     stalled: list[dict] = []
     for bill in all_bills.values():
         sd = bill.get("status_date", "")
@@ -187,6 +190,7 @@ def build_status_page(
         changed_bills=changed_bills,
         all_bills=all_bills,
         stalled_bills=stalled,
+        stalled_days=stalled_days,
         config=config,
         date_str=date_str,
         repo_url=repo_url,
@@ -759,6 +763,7 @@ def _build_page_html(
     changed_bills: list[dict],
     all_bills: dict,
     stalled_bills: list[dict],
+    stalled_days: int,
     config: dict,
     date_str: str,
     repo_url: str,
@@ -772,7 +777,7 @@ def _build_page_html(
     ]
 
     if stalled_bills:
-        sections.append(_html_stalled_section(stalled_bills, lookback))
+        sections.append(_html_stalled_section(stalled_bills, stalled_days))
 
     if new_bills:
         sections.append(_html_bill_section(
