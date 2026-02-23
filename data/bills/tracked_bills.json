@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-02-23T14:18:45.961220",
+  "last_updated": "2026-02-23T17:38:05.412311",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
-  "total_bills": 26,
+  "total_bills": 124,
   "bills": {
     "SB1076": {
       "bill_number": "SB1076",
@@ -25,6 +25,11 @@
         {
           "date": "2026-02-13",
           "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-17",
+          "description": "From printer. May be acted upon on or after March 16.",
           "chamber": "Senate"
         }
       ],
@@ -141,6 +146,11 @@
           "date": "2026-02-13",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-14",
+          "description": "From printer. May be heard in committee March 16.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
@@ -173,6 +183,11 @@
           "date": "2026-02-11",
           "description": "From printer. May be acted upon on or after March 13.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "Referred to Com. on RLS.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
@@ -192,6 +207,7 @@
       "summary": "An act to amend Section 18551 of, and to add Sections 18551.05, 18551.06, and 18551.07 to, the Health and Safety Code, and to amend Section 5801 of the Revenue and Taxation Code, relating to manufactured housing.",
       "subjects": [],
       "committees": [
+        "Housing",
         "Rules"
       ],
       "upcoming_hearings": [],
@@ -204,6 +220,11 @@
         {
           "date": "2026-02-10",
           "description": "From printer. May be acted upon on or after March 12.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "Referred to Coms. on HOUSING and REV. & TAX.",
           "chamber": "Senate"
         }
       ],
@@ -254,6 +275,7 @@
       "summary": "An act to amend Sections 5300, 5320, and 5605 of, and to add Section 5860 to, the Civil Code, relating to common interest developments.",
       "subjects": [],
       "committees": [
+        "Housing",
         "Rules"
       ],
       "upcoming_hearings": [],
@@ -266,6 +288,11 @@
         {
           "date": "2026-02-10",
           "description": "From printer. May be acted upon on or after March 12.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "Referred to Coms. on HOUSING and JUD.",
           "chamber": "Senate"
         }
       ],
@@ -286,6 +313,7 @@
       "summary": "An act to repeal Section 11351.5 of the Welfare and Institutions Code, relating to public social services.",
       "subjects": [],
       "committees": [
+        "Human Services",
         "Rules"
       ],
       "upcoming_hearings": [],
@@ -298,6 +326,11 @@
         {
           "date": "2026-02-11",
           "description": "From printer. May be acted upon on or after March 13.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "Referred to Com. on HUMAN S.",
           "chamber": "Senate"
         }
       ],
@@ -388,6 +421,11 @@
           "date": "2026-02-13",
           "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-17",
+          "description": "From printer. May be acted upon on or after March 16.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
@@ -415,6 +453,11 @@
           "date": "2026-02-13",
           "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-17",
+          "description": "From printer. May be acted upon on or after March 16.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
@@ -434,6 +477,7 @@
       "summary": "An act to add Title 27 (commencing with Section 101000) to the Government Code, relating to food security.",
       "subjects": [],
       "committees": [
+        "Human Services",
         "Rules"
       ],
       "upcoming_hearings": [],
@@ -446,6 +490,11 @@
         {
           "date": "2026-02-11",
           "description": "From printer. May be acted upon on or after March 13.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "Referred to Coms. on HUMAN S. and G.O.",
           "chamber": "Senate"
         }
       ],
@@ -474,6 +523,11 @@
           "date": "2026-02-13",
           "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-17",
+          "description": "From printer. May be acted upon on or after March 16.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
@@ -500,6 +554,11 @@
         {
           "date": "2026-02-13",
           "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-17",
+          "description": "From printer. May be acted upon on or after March 16.",
           "chamber": "Senate"
         }
       ],
@@ -579,12 +638,19 @@
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260HR83",
       "summary": "Relative to Developmental Disabilities Awareness Month.",
       "subjects": [],
-      "committees": [],
+      "committees": [
+        "Rules"
+      ],
       "upcoming_hearings": [],
       "actions": [
         {
           "date": "2026-02-09",
           "description": "Introduced.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-17",
+          "description": "Referred to Com. on RLS.",
           "chamber": "A"
         }
       ],
@@ -647,6 +713,11 @@
         {
           "date": "2026-02-10",
           "description": "From printer. May be acted upon on or after March 12.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "Referred to Com. on RLS.",
           "chamber": "Senate"
         }
       ],
@@ -727,6 +798,7 @@
       "summary": "An act to add Sections 65913.3.2 and 65941.3 to the Government Code, relating to development projects.",
       "subjects": [],
       "committees": [
+        "Local Government",
         "Rules"
       ],
       "upcoming_hearings": [],
@@ -739,6 +811,11 @@
         {
           "date": "2026-02-11",
           "description": "From printer. May be acted upon on or after March 13.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "Referred to Coms. on L. GOV. and HOUSING.",
           "chamber": "Senate"
         }
       ],
@@ -775,6 +852,2786 @@
       "source": "legiscan",
       "source_id": "2116261",
       "first_seen": "2026-02-21T14:51:24.210908"
+    },
+    "AB1997": {
+      "bill_number": "AB1997",
+      "session": "2025-2026",
+      "title": "Land use: housing development approvals: timelines and processes.",
+      "author": "Alex Lee",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1997",
+      "summary": "An act to amend Sections 65589.5, 65589.9, and 65950 of, and to add Section 65943.3 to, the Government Code, and to add Section 50411 to the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be heard in committee March 20.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118611",
+      "first_seen": "2026-02-23T17:38:05.406833"
+    },
+    "AB2002": {
+      "bill_number": "AB2002",
+      "session": "2025-2026",
+      "title": "Local government assistance: Regional Early Action Planning Fund.",
+      "author": "Jose Solache",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2002",
+      "summary": "An act to add Chapter 3.16 (commencing with Section 50515.11) to Part 2 of Division 31 of the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be heard in committee March 20.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118616",
+      "first_seen": "2026-02-23T17:38:05.406917"
+    },
+    "AB2005": {
+      "bill_number": "AB2005",
+      "session": "2025-2026",
+      "title": "Housing developments: urban lot split: parcel maps.",
+      "author": "Patrick Ahrens",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2005",
+      "summary": "An act to amend Section 66411.7 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be heard in committee March 20.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118619",
+      "first_seen": "2026-02-23T17:38:05.406981"
+    },
+    "AB2020": {
+      "bill_number": "AB2020",
+      "session": "2025-2026",
+      "title": "Housing programs: financing.",
+      "author": "Jesse Gabriel",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2020",
+      "summary": "An act to add Section 50406.4.5 to the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be heard in committee March 20.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118634",
+      "first_seen": "2026-02-23T17:38:05.407037"
+    },
+    "AB2035": {
+      "bill_number": "AB2035",
+      "session": "2025-2026",
+      "title": "Common interest developments: declarations: amendments.",
+      "author": "Diane Dixon",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2035",
+      "summary": "An act to amend Section 4275 of the Civil Code, relating to common interest developments.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be heard in committee March 20.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118649",
+      "first_seen": "2026-02-23T17:38:05.407092"
+    },
+    "AB2037": {
+      "bill_number": "AB2037",
+      "session": "2025-2026",
+      "title": "Wildfire Mitigation Aging and Disability Grant Program.",
+      "author": "Joe Patterson",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2037",
+      "summary": "An act to add Article 7 (commencing with 9180) to Chapter 2 of Division 8.5 of the Welfare and Institutions Code, relating to older adults.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be heard in committee March 20.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118651",
+      "first_seen": "2026-02-23T17:38:05.407148"
+    },
+    "AB2041": {
+      "bill_number": "AB2041",
+      "session": "2025-2026",
+      "title": "Bergeson-Peace Infrastructure and Economic Development Bank Act.",
+      "author": "Juan Carrillo",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2041",
+      "summary": "An act to amend Section 63000 of the Government Code, relating to economic development.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be heard in committee March 20.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118655",
+      "first_seen": "2026-02-23T17:38:05.407199"
+    },
+    "AB2050": {
+      "bill_number": "AB2050",
+      "session": "2025-2026",
+      "title": "Common interest developments: reserve accounts.",
+      "author": "Jessica Caloza",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2050",
+      "summary": "An act to amend, repeal, and add Section 5550 of, and to add Section 5552 to, the Civil Code, relating to common interest developments.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119577",
+      "first_seen": "2026-02-23T17:38:05.407254"
+    },
+    "AB2058": {
+      "bill_number": "AB2058",
+      "session": "2025-2026",
+      "title": "Factory-built housing.",
+      "author": "John Harabedian",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2058",
+      "summary": "An act to amend Section 19991.1 of the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119585",
+      "first_seen": "2026-02-23T17:38:05.407302"
+    },
+    "AB2079": {
+      "bill_number": "AB2079",
+      "session": "2025-2026",
+      "title": "Adaptive reuse.",
+      "author": "Sade Elhawary",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2079",
+      "summary": "An act relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119606",
+      "first_seen": "2026-02-23T17:38:05.407357"
+    },
+    "AB2094": {
+      "bill_number": "AB2094",
+      "session": "2025-2026",
+      "title": "Affordable housing.",
+      "author": "John Harabedian",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2094",
+      "summary": "An act to amend Section 65913 of the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119621",
+      "first_seen": "2026-02-23T17:38:05.407402"
+    },
+    "AB2110": {
+      "bill_number": "AB2110",
+      "session": "2025-2026",
+      "title": "Local financing: workforce housing: tax increment financing district.",
+      "author": "Natasha Johnson",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2110",
+      "summary": "An act to amend Section 53993 of, and to add Chapter 2.8.5 (commencing with Section 53397.50) to Part 1 of Division 2 of Title 5 of, the Government Code, relating to local government finance.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119637",
+      "first_seen": "2026-02-23T17:38:05.407458"
+    },
+    "AB2118": {
+      "bill_number": "AB2118",
+      "session": "2025-2026",
+      "title": "Affordable Housing and High Road Jobs Act of 2022: use by right: objective standards.",
+      "author": "Josh Hoover",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2118",
+      "summary": "An act to amend Sections 65912.101 and 65912.123 of the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119645",
+      "first_seen": "2026-02-23T17:38:05.407504"
+    },
+    "AB2127": {
+      "bill_number": "AB2127",
+      "session": "2025-2026",
+      "title": "Accessory dwelling units.",
+      "author": "Natasha Johnson",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2127",
+      "summary": "An act relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119654",
+      "first_seen": "2026-02-23T17:38:05.407559"
+    },
+    "AB2128": {
+      "bill_number": "AB2128",
+      "session": "2025-2026",
+      "title": "Housing authorities: term limits and work requirements.",
+      "author": "Sharon Quirk-Silva",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2128",
+      "summary": "An act to add Section 34336 to the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119655",
+      "first_seen": "2026-02-23T17:38:05.407629"
+    },
+    "AB2144": {
+      "bill_number": "AB2144",
+      "session": "2025-2026",
+      "title": "On-campus events: swimming pools: adult presence: cardiopulmonary resuscitation training.",
+      "author": "Robert Garcia",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2144",
+      "summary": "An act to amend Section 35179.6 of the Education Code, relating to school safety.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119671",
+      "first_seen": "2026-02-23T17:38:05.407694"
+    },
+    "AB2146": {
+      "bill_number": "AB2146",
+      "session": "2025-2026",
+      "title": "Multifamily Housing Program: Homekey.",
+      "author": "Catherine Stefani",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2146",
+      "summary": "An act to amend Section 50675.1.3 of the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119673",
+      "first_seen": "2026-02-23T17:38:05.407757"
+    },
+    "AB2157": {
+      "bill_number": "AB2157",
+      "session": "2025-2026",
+      "title": "Workforce development: Displaced Oil and Gas Worker Pilot Program: extension and assessment.",
+      "author": "Isaac Bryan",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2157",
+      "summary": "An act to repeal and add Section 9925 of the Unemployment Insurance Code, relating to workforce development.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119684",
+      "first_seen": "2026-02-23T17:38:05.407816"
+    },
+    "AB2162": {
+      "bill_number": "AB2162",
+      "session": "2025-2026",
+      "title": "Housing: county funding allocations: nonminor dependents and young adults.",
+      "author": "Isaac Bryan",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2162",
+      "summary": "An act to amend Sections 50807 and 50811 of the Health and Safety Code, and relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119689",
+      "first_seen": "2026-02-23T17:38:05.407865"
+    },
+    "AB2166": {
+      "bill_number": "AB2166",
+      "session": "2025-2026",
+      "title": "Department of Housing and Community Development.",
+      "author": "Juan Carrillo",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2166",
+      "summary": "An act to amend Section 50401 of the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be heard in committee March 21.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119693",
+      "first_seen": "2026-02-23T17:38:05.407962"
+    },
+    "AB2174": {
+      "bill_number": "AB2174",
+      "session": "2025-2026",
+      "title": "Mobilehomes and manufactured housing: registration and titling documentation.",
+      "author": "Natasha Johnson",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2174",
+      "summary": "An act to amend Section 18100.5 of the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120648",
+      "first_seen": "2026-02-23T17:38:05.408071"
+    },
+    "AB2176": {
+      "bill_number": "AB2176",
+      "session": "2025-2026",
+      "title": "Student housing: intersegmental working group.",
+      "author": "Mike Fong",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2176",
+      "summary": "An act to add Section 66221 to the Education Code, relating to student housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120650",
+      "first_seen": "2026-02-23T17:38:05.408141"
+    },
+    "AB2177": {
+      "bill_number": "AB2177",
+      "session": "2025-2026",
+      "title": "Planning and Zoning law: open-space zoning.",
+      "author": "Steve Bennett",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2177",
+      "summary": "An act to amend Section 65912 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120651",
+      "first_seen": "2026-02-23T17:38:05.408198"
+    },
+    "AB2185": {
+      "bill_number": "AB2185",
+      "session": "2025-2026",
+      "title": "Local planning: housing element.",
+      "author": "Sharon Quirk-Silva",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2185",
+      "summary": "An act to amend Section 65581 of the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120659",
+      "first_seen": "2026-02-23T17:38:05.408248"
+    },
+    "AB2189": {
+      "bill_number": "AB2189",
+      "session": "2025-2026",
+      "title": "State Council on Developmental Disabilities.",
+      "author": "Stephanie Nguyen",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2189",
+      "summary": "An act to amend Section 4540 of the Welfare and Institutions Code, relating to developmental services.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120663",
+      "first_seen": "2026-02-23T17:38:05.408303"
+    },
+    "AB2191": {
+      "bill_number": "AB2191",
+      "session": "2025-2026",
+      "title": "High school graduation requirements: alternate pathways for individuals with exceptional needs: statewide resources.",
+      "author": "Sharon Quirk-Silva",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2191",
+      "summary": "An act to amend Section 52073.2 of the Education Code, relating to pupil instruction.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120665",
+      "first_seen": "2026-02-23T17:38:05.408351"
+    },
+    "AB2209": {
+      "bill_number": "AB2209",
+      "session": "2025-2026",
+      "title": "Developmental services: caregiver succession.",
+      "author": "Jasmeet Bains",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2209",
+      "summary": "An act to amend Section 4646.5 of the Welfare and Institutions Code, relating to developmental services.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120683",
+      "first_seen": "2026-02-23T17:38:05.408405"
+    },
+    "AB2243": {
+      "bill_number": "AB2243",
+      "session": "2025-2026",
+      "title": "State bank.",
+      "author": "Matt Haney",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2243",
+      "summary": "An act relating to economic development.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120717",
+      "first_seen": "2026-02-23T17:38:05.408452"
+    },
+    "AB2252": {
+      "bill_number": "AB2252",
+      "session": "2025-2026",
+      "title": "Housing: Single stair entry and exit.",
+      "author": "Alex Lee",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2252",
+      "summary": "An act relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120726",
+      "first_seen": "2026-02-23T17:38:05.408504"
+    },
+    "AB2263": {
+      "bill_number": "AB2263",
+      "session": "2025-2026",
+      "title": "Housing.",
+      "author": "Ash Kalra",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2263",
+      "summary": "An act to amend Section 17912 of the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120737",
+      "first_seen": "2026-02-23T17:38:05.408549"
+    },
+    "AB2264": {
+      "bill_number": "AB2264",
+      "session": "2025-2026",
+      "title": "District agricultural associations: real property: affordable housing.",
+      "author": "Tom Lackey",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2264",
+      "summary": "An act to amend Section 4051 of the Food and Agricultural Code, relating to district agricultural associations.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120738",
+      "first_seen": "2026-02-23T17:38:05.408602"
+    },
+    "AB2270": {
+      "bill_number": "AB2270",
+      "session": "2025-2026",
+      "title": "Low-income housing tax credit: farmworker housing.",
+      "author": "Joaquin Arambula",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2270",
+      "summary": "An act to amend Sections 12206, 17058, and 23610.5 of the Revenue and Taxation Code, relating to taxation, to take effect immediately, tax levy.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120744",
+      "first_seen": "2026-02-23T17:38:05.408653"
+    },
+    "AB2288": {
+      "bill_number": "AB2288",
+      "session": "2025-2026",
+      "title": "Adaptive reuse: industrial zones.",
+      "author": "Sharon Quirk-Silva",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2288",
+      "summary": "An act to amend Sections 65658.1 and 65658.5 of the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120762",
+      "first_seen": "2026-02-23T17:38:05.408704"
+    },
+    "AB2295": {
+      "bill_number": "AB2295",
+      "session": "2025-2026",
+      "title": "Regional housing need: affordable housing.",
+      "author": "Natasha Johnson",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2295",
+      "summary": "An act to add Section 65584.2.3 to the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120769",
+      "first_seen": "2026-02-23T17:38:05.408754"
+    },
+    "AB2300": {
+      "bill_number": "AB2300",
+      "session": "2025-2026",
+      "title": "Workforce development.",
+      "author": "Joaquin Arambula",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2300",
+      "summary": "An act relating to workforce development.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120774",
+      "first_seen": "2026-02-23T17:38:05.408804"
+    },
+    "AB2308": {
+      "bill_number": "AB2308",
+      "session": "2025-2026",
+      "title": "Redevelopment: successor agency debt: City and County of San Francisco.",
+      "author": "Matt Haney",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2308",
+      "summary": "An act to amend Section 34177.7 of the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120782",
+      "first_seen": "2026-02-23T17:38:05.408856"
+    },
+    "AB2315": {
+      "bill_number": "AB2315",
+      "session": "2025-2026",
+      "title": "Workforce development: findings and declarations.",
+      "author": "Joaquin Arambula",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2315",
+      "summary": "An act to amend Section 14000 of the Unemployment Insurance Code, relating to workforce development.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120789",
+      "first_seen": "2026-02-23T17:38:05.408930"
+    },
+    "AB2320": {
+      "bill_number": "AB2320",
+      "session": "2025-2026",
+      "title": "Multifamily Housing Program: Homekey: adaptive reuse.",
+      "author": "Tri Ta",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2320",
+      "summary": "An act to amend Section 50675.1.3 of the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120794",
+      "first_seen": "2026-02-23T17:38:05.408988"
+    },
+    "AB2329": {
+      "bill_number": "AB2329",
+      "session": "2025-2026",
+      "title": "Surplus residential property: City of South Pasadena.",
+      "author": "Mike Fong",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2329",
+      "summary": "An act to amend Section 54239.6 of the Government Code, relating to surplus residential property.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120803",
+      "first_seen": "2026-02-23T17:38:05.409039"
+    },
+    "AB2342": {
+      "bill_number": "AB2342",
+      "session": "2025-2026",
+      "title": "Housing development: transit-oriented development.",
+      "author": "Josh Hoover",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2342",
+      "summary": "An act to amend Section 65912.157 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120816",
+      "first_seen": "2026-02-23T17:38:05.409092"
+    },
+    "AB2353": {
+      "bill_number": "AB2353",
+      "session": "2025-2026",
+      "title": "Health care affordability.",
+      "author": "Blanca Pacheco",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2353",
+      "summary": "An act relating to health care.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be heard in committee March 22.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120827",
+      "first_seen": "2026-02-23T17:38:05.409148"
+    },
+    "AB2387": {
+      "bill_number": "AB2387",
+      "session": "2025-2026",
+      "title": "California Dream for All Program: first-generation homebuyers.",
+      "author": "David Alvarez",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2387",
+      "summary": "An act to amend Sections 51522 and 51524 of, and to add Section 51529.5 to, the Health and Safety Code, relating to housing, and making an appropriation therefor.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121464",
+      "first_seen": "2026-02-23T17:38:05.409201"
+    },
+    "AB2390": {
+      "bill_number": "AB2390",
+      "session": "2025-2026",
+      "title": "Streamlined housing approvals: hazardous waste sites.",
+      "author": "Pilar Schiavo",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2390",
+      "summary": "An act to amend Section 65913.4 of the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121467",
+      "first_seen": "2026-02-23T17:38:05.409252"
+    },
+    "AB2397": {
+      "bill_number": "AB2397",
+      "session": "2025-2026",
+      "title": "Planning and zoning.",
+      "author": "Tri Ta",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2397",
+      "summary": "An act to amend Section 65098 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121474",
+      "first_seen": "2026-02-23T17:38:05.409304"
+    },
+    "AB2398": {
+      "bill_number": "AB2398",
+      "session": "2025-2026",
+      "title": "Practice of medicine: Physician Graduate License Act.",
+      "author": "David Alvarez",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2398",
+      "summary": "An act to add Article 6.1 (commencing with Section 2127) to Chapter 5 of Division 2 of the Business and Professions Code, relating to healing arts.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121475",
+      "first_seen": "2026-02-23T17:38:05.409354"
+    },
+    "AB2400": {
+      "bill_number": "AB2400",
+      "session": "2025-2026",
+      "title": "General plan: annual report: suite-style student housing quarters.",
+      "author": "Greg Wallis",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2400",
+      "summary": "An act to amend Section 65400 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121477",
+      "first_seen": "2026-02-23T17:38:05.409407"
+    },
+    "AB2414": {
+      "bill_number": "AB2414",
+      "session": "2025-2026",
+      "title": "Developmental services: direct support professionals.",
+      "author": "Stephanie Nguyen",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2414",
+      "summary": "An act to amend Sections 4474.17, 4511.5, 4512, 4519.10, and 4641.1 of the Welfare and Institutions Code, relating to developmental services.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121491",
+      "first_seen": "2026-02-23T17:38:05.409453"
+    },
+    "AB2418": {
+      "bill_number": "AB2418",
+      "session": "2025-2026",
+      "title": "Local building permits: nonresidential private permitting review.",
+      "author": "Mark Gonzalez",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2418",
+      "summary": "An act to amend, repeal, and add Section 19837 of, and to add Sections 19838 and 19839 to, the Health and Safety Code, relating to building permits.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121495",
+      "first_seen": "2026-02-23T17:38:05.409511"
+    },
+    "AB2433": {
+      "bill_number": "AB2433",
+      "session": "2025-2026",
+      "title": "Housing development: affordable homes bonus.",
+      "author": "David Alvarez",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2433",
+      "summary": "An act to amend Section 65915 of the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121510",
+      "first_seen": "2026-02-23T17:38:05.409555"
+    },
+    "AB2439": {
+      "bill_number": "AB2439",
+      "session": "2025-2026",
+      "title": "Common Interest Developments: Assessments.",
+      "author": "Blanca Rubio",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2439",
+      "summary": "An act to amend Section 5650 of the Civil Code, relating to common interest developments.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121516",
+      "first_seen": "2026-02-23T17:38:05.409614"
+    },
+    "AB2480": {
+      "bill_number": "AB2480",
+      "session": "2025-2026",
+      "title": "Housing development: density bonus: student housing developments.",
+      "author": "Anamarie Farias",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2480",
+      "summary": "An act to amend Section 65915 of the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121557",
+      "first_seen": "2026-02-23T17:38:05.409681"
+    },
+    "AB2486": {
+      "bill_number": "AB2486",
+      "session": "2025-2026",
+      "title": "Developmental services: data.",
+      "author": "Dawn Addis",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2486",
+      "summary": "An act to amend Section 4750.5 of the Welfare and Institutions Code, relating to developmental services.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121563",
+      "first_seen": "2026-02-23T17:38:05.409754"
+    },
+    "AB2521": {
+      "bill_number": "AB2521",
+      "session": "2025-2026",
+      "title": "San Francisco Bay Conservation and Development Commission.",
+      "author": "Diane Papan",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2521",
+      "summary": "An act to amend Section 66620 of the Government Code, relating to the San Francisco Bay Conservation and Development Commission.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121598",
+      "first_seen": "2026-02-23T17:38:05.409808"
+    },
+    "AB2526": {
+      "bill_number": "AB2526",
+      "session": "2025-2026",
+      "title": "Education finance: local control funding formula: special education grant.",
+      "author": "Al Muratsuchi",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2526",
+      "summary": "An act relating to education finance.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121603",
+      "first_seen": "2026-02-23T17:38:05.409865"
+    },
+    "AB2576": {
+      "bill_number": "AB2576",
+      "session": "2025-2026",
+      "title": "Local planning: housing element.",
+      "author": "John Harabedian",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2576",
+      "summary": "An act to amend Section 65580 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121653",
+      "first_seen": "2026-02-23T17:38:05.409954"
+    },
+    "AB2581": {
+      "bill_number": "AB2581",
+      "session": "2025-2026",
+      "title": "Housing.",
+      "author": "Esmeralda Soria",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2581",
+      "summary": "An act relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121658",
+      "first_seen": "2026-02-23T17:38:05.410008"
+    },
+    "AB2596": {
+      "bill_number": "AB2596",
+      "session": "2025-2026",
+      "title": "Mobilehome parks: federally approved housing programs: compliance with state and local laws.",
+      "author": "Mike Gipson",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2596",
+      "summary": "An act to add Section 798.14.5 to the Civil Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121673",
+      "first_seen": "2026-02-23T17:38:05.410065"
+    },
+    "AB2601": {
+      "bill_number": "AB2601",
+      "session": "2025-2026",
+      "title": "Planning and zoning: housing development: streamlined approval and subdivisions.",
+      "author": "Alex Lee",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2601",
+      "summary": "An act to amend Sections 65852.21, 65852.28, 65913.4.5, 66411.7, and 66499.41 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121678",
+      "first_seen": "2026-02-23T17:38:05.410111"
+    },
+    "AB2602": {
+      "bill_number": "AB2602",
+      "session": "2025-2026",
+      "title": "Housing.",
+      "author": "Jessica Caloza",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2602",
+      "summary": "An act to amend Section 18030.5 of the Health and Safety Code, relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121679",
+      "first_seen": "2026-02-23T17:38:05.410166"
+    },
+    "AB2616": {
+      "bill_number": "AB2616",
+      "session": "2025-2026",
+      "title": "Planning and zoning: general plan: annual report.",
+      "author": "Tina McKinnor",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2616",
+      "summary": "An act to amend Section 65400 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121693",
+      "first_seen": "2026-02-23T17:38:05.410211"
+    },
+    "AB2626": {
+      "bill_number": "AB2626",
+      "session": "2025-2026",
+      "title": "Housing programs: financing.",
+      "author": "Jesse Gabriel",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2626",
+      "summary": "An act relating to housing.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121703",
+      "first_seen": "2026-02-23T17:38:05.410268"
+    },
+    "AB2634": {
+      "bill_number": "AB2634",
+      "session": "2025-2026",
+      "title": "Workforce development: California Workforce Development Board.",
+      "author": "Rick Zbur",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2634",
+      "summary": "An act to amend Section 14010 of the Unemployment Insurance Code, relating to workforce development.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121711",
+      "first_seen": "2026-02-23T17:38:05.410313"
+    },
+    "AB2637": {
+      "bill_number": "AB2637",
+      "session": "2025-2026",
+      "title": "Residential property insurance.",
+      "author": "Michelle Rodriguez",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2637",
+      "summary": "An act to amend Section 2070.1 of the Insurance Code, relating to insurance.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121714",
+      "first_seen": "2026-02-23T17:38:05.410375"
+    },
+    "AB2656": {
+      "bill_number": "AB2656",
+      "session": "2025-2026",
+      "title": "Planning and Zoning Law.",
+      "author": "Cottie Petrie-Norris",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2656",
+      "summary": "An act to amend Section 65010 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121733",
+      "first_seen": "2026-02-23T17:38:05.410425"
+    },
+    "AB2676": {
+      "bill_number": "AB2676",
+      "session": "2025-2026",
+      "title": "Housing Crisis Act of 2019.",
+      "author": "James Gallagher",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2676",
+      "summary": "An act to amend Section 66300 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121753",
+      "first_seen": "2026-02-23T17:38:05.410474"
+    },
+    "AB2689": {
+      "bill_number": "AB2689",
+      "session": "2025-2026",
+      "title": "California Community Colleges Economic and Workforce Development Program.",
+      "author": "Anamarie Farias",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2689",
+      "summary": "An act to amend Section 88651 of the Education Code, relating to economic development.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121766",
+      "first_seen": "2026-02-23T17:38:05.410526"
+    },
+    "AB2702": {
+      "bill_number": "AB2702",
+      "session": "2025-2026",
+      "title": "Planning and zoning: streamlined approval: residential care facilities for the elderly.",
+      "author": "Heath Flora",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2702",
+      "summary": "An act relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121779",
+      "first_seen": "2026-02-23T17:38:05.410575"
+    },
+    "AB2734": {
+      "bill_number": "AB2734",
+      "session": "2025-2026",
+      "title": "Developmental services.",
+      "author": "Gregg Hart",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2734",
+      "summary": "An act to amend Section 416.13 of the Health and Safety Code, relating to developmental services.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121811",
+      "first_seen": "2026-02-23T17:38:05.410628"
+    },
+    "AB2741": {
+      "bill_number": "AB2741",
+      "session": "2025-2026",
+      "title": "Housing element: inventory of land: substantial compliance.",
+      "author": "Al Muratsuchi",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2741",
+      "summary": "An act relating to housing elements.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121818",
+      "first_seen": "2026-02-23T17:38:05.410675"
+    },
+    "AB2748": {
+      "bill_number": "AB2748",
+      "session": "2025-2026",
+      "title": "Building standards: affordable housing developments: electric vehicle charging.",
+      "author": "Sharon Quirk-Silva",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2748",
+      "summary": "An act to add and repeal Section 17929.1 of the Health and Safety Code, relating to building standards.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121825",
+      "first_seen": "2026-02-23T17:38:05.410730"
+    },
+    "AB2750": {
+      "bill_number": "AB2750",
+      "session": "2025-2026",
+      "title": "Development projects.",
+      "author": "Jesse Gabriel",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2750",
+      "summary": "An act to amend Section 65941.1 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121827",
+      "first_seen": "2026-02-23T17:38:05.410775"
+    },
+    "AB2757": {
+      "bill_number": "AB2757",
+      "session": "2025-2026",
+      "title": "Affordability and cost of living.",
+      "author": "Natasha Johnson",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2757",
+      "summary": "An act relating to affordability.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121834",
+      "first_seen": "2026-02-23T17:38:05.410829"
+    },
+    "AB2766": {
+      "bill_number": "AB2766",
+      "session": "2025-2026",
+      "title": "Public postsecondary education: student housing: foster youth and homeless youth.",
+      "author": "Patrick Ahrens",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2766",
+      "summary": "An act to amend Sections 66025.9, 76010, 90001.5, and 92660 of the Education Code, relating to public postsecondary education.",
+      "subjects": [],
+      "committees": [],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Read first time. To print.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121843",
+      "first_seen": "2026-02-23T17:38:05.410874"
+    },
+    "SB1110": {
+      "bill_number": "SB1110",
+      "session": "2025-2026",
+      "title": "Early learning and care: rates.",
+      "author": "Josh Becker",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1110",
+      "summary": "An act to amend Sections 8205 and 8245.5 of the Education Code, and to amend Sections 10213.5, 10229, and 10280 of the Welfare and Institutions Code, relating to early development.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be acted upon on or after March 20.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118668",
+      "first_seen": "2026-02-23T17:38:05.411000"
+    },
+    "SB1116": {
+      "bill_number": "SB1116",
+      "session": "2025-2026",
+      "title": "Planning and zoning: housing development projects: subdivisions.",
+      "author": "Anna Caballero",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1116",
+      "summary": "An act to amend Sections 65400, 65852.28, and 66499.41 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be acted upon on or after March 20.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118674",
+      "first_seen": "2026-02-23T17:38:05.411057"
+    },
+    "SB1117": {
+      "bill_number": "SB1117",
+      "session": "2025-2026",
+      "title": "Accessory dwelling units and junior accessory dwelling units.",
+      "author": "Sabrina Cervantes",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1117",
+      "summary": "An act to amend Section 66311.5 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be acted upon on or after March 20.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118675",
+      "first_seen": "2026-02-23T17:38:05.411102"
+    },
+    "SB1132": {
+      "bill_number": "SB1132",
+      "session": "2025-2026",
+      "title": "Workforce development: workplace rights training.",
+      "author": "Lola Smallwood-Cuevas",
+      "status": "Introduced",
+      "status_date": "2026-02-17",
+      "introduced_date": "2026-02-17",
+      "last_updated": "2026-02-17",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1132",
+      "summary": "An act to amend Sections 14013, 14206, 14221, and 14230 of the Unemployment Insurance Code, relating to workforce development.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-17",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-18",
+          "description": "From printer. May be acted upon on or after March 20.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2118690",
+      "first_seen": "2026-02-23T17:38:05.411158"
+    },
+    "SB1145": {
+      "bill_number": "SB1145",
+      "session": "2025-2026",
+      "title": "Affordable Housing and Sustainable Communities Program.",
+      "author": "Tim Grayson",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1145",
+      "summary": "An act to amend Section 75215 of the Public Resources Code, relating to greenhouse gases.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be acted upon on or after March 21.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119709",
+      "first_seen": "2026-02-23T17:38:05.411204"
+    },
+    "SB1160": {
+      "bill_number": "SB1160",
+      "session": "2025-2026",
+      "title": "Judicial Council: eviction data reporting.",
+      "author": "Maria Durazo",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1160",
+      "summary": "An act to add Chapter 8 (commencing with Section 156) to Title 1 of Part 1 of the Code of Civil Procedure, and to add Chapter 2.15 (commencing with Section 68652) to Title 8 of the Government Code, relating to courts.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be acted upon on or after March 21.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119724",
+      "first_seen": "2026-02-23T17:38:05.411254"
+    },
+    "SB1170": {
+      "bill_number": "SB1170",
+      "session": "2025-2026",
+      "title": "Joint powers agreements: nonprofit housing developers.",
+      "author": "Maria Durazo",
+      "status": "Introduced",
+      "status_date": "2026-02-18",
+      "introduced_date": "2026-02-18",
+      "last_updated": "2026-02-18",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1170",
+      "summary": "An act to amend Section 990.8 of, and to add Section 6525.5 to, the Government Code, relating to nonprofit housing developers.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-18",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-19",
+          "description": "From printer. May be acted upon on or after March 21.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2119734",
+      "first_seen": "2026-02-23T17:38:05.411304"
+    },
+    "SB1196": {
+      "bill_number": "SB1196",
+      "session": "2025-2026",
+      "title": "Accessory dwelling units.",
+      "author": "Jerry McNerney",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1196",
+      "summary": "An act to amend Section 66313 of the Government Code, relating to land use.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be acted upon on or after March 22.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120869",
+      "first_seen": "2026-02-23T17:38:05.411353"
+    },
+    "SB1215": {
+      "bill_number": "SB1215",
+      "session": "2025-2026",
+      "title": "Electrical corporations: electric vehicle charging stations: multifamily residential properties.",
+      "author": "Dave Cortese",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1215",
+      "summary": "An act to amend Section 740.19 of, and to add Section 740.27 to, the Public Utilities Code, relating to energy.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be acted upon on or after March 22.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120888",
+      "first_seen": "2026-02-23T17:38:05.411404"
+    },
+    "SB1216": {
+      "bill_number": "SB1216",
+      "session": "2025-2026",
+      "title": "Planning and Zoning Law: housing leadership designation.",
+      "author": "Christopher Cabaldon",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1216",
+      "summary": "An act to add Section 65589.10 to the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be acted upon on or after March 22.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120889",
+      "first_seen": "2026-02-23T17:38:05.411451"
+    },
+    "SB1217": {
+      "bill_number": "SB1217",
+      "session": "2025-2026",
+      "title": "Adult victims: online exploitation, trafficking, and abuse.",
+      "author": "Shannon Grove",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1217",
+      "summary": "An act relating to prevention and investigation of crimes.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be acted upon on or after March 22.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120890",
+      "first_seen": "2026-02-23T17:38:05.411503"
+    },
+    "SB1229": {
+      "bill_number": "SB1229",
+      "session": "2025-2026",
+      "title": "Coastal resources: coastal development permits: disaster exemption.",
+      "author": "Benjamin Allen",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1229",
+      "summary": "An act to amend Section 30610 of the Public Resources Code, relating to coastal resources.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be acted upon on or after March 22.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120902",
+      "first_seen": "2026-02-23T17:38:05.411549"
+    },
+    "SB1238": {
+      "bill_number": "SB1238",
+      "session": "2025-2026",
+      "title": "Common interest developments: management.",
+      "author": "Aisha Wahab",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1238",
+      "summary": "An act to amend Sections 11500 and 11501 of the Business and Professions Code, and to amend Sections 2295, 4525, 5200, 5510, 5515, 5520, 5550, 5551, 5560, 5565, and 5570 of the Civil Code, relating to common interest developments.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be acted upon on or after March 22.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120911",
+      "first_seen": "2026-02-23T17:38:05.411603"
+    },
+    "SB1258": {
+      "bill_number": "SB1258",
+      "session": "2025-2026",
+      "title": "Streamlined housing approvals: hazardous waste sites.",
+      "author": "Scott Wiener",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1258",
+      "summary": "An act to amend Section 65913.4 of the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be acted upon on or after March 22.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120931",
+      "first_seen": "2026-02-23T17:38:05.411647"
+    },
+    "SB1267": {
+      "bill_number": "SB1267",
+      "session": "2025-2026",
+      "title": "Common interest developments: electric vehicle charging stations owned by members in common areas.",
+      "author": "Benjamin Allen",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1267",
+      "summary": "An act to amend Section 4745 of the Civil Code, relating to common interest developments.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-20",
+          "description": "From printer. May be acted upon on or after March 22.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120940",
+      "first_seen": "2026-02-23T17:38:05.411707"
+    },
+    "SB1272": {
+      "bill_number": "SB1272",
+      "session": "2025-2026",
+      "title": "Community revitalization authority.",
+      "author": "Caroline Menjivar",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1272",
+      "summary": "An act to amend Section 62000 of the Government Code, relating to community development.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Introduced. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121856",
+      "first_seen": "2026-02-23T17:38:05.411765"
+    },
+    "SB1297": {
+      "bill_number": "SB1297",
+      "session": "2025-2026",
+      "title": "Planning and Zoning Law: cities and counties: planning agencies.",
+      "author": "Benjamin Allen",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1297",
+      "summary": "An act to amend Section 65100 of the Government Code, relating to local government.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Introduced. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121881",
+      "first_seen": "2026-02-23T17:38:05.411818"
+    },
+    "SB1301": {
+      "bill_number": "SB1301",
+      "session": "2025-2026",
+      "title": "Residential property insurance: nonrenewals.",
+      "author": "Benjamin Allen",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1301",
+      "summary": "An act to amend, repeal, and add Section 678 of, and to add Sections 676.11, 676.12, 676.13, and 676.14 to, the Insurance Code, relating to insurance.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Introduced. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121885",
+      "first_seen": "2026-02-23T17:38:05.411863"
+    },
+    "SB1344": {
+      "bill_number": "SB1344",
+      "session": "2025-2026",
+      "title": "Civil actions: housing development projects.",
+      "author": "Christopher Cabaldon",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1344",
+      "summary": "An act to amend Section 529.2 of the Code of Civil Procedure, relating to civil actions.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Introduced. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121928",
+      "first_seen": "2026-02-23T17:38:05.411941"
+    },
+    "SB1353": {
+      "bill_number": "SB1353",
+      "session": "2025-2026",
+      "title": "Alcohol or other drug recovery or treatment facilities: residential use of property.",
+      "author": "Suzette Valladares",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1353",
+      "summary": "An act to amend Section 11834.23 of the Health and Safety Code, relating to alcohol or other drug recovery or treatment facilities.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Introduced. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121937",
+      "first_seen": "2026-02-23T17:38:05.411994"
+    },
+    "SB1383": {
+      "bill_number": "SB1383",
+      "session": "2025-2026",
+      "title": "Housing development projects: postentitlement phase permit.",
+      "author": "Jesse Arreguin",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1383",
+      "summary": "An act to amend, repeal, and add Section 65913.3 of the Government Code, relating to housing.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Introduced. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121967",
+      "first_seen": "2026-02-23T17:38:05.412051"
+    },
+    "SB1385": {
+      "bill_number": "SB1385",
+      "session": "2025-2026",
+      "title": "Employment Development Department.",
+      "author": "Roger Niello",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1385",
+      "summary": "An act to amend Section 301.6 of the Unemployment Insurance Code, relating to unemployment compensation.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Introduced. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121969",
+      "first_seen": "2026-02-23T17:38:05.412097"
+    },
+    "SB1410": {
+      "bill_number": "SB1410",
+      "session": "2025-2026",
+      "title": "Adult community care facilities: email address of record.",
+      "author": "Monique Limon",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1410",
+      "summary": "An act to amend Section 1509.6 of the Health and Safety Code, relating to community care facilities.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Introduced. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121994",
+      "first_seen": "2026-02-23T17:38:05.412150"
+    },
+    "SB1415": {
+      "bill_number": "SB1415",
+      "session": "2025-2026",
+      "title": "Real property tax: welfare exemption: moderate-income housing.",
+      "author": "Jesse Arreguin",
+      "status": "Introduced",
+      "status_date": "2026-02-20",
+      "introduced_date": "2026-02-20",
+      "last_updated": "2026-02-20",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1415",
+      "summary": "An act to amend Section 214 of the Revenue and Taxation Code, relating to taxation, to take effect immediately, tax levy.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-20",
+          "description": "Introduced. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2121999",
+      "first_seen": "2026-02-23T17:38:05.412196"
+    },
+    "SCR131": {
+      "bill_number": "SCR131",
+      "session": "2025-2026",
+      "title": "Housing: functional zero unsheltered homelessness.",
+      "author": "Catherine Blakespear",
+      "status": "Introduced",
+      "status_date": "2026-02-19",
+      "introduced_date": "2026-02-19",
+      "last_updated": "2026-02-19",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SCR131",
+      "summary": "Relative to housing.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-19",
+          "description": "Introduced. Referred to Com. on RLS.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2120943",
+      "first_seen": "2026-02-23T17:38:05.412249"
     }
   }
 }
