@@ -1,0 +1,29 @@
+# =============================================================================
+# Housing Policy Bill Analyzer — Configuration
+# California Stewardship Fund
+# =============================================================================
+# All paths are relative to the project root (csf-agents/).
+# Set API keys via environment variables — never put real keys in this file.
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Anthropic / Claude settings
+# Set ANTHROPIC_API_KEY via environment variable — never commit keys here.
+# ---------------------------------------------------------------------------
+model: claude-sonnet-4-6       # Model to use for bill analysis.
+                               # claude-sonnet-4-6: fast, cost-effective (recommended).
+                               # claude-opus-4-6: highest quality, ~5x cost.
+
+# ---------------------------------------------------------------------------
+# Paths (relative to project root)
+# ---------------------------------------------------------------------------
+paths:
+  bills_file:   data/bills/tracked_bills.json   # Input + state storage (read/write)
+  analysis_dir: outputs/analysis                # Full report + weekly summary output
+
+# ---------------------------------------------------------------------------
+# Logging
+# ---------------------------------------------------------------------------
+logging:
+  level: INFO                               # DEBUG | INFO | WARNING | ERROR
+  file: logs/housing_analyzer.log           # Set to null/empty to disable file logging

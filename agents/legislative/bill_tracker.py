@@ -1267,6 +1267,55 @@ class BillTracker:
             "",
         ]
 
+        # ---- Housing Policy Analysis ----------------------------------------
+        from agents.legislative.email_sender import _get_analysis_data, _CRIT_KEYS, _CRIT_LETTER, _CRIT_LABEL
+        ad = _get_analysis_data(all_bills)
+        if ad["total_analyzed"]:
+            lines += [
+                "---",
+                "",
+                "## Housing Policy Analysis",
+                "",
+                "| | |",
+                "|---|---|",
+                f"| Bills analyzed | **{ad['total_analyzed']}** |",
+                f"| Relevant to CSF mission | **{len(ad['relevant'])}** |",
+                f"| High-interest (2+ criteria) | **{len(ad['high_interest'])}** |",
+                "",
+            ]
+            if ad["high_interest"]:
+                lines += ["### Key Bills This Cycle", ""]
+                for num, bill in ad["high_interest"][:8]:
+                    a = bill.get("analysis", {})
+                    url = bill.get("text_url", "")
+                    bill_link = f"[{num}]({url})" if url else num
+                    crits = " · ".join(
+                        f"**{_CRIT_LETTER[k]}**" if a.get(k) == "strong"
+                        else _CRIT_LETTER[k]
+                        for k in _CRIT_KEYS
+                        if a.get(k) in ("strong", "moderate")
+                    )
+                    notes = (a.get("notes") or "")[:120]
+                    lines += [
+                        f"**{bill_link}** — {bill.get('title', '')}  ",
+                        f"*{bill.get('author', '')} | Criteria: {crits}*  ",
+                        f"{notes}",
+                        "",
+                    ]
+            for k in _CRIT_KEYS:
+                strong = [(n, b) for n, b in ad["by_crit"][k]
+                          if b["analysis"].get(k) == "strong"][:5]
+                if strong:
+                    bill_list = ", ".join(
+                        f"[{n}]({b.get('text_url','')})" if b.get("text_url") else n
+                        for n, b in strong
+                    )
+                    lines.append(f"**{_CRIT_LABEL[k]}:** {bill_list}  ")
+            lines.append("")
+            if ad["watch_list"]:
+                watch = ", ".join(n for n, _ in ad["watch_list"][:6])
+                lines += [f"⚠️ **Watch List:** {watch}", ""]
+
         # ---- New Bills -----------------------------------------------------
         lines += ["---", "", f"## New Bills This Week ({len(new_bills)})", ""]
 

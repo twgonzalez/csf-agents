@@ -217,6 +217,451 @@ _COLOR_TEXT = "#1a1a1a"
 _COLOR_MUTED = "#666666"
 _COLOR_BORDER = "#e0e0e0"
 
+# Analysis section — risk red to signal local control threat assessment
+_COLOR_TEAL = "#b03a2e"
+_COLOR_TEAL_LIGHT = "#fadbd8"
+
+# Per-criterion risk colors (A=red, B=orange, C=amber, D=purple)
+_CRIT_KEYS = [
+    "pro_housing_production",
+    "densification",
+    "reduce_discretion",
+    "cost_to_cities",
+]
+_CRIT_LETTER = {
+    "pro_housing_production": "A",
+    "densification":          "B",
+    "reduce_discretion":      "C",
+    "cost_to_cities":         "D",
+}
+_CRIT_LABEL = {
+    "pro_housing_production": "A — Local Control Override",
+    "densification":          "B — Removes Discretionary Review",
+    "reduce_discretion":      "C — Mandates Development",
+    "cost_to_cities":         "D — Infrastructure & Capacity Burden",
+}
+# strong risk: solid fill / moderate risk: lighter fill
+_CRIT_STRONG_BG   = {"pro_housing_production": "#c0392b", "densification": "#d35400",
+                      "reduce_discretion": "#c47600", "cost_to_cities": "#6c3483"}
+_CRIT_MODERATE_BG = {"pro_housing_production": "#f1948a", "densification": "#f5cba7",
+                      "reduce_discretion": "#fad7a0", "cost_to_cities": "#d2b4de"}
+_CRIT_MODERATE_TX = {"pro_housing_production": "#78281f", "densification": "#784212",
+                      "reduce_discretion": "#784212", "cost_to_cities": "#4a235a"}
+
+
+# ---------------------------------------------------------------------------
+# Analysis section helpers
+# ---------------------------------------------------------------------------
+
+def _get_analysis_data(all_bills: dict) -> dict:
+    """
+    Extract and rank analysis scores from the bills dict.
+
+    Returns a dict with:
+      total_analyzed  — count of bills with an analysis block
+      relevant        — [(num, bill)] scored on at least 1 criterion (strong/moderate)
+      high_interest   — [(num, bill)] scored on 2+ criteria
+      by_crit         — {crit_key: [(num, bill), ...]} strong/moderate per criterion
+      watch_list      — bills with cost_to_cities strong/moderate but <2 other criteria
+    """
+    scored: list[tuple] = []
+    for num, bill in all_bills.items():
+        a = bill.get("analysis")
+        if not a:
+            continue
+        n_strong   = sum(1 for k in _CRIT_KEYS if a.get(k) == "strong")
+        n_moderate = sum(1 for k in _CRIT_KEYS if a.get(k) == "moderate")
+        n_total    = sum(1 for k in _CRIT_KEYS if a.get(k) in ("strong", "moderate"))
+        scored.append((num, bill, n_strong, n_moderate, n_total))
+
+    # Primary sort: strong count desc, secondary: moderate count desc
+    scored.sort(key=lambda x: (x[2], x[3]), reverse=True)
+
+    relevant      = [(n, b) for n, b, ns, nm, nt in scored if nt >= 1]
+    high_interest = [(n, b) for n, b, ns, nm, nt in scored if nt >= 2]
+
+    by_crit: dict[str, list] = {k: [] for k in _CRIT_KEYS}
+    for num, bill, *_ in scored:
+        a = bill["analysis"]
+        for k in _CRIT_KEYS:
+            if a.get(k) in ("strong", "moderate"):
+                by_crit[k].append((num, bill))
+
+    watch_list = [
+        (n, b) for n, b, ns, nm, nt in scored
+        if b["analysis"].get("cost_to_cities") in ("strong", "moderate") and nt < 2
+    ]
+
+    return {
+        "total_analyzed": len(scored),
+        "relevant":       relevant,
+        "high_interest":  high_interest,
+        "by_crit":        by_crit,
+        "watch_list":     watch_list,
+    }
+
+
+def _score_pills(analysis: dict) -> str:
+    """Render a row of colored criteria pills for a bill card."""
+    pills = []
+    for k in _CRIT_KEYS:
+        score = analysis.get(k, "none")
+        letter = _CRIT_LETTER[k]
+        if score == "strong":
+            bg = _CRIT_STRONG_BG[k]
+            pills.append(
+                f'<span style="display:inline-block; background:{bg}; color:#fff; '
+                f'font-size:10px; font-weight:700; padding:2px 7px; border-radius:3px; '
+                f'margin:0 3px 0 0; letter-spacing:0.5px; {_FONT}">{letter}</span>'
+            )
+        elif score == "moderate":
+            bg = _CRIT_MODERATE_BG[k]
+            tx = _CRIT_MODERATE_TX[k]
+            pills.append(
+                f'<span style="display:inline-block; background:{bg}; color:{tx}; '
+                f'font-size:10px; font-weight:600; padding:2px 7px; border-radius:3px; '
+                f'margin:0 3px 0 0; letter-spacing:0.5px; {_FONT}">{letter}</span>'
+            )
+    return "".join(pills) if pills else ""
+
+
+def _render_comms_brief(comms_brief: str) -> str:
+    """
+    Parse and render the structured comms_brief into formatted HTML.
+
+    Expected plain-text format:
+      [Summary sentence]
+      • [Risk point 1]
+      • [Risk point 2]
+      Recommended: [Action text]
+
+    Produces:
+      - Summary in slightly bolder text
+      - Bullets as a table-based list (email-safe, no <ul>/<li> needed)
+      - "Recommended:" as a distinct amber callout box
+    """
+    if not comms_brief:
+        return ""
+
+    lines = [ln.strip() for ln in comms_brief.split("\n") if ln.strip()]
+
+    summary     = ""
+    bullets: list[str] = []
+    recommended = ""
+
+    for ln in lines:
+        if ln.startswith("•"):
+            bullets.append(ln[1:].strip())
+        elif ln.startswith("Recommended:"):
+            recommended = ln[len("Recommended:"):].strip()
+        elif not summary:
+            summary = ln
+
+    parts = []
+
+    # ── Summary sentence ──────────────────────────────────────────────────────
+    if summary:
+        parts.append(
+            f'<p style="margin:0 0 8px 0; font-size:13px; font-weight:600; '
+            f'color:{_COLOR_TEXT}; line-height:1.5; {_FONT}">{summary}</p>'
+        )
+
+    # ── Bullet points (table-based for email compatibility) ───────────────────
+    if bullets:
+        bullet_rows = "".join(
+            f'<tr>'
+            f'<td width="14" style="vertical-align:top; padding:1px 6px 5px 0; '
+            f'font-size:13px; color:{_COLOR_TEAL}; {_FONT}">&#8226;</td>'
+            f'<td style="padding:0 0 5px 0; font-size:12px; color:{_COLOR_TEXT}; '
+            f'line-height:1.5; {_FONT}">{b}</td>'
+            f'</tr>'
+            for b in bullets
+        )
+        parts.append(
+            f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+            f'style="margin:0 0 6px 0;">{bullet_rows}</table>'
+        )
+
+    # ── Recommended action callout ────────────────────────────────────────────
+    if recommended:
+        amber = _CRIT_STRONG_BG["reduce_discretion"]   # #c47600
+        parts.append(
+            f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+            f'style="margin:4px 0 0 0; background:#fef9ec; '
+            f'border-left:3px solid {amber}; border-radius:0 3px 3px 0;">'
+            f'<tr><td style="padding:7px 10px;">'
+            f'<span style="font-size:10px; font-weight:700; color:{amber}; '
+            f'text-transform:uppercase; letter-spacing:0.5px; {_FONT}">Action&nbsp;&rarr;</span>'
+            f'&nbsp;&nbsp;'
+            f'<span style="font-size:12px; color:{_COLOR_TEXT}; {_FONT}">{recommended}</span>'
+            f'</td></tr></table>'
+        )
+
+    if not parts:
+        # Fallback: no structure parsed — render raw with line breaks
+        safe = comms_brief.replace("\n", "<br>")
+        return (
+            f'<div style="font-size:13px; color:{_COLOR_TEXT}; '
+            f'line-height:1.6; {_FONT}">{safe}</div>'
+        )
+
+    return (
+        f'<div style="margin:0 0 8px 0; padding:10px 12px; background:#fdf5f4; '
+        f'border-left:3px solid {_COLOR_TEAL_LIGHT}; border-radius:0 4px 4px 0;">'
+        + "".join(parts)
+        + "</div>"
+    )
+
+
+def _html_analysis_section(all_bills: dict) -> str:
+    """
+    Render the Local Control Risk Analysis section for the top of the email.
+
+    Shows:
+      - Quick-stats bar (bills with risk signals, high-risk, total analyzed)
+      - Top risk bill cards (up to 8) with criteria risk pills + comms_brief
+      - Per-criterion summary (strong risks only, up to 5 per criterion)
+      - Watch list (financial burden bills) if any
+    """
+    ad = _get_analysis_data(all_bills)
+    if not ad["total_analyzed"]:
+        return ""   # No analysis data — skip section entirely
+
+    high_interest = ad["high_interest"]
+    by_crit       = ad["by_crit"]
+    watch_list    = ad["watch_list"]
+
+    # ── Stats bar ────────────────────────────────────────────────────────────
+    def stat_cell(value: str, label: str, border: bool = True) -> str:
+        border_css = f"border-right:1px solid {_COLOR_TEAL_LIGHT};" if border else ""
+        return f"""
+        <td width="33%" align="center"
+            style="padding:16px 10px; {border_css}">
+          <div style="font-size:28px; font-weight:700; color:{_COLOR_TEAL};
+                      line-height:1; {_FONT}">{value}</div>
+          <div style="font-size:11px; color:{_COLOR_MUTED}; margin-top:5px;
+                      text-transform:uppercase; letter-spacing:0.5px; {_FONT}">
+            {label}
+          </div>
+        </td>"""
+
+    stats_html = f"""
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+         style="border:1px solid {_COLOR_TEAL_LIGHT}; border-radius:0;
+                background:#fdf5f4;">
+    <tr>
+      {stat_cell(str(len(ad["relevant"])), "Bills with Risk Signals")}
+      {stat_cell(str(len(high_interest)), "High-Risk (2+ Criteria)")}
+      {stat_cell(str(ad["total_analyzed"]), "Total Analyzed", border=False)}
+    </tr>
+  </table>"""
+
+    # ── Key bills (top 8 high-interest) ──────────────────────────────────────
+    key_bills_html = ""
+    for num, bill in high_interest[:8]:
+        analysis    = bill.get("analysis", {})
+        url         = bill.get("text_url", "")
+        title       = bill.get("title", "")
+        author      = bill.get("author", "")
+        status      = bill.get("status", "")
+        comms_brief = analysis.get("comms_brief") or ""
+        # Fall back to truncated notes if no comms_brief yet
+        if not comms_brief:
+            notes_raw = (analysis.get("notes") or "")
+            comms_brief = notes_raw[:200] + ("…" if len(notes_raw) > 200 else "")
+        brief_card  = _render_comms_brief(comms_brief)
+        # Count how many criteria scored strong or moderate
+        n_risk = sum(1 for k in _CRIT_KEYS if analysis.get(k) in ("strong", "moderate"))
+        pills  = _score_pills(analysis)
+
+        bill_link = (
+            f'<a href="{url}" target="_blank" '
+            f'style="color:{_COLOR_TEAL}; font-weight:700; font-size:14px; '
+            f'text-decoration:none; {_FONT}">{num}</a>'
+            if url else
+            f'<strong style="color:{_COLOR_TEAL}; font-size:14px; {_FONT}">{num}</strong>'
+        )
+        view_link = (
+            f'<a href="{url}" target="_blank" '
+            f'style="color:{_COLOR_TEAL}; font-size:12px; {_FONT}">View bill →</a>'
+            if url else ""
+        )
+        risk_badge = (
+            f'<span style="display:inline-block; background:{_COLOR_TEAL}; color:#fff; '
+            f'font-size:10px; font-weight:700; padding:2px 7px; border-radius:3px; '
+            f'vertical-align:middle; {_FONT}">{n_risk}&nbsp;criteria</span>'
+        )
+
+        key_bills_html += _row(f"""
+  <div style="padding:16px 32px 20px 32px; border-bottom:1px solid {_COLOR_TEAL_LIGHT};">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="vertical-align:top;">
+          {bill_link}
+          &nbsp;
+          <span style="font-size:13px; font-weight:600; color:{_COLOR_TEXT}; {_FONT}">
+            {title[:65]}{"…" if len(title) > 65 else ""}
+          </span>
+        </td>
+        <td align="right" style="vertical-align:top; padding-left:8px; white-space:nowrap;">
+          {risk_badge}
+        </td>
+      </tr>
+    </table>
+    <p style="margin:4px 0 8px 0; font-size:12px; color:{_COLOR_MUTED}; {_FONT}">
+      {author} &nbsp;·&nbsp; {status}
+    </p>
+    <div style="margin-bottom:10px;">{pills}</div>
+    {brief_card}
+    {f'<p style="margin:6px 0 0 0;">{view_link}</p>' if view_link else ""}
+  </div>
+""", bg=_COLOR_CARD, padding="0")
+
+    if not key_bills_html:
+        key_bills_html = _row(
+            f'<p style="padding:16px 32px; color:{_COLOR_MUTED}; '
+            f'font-size:13px; {_FONT}">No bills scored on 2+ criteria yet.</p>',
+            bg=_COLOR_CARD, padding="0",
+        )
+
+    # ── By criterion (strong scores, ≤5 per criterion) ───────────────────────
+    crit_cells = ""
+    legend_items = [
+        f'<span style="display:inline-block; background:{_CRIT_STRONG_BG[k]}; '
+        f'color:#fff; font-size:10px; font-weight:700; padding:2px 7px; '
+        f'border-radius:3px; margin:0 6px 0 0; {_FONT}">{_CRIT_LETTER[k]}</span>'
+        f'<span style="font-size:11px; color:{_COLOR_MUTED}; {_FONT}">'
+        f'{_CRIT_LABEL[k].split(" — ", 1)[1]}</span>'
+        for k in _CRIT_KEYS
+    ]
+    legend_html = (
+        '<div style="padding:10px 32px 4px 32px;">'
+        + "&nbsp;&nbsp;".join(legend_items)
+        + "</div>"
+    )
+
+    for k in _CRIT_KEYS:
+        strong_bills = [(n, b) for n, b in by_crit[k]
+                        if b["analysis"].get(k) == "strong"][:5]
+        if not strong_bills:
+            continue
+        bill_links = ", ".join(
+            f'<a href="{b.get("text_url","")}" target="_blank" '
+            f'style="color:{_CRIT_STRONG_BG[k]}; font-weight:600; {_FONT}">{n}</a>'
+            if b.get("text_url") else
+            f'<strong style="color:{_CRIT_STRONG_BG[k]}; {_FONT}">{n}</strong>'
+            for n, b in strong_bills
+        )
+        letter = _CRIT_LETTER[k]
+        bg     = _CRIT_STRONG_BG[k]
+        crit_cells += f"""
+      <tr>
+        <td style="padding:6px 0; border-bottom:1px solid {_COLOR_BORDER};
+                   vertical-align:top; width:30px;">
+          <span style="display:inline-block; background:{bg}; color:#fff;
+                       font-size:10px; font-weight:700; padding:2px 7px;
+                       border-radius:3px; {_FONT}">{letter}</span>
+        </td>
+        <td style="padding:6px 0 6px 10px; border-bottom:1px solid {_COLOR_BORDER};
+                   font-size:12px; color:{_COLOR_TEXT}; vertical-align:top; {_FONT}">
+          {bill_links}
+        </td>
+      </tr>"""
+
+    crit_section_html = ""
+    if crit_cells:
+        crit_section_html = _row(f"""
+  {legend_html}
+  <div style="padding:4px 32px 16px 32px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+      {crit_cells}
+    </table>
+  </div>
+""", bg=_COLOR_CARD, padding="0")
+
+    # ── Watch list ────────────────────────────────────────────────────────────
+    watch_html = ""
+    if watch_list:
+        watch_items = ", ".join(
+            f'<a href="{b.get("text_url","")}" target="_blank" '
+            f'style="color:{_COLOR_ORANGE}; {_FONT}">{n}</a>'
+            if b.get("text_url") else
+            f'<span style="color:{_COLOR_ORANGE}; {_FONT}">{n}</span>'
+            for n, b in watch_list[:6]
+        )
+        watch_html = _row(f"""
+  <div style="padding:10px 32px 14px 32px; background:#fff8f0;
+              border-top:1px solid {_COLOR_BORDER};">
+    <span style="font-size:12px; font-weight:700; color:{_COLOR_ORANGE};
+                 text-transform:uppercase; letter-spacing:0.5px; {_FONT}">
+      ⚠ Watch List
+    </span>
+    <span style="font-size:12px; color:{_COLOR_MUTED}; margin-left:8px; {_FONT}">
+      Bills imposing financial obligations on cities with limited other risk signals:
+    </span>
+    <span style="font-size:12px; {_FONT}">&nbsp; {watch_items}</span>
+  </div>
+""", bg=_COLOR_CARD, padding="0")
+
+    # ── Assemble section ──────────────────────────────────────────────────────
+    section_header = f"""
+{_spacer(bg=_COLOR_BG)}
+{_row(f"""
+  <h2 style="margin:0; padding:16px 32px 12px 32px; font-size:15px;
+             font-weight:700; color:{_COLOR_TEAL}; text-transform:uppercase;
+             letter-spacing:0.8px; border-bottom:2px solid {_COLOR_TEAL_LIGHT};
+             {_FONT}">
+    Local Control Risk Analysis
+  </h2>
+""", bg=_COLOR_CARD, padding="0")}"""
+
+    # Compact inline criteria legend for the key bills sub-header
+    _crit_chips = "".join(
+        f'<span style="white-space:nowrap; display:inline-block; margin:0 14px 3px 0;">'
+        f'<span style="display:inline-block; background:{_CRIT_STRONG_BG[k]}; color:#fff; '
+        f'font-size:9px; font-weight:700; padding:1px 5px; border-radius:2px; '
+        f'vertical-align:middle; {_FONT}">{_CRIT_LETTER[k]}</span>'
+        f'<span style="font-size:11px; color:{_COLOR_MUTED}; margin-left:4px; {_FONT}">'
+        f'{_CRIT_LABEL[k].split(" — ", 1)[1]}</span>'
+        f'</span>'
+        for k in _CRIT_KEYS
+    )
+    key_header = f"""
+{_row(f"""
+  <div style="padding:14px 32px 4px 32px;">
+    <p style="margin:0 0 6px 0; font-size:12px; font-weight:700; color:{_COLOR_MUTED};
+              text-transform:uppercase; letter-spacing:0.5px; {_FONT}">
+      High-Risk Bills &mdash; {len(high_interest)} of {ad['total_analyzed']} analyzed
+    </p>
+    <div style="line-height:2.0;">{_crit_chips}</div>
+  </div>
+""", bg=_COLOR_CARD, padding="0")}"""
+
+    crit_header = f"""
+{_row(f"""
+  <p style="margin:0; padding:14px 32px 4px 32px; font-size:12px;
+            font-weight:700; color:{_COLOR_MUTED}; text-transform:uppercase;
+            letter-spacing:0.5px; {_FONT}">
+    Risk Levels by Criterion
+  </p>
+""", bg=_COLOR_CARD, padding="0")}""" if crit_section_html else ""
+
+    stats_row = _row(
+        f'<div style="padding:0 32px 0 32px;">{stats_html}</div>',
+        bg=_COLOR_CARD,
+        padding="16px 0 0 0",
+    )
+
+    return (
+        section_header
+        + stats_row
+        + key_header
+        + key_bills_html
+        + crit_header
+        + crit_section_html
+        + watch_html
+    )
+
 
 def _build_html(
     new_bills: list[dict],
@@ -233,6 +678,7 @@ def _build_html(
     sections = [
         _html_header(date_str, lookback),
         _html_summary(len(new_bills), len(changed_bills), len(all_bills)),
+        _html_analysis_section(all_bills),   # analysis at the top
     ]
 
     if new_bills:
@@ -594,9 +1040,12 @@ def _html_index_section(all_bills: dict) -> str:
         author = (b.get("author") or "")[:20]
         status = (b.get("status") or "")[:45]
         title = (b.get("title") or "")[:55]
+        pills = _score_pills(b.get("analysis") or {})
+        risk_cell = pills if pills else f'<span style="color:{_COLOR_BORDER};">—</span>'
         rows += f"""
         <tr>
           <td style="{cell_style} white-space:nowrap;">{bill_cell}</td>
+          <td style="{cell_style} white-space:nowrap;">{risk_cell}</td>
           <td style="{cell_style}">{author}</td>
           <td style="{cell_style}">{status}</td>
           <td style="{cell_style}">{title}</td>
@@ -611,6 +1060,7 @@ def _html_index_section(all_bills: dict) -> str:
       <thead>
         <tr>
           <th style="{header_style}">Bill</th>
+          <th style="{header_style}">Risk</th>
           <th style="{header_style}">Author</th>
           <th style="{header_style}">Status</th>
           <th style="{header_style}">Title</th>
@@ -699,6 +1149,8 @@ def _html_stalled_section(stalled_bills: list[dict], lookback_days: int) -> str:
         title = (bill.get("title") or "")[:60]
         introduced = bill.get("introduced_date", "")
         sd = bill.get("status_date", "")
+        pills = _score_pills(bill.get("analysis") or {})
+        risk_cell = pills if pills else f'<span style="color:{_COLOR_BORDER};">—</span>'
 
         days_ago = sd  # fallback: show raw date
         if sd:
@@ -712,6 +1164,7 @@ def _html_stalled_section(stalled_bills: list[dict], lookback_days: int) -> str:
         rows += f"""
         <tr>
           <td style="{cell_style} white-space:nowrap;">{bill_cell}</td>
+          <td style="{cell_style} white-space:nowrap;">{risk_cell}</td>
           <td style="{cell_style}">{title}</td>
           <td style="{muted_cell}">{author}</td>
           <td style="{muted_cell} white-space:nowrap;">{introduced}</td>
@@ -733,6 +1186,7 @@ def _html_stalled_section(stalled_bills: list[dict], lookback_days: int) -> str:
         <thead>
           <tr>
             <th style="{header_style}">Bill</th>
+            <th style="{header_style}">Risk</th>
             <th style="{header_style}">Title</th>
             <th style="{header_style}">Author</th>
             <th style="{header_style}">Introduced</th>
@@ -789,6 +1243,7 @@ def _build_page_html(
     sections = [
         _html_header(date_str, lookback),
         _html_summary(len(new_bills), len(changed_bills), len(all_bills)),
+        _html_analysis_section(all_bills),   # analysis at the top
     ]
 
     if stalled_bills:
@@ -857,6 +1312,37 @@ def _build_plaintext(
     Plain-text fallback for email clients that don't render HTML.
     Multipart/alternative emails include both; the client chooses which to show.
     """
+    # Build analysis summary for plaintext
+    ad = _get_analysis_data(all_bills)
+    analysis_lines: list[str] = []
+    if ad["total_analyzed"]:
+        analysis_lines += [
+            "=" * 50,
+            "HOUSING POLICY ANALYSIS",
+            "=" * 50,
+            f"Bills analyzed       : {ad['total_analyzed']}",
+            f"Relevant to mission  : {len(ad['relevant'])}",
+            f"High-interest (2+)   : {len(ad['high_interest'])}",
+            "",
+            "Key Bills This Cycle:",
+        ]
+        for num, bill in ad["high_interest"][:8]:
+            a = bill.get("analysis", {})
+            crits = " ".join(
+                f"[{_CRIT_LETTER[k]}]"
+                for k in _CRIT_KEYS
+                if a.get(k) in ("strong", "moderate")
+            )
+            analysis_lines.append(
+                f"  {num} {crits} — {bill.get('title', '')[:60]}"
+            )
+        if ad["watch_list"]:
+            analysis_lines += [
+                "",
+                "Watch List: " + ", ".join(n for n, _ in ad["watch_list"][:6]),
+            ]
+        analysis_lines.append("")
+
     lines = [
         "CA HOUSING POLICY INTELLIGENCE",
         f"Week of {date_str}",
@@ -866,6 +1352,7 @@ def _build_plaintext(
         f"Status changes      : {len(changed_bills)}",
         f"Total tracked       : {len(all_bills)}",
         "",
+    ] + analysis_lines + [
         "=" * 50,
         "NEW BILLS",
         "=" * 50,

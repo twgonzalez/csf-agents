@@ -70,6 +70,21 @@ NEW_BILLS = [
         ],
         "source": "demo",
         "source_id": "demo_ab1421",
+        "analysis": {
+            "pro_housing_production": "moderate",
+            "densification": "strong",
+            "reduce_discretion": "none",
+            "cost_to_cities": "none",
+            "notes": "Eliminates design review and imposes 60-day approval clock on local agencies.",
+            "comms_brief": (
+                "Strips local design review for affordable projects and mandates rapid approval.\n"
+                "• Prohibits design review, CUPs, and variances beyond objective standards\n"
+                "• Requires approval or denial within 60 days regardless of local process\n"
+                "Recommended: Engage Assembly Housing Committee to preserve local design standards."
+            ),
+            "analyzed_date": today.strftime("%Y-%m-%d"),
+            "model": "demo",
+        },
     },
     {
         "bill_number": "SB 892",
@@ -96,6 +111,7 @@ NEW_BILLS = [
         ],
         "source": "demo",
         "source_id": "demo_sb892",
+        # No analysis — demonstrates the "—" fallback in the Risk column
     },
     {
         "bill_number": "AB 980",
@@ -122,6 +138,23 @@ NEW_BILLS = [
         ],
         "source": "demo",
         "source_id": "demo_ab980",
+        "analysis": {
+            "pro_housing_production": "strong",
+            "densification": "strong",
+            "reduce_discretion": "strong",
+            "cost_to_cities": "moderate",
+            "notes": "Overrides single-family zoning statewide; mandates ministerial approval for fourplexes.",
+            "comms_brief": (
+                "State override of single-family zoning forces fourplex density on every residential lot.\n"
+                "• Requires ministerial approval for 4 units on any SF-zoned parcel, eliminating community input\n"
+                "• Bans parking requirements near transit regardless of local infrastructure capacity\n"
+                "• Permits 3-story structures where local code allows 2, overriding height limits\n"
+                "• No nexus study required; infrastructure cost burden shifts to existing residents\n"
+                "Recommended: Oppose. Testify at Assembly Housing Committee hearing."
+            ),
+            "analyzed_date": today.strftime("%Y-%m-%d"),
+            "model": "demo",
+        },
     },
     {
         "bill_number": "SB 1103",
@@ -148,6 +181,23 @@ NEW_BILLS = [
         ],
         "source": "demo",
         "source_id": "demo_sb1103",
+        "analysis": {
+            "pro_housing_production": "strong",
+            "densification": "strong",
+            "reduce_discretion": "strong",
+            "cost_to_cities": "strong",
+            "notes": "Grants HCD direct zoning override authority; imposes significant fines on cities.",
+            "comms_brief": (
+                "Grants Sacramento the power to override local zoning and impose escalating fines on cities.\n"
+                "• HCD can override local zoning decisions for cities 25%+ behind RHNA allocation\n"
+                "• Fines of $10,000–$50,000/month remove fiscal flexibility for affected cities\n"
+                "• No local appeal process — state determination is final\n"
+                "• Infrastructure and service cost burden shifts to existing residents without mitigation\n"
+                "Recommended: Strongly oppose. Coordinate with League of California Cities coalition."
+            ),
+            "analyzed_date": today.strftime("%Y-%m-%d"),
+            "model": "demo",
+        },
     },
 ]
 
@@ -176,6 +226,21 @@ CHANGED_BILLS = [
         "source": "demo",
         "source_id": "demo_sb567",
         "_prev_status": "Referred to Senate Housing Committee",
+        "analysis": {
+            "pro_housing_production": "none",
+            "densification": "moderate",
+            "reduce_discretion": "none",
+            "cost_to_cities": "strong",
+            "notes": "Caps ADU impact fees at $1,000, eliminating city authority to recover infrastructure costs.",
+            "comms_brief": (
+                "Hard cap on ADU fees removes local ability to recover infrastructure and service costs.\n"
+                "• $1,000 fee cap far below actual water, sewer, and road impact costs\n"
+                "• Ministerial approval timeline limits design conditions for neighborhood compatibility\n"
+                "Recommended: Seek amendment to tie fee cap to actual infrastructure cost nexus study."
+            ),
+            "analyzed_date": today.strftime("%Y-%m-%d"),
+            "model": "demo",
+        },
     },
     {
         "bill_number": "AB 1234",
@@ -200,6 +265,21 @@ CHANGED_BILLS = [
         "source": "demo",
         "source_id": "demo_ab1234",
         "_prev_status": "Heard — Assembly Housing and Community Development Committee",
+        "analysis": {
+            "pro_housing_production": "moderate",
+            "densification": "strong",
+            "reduce_discretion": "none",
+            "cost_to_cities": "none",
+            "notes": "Requires by-right approval for multifamily, removing discretionary review on zoned sites.",
+            "comms_brief": (
+                "Eliminates discretionary review for any multifamily project on residentially zoned land.\n"
+                "• Cities cannot conduct CEQA review or impose design conditions beyond objective standards\n"
+                "• Removes community hearing rights for large multifamily developments\n"
+                "Recommended: Monitor — request amendments to preserve design review for projects over 20 units."
+            ),
+            "analyzed_date": today.strftime("%Y-%m-%d"),
+            "model": "demo",
+        },
     },
     {
         "bill_number": "SB 234",
@@ -340,6 +420,62 @@ for num, title, author, status, sd, introd, url in ADDITIONAL_BILLS:
         "source": "demo",
         "source_id": f"demo_{num.replace(' ', '').lower()}",
     }
+
+# Inject sample analysis for a handful of additional bills
+_DEMO_ANALYSIS = {
+    "AB 388": {
+        "pro_housing_production": "strong", "densification": "strong",
+        "reduce_discretion": "moderate", "cost_to_cities": "moderate",
+        "notes": "Extends Housing Crisis Act override of local zoning statewide.",
+        "comms_brief": (
+            "Extends state override of local zoning authority under the Housing Crisis Act.\n"
+            "• Eliminates local discretion over housing approvals in crisis-designated areas\n"
+            "• Expands state preemption of city general plans and specific plans\n"
+            "Recommended: Oppose. Coordinate with CSAC on statewide opposition."
+        ),
+    },
+    "AB 612": {
+        "pro_housing_production": "strong", "densification": "strong",
+        "reduce_discretion": "strong", "cost_to_cities": "strong",
+        "notes": "Mandates high-density development near rail with no local discretion.",
+        "comms_brief": (
+            "Forces maximum density near rail stations with no local discretion over design or infrastructure.\n"
+            "• State mandate overrides local station-area plans and height limits\n"
+            "• Prohibits cities from requiring parking or infrastructure improvements\n"
+            "• No nexus funding mechanism — capacity costs absorbed by existing residents\n"
+            "Recommended: Strongly oppose. Request nexus study and infrastructure funding requirement."
+        ),
+    },
+    "SB 629": {
+        "pro_housing_production": "none", "densification": "moderate",
+        "reduce_discretion": "none", "cost_to_cities": "strong",
+        "notes": "Junior ADU legalization eliminates fee authority for unpermitted conversions.",
+        "comms_brief": (
+            "Legalizes unpermitted ADUs with fee waivers that shift infrastructure costs to cities.\n"
+            "• Waives all impact fees for legalized units regardless of actual service burden\n"
+            "• Cities cannot require code compliance upgrades as condition of legalization\n"
+            "Recommended: Request amendment requiring basic life-safety compliance at minimum."
+        ),
+    },
+    "SB 338": {
+        "pro_housing_production": "none", "densification": "moderate",
+        "reduce_discretion": "none", "cost_to_cities": "none",
+        "notes": "State-mandated inclusionary zoning may conflict with local programs.",
+        "comms_brief": (
+            "20% inclusionary mandate may preempt stronger local affordability requirements.\n"
+            "• State floor could become de facto ceiling, undermining cities with higher requirements\n"
+            "Recommended: Monitor — ensure bill preserves local authority to exceed state minimum."
+        ),
+    },
+}
+
+for bill_num, analysis in _DEMO_ANALYSIS.items():
+    if bill_num in ALL_BILLS:
+        ALL_BILLS[bill_num]["analysis"] = {
+            **analysis,
+            "analyzed_date": today.strftime("%Y-%m-%d"),
+            "model": "demo",
+        }
 
 # ---------------------------------------------------------------------------
 # Config stub (only fields email_sender.py reads)

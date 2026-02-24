@@ -16,3 +16,6 @@ python-dateutil>=2.9.0
 
 # .env file support for storing credentials
 python-dotenv>=1.0.0
+
+# Anthropic Claude SDK (used by housing_analyzer agent)
+anthropic>=0.40.0
