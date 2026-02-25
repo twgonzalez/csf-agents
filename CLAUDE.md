@@ -243,6 +243,37 @@ Use the same script as "Regenerate docs/index.html" above but write to
 
 ---
 
+## GitHub CLI Authentication (gh)
+
+**Important for AI-assisted sessions:** `gh` auth does NOT automatically carry over between Claude Code sessions. Always check first; re-auth takes ~30 seconds via device flow.
+
+### Step 1 — Check status
+```bash
+gh auth status
+```
+- If it shows `✓ Logged in to github.com account twgonzalez (keyring)` → you're done.
+- If it says "not logged into any GitHub hosts" → proceed to Step 2.
+
+### Step 2 — Re-authenticate (device flow)
+```bash
+gh auth login --hostname github.com --git-protocol https --web
+```
+This prints a one-time code like `16F3-340B` and a URL. Visit **https://github.com/login/device**, enter the code, and approve. Auth completes automatically and is stored in the macOS keyring for the session.
+
+### What NOT to do
+- **Don't** try `gh auth login --with-token` using the credential from `git credential fill` — that token (`gho_...`) lacks the `read:org` scope and will fail.
+- **Don't** run `gh auth login` in the background (background process can't receive the device flow callback reliably).
+- **Don't** try multiple device flow attempts simultaneously — old codes expire in ~5 minutes; only the most recent code is valid.
+
+### After auth — inspect workflow logs
+```bash
+gh run list --repo twgonzalez/csf-agents --limit 5
+gh run view <run-id> --repo twgonzalez/csf-agents
+gh run view --log --job=<job-id> --repo twgonzalez/csf-agents
+```
+
+---
+
 ## GitHub Actions
 
 **Workflow:** `.github/workflows/weekly_tracker.yml`
