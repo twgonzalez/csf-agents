@@ -9,17 +9,20 @@
 #   1. Check out the repo (includes tracked_bills.json and prior reports)
 #   2. Install Python dependencies
 #   3. Restore cached LegiScan ZIP (persists across runs within the same week)
-#   4. Run the tracker — auto-downloads the latest LegiScan ZIP if not cached,
-#      processes bills, generates a markdown report, and emails the digest
+#   4a. Run the tracker — fetches latest bill data, emails the internal digest
+#   4b. Run the housing analyzer — scores any new/unanalyzed bills via Claude
+#   4c. Generate and send the newsletter — writes + emails Local Control Intelligence
 #   5. Save updated ZIP to cache for subsequent runs this week
-#   6. Commit updated bill data and report back to the repo
+#   6. Commit updated bill data, analysis, newsletter, and dashboard back to the repo
 #
 # Required GitHub secrets (Settings → Secrets and variables → Actions):
-#   LEGISCAN_USER      legiscan.com login email (for ZIP auto-download)
-#   LEGISCAN_PASSWORD  legiscan.com password
-#   EMAIL_USER         Gmail address to send the digest from
-#   EMAIL_PASSWORD     Gmail App Password (16-char, not your account password)
-#   EMAIL_RECIPIENTS   Comma-separated recipient list (e.g. alice@x.com,bob@x.com)
+#   LEGISCAN_USER          legiscan.com login email (for ZIP auto-download)
+#   LEGISCAN_PASSWORD      legiscan.com password
+#   EMAIL_USER             Gmail address to send from (shared by digest + newsletter)
+#   EMAIL_PASSWORD         Gmail App Password (16-char, not your account password)
+#   EMAIL_RECIPIENTS       Comma-separated recipient list for the weekly digest
+#   ANTHROPIC_API_KEY      Claude API key (housing analyzer + newsletter writer)
+#   NEWSLETTER_RECIPIENTS  Comma-separated subscriber list for the newsletter
 #
 # Optional secrets (leave unset to skip that data source):
 #   LEGISCAN_API_KEY   LegiScan API key (real-time data, free, ~1-2 day approval)
@@ -104,6 +107,36 @@ jobs:
           python agents/legislative/bill_tracker.py --email
 
       # -----------------------------------------------------------------------
+      # 4b. Run housing analyzer
+      #
+      # Analyzes only bills that are missing analysis blocks (no --force).
+      # New bills added by the tracker in step 4 will be analyzed here.
+      # Bills with existing analysis are skipped — scores persist until manually
+      # re-run with --force if a bill's scope changes.
+      # -----------------------------------------------------------------------
+      - name: Run housing analyzer
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python agents/housing_analyzer/housing_analyzer.py
+
+      # -----------------------------------------------------------------------
+      # 4c. Generate and send newsletter
+      #
+      # Reads the freshly updated + analyzed tracked_bills.json, calls Claude
+      # to write this week's "Local Control Intelligence" newsletter, and
+      # sends it to NEWSLETTER_RECIPIENTS.
+      # -----------------------------------------------------------------------
+      - name: Generate and send newsletter
+        env:
+          ANTHROPIC_API_KEY:       ${{ secrets.ANTHROPIC_API_KEY }}
+          EMAIL_USER:              ${{ secrets.EMAIL_USER }}
+          EMAIL_PASSWORD:          ${{ secrets.EMAIL_PASSWORD }}
+          NEWSLETTER_RECIPIENTS:   ${{ secrets.NEWSLETTER_RECIPIENTS }}
+        run: |
+          python agents/newsletter/newsletter_writer.py --send
+
+      # -----------------------------------------------------------------------
       # 5. Commit updated outputs back to the repo
       #
       # tracked_bills.json accumulates history across weekly runs —
@@ -115,9 +148,10 @@ jobs:
           git config user.name  "CSF Legislative Tracker"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Stage bill data, weekly report, and GitHub Pages status page
+          # Stage bill data, weekly reports, newsletter output, and GitHub Pages status page
           git add data/bills/tracked_bills.json
           git add outputs/weekly_reports/
+          git add outputs/newsletter/
           git add docs/index.html
 
           # Only commit if something actually changed

@@ -11,9 +11,12 @@
 
 Multi-agent Python system for the **California Stewardship Fund (CSF)** — a conservative-leaning policy organization whose core belief is that **the best decisions come from people closest to them (local control)**. The system monitors California housing legislation and assesses bills for their risk to local government authority.
 
-**Two active agents:**
+**Three active agents:**
 1. **`agents/legislative/`** — Tracks 124+ CA housing bills weekly via LegiScan, detects new bills and status changes, generates markdown reports and HTML email digests
 2. **`agents/housing_analyzer/`** — Analyzes bills against CSF's 4-criterion local control risk framework using Claude (Anthropic API); stores results back into `tracked_bills.json`
+3. **`agents/newsletter/`** — Reads analyzed bill data and uses Claude to write the weekly "Local Control Intelligence" stakeholder newsletter (HTML email, prose-first, editorial voice)
+
+**Pipeline:** `bill_tracker.py` → `tracked_bills.json` → `housing_analyzer.py` → `newsletter_writer.py`
 
 **Automation:** GitHub Actions (`weekly_tracker.yml`) runs every Monday at 6 AM PT, pulls fresh LegiScan data, commits updated `tracked_bills.json` + `docs/index.html`, and emails the digest.
 
@@ -31,6 +34,10 @@ csf-agents/
 │   ├── housing_analyzer/
 │   │   ├── housing_analyzer.py    # Claude-powered bill risk analyzer
 │   │   └── config.yaml            # Model, paths, logging
+│   ├── newsletter/
+│   │   ├── newsletter_writer.py   # Claude-powered newsletter generator
+│   │   ├── config.yaml            # Model, audience config, email settings
+│   │   └── SPEC.md                # Full technical + content spec
 │   └── shared/
 │       └── utils.py               # HTTP client, logging helpers
 │
@@ -207,6 +214,21 @@ print("Done")
 EOF
 ```
 
+### Generate newsletter (Local Control Intelligence)
+```bash
+# Generate HTML newsletter from real bill data (dry-run, no email sent)
+.venv/bin/python agents/newsletter/newsletter_writer.py
+
+# Override lookback window for "new bills" detection
+.venv/bin/python agents/newsletter/newsletter_writer.py --lookback 7
+
+# Use a different bill data source
+.venv/bin/python agents/newsletter/newsletter_writer.py --bills path/to/tracked_bills.json
+
+# Output: outputs/newsletter/newsletter_YYYY-WNN.html
+# Prints subject line + preview text to terminal for use in your send tool
+```
+
 ### Generate stakeholder demo email
 ```bash
 .venv/bin/python scripts/generate_demo_email.py
@@ -229,17 +251,19 @@ Use the same script as "Regenerate docs/index.html" above but write to
 |--------|---------|
 | `LEGISCAN_USER` | legiscan.com login email |
 | `LEGISCAN_PASSWORD` | legiscan.com password |
-| `EMAIL_USER` | Gmail sending address |
+| `EMAIL_USER` | Gmail sending address (shared by digest + newsletter) |
 | `EMAIL_PASSWORD` | Gmail App Password (16-char) |
-| `EMAIL_RECIPIENTS` | Comma-separated recipient list |
-| `ANTHROPIC_API_KEY` | Claude API key (added 2026-02-24) |
+| `EMAIL_RECIPIENTS` | Comma-separated recipient list for the weekly digest |
+| `ANTHROPIC_API_KEY` | Claude API key (housing analyzer + newsletter writer) |
+| `NEWSLETTER_RECIPIENTS` | Comma-separated subscriber list for the newsletter |
 
 **Optional secrets:**
 `LEGISCAN_API_KEY`, `OPENSTATES_API_KEY` (real-time data sources — use ZIP download until approved)
 
 **What the workflow commits back:**
-- `data/bills/tracked_bills.json` — updated bill statuses
+- `data/bills/tracked_bills.json` — updated bill statuses + new analysis blocks
 - `outputs/weekly_reports/` — new markdown digest
+- `outputs/newsletter/` — rendered newsletter HTML
 - `docs/index.html` — rebuilt GitHub Pages dashboard
 
 > **Merge conflict risk:** If you push analysis changes to `tracked_bills.json` at the same time the Monday workflow runs, you'll get a conflict. Resolution: take the bot's version as base (`git checkout --ours`), then re-inject analysis blocks programmatically (see git history for the merge script pattern).
@@ -250,13 +274,11 @@ Use the same script as "Regenerate docs/index.html" above but write to
 
 1. **`_COLOR_TEAL` misnaming** — Constants are named `_COLOR_TEAL` / `_COLOR_TEAL_LIGHT` but are actually risk red/pink since the local control reframe. Safe to rename in a dedicated cleanup PR.
 
-2. **`housing_analyzer` not wired into GitHub Actions** — The analyzer runs locally on-demand, but the weekly workflow doesn't invoke it. New bills added by the tracker won't be auto-analyzed until someone runs the analyzer manually. Wiring it in would require `ANTHROPIC_API_KEY` in the workflow env (secret already added to repo).
+2. **`analysis` blocks survive tracker re-runs** — The tracker never touches the `analysis` sub-key, so scores persist. This is intentional but means stale analysis won't auto-update if a bill's scope changes.
 
-3. **`analysis` blocks survive tracker re-runs** — The tracker never touches the `analysis` sub-key, so scores persist. This is intentional but means stale analysis won't auto-update if a bill's scope changes.
+3. **Watch list logic uses `cost_to_cities` (Criterion D)** — `_get_analysis_data()` defines `watch_list` as bills where D is strong/moderate but total criteria count < 2. If the criteria keys are ever renamed, this hardcoded reference needs updating.
 
-4. **Watch list logic uses `cost_to_cities` (Criterion D)** — `_get_analysis_data()` defines `watch_list` as bills where D is strong/moderate but total criteria count < 2. If the criteria keys are ever renamed, this hardcoded reference needs updating.
-
-5. **`generate_demo_email.py` uses synthetic bill numbers** — Demo bills like "AB 1421" may collide with real bill numbers in future sessions. Demo data is clearly labeled `"source": "demo"`.
+4. **`generate_demo_email.py` uses synthetic bill numbers** — Demo bills like "AB 1421" may collide with real bill numbers in future sessions. Demo data is clearly labeled `"source": "demo"`.
 
 ---
 
@@ -275,7 +297,6 @@ All agents should follow the same pattern: fetch → process → store (`data/<n
 
 ## Potential Next Features
 
-- **Wire housing_analyzer into GitHub Actions** — Add a step after the tracker run that calls `housing_analyzer.py` (without `--force`) to analyze only newly added bills. Cost: ~$0.01–0.05/run for a few new bills.
 - **comms_brief editing UI** — A lightweight web form to edit/approve AI-generated comms_briefs before they go into the email (currently edit-in-JSON only).
 - **Per-criterion filtering** — Let email recipients filter the index table by which criteria they care about (requires JavaScript, currently pure server-rendered HTML).
 - **Bill detail pages** — Instead of linking to leginfo, generate per-bill HTML pages at `docs/bills/AB1751.html` so CSF staff can share a cleaner URL.

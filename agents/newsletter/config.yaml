@@ -1,0 +1,33 @@
+# agents/newsletter/config.yaml
+# Local Control Intelligence — Newsletter Configuration
+
+model: claude-sonnet-4-5
+
+newsletter:
+  name: "Local Control Intelligence"
+  from_name: "California Stewardship Fund"
+  high_risk_threshold: 2      # Min criteria count (strong/moderate) for watch list
+  max_watch_list: 5           # Max bills in the watch list section
+  max_new_bills: 4            # Max bills in emerging threats section
+  lookback_days: 14           # Days to look back for "new this week" bills
+  hearing_lookahead_days: 7   # Days ahead to surface upcoming hearings
+
+approval:
+  enabled: true
+  # reviewer_emails set via NEWSLETTER_REVIEWER_EMAILS env var (comma-separated)
+  window_hours: 3             # Hours to wait for approval before auto-hold
+
+paths:
+  bills_file: data/bills/tracked_bills.json
+  output_dir: outputs/newsletter
+  pages_dir:  docs/newsletters
+
+email:
+  smtp_host: smtp.gmail.com
+  smtp_port: 587
+  # from_address set via NEWSLETTER_EMAIL_USER env var
+  # recipients set via NEWSLETTER_RECIPIENTS env var (comma-separated)
+
+logging:
+  level: INFO
+  file: logs/newsletter_writer.log
