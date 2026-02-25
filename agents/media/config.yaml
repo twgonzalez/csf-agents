@@ -1,0 +1,97 @@
+# agents/media/config.yaml
+# CSF Media Scanner — News & Social Media Intelligence
+
+scanner:
+  lookback_days: 7             # Days of news history to scan each run
+  min_relevance_score: 0.3     # Articles below this score are excluded
+  max_articles: 20             # Maximum articles in the output digest
+
+# RSS feed sources (no API key required)
+# Feeds confirmed working as of 2026-02-25.
+# Add new feeds here — scanner handles errors gracefully if a feed goes down.
+rss_feeds:
+  - name: CalMatters
+    url: https://calmatters.org/feed/
+    weight: 1.5                # Primary CA policy publication — high authority
+    active: true
+
+  - name: Capitol Weekly
+    url: https://capitolweekly.net/feed/
+    weight: 1.4                # Sacramento insider publication
+    active: true
+
+  - name: KQED News
+    url: https://www.kqed.org/news/feed/
+    weight: 1.1
+    active: true
+
+  - name: LAist
+    url: https://laist.com/rss
+    weight: 1.0
+    active: true
+
+  - name: Google News — CA Housing
+    url: "https://news.google.com/rss/search?q=california+housing+local+control+zoning&hl=en-US&gl=US&ceid=US:en"
+    weight: 1.0
+    active: true
+
+  - name: Google News — CA Preemption
+    url: "https://news.google.com/rss/search?q=california+zoning+preemption+city+council&hl=en-US&gl=US&ceid=US:en"
+    weight: 1.0
+    active: true
+
+  # Feeds to re-test / activate when available:
+  # - name: LA Times
+  #   url: https://feeds.latimes.com/latimes/news     # TLS error as of 2026-02-25
+  #   weight: 1.2
+  #   active: false
+  #
+  # - name: Sacramento Bee
+  #   url: https://www.sacbee.com/news/politics-government/  # Bot-blocked
+  #   weight: 1.2
+  #   active: false
+  #
+  # - name: SF Chronicle
+  #   url: https://www.sfchronicle.com/rss/feed/
+  #   weight: 1.1
+  #   active: false
+
+# NewsAPI (optional — free tier sufficient for weekly runs)
+# Get a free key at: https://newsapi.org/register
+# Set NEWSAPI_KEY in .env to activate
+newsapi:
+  enabled: true                # Skipped gracefully if NEWSAPI_KEY not set
+  queries:
+    - "california housing local control"
+    - "california zoning preemption city"
+    - "california housing bill legislature"
+  max_results_per_query: 20
+  # Free tier limits: 100 req/day, 1-month lookback
+  # Paid tiers unlock older archives
+
+# X API v2 (stub — requires $100/month Basic tier)
+# See agents/media/media_scanner.py _scan_x_api() for full activation instructions
+# Set X_BEARER_TOKEN in .env and uncomment the implementation block to activate
+x_api:
+  enabled: false               # Set to true when X_BEARER_TOKEN is configured
+  max_results: 50
+  hashtags:
+    - "#LocalControl"
+    - "#CaliforniaHousing"
+    - "#CAHousing"
+    - "#ZoningMatters"
+    - "#WhoDecides"
+    - "#CALeg"
+  # Activation requirements:
+  #   1. X Developer account: https://developer.twitter.com/en/portal
+  #   2. App with "Read" permissions
+  #   3. Basic tier ($100/month) — free tier does not include search
+  #   4. Add X_BEARER_TOKEN to .env
+
+paths:
+  bills_file: data/bills/tracked_bills.json
+  output_file: data/media/media_digest.json
+
+logging:
+  level: INFO
+  file: logs/media_scanner.log

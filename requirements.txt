@@ -19,3 +19,6 @@ python-dotenv>=1.0.0
 
 # Anthropic Claude SDK (used by housing_analyzer agent)
 anthropic>=0.40.0
+
+# RSS/Atom feed parsing (used by media_scanner agent)
+feedparser>=6.0.11

@@ -11,13 +11,19 @@
 
 Multi-agent Python system for the **California Stewardship Fund (CSF)** — a conservative-leaning policy organization whose core belief is that **the best decisions come from people closest to them (local control)**. The system monitors California housing legislation and assesses bills for their risk to local government authority.
 
-**Four active agents:**
+**Five active agents:**
 1. **`agents/legislative/`** — Tracks 124+ CA housing bills weekly via LegiScan, detects new bills and status changes, generates markdown reports and HTML email digests
 2. **`agents/housing_analyzer/`** — Analyzes bills against CSF's 4-criterion local control risk framework using Claude (Anthropic API); stores results back into `tracked_bills.json`; retries transient API errors with exponential backoff (up to 5 attempts, 5 s→120 s)
 3. **`agents/newsletter/`** — Reads analyzed bill data and uses Claude to write the weekly "Local Control Intelligence" stakeholder newsletter (HTML email, prose-first, editorial voice)
-4. **`agents/social/`** — Reads analyzed bill data and uses Claude to generate 3 social media posts per week (X, Facebook, Instagram variants + image briefs); outputs copy-paste-ready markdown to `outputs/social/`
+4. **`agents/media/`** — Scans RSS feeds (CalMatters, Capitol Weekly, Google News) + optionally NewsAPI and X API (stub) for CA housing coverage; stores results in `data/media/media_digest.json` for downstream agents
+5. **`agents/social/`** — Reads analyzed bill data + media digest and uses Claude to generate 3 news-aware social media posts per week (X, Facebook, Instagram variants + image briefs); outputs to `outputs/social/`
 
-**Pipeline:** `bill_tracker.py` → `tracked_bills.json` → `housing_analyzer.py` → `newsletter_writer.py` + `social_writer.py`
+**Pipeline:**
+```
+bill_tracker.py → tracked_bills.json → housing_analyzer.py → newsletter_writer.py
+                                                           ↘
+                                     media_scanner.py ──→ social_writer.py
+```
 
 **Automation:** GitHub Actions (`weekly_tracker.yml`) runs every Monday at 6 AM PT, pulls fresh LegiScan data, commits updated `tracked_bills.json` + `docs/index.html`, and emails the digest.
 
@@ -39,6 +45,9 @@ csf-agents/
 │   │   ├── newsletter_writer.py   # Claude-powered newsletter generator
 │   │   ├── config.yaml            # Model, audience config, email settings
 │   │   └── SPEC.md                # Full technical + content spec
+│   ├── media/
+│   │   ├── media_scanner.py       # RSS + NewsAPI + X API stub news scanner
+│   │   └── config.yaml            # Feeds, keywords, API settings, X stub config
 │   ├── social/
 │   │   ├── social_writer.py       # Claude-powered social media content generator
 │   │   └── config.yaml            # Model, platform settings, brand colors
@@ -46,8 +55,10 @@ csf-agents/
 │       └── utils.py               # HTTP client, logging helpers
 │
 ├── data/
-│   └── bills/
-│       └── tracked_bills.json     # Single source of truth — all 125 bills + analysis
+│   ├── bills/
+│   │   └── tracked_bills.json     # Single source of truth — all 125 bills + analysis
+│   └── media/
+│       └── media_digest.json      # Weekly news scan output (auto-generated)
 │
 ├── docs/
 │   └── index.html                 # GitHub Pages status dashboard (auto-generated)
@@ -236,6 +247,22 @@ EOF
 # Prints subject line + preview text to terminal for use in your send tool
 ```
 
+### Scan news and social media (media_scanner)
+```bash
+# Scan all RSS feeds + NewsAPI (if key set), write data/media/media_digest.json
+.venv/bin/python agents/media/media_scanner.py
+
+# Preview scan results without writing (dry-run)
+.venv/bin/python agents/media/media_scanner.py --dry-run
+
+# Shorter lookback for mid-week refresh
+.venv/bin/python agents/media/media_scanner.py --lookback 3
+
+# Output: data/media/media_digest.json
+# Sources: CalMatters /housing/, Capitol Weekly, KQED, LAist, Google News (recent)
+# Optional (set in .env): NEWSAPI_KEY, X_BEARER_TOKEN
+```
+
 ### Generate social media content (3 posts × 3 platforms + image briefs)
 ```bash
 # Generate weekly social content (dry-run, writes to outputs/social/)
@@ -312,12 +339,19 @@ gh run view --log --job=<job-id> --repo twgonzalez/csf-agents
 | `NEWSLETTER_RECIPIENTS` | Comma-separated subscriber list for the newsletter |
 
 **Optional secrets:**
-`OPENSTATES_API_KEY` (secondary data source — not currently used)
+
+| Secret | Purpose |
+|--------|---------|
+| `OPENSTATES_API_KEY` | Secondary bill data source (not currently used) |
+| `NEWSAPI_KEY` | NewsAPI key — adds news article results to media_scanner (free tier sufficient) |
+| `X_BEARER_TOKEN` | X API Bearer Token — activates social listening in media_scanner (Basic tier $100/mo; stub only until configured) |
 
 **What the workflow commits back:**
 - `data/bills/tracked_bills.json` — updated bill statuses + new analysis blocks
+- `data/media/media_digest.json` — weekly news scan results
 - `outputs/weekly_reports/` — new markdown digest
 - `outputs/newsletter/` — rendered newsletter HTML
+- `outputs/social/` — social media posts (.md + .html)
 - `docs/index.html` — rebuilt GitHub Pages dashboard
 
 > **Merge conflict risk:** If you push analysis changes to `tracked_bills.json` at the same time the Monday workflow runs, you'll get a conflict. Resolution: take the bot's version as base (`git checkout --ours`), then re-inject analysis blocks programmatically (see git history for the merge script pattern).
@@ -342,10 +376,15 @@ gh run view --log --job=<job-id> --repo twgonzalez/csf-agents
 |-------|-----------|-------------|
 | Courts monitor | `agents/courts/` | Housing litigation docket tracker |
 | Movement tracker | `agents/movement/` | YIMBY/advocacy group activity |
-| Media scanner | `agents/media/` | News and media sentiment |
 | Cities monitor | `agents/cities/` | Local government activity |
 
 All agents should follow the same pattern: fetch → process → store (`data/<name>/`) → report (`outputs/`). Use `agents/legislative/` as the template.
+
+**`agents/media/` is now active** — see the media scanner section above. Planned upgrades:
+- X API activation (when X_BEARER_TOKEN is configured, uncomment stub in `_scan_x_api()`)
+- LA Times + Sacramento Bee RSS (currently broken/bot-blocked — re-test periodically)
+- Newsletter integration: pass `media_digest.json` context to `newsletter_writer.py`
+- Reddit scanning (r/california, r/bayarea) — free API, good public sentiment signal
 
 ---
 

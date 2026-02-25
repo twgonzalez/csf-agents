@@ -3,20 +3,26 @@
 social_writer.py — Weekly Social Media Content Generator
 California Stewardship Fund
 
-Reads tracked_bills.json (output of bill_tracker + housing_analyzer), calls Claude
-to generate 3 social media posts per week with platform variants for X, Facebook,
-and Instagram, plus an image brief for each post.
+Reads tracked_bills.json (output of bill_tracker + housing_analyzer) and
+optionally data/media/media_digest.json (output of media_scanner), then calls
+Claude to generate 3 social media posts per week with platform variants for X,
+Facebook, and Instagram, plus an image brief for each post.
 
 Pipeline position:
-    bill_tracker.py → tracked_bills.json → housing_analyzer.py → social_writer.py
+    bill_tracker.py → tracked_bills.json → housing_analyzer.py ──┐
+    media_scanner.py → data/media/media_digest.json ─────────────┤
+                                                                  ↓
+                                                         social_writer.py
 
 Usage:
-    .venv/bin/python agents/social/social_writer.py            # default (dry-run)
+    .venv/bin/python agents/social/social_writer.py            # default
     .venv/bin/python agents/social/social_writer.py --bills path/to/bills.json
     .venv/bin/python agents/social/social_writer.py --lookback 7
+    .venv/bin/python agents/social/social_writer.py --no-media # skip media digest
 
 Output:
     outputs/social/social_YYYY-WNN.md
+    outputs/social/social_YYYY-WNN.html
 
 Requires:
     ANTHROPIC_API_KEY environment variable (or .env file at project root)
@@ -50,9 +56,10 @@ log = logging.getLogger(__name__)
 # Paths
 # ---------------------------------------------------------------------------
 
-PROJECT_ROOT = _PROJECT_ROOT
-BILLS_FILE   = PROJECT_ROOT / "data" / "bills" / "tracked_bills.json"
-OUTPUT_DIR   = PROJECT_ROOT / "outputs" / "social"
+PROJECT_ROOT  = _PROJECT_ROOT
+BILLS_FILE    = PROJECT_ROOT / "data" / "bills" / "tracked_bills.json"
+MEDIA_DIGEST  = PROJECT_ROOT / "data" / "media" / "media_digest.json"
+OUTPUT_DIR    = PROJECT_ROOT / "outputs" / "social"
 
 # ---------------------------------------------------------------------------
 # Bill selection (mirrors newsletter_writer.py logic)
@@ -130,6 +137,82 @@ def _select_bills(
 
 
 # ---------------------------------------------------------------------------
+# Media digest loader
+# ---------------------------------------------------------------------------
+
+def _load_media_digest(path: Path | None = None) -> dict | None:
+    """Load media_digest.json if it exists. Returns None if absent or unreadable.
+
+    Silently skips if media_scanner.py hasn't been run yet — social_writer
+    works fine without it, just without news context.
+    """
+    digest_path = path or MEDIA_DIGEST
+    if not digest_path.exists():
+        return None
+    try:
+        return json.loads(digest_path.read_text())
+    except Exception as exc:
+        log.warning(f"Could not load media digest: {exc}")
+        return None
+
+
+def _format_media_context(digest: dict | None) -> str:
+    """Format media digest articles into a Claude-readable context block.
+
+    Returns an empty string if no digest is available — the prompt degrades
+    gracefully and Claude still produces good posts from bill data alone.
+    """
+    if not digest:
+        return ""
+
+    articles = digest.get("articles", [])[:8]   # Top 8 by relevance score
+    x_posts  = digest.get("x_posts",  [])[:5]
+    summary  = digest.get("summary",  {})
+
+    if not articles and not x_posts:
+        return ""
+
+    lines = [
+        "== NEWS & MEDIA CONTEXT (past 7 days — from media_scanner.py) ==",
+        "Use this to make posts timely and reactive to current news. Hook into",
+        "the most relevant story where it strengthens the local control framing.",
+        "",
+    ]
+
+    if articles:
+        lines.append("Recent news coverage:")
+        for a in articles:
+            score       = a.get("relevance_score", 0)
+            source      = a.get("source", "")
+            title       = a.get("title", "")
+            pub         = a.get("published", "")
+            bills       = a.get("bill_mentions", [])
+            article_blurb = a.get("summary", "")[:200]
+
+            bill_str = f"  [bills: {', '.join(bills)}]" if bills else ""
+            lines.append(f"  [{score:.1f}] {source} | {pub} | {title}{bill_str}")
+            if article_blurb:
+                lines.append(f"       Summary: {article_blurb}")
+
+    if x_posts:
+        lines.append("")
+        lines.append("Recent X/social posts:")
+        for p in x_posts:
+            author = p.get("author", "")
+            text   = p.get("text", "")[:200]
+            bills  = p.get("bill_mentions", [])
+            bill_str = f"  [bills: {', '.join(bills)}]" if bills else ""
+            lines.append(f"  @{author}: {text}{bill_str}")
+
+    top_bills = summary.get("top_bill_mentions", [])
+    if top_bills:
+        lines.append("")
+        lines.append(f"Bills getting the most media attention: {', '.join(top_bills[:5])}")
+
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
 # Claude content generation
 # ---------------------------------------------------------------------------
 
@@ -202,11 +285,12 @@ def _format_hearing(h: dict) -> str:
     )
 
 
-def _generate_content(bill_set: dict, client: anthropic.Anthropic) -> dict:
+def _generate_content(bill_set: dict, client: anthropic.Anthropic, media_digest: dict | None = None) -> dict:
     """Single Claude call returning all 3 posts as a structured dict."""
     watch_ctx   = "\n\n".join(_build_bill_context(b) for b in bill_set["watch_list"])
     new_ctx     = "\n\n".join(_build_bill_context(b) for b in bill_set["new_bills"])
     hearing_ctx = "\n".join(_format_hearing(h) for h in bill_set["upcoming_hearings"])
+    media_ctx   = _format_media_context(media_digest)
 
     user_prompt = f"""\
 Here is this week's bill intelligence. Write exactly 3 social media posts as specified.
@@ -219,6 +303,8 @@ Here is this week's bill intelligence. Write exactly 3 social media posts as spe
 
 == UPCOMING HEARINGS (next 7 days) ==
 {hearing_ctx if hearing_ctx else "(No hearings scheduled this week)"}
+
+{media_ctx if media_ctx else "== NEWS & MEDIA CONTEXT ==\n(No media digest available — run media_scanner.py to enable news-aware posts)"}
 
 ---
 
@@ -770,6 +856,10 @@ examples:
         "--lookback", type=int, default=14,
         help="Days to look back when identifying new bills (default: 14)",
     )
+    p.add_argument(
+        "--no-media", action="store_true", default=False,
+        help="Skip media digest even if data/media/media_digest.json exists",
+    )
     return p.parse_args()
 
 
@@ -803,9 +893,21 @@ def main() -> None:
         log.warning("Run housing_analyzer.py first to populate analysis data.")
         sys.exit(0)
 
+    # ── Load media digest (optional) ─────────────────────────────────────────
+    media_digest = None
+    if not args.no_media:
+        media_digest = _load_media_digest()
+        if media_digest:
+            n = len(media_digest.get("articles", []))
+            x = len(media_digest.get("x_posts", []))
+            log.info(f"→ Media digest loaded: {n} articles, {x} X posts")
+        else:
+            log.info("→ No media digest found — posts will be bill-data only")
+            log.info("   (Run media_scanner.py first to enable news-aware posts)")
+
     # ── Generate content via Claude ─────────────────────────────────────────
     client  = anthropic.Anthropic(api_key=api_key)
-    content = _generate_content(bill_set, client)
+    content = _generate_content(bill_set, client, media_digest)
     posts   = content.get("posts", [])
     log.info(f"   ✓ {len(posts)} posts generated")
 

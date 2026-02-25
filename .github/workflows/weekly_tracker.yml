@@ -137,11 +137,27 @@ jobs:
           python agents/newsletter/newsletter_writer.py --send
 
       # -----------------------------------------------------------------------
-      # 4d. Generate social media content
+      # 4d. Scan news and social media
       #
-      # Reads the freshly updated + analyzed tracked_bills.json, calls Claude
-      # to write 3 social media posts (X, Facebook, Instagram) plus image briefs.
-      # Output is a markdown file — no credentials needed, no posting occurs.
+      # Scans RSS feeds (CalMatters, Capitol Weekly, Google News) and optionally
+      # NewsAPI for recent CA housing coverage. Produces data/media/media_digest.json
+      # which social_writer.py reads to make posts news-aware.
+      # No credentials required for RSS. Set NEWSAPI_KEY to enable NewsAPI.
+      # Set X_BEARER_TOKEN (Basic tier, $100/mo) to enable X API search.
+      # -----------------------------------------------------------------------
+      - name: Scan news and social media
+        env:
+          NEWSAPI_KEY:     ${{ secrets.NEWSAPI_KEY }}
+          X_BEARER_TOKEN:  ${{ secrets.X_BEARER_TOKEN }}
+        run: |
+          python agents/media/media_scanner.py
+
+      # -----------------------------------------------------------------------
+      # 4e. Generate social media content
+      #
+      # Reads tracked_bills.json + media_digest.json (from step 4d), calls Claude
+      # to write 3 news-aware social media posts (X, Facebook, Instagram) plus
+      # image briefs. Output is markdown + HTML — no credentials needed, no posting.
       # Staff copy-paste from outputs/social/ into Buffer, Hootsuite, or directly
       # into each platform's composer.
       # -----------------------------------------------------------------------
@@ -168,6 +184,7 @@ jobs:
           git add outputs/weekly_reports/
           git add outputs/newsletter/
           git add outputs/social/
+          git add data/media/
           git add docs/index.html
 
           # Only commit if something actually changed
