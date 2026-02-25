@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-02-23T17:38:05.412311",
+  "last_updated": "2026-02-25T15:14:15.572807",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
-  "total_bills": 124,
+  "total_bills": 125,
   "bills": {
     "SB1076": {
       "bill_number": "SB1076",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Admitted insurers: residential property insurance.",
       "author": "Sasha Renee Perez",
       "status": "Introduced",
@@ -35,23 +35,11 @@
       ],
       "source": "legiscan",
       "source_id": "2117163",
-      "first_seen": "2026-02-21T14:51:24.210217",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Residential property insurance regulation; no local planning or zoning implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210217"
     },
     "AB1925": {
       "bill_number": "AB1925",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Developmental services.",
       "author": "Jeff Gonzalez",
       "status": "Introduced",
@@ -77,23 +65,11 @@
       ],
       "source": "legiscan",
       "source_id": "2116307",
-      "first_seen": "2026-02-21T14:51:24.210246",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Developmental services program amendment; no housing or land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210246"
     },
     "AB1899": {
       "bill_number": "AB1899",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Office of Youth Homelessness Prevention.",
       "author": "Jessica Caloza",
       "status": "Introduced",
@@ -119,23 +95,11 @@
       ],
       "source": "legiscan",
       "source_id": "2116281",
-      "first_seen": "2026-02-21T14:51:24.210270",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Creates a state Office of Youth Homelessness Prevention; administrative state function with no direct local planning mandate.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210270"
     },
     "AB1895": {
       "bill_number": "AB1895",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Surplus Land Act: exemptions: land unsuitable for housing.",
       "author": "Heather Hadwick",
       "status": "Introduced",
@@ -161,23 +125,11 @@
       ],
       "source": "legiscan",
       "source_id": "2116277",
-      "first_seen": "2026-02-21T14:51:24.210292",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Adds exemptions to the Surplus Land Act for land unsuitable for housing; marginally reduces state mandate pressure on local agencies to dispose of surplus land for housing.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210292"
     },
     "AB1986": {
       "bill_number": "AB1986",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Residential property insurance: home hardening.",
       "author": "Steve Bennett",
       "status": "Introduced",
@@ -203,19 +155,7 @@
       ],
       "source": "legiscan",
       "source_id": "2117145",
-      "first_seen": "2026-02-21T14:51:24.210313",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Residential property insurance home-hardening incentive bill; no local planning preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210313"
     },
     "SB1016": {
       "bill_number": "SB1016",
@@ -318,7 +258,7 @@
     },
     "AB1924": {
       "bill_number": "AB1924",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Statewide homelessness prevention strategy.",
       "author": "Jesse Gabriel",
       "status": "Introduced",
@@ -344,19 +284,7 @@
       ],
       "source": "legiscan",
       "source_id": "2116306",
-      "first_seen": "2026-02-21T14:51:24.210375",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Establishes a statewide homelessness prevention strategy framework; no direct local planning preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210375"
     },
     "SB1007": {
       "bill_number": "SB1007",
@@ -460,7 +388,7 @@
     },
     "AB1892": {
       "bill_number": "AB1892",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Common interest developments: associations.",
       "author": "Laurie Davies",
       "status": "Introduced",
@@ -486,23 +414,11 @@
       ],
       "source": "legiscan",
       "source_id": "2116274",
-      "first_seen": "2026-02-21T14:51:24.210439",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Common interest development governance amendments; no local planning or zoning implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210439"
     },
     "SB1052": {
       "bill_number": "SB1052",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "State Council on Developmental Disabilities: appointing authorized representatives.",
       "author": "Lena Gonzalez",
       "status": "Introduced",
@@ -530,19 +446,7 @@
       ],
       "source": "legiscan",
       "source_id": "2116317",
-      "first_seen": "2026-02-21T14:51:24.210489",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "State Council on Developmental Disabilities appointment provision; no land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210489"
     },
     "SB1091": {
       "bill_number": "SB1091",
@@ -590,7 +494,7 @@
     },
     "SB1072": {
       "bill_number": "SB1072",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing.",
       "author": "Housing",
       "status": "Introduced",
@@ -618,19 +522,7 @@
       ],
       "source": "legiscan",
       "source_id": "2117159",
-      "first_seen": "2026-02-21T14:51:24.210578",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Housing element technical cleanup and Multifamily Housing Program adjustment; minor administrative change with no meaningful local preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210578"
     },
     "SB1025": {
       "bill_number": "SB1025",
@@ -684,7 +576,7 @@
     },
     "SB1090": {
       "bill_number": "SB1090",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing: disaster impacted areas.",
       "author": "Sasha Renee Perez",
       "status": "Introduced",
@@ -712,23 +604,11 @@
       ],
       "source": "legiscan",
       "source_id": "2117177",
-      "first_seen": "2026-02-21T14:51:24.210643",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Disaster-impacted area housing provisions; targeted relief with limited local control implications beyond existing disaster relief frameworks.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210643"
     },
     "SB1086": {
       "bill_number": "SB1086",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Zoning: allowed uses: microschools and micro-education entities.",
       "author": "Megan Dahle",
       "status": "Introduced",
@@ -756,19 +636,7 @@
       ],
       "source": "legiscan",
       "source_id": "2117173",
-      "first_seen": "2026-02-21T14:51:24.210673",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Mandates that cities allow microschools and micro-education entities in residential zones, overriding local use determinations for educational facilities.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210673"
     },
     "AB1795": {
       "bill_number": "AB1795",
@@ -814,7 +682,7 @@
     },
     "AB1890": {
       "bill_number": "AB1890",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "County of Napa: farmworker housing: funding.",
       "author": "Cecilia Aguiar-Curry",
       "status": "Introduced",
@@ -840,19 +708,7 @@
       ],
       "source": "legiscan",
       "source_id": "2116272",
-      "first_seen": "2026-02-21T14:51:24.210724",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Targeted funding provision for farmworker housing in Napa County; no local planning preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210724"
     },
     "AR83": {
       "bill_number": "AR83",
@@ -1125,7 +981,7 @@
     },
     "AB1879": {
       "bill_number": "AB1879",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Substance use: treatment or residential data reporting.",
       "author": "Diane Dixon",
       "status": "Introduced",
@@ -1151,23 +1007,11 @@
       ],
       "source": "legiscan",
       "source_id": "2116261",
-      "first_seen": "2026-02-21T14:51:24.210908",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Data reporting requirements for substance use treatment facilities; no local control implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-21T14:51:24.210908"
     },
     "AB1997": {
       "bill_number": "AB1997",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Land use: housing development approvals: timelines and processes.",
       "author": "Alex Lee",
       "status": "Introduced",
@@ -1193,19 +1037,7 @@
       ],
       "source": "legiscan",
       "source_id": "2118611",
-      "first_seen": "2026-02-23T17:38:05.406833",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "none",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "Imposes mandatory state timelines on local housing approval processes and creates penalty exposure for cities that fail to meet them, subordinating local deliberation to a state-driven schedule.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "AB1997 forces compressed state timelines onto local housing approval processes and creates penalty risk for jurisdictions that cannot meet them, regardless of project complexity or local circumstances.\n• Cities face consequences for legitimate review delays — environmental complexity, infrastructure concerns, and legal analysis all require time this bill restricts\n• Eliminates meaningful public participation: shortened timelines reduce community input opportunities for residents affected by nearby development\n• Imposes compliance and legal costs on cities that must track, document, and defend timeline adherence\n• Disproportionate burden on small cities and counties with limited planning staff capacity\nRecommended: CSF should oppose; advocate for reasonable local review timelines that protect thorough deliberation and document fiscal impacts on member jurisdictions."
-      }
+      "first_seen": "2026-02-23T17:38:05.406833"
     },
     "AB2002": {
       "bill_number": "AB2002",
@@ -1251,7 +1083,7 @@
     },
     "AB2005": {
       "bill_number": "AB2005",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing developments: urban lot split: parcel maps.",
       "author": "Patrick Ahrens",
       "status": "Introduced",
@@ -1277,23 +1109,11 @@
       ],
       "source": "legiscan",
       "source_id": "2118619",
-      "first_seen": "2026-02-23T17:38:05.406981",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "strong",
-        "notes": "Extends SB 9 urban lot split rights, enabling ministerial subdivision on single-family parcels with no local approval authority; cities cannot require infrastructure improvements or charge impact fees to fund water, sewer, and traffic capacity for new lots.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "AB2005 expands SB 9 urban lot split rights, allowing ministerial parcel divisions in single-family zones and removing all local subdivision control over qualifying applications.\n• Cities have zero authority to deny qualifying lot splits — foundational local subdivision powers are preempted by state objective standards\n• Pairs with SB 9 to allow up to 4 units on formerly single-family lots without any local review\n• Infrastructure burden: no impact fee authority for lot splits; water, sewer, and traffic costs for newly created parcels shift entirely to existing infrastructure and ratepayers\n• Enforcement burden: cities must litigate objective standard disputes without clear resource support\nRecommended: CSF should oppose; document infrastructure capacity gaps and engage legislators on workability amendments that preserve local infrastructure review."
-      }
+      "first_seen": "2026-02-23T17:38:05.406981"
     },
     "AB2020": {
       "bill_number": "AB2020",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing programs: financing.",
       "author": "Jesse Gabriel",
       "status": "Introduced",
@@ -1319,23 +1139,11 @@
       ],
       "source": "legiscan",
       "source_id": "2118634",
-      "first_seen": "2026-02-23T17:38:05.407037",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Housing financing program modifications; no direct local planning preemption provisions.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407037"
     },
     "AB2035": {
       "bill_number": "AB2035",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Common interest developments: declarations: amendments.",
       "author": "Diane Dixon",
       "status": "Introduced",
@@ -1361,19 +1169,7 @@
       ],
       "source": "legiscan",
       "source_id": "2118649",
-      "first_seen": "2026-02-23T17:38:05.407092",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Common interest development declaration amendment procedures; no local zoning implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407092"
     },
     "AB2037": {
       "bill_number": "AB2037",
@@ -1419,7 +1215,7 @@
     },
     "AB2041": {
       "bill_number": "AB2041",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Bergeson-Peace Infrastructure and Economic Development Bank Act.",
       "author": "Juan Carrillo",
       "status": "Introduced",
@@ -1445,23 +1241,11 @@
       ],
       "source": "legiscan",
       "source_id": "2118655",
-      "first_seen": "2026-02-23T17:38:05.407199",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Infrastructure bank amendments; no direct local land use control implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407199"
     },
     "AB2050": {
       "bill_number": "AB2050",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Common interest developments: reserve accounts.",
       "author": "Jessica Caloza",
       "status": "Introduced",
@@ -1487,23 +1271,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119577",
-      "first_seen": "2026-02-23T17:38:05.407254",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "HOA reserve account requirements; no local planning or zoning implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407254"
     },
     "AB2058": {
       "bill_number": "AB2058",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Factory-built housing.",
       "author": "John Harabedian",
       "status": "Introduced",
@@ -1529,19 +1301,7 @@
       ],
       "source": "legiscan",
       "source_id": "2119585",
-      "first_seen": "2026-02-23T17:38:05.407302",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Expands factory-built housing approval pathways under state standards, limiting some local building code requirements for qualifying manufactured structures.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407302"
     },
     "AB2079": {
       "bill_number": "AB2079",
@@ -1587,7 +1347,7 @@
     },
     "AB2094": {
       "bill_number": "AB2094",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Affordable housing.",
       "author": "John Harabedian",
       "status": "Introduced",
@@ -1613,23 +1373,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119621",
-      "first_seen": "2026-02-23T17:38:05.407402",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Affordable housing financing provision; no direct local planning preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407402"
     },
     "AB2110": {
       "bill_number": "AB2110",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Local financing: workforce housing: tax increment financing district.",
       "author": "Natasha Johnson",
       "status": "Introduced",
@@ -1655,23 +1403,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119637",
-      "first_seen": "2026-02-23T17:38:05.407458",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "moderate",
-        "notes": "Authorizes new tax increment financing districts for workforce housing, diverting local property tax revenue from general city services to state-directed housing priorities.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "AB2110 creates new tax increment financing districts for workforce housing, conditioning their formation on state housing compliance and diverting local tax revenues from city services.\n• Diverts property tax revenue: TIF allocations reduce funds available for police, fire, parks, libraries, and other community services\n• State control over local fiscal tool: TIF authority is conditioned on housing compliance, limiting local budgetary flexibility and decision-making\n• Precedent risk: expands TIF beyond redevelopment context into general housing compliance, creating new fiscal obligations tied to state mandates\nRecommended: CSF should oppose unless local governing boards retain full discretion over TIF formation and allocation without state compliance conditions."
-      }
+      "first_seen": "2026-02-23T17:38:05.407458"
     },
     "AB2118": {
       "bill_number": "AB2118",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Affordable Housing and High Road Jobs Act of 2022: use by right: objective standards.",
       "author": "Josh Hoover",
       "status": "Introduced",
@@ -1697,23 +1433,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119645",
-      "first_seen": "2026-02-23T17:38:05.407504",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "indirect",
-        "notes": "Requires by-right approval for 'high road' affordable projects, removing local discretion; indirect infrastructure burden as ministerial approval limits cities' ability to require infrastructure improvements as approval conditions.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "AB2118 mandates ministerial approval for affordable housing projects certified under 'high road' employment criteria, removing local discretion regardless of site context or community concerns.\n• Eliminates local project review: qualifying projects receive ministerial approval regardless of neighborhood character, infrastructure capacity, or local planning context\n• Ambiguous 'high road' criteria create inconsistent application and limit local ability to challenge compliance claims\n• Sets precedent for further use-by-right expansions tied to state employment policy compliance\nRecommended: CSF should seek amendments restoring objective standards review; oppose if the by-right provision cannot be narrowed to preserve meaningful local authority."
-      }
+      "first_seen": "2026-02-23T17:38:05.407504"
     },
     "AB2127": {
       "bill_number": "AB2127",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Accessory dwelling units.",
       "author": "Natasha Johnson",
       "status": "Introduced",
@@ -1739,23 +1463,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119654",
-      "first_seen": "2026-02-23T17:38:05.407559",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "strong",
-        "notes": "Further restricts local ADU standards and explicitly limits impact fee authority, preventing cities from charging water, sewer, traffic, and school fees needed to fund infrastructure for new ADU residents.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "AB2127 further restricts local ADU regulations, limiting cities' ability to apply lot coverage, setback, and height standards that protect neighborhood character and infrastructure.\n• Restricts objective development standards: cities cannot apply lot coverage, setback, and height standards that reflect local neighborhood character and topography\n• Ministerial approval required: no local discretion over qualifying ADU applications regardless of site constraints or cumulative neighborhood impacts\n• Infrastructure burden: cumulative ADU additions strain water, sewer, and parking capacity with cities losing fee authority to fund needed improvements\n• Continues a pattern of incrementally removing all remaining local ADU authority through successive legislation\nRecommended: CSF should oppose; advocate for local infrastructure impact fee authority to accompany ADU mandates; document service capacity deficits."
-      }
+      "first_seen": "2026-02-23T17:38:05.407559"
     },
     "AB2128": {
       "bill_number": "AB2128",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing authorities: term limits and work requirements.",
       "author": "Sharon Quirk-Silva",
       "status": "Introduced",
@@ -1781,23 +1493,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119655",
-      "first_seen": "2026-02-23T17:38:05.407629",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Housing authority governance changes (term limits, work requirements); no local planning preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407629"
     },
     "AB2144": {
       "bill_number": "AB2144",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "On-campus events: swimming pools: adult presence: cardiopulmonary resuscitation training.",
       "author": "Robert Garcia",
       "status": "Introduced",
@@ -1823,23 +1523,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119671",
-      "first_seen": "2026-02-23T17:38:05.407694",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "School safety bill regarding CPR at swimming events; no housing or land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407694"
     },
     "AB2146": {
       "bill_number": "AB2146",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Multifamily Housing Program: Homekey.",
       "author": "Catherine Stefani",
       "status": "Introduced",
@@ -1865,23 +1553,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119673",
-      "first_seen": "2026-02-23T17:38:05.407757",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Homekey program funding modification; state housing financing with no direct local zoning mandate.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407757"
     },
     "AB2157": {
       "bill_number": "AB2157",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Workforce development: Displaced Oil and Gas Worker Pilot Program: extension and assessment.",
       "author": "Isaac Bryan",
       "status": "Introduced",
@@ -1907,23 +1583,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119684",
-      "first_seen": "2026-02-23T17:38:05.407816",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Workforce development program for displaced oil and gas workers; no land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407816"
     },
     "AB2162": {
       "bill_number": "AB2162",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing: county funding allocations: nonminor dependents and young adults.",
       "author": "Isaac Bryan",
       "status": "Introduced",
@@ -1949,23 +1613,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119689",
-      "first_seen": "2026-02-23T17:38:05.407865",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "Housing county funding allocation adjustments for youth and young adults; minor indirect fiscal impact on county allocation processes.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407865"
     },
     "AB2166": {
       "bill_number": "AB2166",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Department of Housing and Community Development.",
       "author": "Juan Carrillo",
       "status": "Introduced",
@@ -1991,23 +1643,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119693",
-      "first_seen": "2026-02-23T17:38:05.407962",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "HCD administrative authority amendment; minor agency organizational change with no direct local planning preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.407962"
     },
     "AB2174": {
       "bill_number": "AB2174",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Mobilehomes and manufactured housing: registration and titling documentation.",
       "author": "Natasha Johnson",
       "status": "Introduced",
@@ -2033,23 +1673,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120648",
-      "first_seen": "2026-02-23T17:38:05.408071",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Manufactured housing registration and titling documentation amendments; administrative only.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408071"
     },
     "AB2176": {
       "bill_number": "AB2176",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Student housing: intersegmental working group.",
       "author": "Mike Fong",
       "status": "Introduced",
@@ -2075,23 +1703,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120650",
-      "first_seen": "2026-02-23T17:38:05.408141",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Intersegmental student housing working group; advisory function with no planning preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408141"
     },
     "AB2177": {
       "bill_number": "AB2177",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Planning and Zoning law: open-space zoning.",
       "author": "Steve Bennett",
       "status": "Introduced",
@@ -2117,23 +1733,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120651",
-      "first_seen": "2026-02-23T17:38:05.408198",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Clarifies open-space zoning definitions; no reduction of local planning authority.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408198"
     },
     "AB2185": {
       "bill_number": "AB2185",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Local planning: housing element.",
       "author": "Sharon Quirk-Silva",
       "status": "Introduced",
@@ -2159,23 +1763,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120659",
-      "first_seen": "2026-02-23T17:38:05.408248",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "indirect",
-        "notes": "Expands housing element requirements and reporting mandates, increasing state oversight of local planning processes and creating additional compliance obligations.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "AB2185 adds new requirements to local housing elements and expands HCD's ability to find cities out of compliance, increasing builder's remedy exposure and unfunded compliance costs.\n• Adds mandated plan content: cities must include additional analysis, programs, and commitments that expand HCD oversight leverage over local planning documents\n• Builder's remedy risk: expanded compliance standards increase the circumstances under which cities lose local zoning authority for housing projects\n• Unfunded mandate: additional planning staff time and consultant costs with no accompanying state funding to offset the burden on cities\nRecommended: CSF should seek funding provisions for all compliance costs; oppose any provisions expanding builder's remedy exposure or HCD override authority."
-      }
+      "first_seen": "2026-02-23T17:38:05.408248"
     },
     "AB2189": {
       "bill_number": "AB2189",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "State Council on Developmental Disabilities.",
       "author": "Stephanie Nguyen",
       "status": "Introduced",
@@ -2201,23 +1793,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120663",
-      "first_seen": "2026-02-23T17:38:05.408303",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "State Council on Developmental Disabilities amendment; no housing or land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408303"
     },
     "AB2191": {
       "bill_number": "AB2191",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "High school graduation requirements: alternate pathways for individuals with exceptional needs: statewide resources.",
       "author": "Sharon Quirk-Silva",
       "status": "Introduced",
@@ -2243,23 +1823,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120665",
-      "first_seen": "2026-02-23T17:38:05.408351",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "High school graduation alternative pathway bill; no local control implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408351"
     },
     "AB2209": {
       "bill_number": "AB2209",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Developmental services: caregiver succession.",
       "author": "Jasmeet Bains",
       "status": "Introduced",
@@ -2285,19 +1853,7 @@
       ],
       "source": "legiscan",
       "source_id": "2120683",
-      "first_seen": "2026-02-23T17:38:05.408405",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Developmental services caregiver succession planning; no land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408405"
     },
     "AB2243": {
       "bill_number": "AB2243",
@@ -2343,7 +1899,7 @@
     },
     "AB2252": {
       "bill_number": "AB2252",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing: Single stair entry and exit.",
       "author": "Alex Lee",
       "status": "Introduced",
@@ -2369,23 +1925,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120726",
-      "first_seen": "2026-02-23T17:38:05.408504",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "strong",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "moderate",
-        "notes": "Modifies state building code to allow single-staircase buildings up to six stories, overriding local fire safety authority and enabling significantly higher density; taller buildings intensify demand on utilities, emergency services, and schools without local capacity review.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "AB2252 changes the state building code to allow single-staircase buildings up to six stories, overriding local fire safety standards and enabling density levels cities have not chosen to permit.\n• Overrides local fire and building safety authority: cities cannot impose stricter staircase requirements without a state variance process — local fire chiefs' concerns are preempted\n• Enables higher density building types in neighborhoods where local plans designate lower density residential uses, bypassing community planning processes\n• Infrastructure strain: taller buildings with more units intensify demand on utilities, streets, emergency services, and schools without local capacity review\nRecommended: CSF should oppose or seek amendments preserving local fire authority override; engage fire chiefs, building officials, and emergency services agencies on safety implications."
-      }
+      "first_seen": "2026-02-23T17:38:05.408504"
     },
     "AB2263": {
       "bill_number": "AB2263",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing.",
       "author": "Ash Kalra",
       "status": "Introduced",
@@ -2411,23 +1955,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120737",
-      "first_seen": "2026-02-23T17:38:05.408549",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Technical housing code amendment; minor clarification with no meaningful local preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408549"
     },
     "AB2264": {
       "bill_number": "AB2264",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "District agricultural associations: real property: affordable housing.",
       "author": "Tom Lackey",
       "status": "Introduced",
@@ -2453,23 +1985,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120738",
-      "first_seen": "2026-02-23T17:38:05.408602",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Allows affordable housing on district agricultural association properties (fairgrounds), bypassing local zoning for state-controlled sites.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408602"
     },
     "AB2270": {
       "bill_number": "AB2270",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Low-income housing tax credit: farmworker housing.",
       "author": "Joaquin Arambula",
       "status": "Introduced",
@@ -2495,19 +2015,7 @@
       ],
       "source": "legiscan",
       "source_id": "2120744",
-      "first_seen": "2026-02-23T17:38:05.408653",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Expands low-income housing tax credit for farmworker housing; financial incentive only with no direct local planning preemption or mandate.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408653"
     },
     "AB2288": {
       "bill_number": "AB2288",
@@ -2553,7 +2061,7 @@
     },
     "AB2295": {
       "bill_number": "AB2295",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Regional housing need: affordable housing.",
       "author": "Natasha Johnson",
       "status": "Introduced",
@@ -2579,23 +2087,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120769",
-      "first_seen": "2026-02-23T17:38:05.408754",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "moderate",
-        "notes": "Modifies RHNA methodology to increase affordable housing allocations to cities, raising compliance obligations and builder's remedy exposure for communities falling short.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "AB2295 modifies regional housing needs methodology to increase the number of affordable units cities must plan for, raising RHNA numbers and expanding builder's remedy risk.\n• Higher RHNA allocations force cities to rezone more land — often in established neighborhoods — through a process controlled by regional councils, not local voters\n• Builder's remedy exposure: communities that cannot demonstrate adequate sites lose all local zoning authority for housing projects until compliance is restored\n• Unfunded mandate: additional rezoning, EIR preparation, and HCD review cycles impose significant costs on cities with no accompanying state funding\nRecommended: CSF should engage in RHNA methodology proceedings; oppose unfunded allocation increases and advocate for local infrastructure capacity as a factor in allocations."
-      }
+      "first_seen": "2026-02-23T17:38:05.408754"
     },
     "AB2300": {
       "bill_number": "AB2300",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Workforce development.",
       "author": "Joaquin Arambula",
       "status": "Introduced",
@@ -2621,23 +2117,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120774",
-      "first_seen": "2026-02-23T17:38:05.408804",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Not included in local control risk reanalysis batch; no risk identified.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408804"
     },
     "AB2308": {
       "bill_number": "AB2308",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Redevelopment: successor agency debt: City and County of San Francisco.",
       "author": "Matt Haney",
       "status": "Introduced",
@@ -2663,23 +2147,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120782",
-      "first_seen": "2026-02-23T17:38:05.408856",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "San Francisco-specific redevelopment successor agency debt adjustment; limited local fiscal implication confined to one jurisdiction.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408856"
     },
     "AB2315": {
       "bill_number": "AB2315",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Workforce development: findings and declarations.",
       "author": "Joaquin Arambula",
       "status": "Introduced",
@@ -2705,23 +2177,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120789",
-      "first_seen": "2026-02-23T17:38:05.408930",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Workforce development findings and declarations; no local control implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.408930"
     },
     "AB2320": {
       "bill_number": "AB2320",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Multifamily Housing Program: Homekey: adaptive reuse.",
       "author": "Tri Ta",
       "status": "Introduced",
@@ -2747,23 +2207,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120794",
-      "first_seen": "2026-02-23T17:38:05.408988",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "moderate",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "moderate",
-        "notes": "Expands Homekey adaptive reuse funding conditioned on local streamlining that waives discretionary review; ministerial approval prevents cities from requiring utility upgrades, accessibility improvements, or neighborhood infrastructure as conditions of conversion approval.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "AB2320 expands Homekey to adaptive reuse projects and conditions state funding on local approval streamlining, using the grant as a lever to extract local zoning concessions.\n• State funding conditioned on local streamlining: receiving Homekey dollars requires cities to waive discretionary review, transforming a funding program into a preemption mechanism\n• No local design authority: adaptive reuse projects funded through Homekey cannot be conditioned on neighborhood compatibility or safety standards\n• Infrastructure conditions waived: Homekey streamlining prevents cities from requiring utility upgrades, accessibility improvements, or neighborhood infrastructure as approval conditions\n• Precedent: links state housing dollars to local control preemption across a growing range of project types, normalizing coercive grant conditions\nRecommended: CSF should seek amendments decoupling streamlining conditions from grant eligibility; monitor Homekey site selection for compatibility and community impacts."
-      }
+      "first_seen": "2026-02-23T17:38:05.408988"
     },
     "AB2329": {
       "bill_number": "AB2329",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Surplus residential property: City of South Pasadena.",
       "author": "Mike Fong",
       "status": "Introduced",
@@ -2789,23 +2237,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120803",
-      "first_seen": "2026-02-23T17:38:05.409039",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "South Pasadena-specific surplus residential property amendment; limited local application.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.409039"
     },
     "AB2342": {
       "bill_number": "AB2342",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing development: transit-oriented development.",
       "author": "Josh Hoover",
       "status": "Introduced",
@@ -2831,23 +2267,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120816",
-      "first_seen": "2026-02-23T17:38:05.409092",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "Expands TOD by-right zones and mandates ministerial approval for qualifying housing near transit, removing local authority over design and infrastructure conditions; accelerated TOD density proceeds without transit capacity improvements or utility upgrade requirements.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "AB2342 expands transit-oriented development zones and mandates ministerial approval for qualifying housing within them, removing local planning authority over broad areas.\n• Expands by-right zones: larger areas around transit stops lose local zoning authority — a broad transit definition means even low-frequency bus stops can trigger preemption\n• Complete removal of local discretion: no hearings, design review, or conditions may be imposed on qualifying TOD projects regardless of neighborhood context\n• Infrastructure disconnect: state-mandated densification near transit does not guarantee transit capacity, utility infrastructure, or school capacity improvements\n• Scope creep: 'transit proximity' definitions can expand over time, extending preemption to progressively larger portions of cities\nRecommended: CSF should oppose or seek strict frequency/ridership thresholds; document infrastructure gaps in existing TOD zones before expansion proceeds."
-      }
+      "first_seen": "2026-02-23T17:38:05.409092"
     },
     "AB2353": {
       "bill_number": "AB2353",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Health care affordability.",
       "author": "Blanca Pacheco",
       "status": "Introduced",
@@ -2873,19 +2297,7 @@
       ],
       "source": "legiscan",
       "source_id": "2120827",
-      "first_seen": "2026-02-23T17:38:05.409148",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Health care affordability bill; no housing or land use preemption provisions.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.409148"
     },
     "AB2387": {
       "bill_number": "AB2387",
@@ -2926,7 +2338,7 @@
     },
     "AB2390": {
       "bill_number": "AB2390",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Streamlined housing approvals: hazardous waste sites.",
       "author": "Pilar Schiavo",
       "status": "Introduced",
@@ -2943,27 +2355,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121467",
-      "first_seen": "2026-02-23T17:38:05.409252",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "none",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "indirect",
-        "notes": "Mandates ministerial approval for housing on remediated hazardous waste sites, removing local health and safety authority; indirect infrastructure burden as brownfield conversions may require utility and remediation infrastructure cities cannot condition.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "AB2390 mandates ministerial housing approval on former hazardous waste sites, preventing local governments from imposing protective conditions or conducting independent health review.\n• Removes local health and safety override: cities cannot deny housing on contamination sites even if remediation is incomplete, contested, or based on state determinations cities dispute\n• Public health risk: ministerial approval on brownfield sites eliminates cities' ability to impose protective conditions for the safety of future residents and nearby community members\n• Liability exposure: cities granting required approvals on hazardous sites may face future liability for health impacts without having had authority to impose protective conditions\nRecommended: CSF should strongly oppose; partner with public health advocates and environmental justice organizations to document risks of removing local health oversight."
-      }
+      "first_seen": "2026-02-23T17:38:05.409252"
     },
     "AB2397": {
       "bill_number": "AB2397",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Planning and zoning.",
       "author": "Tri Ta",
       "status": "Introduced",
@@ -2980,27 +2385,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121474",
-      "first_seen": "2026-02-23T17:38:05.409304",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Technical planning and zoning code amendment; limited scope with no significant local preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.409304"
     },
     "AB2398": {
       "bill_number": "AB2398",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Practice of medicine: Physician Graduate License Act.",
       "author": "David Alvarez",
       "status": "Introduced",
@@ -3017,27 +2415,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121475",
-      "first_seen": "2026-02-23T17:38:05.409354",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Physician Graduate License Act; no housing or land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.409354"
     },
     "AB2400": {
       "bill_number": "AB2400",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "General plan: annual report: suite-style student housing quarters.",
       "author": "Greg Wallis",
       "status": "Introduced",
@@ -3054,27 +2445,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121477",
-      "first_seen": "2026-02-23T17:38:05.409407",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "General plan annual reporting requirement for student housing; minor added reporting burden.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.409407"
     },
     "AB2414": {
       "bill_number": "AB2414",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Developmental services: direct support professionals.",
       "author": "Stephanie Nguyen",
       "status": "Introduced",
@@ -3091,27 +2475,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121491",
-      "first_seen": "2026-02-23T17:38:05.409453",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Developmental services direct support professional standards; no land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.409453"
     },
     "AB2418": {
       "bill_number": "AB2418",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Local building permits: nonresidential private permitting review.",
       "author": "Mark Gonzalez",
       "status": "Introduced",
@@ -3128,27 +2505,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121495",
-      "first_seen": "2026-02-23T17:38:05.409511",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Local building permits for nonresidential private permitting review; no housing preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.409511"
     },
     "AB2433": {
       "bill_number": "AB2433",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing development: affordable homes bonus.",
       "author": "David Alvarez",
       "status": "Introduced",
@@ -3165,27 +2535,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121510",
-      "first_seen": "2026-02-23T17:38:05.409555",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "moderate",
-        "notes": "Expands Density Bonus Law, requiring higher density entitlements and further restricting objective standards cities may apply; density bonus projects can challenge infrastructure conditions as 'unduly restrictive,' preventing cities from requiring utility or traffic improvements.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "AB2433 expands the Density Bonus Law to require cities to permit significantly more units than local zoning allows and further restricts the standards cities may apply to bonus projects.\n• Higher density mandates: cities must permit significantly more units than their zoning provides — density limits negotiated through community planning processes are superseded\n• Restricted objective standards: cities cannot apply design, massing, or compatibility standards that 'unduly constrain' bonus projects — an ambiguous standard that invites litigation\n• Infrastructure cost-shifting: bonus project applicants can challenge infrastructure conditions as 'unduly restrictive,' preventing cities from requiring water, sewer, and traffic improvements\nRecommended: CSF should oppose expansion provisions; engage with HCD on objective standards guidance that preserves meaningful local design and infrastructure review."
-      }
+      "first_seen": "2026-02-23T17:38:05.409555"
     },
     "AB2439": {
       "bill_number": "AB2439",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Common Interest Developments: Assessments.",
       "author": "Blanca Rubio",
       "status": "Introduced",
@@ -3202,27 +2565,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121516",
-      "first_seen": "2026-02-23T17:38:05.409614",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Common interest development assessment collection procedures; no local zoning implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.409614"
     },
     "AB2480": {
       "bill_number": "AB2480",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing development: density bonus: student housing developments.",
       "author": "Anamarie Farias",
       "status": "Introduced",
@@ -3239,27 +2595,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121557",
-      "first_seen": "2026-02-23T17:38:05.409681",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "strong",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "moderate",
-        "notes": "Extends density bonus protections to student housing near campuses, requiring ministerial approval and higher density entitlements; ministerial framework prevents cities from requiring infrastructure improvements to serve increased density near campuses.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "AB2480 extends density bonus rights to student housing near campuses, mandating ministerial approval and higher density entitlements in neighborhoods cities may have planned for lower density.\n• Campus adjacency preemption: neighborhoods near colleges and universities lose local density controls for student housing, regardless of neighborhood character or infrastructure capacity\n• Ministerial approval: no local discretionary review of scale, design, or neighborhood impact for qualifying projects — community concerns cannot be conditions of approval\n• Definition risk: broad 'student housing' definitions could extend protections to projects not primarily serving students, expanding preemption scope\nRecommended: CSF should seek objective standards review amendments and campus coordination requirements; oppose ministerial provisions that remove all local authority."
-      }
+      "first_seen": "2026-02-23T17:38:05.409681"
     },
     "AB2486": {
       "bill_number": "AB2486",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Developmental services: data.",
       "author": "Dawn Addis",
       "status": "Introduced",
@@ -3276,6 +2625,11 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
@@ -3286,17 +2640,17 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "Developmental services data reporting amendment; no land use implications.",
+        "notes": "AB 2486 amends Welfare and Institutions Code Section 4750.5, which pertains to the state's developmental services system. This bill is focused on data collection or reporting within the developmental services framework and has no apparent nexus to local land use authority, zoning, CEQA, housing approvals, or infrastructure funding. No local control risk is identified across any criterion.",
+        "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
+        "analyzed_date": "2026-02-25",
         "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
+        "model": "claude-sonnet-4-6"
       }
     },
     "AB2521": {
       "bill_number": "AB2521",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "San Francisco Bay Conservation and Development Commission.",
       "author": "Diane Papan",
       "status": "Introduced",
@@ -3313,27 +2667,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121598",
-      "first_seen": "2026-02-23T17:38:05.409808",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "San Francisco Bay Conservation and Development Commission amendment; no direct local planning preemption for inland jurisdictions.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.409808"
     },
     "AB2526": {
       "bill_number": "AB2526",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Education finance: local control funding formula: special education grant.",
       "author": "Al Muratsuchi",
       "status": "Introduced",
@@ -3350,27 +2697,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121603",
-      "first_seen": "2026-02-23T17:38:05.409865",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Education finance local control funding formula amendment for special education; no housing or land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.409865"
     },
     "AB2576": {
       "bill_number": "AB2576",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Local planning: housing element.",
       "author": "John Harabedian",
       "status": "Introduced",
@@ -3387,27 +2727,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121653",
-      "first_seen": "2026-02-23T17:38:05.409954",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "indirect",
-        "notes": "Amends housing element law to expand HCD oversight and compliance requirements, increasing state scrutiny of local plans and builder's remedy exposure.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "AB2576 expands housing element compliance standards and HCD oversight authority, increasing the circumstances under which cities can be found non-compliant and lose local zoning control.\n• Expanded HCD authority: broader compliance standards give the state more grounds to reject or challenge local housing elements that reflect genuine community planning choices\n• Builder's remedy risk: cities with challenged housing elements lose local zoning authority for all housing projects until compliance is certified — an unacceptable loss of local control\n• Unfunded mandate: additional findings, studies, and consultation requirements imposed without state funding to offset the added burden on city planning departments\nRecommended: CSF should oppose provisions expanding HCD override authority; advocate for adequate funding to accompany any new requirements."
-      }
+      "first_seen": "2026-02-23T17:38:05.409954"
     },
     "AB2581": {
       "bill_number": "AB2581",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing.",
       "author": "Esmeralda Soria",
       "status": "Introduced",
@@ -3424,27 +2757,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121658",
-      "first_seen": "2026-02-23T17:38:05.410008",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "General housing technical amendment with no meaningful local control implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410008"
     },
     "AB2596": {
       "bill_number": "AB2596",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Mobilehome parks: federally approved housing programs: compliance with state and local laws.",
       "author": "Mike Gipson",
       "status": "Introduced",
@@ -3461,27 +2787,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121673",
-      "first_seen": "2026-02-23T17:38:05.410065",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Mobilehome park federal compliance provision; no local zoning preemption beyond existing state mobilehome law.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410065"
     },
     "AB2601": {
       "bill_number": "AB2601",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Planning and zoning: housing development: streamlined approval and subdivisions.",
       "author": "Alex Lee",
       "status": "Introduced",
@@ -3498,27 +2817,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121678",
-      "first_seen": "2026-02-23T17:38:05.410111",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "Omnibus streamlining bill consolidates ministerial approval pathways across multiple code sections, preventing cities from requiring infrastructure mitigation conditions on a broad range of projects; multi-provision changes create significant unfunded compliance burden on local planning departments.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "AB2601 is an omnibus streamlining bill that consolidates and expands ministerial approval pathways across multiple code sections — one of the broadest single-bill local control preemptions.\n• Broadens by-right approval across multiple project categories: the cumulative effect eliminates local review authority for a large share of new housing applications\n• Amplifies existing preemption statutes: layering new provisions on top of existing streamlining creates compounded loss of local control that is difficult to reverse\n• Infrastructure impact unchecked: ministerial approvals across multiple code sections prevent cities from requiring infrastructure mitigation — shifting utility, traffic, and capacity costs to communities\n• Compliance complexity: multi-provision changes create significant legal uncertainty and costly implementation burden for local planning departments\nRecommended: CSF should strongly oppose; this is a high-priority bill for coordinated advocacy with planning directors, city attorneys, and the League of California Cities."
-      }
+      "first_seen": "2026-02-23T17:38:05.410111"
     },
     "AB2602": {
       "bill_number": "AB2602",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing.",
       "author": "Jessica Caloza",
       "status": "Introduced",
@@ -3535,27 +2847,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121679",
-      "first_seen": "2026-02-23T17:38:05.410166",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Technical housing code definition amendment; no meaningful local control implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410166"
     },
     "AB2616": {
       "bill_number": "AB2616",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Planning and zoning: general plan: annual report.",
       "author": "Tina McKinnor",
       "status": "Introduced",
@@ -3572,27 +2877,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121693",
-      "first_seen": "2026-02-23T17:38:05.410211",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "General plan annual report amendment for student housing tracking; minor added reporting burden.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410211"
     },
     "AB2626": {
       "bill_number": "AB2626",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing programs: financing.",
       "author": "Jesse Gabriel",
       "status": "Introduced",
@@ -3609,27 +2907,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121703",
-      "first_seen": "2026-02-23T17:38:05.410268",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Housing financing program modification; no direct local planning preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410268"
     },
     "AB2634": {
       "bill_number": "AB2634",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Workforce development: California Workforce Development Board.",
       "author": "Rick Zbur",
       "status": "Introduced",
@@ -3646,27 +2937,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121711",
-      "first_seen": "2026-02-23T17:38:05.410313",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "California Workforce Development Board amendment; no land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410313"
     },
     "AB2637": {
       "bill_number": "AB2637",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Residential property insurance.",
       "author": "Michelle Rodriguez",
       "status": "Introduced",
@@ -3683,27 +2967,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121714",
-      "first_seen": "2026-02-23T17:38:05.410375",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Residential property insurance regulation; no local planning preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410375"
     },
     "AB2656": {
       "bill_number": "AB2656",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Planning and Zoning Law.",
       "author": "Cottie Petrie-Norris",
       "status": "Introduced",
@@ -3720,27 +2997,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121733",
-      "first_seen": "2026-02-23T17:38:05.410425",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Planning and Zoning Law definitions clarification; minor technical amendment with no meaningful local control reduction.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410425"
     },
     "AB2676": {
       "bill_number": "AB2676",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing Crisis Act of 2019.",
       "author": "James Gallagher",
       "status": "Introduced",
@@ -3757,27 +3027,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121753",
-      "first_seen": "2026-02-23T17:38:05.410474",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "none",
-        "notes": "Modifies the Housing Crisis Act to extend anti-downzoning restrictions and further limit cities' ability to reduce residential capacity or update plans in response to changed conditions.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "AB2676 extends Housing Crisis Act provisions that lock cities into current residential zoning levels, preventing planning updates that reflect changed conditions or community priorities.\n• Prohibits downzoning: cities cannot reduce zoning capacity even for legitimate planning, environmental, safety, or community character reasons — General Plans are frozen in place\n• Undermines General Plan updates: communities cannot revise plans in ways that reduce residential density even with strong community support for doing so\n• No off-ramp: Housing Crisis Act restrictions have no expiration or local override mechanism, permanently constraining future planning choices\nRecommended: CSF should oppose; engage with Planning Directors Association to document specific cases where the anti-downzoning prohibition creates planning harms."
-      }
+      "first_seen": "2026-02-23T17:38:05.410474"
     },
     "AB2689": {
       "bill_number": "AB2689",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "California Community Colleges Economic and Workforce Development Program.",
       "author": "Anamarie Farias",
       "status": "Introduced",
@@ -3794,27 +3057,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121766",
-      "first_seen": "2026-02-23T17:38:05.410526",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Community college economic and workforce development program amendment; no land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410526"
     },
     "AB2702": {
       "bill_number": "AB2702",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Planning and zoning: streamlined approval: residential care facilities for the elderly.",
       "author": "Heath Flora",
       "status": "Introduced",
@@ -3831,27 +3087,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121779",
-      "first_seen": "2026-02-23T17:38:05.410575",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "none",
-        "notes": "Creates streamlined approval pathway for residential care facilities in local zones, restricting cities' ability to apply use-specific conditions to qualifying facilities.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410575"
     },
     "AB2734": {
       "bill_number": "AB2734",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Developmental services.",
       "author": "Gregg Hart",
       "status": "Introduced",
@@ -3868,27 +3117,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121811",
-      "first_seen": "2026-02-23T17:38:05.410628",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Developmental services amendment; no housing or land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410628"
     },
     "AB2741": {
       "bill_number": "AB2741",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing element: inventory of land: substantial compliance.",
       "author": "Al Muratsuchi",
       "status": "Introduced",
@@ -3905,27 +3147,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121818",
-      "first_seen": "2026-02-23T17:38:05.410675",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "Modifies housing element 'substantial compliance' standards in ways that lower the threshold for HCD non-compliance findings and expand builder's remedy exposure.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "AB2741 lowers the housing element 'substantial compliance' bar, making it easier for HCD to find cities non-compliant and expose them to builder's remedy loss of local zoning authority.\n• Lower compliance threshold: changes to substantial compliance rules make it easier for HCD to reject housing elements that reflect genuine community planning choices\n• Builder's remedy risk: non-compliance findings strip cities of zoning authority for all housing projects — one of the most severe local control losses in state law\n• Retroactive risk: 'substantial compliance' changes may apply to already-certified housing elements, destabilizing planning processes cities have already completed\n• Unfunded compliance burden: additional documentation and legal review required with no state funding to offset costs on city planning departments\nRecommended: CSF should oppose; seek grandfather provisions for certified elements and coordinate with city attorneys on legal exposure."
-      }
+      "first_seen": "2026-02-23T17:38:05.410675"
     },
     "AB2748": {
       "bill_number": "AB2748",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Building standards: affordable housing developments: electric vehicle charging.",
       "author": "Sharon Quirk-Silva",
       "status": "Introduced",
@@ -3942,27 +3177,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121825",
-      "first_seen": "2026-02-23T17:38:05.410730",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "Adds EV charging requirements to affordable housing building standards; minor added compliance cost for affordable developments.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410730"
     },
     "AB2750": {
       "bill_number": "AB2750",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Development projects.",
       "author": "Jesse Gabriel",
       "status": "Introduced",
@@ -3979,27 +3207,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121827",
-      "first_seen": "2026-02-23T17:38:05.410775",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "none",
-        "notes": "Modifies state development project approval procedures to restrict local conditioning authority and impose state-mandated timelines on city review processes.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "AB2750 adds state procedural requirements to development project approvals, restricting the conditions cities may apply and compressing local deliberation timelines.\n• Restricts local conditions: limits the types of protective conditions cities can attach to housing and development approvals, reducing cities' ability to mitigate project impacts\n• Mandatory response windows: state-set deadlines reduce deliberative review time, particularly for projects with complex environmental or infrastructure issues\n• Shifts appeals balance: modifications to local appeal processes favor applicants over community members who may be impacted by nearby development\nRecommended: CSF should oppose; document cases where local conditions protect public health, safety, and community character from development impacts."
-      }
+      "first_seen": "2026-02-23T17:38:05.410775"
     },
     "AB2757": {
       "bill_number": "AB2757",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Affordability and cost of living.",
       "author": "Natasha Johnson",
       "status": "Introduced",
@@ -4016,27 +3237,20 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121834",
-      "first_seen": "2026-02-23T17:38:05.410829",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Affordability and cost of living findings and declarations; no local control implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410829"
     },
     "AB2766": {
       "bill_number": "AB2766",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Public postsecondary education: student housing: foster youth and homeless youth.",
       "author": "Patrick Ahrens",
       "status": "Introduced",
@@ -4053,23 +3267,16 @@
           "date": "2026-02-20",
           "description": "Read first time. To print.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-02-21",
+          "description": "From printer. May be heard in committee March 23.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121843",
-      "first_seen": "2026-02-23T17:38:05.410874",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "Student housing provisions for foster youth at community colleges; state program with minor indirect local fiscal implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.410874"
     },
     "SB1110": {
       "bill_number": "SB1110",
@@ -4117,7 +3324,7 @@
     },
     "SB1116": {
       "bill_number": "SB1116",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Planning and zoning: housing development projects: subdivisions.",
       "author": "Anna Caballero",
       "status": "Introduced",
@@ -4145,23 +3352,11 @@
       ],
       "source": "legiscan",
       "source_id": "2118674",
-      "first_seen": "2026-02-23T17:38:05.411057",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "Creates ministerial subdivision approvals that prevent cities from requiring frontage improvements, utility upgrades, or traffic mitigation as subdivision conditions; compliance with new ministerial framework requires significant unfunded planning department resources.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "SB1116 mandates ministerial approval for qualifying subdivision projects — one of the most significant local preemptions because subdivisions are foundational local planning decisions.\n• Ministerial subdivision approvals: cities lose discretionary authority over subdivision design, lot layout, and compatibility with surrounding development\n• Removes CEQA applicability for qualifying projects: environmental review that enables community input and identifies cumulative impacts is eliminated\n• Infrastructure burden: subdivisions approved ministerially cannot be conditioned on frontage improvements, utility upgrades, traffic mitigation, or school capacity — existing residents absorb costs of new development\n• Cumulative impact: subdivision approvals affect multiple parcels and permanently shape neighborhood character — removing local authority is irreversible\nRecommended: CSF should strongly oppose and prioritize for coalition advocacy with planning agencies, environmental groups, and the Planning Directors Association."
-      }
+      "first_seen": "2026-02-23T17:38:05.411057"
     },
     "SB1117": {
       "bill_number": "SB1117",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Accessory dwelling units and junior accessory dwelling units.",
       "author": "Sabrina Cervantes",
       "status": "Introduced",
@@ -4189,23 +3384,11 @@
       ],
       "source": "legiscan",
       "source_id": "2118675",
-      "first_seen": "2026-02-23T17:38:05.411102",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "strong",
-        "notes": "Further restricts local ADU regulations and explicitly eliminates remaining impact fee authority, preventing cities from charging the infrastructure fees needed to serve new ADU residents.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "SB1117 is another in a long series of bills eliminating remaining local ADU authority, this time targeting objective standards and fee provisions cities still retain.\n• Eliminates fee authority: cities cannot charge the impact fees that fund water, sewer, traffic, and school capacity needed to serve new ADU residents\n• Restricts remaining objective standards: further limits the design, setback, and height standards cities may apply — including standards that protect solar access and fire safety\n• No capacity management: removes remaining local tools for managing cumulative growth in neighborhoods already experiencing infrastructure stress\n• Permanent preemption pattern: each successive ADU bill removes another layer of local authority with no restoration mechanism in state law\nRecommended: CSF should oppose; document infrastructure funding deficits created by ADU fee elimination and coordinate with other municipal leagues on ADU advocacy."
-      }
+      "first_seen": "2026-02-23T17:38:05.411102"
     },
     "SB1132": {
       "bill_number": "SB1132",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Workforce development: workplace rights training.",
       "author": "Lola Smallwood-Cuevas",
       "status": "Introduced",
@@ -4233,23 +3416,11 @@
       ],
       "source": "legiscan",
       "source_id": "2118690",
-      "first_seen": "2026-02-23T17:38:05.411158",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Workforce development workplace rights training requirement; no land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.411158"
     },
     "SB1145": {
       "bill_number": "SB1145",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Affordable Housing and Sustainable Communities Program.",
       "author": "Tim Grayson",
       "status": "Introduced",
@@ -4277,23 +3448,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119709",
-      "first_seen": "2026-02-23T17:38:05.411204",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "moderate",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Expands the Affordable Housing and Sustainable Communities Program in ways that condition local streamlining obligations on state climate-transportation funding.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "SB1145 expands AHSC program funding conditions that require local approval streamlining as a grant condition, using climate funding as a lever to extract local zoning concessions.\n• Coercive funding condition: receiving AHSC grants requires local streamlining that overrides normal planning review — a quid pro quo that makes preemption the price of state dollars\n• Climate/housing linkage: state climate policy becomes a mechanism for expanding local housing preemption beyond what the legislature has directly enacted\n• Transit proximity override: neighborhoods near transit lose planning authority on AHSC-funded projects with no community input mechanism\nRecommended: CSF should seek amendments decoupling streamlining conditions from grant eligibility; engage with transportation agencies on preserving local planning integrity."
-      }
+      "first_seen": "2026-02-23T17:38:05.411204"
     },
     "SB1160": {
       "bill_number": "SB1160",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Judicial Council: eviction data reporting.",
       "author": "Maria Durazo",
       "status": "Introduced",
@@ -4321,23 +3480,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119724",
-      "first_seen": "2026-02-23T17:38:05.411254",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "Judicial Council eviction data reporting requirement; minor indirect administrative burden on courts and local agencies.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.411254"
     },
     "SB1170": {
       "bill_number": "SB1170",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Joint powers agreements: nonprofit housing developers.",
       "author": "Maria Durazo",
       "status": "Introduced",
@@ -4365,23 +3512,11 @@
       ],
       "source": "legiscan",
       "source_id": "2119734",
-      "first_seen": "2026-02-23T17:38:05.411304",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "Allows joint powers authorities to provide insurance and financing to nonprofit housing developers, potentially bypassing some local fiscal controls.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.411304"
     },
     "SB1196": {
       "bill_number": "SB1196",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Accessory dwelling units.",
       "author": "Jerry McNerney",
       "status": "Introduced",
@@ -4409,23 +3544,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120869",
-      "first_seen": "2026-02-23T17:38:05.411353",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "strong",
-        "notes": "Extends ADU preemptions to cover standards that survived previous legislation; fee restrictions prevent cities from funding water, sewer, and service capacity for ADU residents.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "SB1196 amends ADU law to close remaining gaps in local authority, preempting specific standards that cities have retained and expanding ministerial approval to new situations.\n• New targeted preemptions: specifically overrides local standards that have survived previous ADU legislation — a deliberate effort to eliminate all remaining local ADU authority\n• No local safety override: cities cannot impose additional safety conditions even where local fire or building officials have identified specific site-level concerns\n• Service burden without revenue: ADU residents use city services but fee restrictions prevent cities from collecting funds to maintain or expand those services\n• Cumulative preemption: alongside SB1117 and AB2127, represents a coordinated effort to entirely remove local ADU authority in a single legislative session\nRecommended: CSF should oppose; coordinate with other municipal leagues on a unified ADU preemption response; prioritize for joint advocacy with League of California Cities."
-      }
+      "first_seen": "2026-02-23T17:38:05.411353"
     },
     "SB1215": {
       "bill_number": "SB1215",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Electrical corporations: electric vehicle charging stations: multifamily residential properties.",
       "author": "Dave Cortese",
       "status": "Introduced",
@@ -4453,23 +3576,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120888",
-      "first_seen": "2026-02-23T17:38:05.411404",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "EV charging station mandates for multifamily buildings impose indirect compliance costs on local housing programs and development approvals.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.411404"
     },
     "SB1216": {
       "bill_number": "SB1216",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Planning and Zoning Law: housing leadership designation.",
       "author": "Christopher Cabaldon",
       "status": "Introduced",
@@ -4497,23 +3608,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120889",
-      "first_seen": "2026-02-23T17:38:05.411451",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "none",
-        "notes": "Creates a state 'housing leadership' designation for cities that adopt state-favored housing policies, creating tiered compliance pressure that stigmatizes local planning choices.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "SB1216 creates a state housing leadership designation that uses reputational pressure to coerce cities into adopting state housing priorities over local planning choices.\n• Stigmatizes local planning choices: cities prioritizing neighborhood character, infrastructure adequacy, or community process are implicitly labeled as 'non-leaders'\n• Pressure-based coercion: reputational incentives push cities to adopt policies they might otherwise reject through legitimate deliberative planning processes\n• Competitive dynamic: leadership criteria create pressure among neighboring jurisdictions to preemptively adopt state mandates to avoid being labeled non-compliant\nRecommended: CSF should oppose the framework and engage with legislators on alternative recognition systems that respect and celebrate diverse local planning approaches."
-      }
+      "first_seen": "2026-02-23T17:38:05.411451"
     },
     "SB1217": {
       "bill_number": "SB1217",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Adult victims: online exploitation, trafficking, and abuse.",
       "author": "Shannon Grove",
       "status": "Introduced",
@@ -4541,23 +3640,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120890",
-      "first_seen": "2026-02-23T17:38:05.411503",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Adult victims online exploitation prevention bill; no housing or land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.411503"
     },
     "SB1229": {
       "bill_number": "SB1229",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Coastal resources: coastal development permits: disaster exemption.",
       "author": "Benjamin Allen",
       "status": "Introduced",
@@ -4585,23 +3672,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120902",
-      "first_seen": "2026-02-23T17:38:05.411549",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "none",
-        "notes": "Expands disaster exemptions from coastal development permit requirements, reducing coastal commission and local oversight of rebuilding in sensitive coastal areas.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "SB1229 broadens exemptions from coastal development permits in disaster zones, reducing local and state oversight of rebuilding activities in environmentally sensitive coastal areas.\n• Reduces environmental review: exemptions from CDP requirements limit analysis of cumulative coastal impacts and climate resilience considerations for rebuilt structures\n• Local agency notification rights reduced: coastal cities lose input authority over otherwise-exempt rebuilding that affects their shoreline character and public access\n• Climate risk precedent: expedited rebuilding in coastal hazard zones without full permit review may create long-term safety issues as sea levels rise\nRecommended: CSF should monitor and seek amendments preserving local notification rights and safety review for rebuilding in sensitive coastal and hazard areas."
-      }
+      "first_seen": "2026-02-23T17:38:05.411549"
     },
     "SB1238": {
       "bill_number": "SB1238",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Common interest developments: management.",
       "author": "Aisha Wahab",
       "status": "Introduced",
@@ -4629,23 +3704,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120911",
-      "first_seen": "2026-02-23T17:38:05.411603",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Common interest development management regulation amendments; no local zoning implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.411603"
     },
     "SB1258": {
       "bill_number": "SB1258",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Streamlined housing approvals: hazardous waste sites.",
       "author": "Scott Wiener",
       "status": "Introduced",
@@ -4673,23 +3736,11 @@
       ],
       "source": "legiscan",
       "source_id": "2120931",
-      "first_seen": "2026-02-23T17:38:05.411647",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "none",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "indirect",
-        "notes": "Companion to AB2390 — mandates ministerial housing approval on brownfield sites, bypassing local health and environmental oversight; indirect infrastructure burden as contamination sites may require specialized utility and remediation infrastructure.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "SB1258 (companion to AB2390) mandates ministerial housing approval on brownfield sites, eliminating cities' authority to protect future residents and neighbors from contamination risks.\n• Overrides local health review: cities cannot impose protective conditions or deny housing on remediated sites even if local officials have concerns about remediation adequacy\n• State-determined 'clean': remediation determinations rest with state agencies, bypassing local environmental expertise and community health knowledge\n• Public health liability: ministerial approval on contaminated sites creates risk for future residents and nearby community members without any local oversight mechanism\n• Dual-bill risk: SB1258 and AB2390 advancing simultaneously amplifies this preemption — at least one is likely to pass even if the other is amended\nRecommended: CSF should strongly oppose both SB1258 and AB2390; coordinate with health departments and environmental justice advocates; prioritize for coalition testimony."
-      }
+      "first_seen": "2026-02-23T17:38:05.411647"
     },
     "SB1267": {
       "bill_number": "SB1267",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Common interest developments: electric vehicle charging stations owned by members in common areas.",
       "author": "Benjamin Allen",
       "status": "Introduced",
@@ -4717,19 +3768,7 @@
       ],
       "source": "legiscan",
       "source_id": "2120940",
-      "first_seen": "2026-02-23T17:38:05.411707",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "HOA EV charging station ownership provision; no local planning or zoning implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.411707"
     },
     "SB1272": {
       "bill_number": "SB1272",
@@ -4772,7 +3811,7 @@
     },
     "SB1297": {
       "bill_number": "SB1297",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Planning and Zoning Law: cities and counties: planning agencies.",
       "author": "Benjamin Allen",
       "status": "Introduced",
@@ -4791,27 +3830,25 @@
           "date": "2026-02-20",
           "description": "Introduced. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "From printer. May be acted upon on or after March 23.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "Read first time.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2121881",
-      "first_seen": "2026-02-23T17:38:05.411818",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Planning agencies administrative amendment; minor organizational clarification with no meaningful reduction in local planning authority.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.411818"
     },
     "SB1301": {
       "bill_number": "SB1301",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Residential property insurance: nonrenewals.",
       "author": "Benjamin Allen",
       "status": "Introduced",
@@ -4830,27 +3867,25 @@
           "date": "2026-02-20",
           "description": "Introduced. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "From printer. May be acted upon on or after March 23.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "Read first time.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2121885",
-      "first_seen": "2026-02-23T17:38:05.411863",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Residential property insurance nonrenewal regulation; no local planning implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.411863"
     },
     "SB1344": {
       "bill_number": "SB1344",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Civil actions: housing development projects.",
       "author": "Christopher Cabaldon",
       "status": "Introduced",
@@ -4869,27 +3904,25 @@
           "date": "2026-02-20",
           "description": "Introduced. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "From printer. May be acted upon on or after March 23.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "Read first time.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2121928",
-      "first_seen": "2026-02-23T17:38:05.411941",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "Restricts injunctive relief in housing development litigation, limiting local governments' and communities' ability to pause harmful projects pending legal review.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "SB1344 restricts injunctive relief in housing development litigation, preventing local governments and community members from pausing harmful projects while courts review them.\n• Restricts injunctive relief: cities and community groups cannot as readily pause projects with legal defects while litigation proceeds — the harm may be done before courts rule\n• Chills local enforcement: risk of losing injunctive protection deters cities from enforcing legitimate planning requirements against well-funded developers\n• Weakens CEQA community protection: injunctive relief is a primary tool for communities to pause projects pending environmental review — this bill directly undermines that protection\n• Legal cost burden: cities must continue defending while unable to pause development, increasing litigation costs with no interim protection\nRecommended: CSF should oppose; engage with local attorneys and CEQA practitioners on litigation strategy and connect with environmental justice advocates on shared concerns."
-      }
+      "first_seen": "2026-02-23T17:38:05.411941"
     },
     "SB1353": {
       "bill_number": "SB1353",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Alcohol or other drug recovery or treatment facilities: residential use of property.",
       "author": "Suzette Valladares",
       "status": "Introduced",
@@ -4908,27 +3941,25 @@
           "date": "2026-02-20",
           "description": "Introduced. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "From printer. May be acted upon on or after March 23.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "Read first time.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2121937",
-      "first_seen": "2026-02-23T17:38:05.411994",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Alcohol or drug recovery facility residential use regulation amendment; clarifies existing state law without expanding local control preemption.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.411994"
     },
     "SB1383": {
       "bill_number": "SB1383",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing development projects: postentitlement phase permit.",
       "author": "Jesse Arreguin",
       "status": "Introduced",
@@ -4947,27 +3978,25 @@
           "date": "2026-02-20",
           "description": "Introduced. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "From printer. May be acted upon on or after March 23.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "Read first time.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2121967",
-      "first_seen": "2026-02-23T17:38:05.412051",
-      "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "none",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "Mandates state-paced timelines for post-entitlement building permits and inspections; cities face penalties for delays even from workload or safety complexity; requires significant unfunded staffing increases to meet mandatory timelines.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
-        "comms_brief": "SB1383 imposes mandatory state timelines on local building permits and inspections, preventing cities from managing workload and ensuring safety and code compliance.\n• Mandatory building permit timelines: cities face penalties for review delays even when driven by project complexity, incomplete submissions, or public safety concerns\n• Inspection timeline mandates: local inspectors must meet state windows regardless of workload, staffing constraints, or priority calls on public safety resources\n• Unfunded compliance mandate: additional inspection and permit staffing required with no accompanying state funding — a direct financial burden on local governments\nRecommended: CSF should oppose or seek workload capacity amendments; document disproportionate impact on smaller jurisdictions and cities with older housing stock."
-      }
+      "first_seen": "2026-02-23T17:38:05.412051"
     },
     "SB1385": {
       "bill_number": "SB1385",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Employment Development Department.",
       "author": "Roger Niello",
       "status": "Introduced",
@@ -4986,27 +4015,25 @@
           "date": "2026-02-20",
           "description": "Introduced. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "From printer. May be acted upon on or after March 23.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "Read first time.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2121969",
-      "first_seen": "2026-02-23T17:38:05.412097",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Employment Development Department technical amendment; no land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.412097"
     },
     "SB1410": {
       "bill_number": "SB1410",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Adult community care facilities: email address of record.",
       "author": "Monique Limon",
       "status": "Introduced",
@@ -5025,27 +4052,25 @@
           "date": "2026-02-20",
           "description": "Introduced. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "From printer. May be acted upon on or after March 23.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "Read first time.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2121994",
-      "first_seen": "2026-02-23T17:38:05.412150",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Adult community care facility email notification provision; no land use implications.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.412150"
     },
     "SB1415": {
       "bill_number": "SB1415",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Real property tax: welfare exemption: moderate-income housing.",
       "author": "Jesse Arreguin",
       "status": "Introduced",
@@ -5064,27 +4089,25 @@
           "date": "2026-02-20",
           "description": "Introduced. To Com. on RLS. for assignment. To print.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "From printer. May be acted upon on or after March 23.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-23",
+          "description": "Read first time.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2121999",
-      "first_seen": "2026-02-23T17:38:05.412196",
-      "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "moderate",
-        "notes": "Expands the property tax welfare exemption to moderate-income housing, reducing local property tax revenue without providing cities a mechanism to offset the fiscal loss.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": "SB1415 extends property tax welfare exemptions to moderate-income housing (80-120% AMI), reducing local government revenue with no local opt-out or offset mechanism.\n• Direct fiscal impact on cities and special districts: property tax exemptions reduce revenue available for police, fire, schools, parks, and other community services\n• No local opt-out: cities cannot decline the exemption even if the fiscal impact is significant for their budget — state tax policy overrides local fiscal decision-making\n• Precedent for expansion: widening the welfare exemption to moderate-income housing establishes a pathway for further revenue-reducing expansions\nRecommended: CSF should oppose or seek local fiscal impact provisions and local opt-in/opt-out authority for affected jurisdictions."
-      }
+      "first_seen": "2026-02-23T17:38:05.412196"
     },
     "SCR131": {
       "bill_number": "SCR131",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Housing: functional zero unsheltered homelessness.",
       "author": "Catherine Blakespear",
       "status": "Introduced",
@@ -5107,19 +4130,34 @@
       ],
       "source": "legiscan",
       "source_id": "2120943",
-      "first_seen": "2026-02-23T17:38:05.412249",
-      "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "Senate Concurrent Resolution on housing homelessness goals; aspirational only with no binding local mandate.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
-      }
+      "first_seen": "2026-02-23T17:38:05.412249"
+    },
+    "SB1426": {
+      "bill_number": "SB1426",
+      "session": "2025-2026 Regular Session",
+      "title": "Planning and zoning: annual report.",
+      "author": "Housing",
+      "status": "Introduced",
+      "status_date": "2026-02-24",
+      "introduced_date": "2026-02-24",
+      "last_updated": "2026-02-24",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1426",
+      "summary": "An act to amend Sections 54222.3.1, 54230, 65400, 65583.1, 65852.21, 65852.24, 66411.7 of, and to repeal Sections 65400.1 and 65625 of, the Government Code, relating to land use, and declaring the urgency thereof, to take effect immediately.",
+      "subjects": [],
+      "committees": [
+        "Rules"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-24",
+          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2123626",
+      "first_seen": "2026-02-25T15:05:23.114521"
     }
   }
 }
