@@ -1,7 +1,7 @@
 # CLAUDE.md — CSF Intelligence Agents
 ## Codebase snapshot for AI-assisted development
 
-**Last updated:** 2026-02-24
+**Last updated:** 2026-02-25
 **Repo:** https://github.com/twgonzalez/csf-agents
 **Live dashboard:** https://twgonzalez.github.io/csf-agents/
 
@@ -13,7 +13,7 @@ Multi-agent Python system for the **California Stewardship Fund (CSF)** — a co
 
 **Three active agents:**
 1. **`agents/legislative/`** — Tracks 124+ CA housing bills weekly via LegiScan, detects new bills and status changes, generates markdown reports and HTML email digests
-2. **`agents/housing_analyzer/`** — Analyzes bills against CSF's 4-criterion local control risk framework using Claude (Anthropic API); stores results back into `tracked_bills.json`
+2. **`agents/housing_analyzer/`** — Analyzes bills against CSF's 4-criterion local control risk framework using Claude (Anthropic API); stores results back into `tracked_bills.json`; retries transient API errors with exponential backoff (up to 5 attempts, 5 s→120 s)
 3. **`agents/newsletter/`** — Reads analyzed bill data and uses Claude to write the weekly "Local Control Intelligence" stakeholder newsletter (HTML email, prose-first, editorial voice)
 
 **Pipeline:** `bill_tracker.py` → `tracked_bills.json` → `housing_analyzer.py` → `newsletter_writer.py`
@@ -43,14 +43,15 @@ csf-agents/
 │
 ├── data/
 │   └── bills/
-│       └── tracked_bills.json     # Single source of truth — all 124 bills + analysis
+│       └── tracked_bills.json     # Single source of truth — all 125 bills + analysis
 │
 ├── docs/
 │   └── index.html                 # GitHub Pages status dashboard (auto-generated)
 │
 ├── outputs/
 │   ├── analysis/                  # housing_analyzer markdown reports
-│   └/weekly_reports/              # bill_tracker markdown weekly digests
+│   ├── weekly_reports/            # bill_tracker markdown weekly digests
+│   └── newsletter/                # newsletter_writer rendered HTML
 │
 ├── scripts/
 │   └── generate_demo_email.py     # Builds demo HTML for stakeholder review
@@ -81,13 +82,14 @@ csf-agents/
 - `indirect` — tangential risk (no badge shown, recorded in notes)
 - `none` — no risk signal
 
-### Current analysis state (as of 2026-02-24)
-- **124 bills tracked**, all 124 analyzed
-- **33 high-risk bills** (scoring strong/moderate on 2+ criteria)
-- Criterion A: 17 strong, 22 moderate
-- Criterion B: 11 strong, 4 moderate
-- Criterion C: 17 strong, 14 moderate
-- Criterion D: 6 strong, 15 moderate
+### Current analysis state (as of 2026-02-25)
+- **125 bills tracked**, 22 analyzed — 103 pending re-analysis (will complete next run with retry fix)
+- The 2026-02-25 GitHub Actions run hit Anthropic API 529 overload errors across all 104 pending bills; the new exponential backoff retry logic will recover these next week
+- Of the 22 currently analyzed:
+  - Criterion A: 17 strong, 22 moderate (from prior local runs)
+  - Criterion B: 11 strong, 4 moderate
+  - Criterion C: 17 strong, 14 moderate
+  - Criterion D: 6 strong, 15 moderate
 
 ---
 
@@ -251,6 +253,7 @@ Use the same script as "Regenerate docs/index.html" above but write to
 |--------|---------|
 | `LEGISCAN_USER` | legiscan.com login email |
 | `LEGISCAN_PASSWORD` | legiscan.com password |
+| `LEGISCAN_API_KEY` | LegiScan real-time API key — confirmed active as of 2026-02-25 |
 | `EMAIL_USER` | Gmail sending address (shared by digest + newsletter) |
 | `EMAIL_PASSWORD` | Gmail App Password (16-char) |
 | `EMAIL_RECIPIENTS` | Comma-separated recipient list for the weekly digest |
@@ -258,7 +261,7 @@ Use the same script as "Regenerate docs/index.html" above but write to
 | `NEWSLETTER_RECIPIENTS` | Comma-separated subscriber list for the newsletter |
 
 **Optional secrets:**
-`LEGISCAN_API_KEY`, `OPENSTATES_API_KEY` (real-time data sources — use ZIP download until approved)
+`OPENSTATES_API_KEY` (secondary data source — not currently used)
 
 **What the workflow commits back:**
 - `data/bills/tracked_bills.json` — updated bill statuses + new analysis blocks

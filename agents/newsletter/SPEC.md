@@ -484,4 +484,20 @@ Comparable to the housing analyzer per-bill cost. Negligible at this scale.
 
 ---
 
-*This spec was written against codebase snapshot 2026-02-24. See CLAUDE.md for full architecture context.*
+*This spec was written against codebase snapshot 2026-02-24; last updated 2026-02-25. See CLAUDE.md for full architecture context.*
+
+---
+
+## 16. Implementation Status (as of 2026-02-25)
+
+| Section | Status | Notes |
+|---------|--------|-------|
+| Bill selection (`_select_bills`) | ✅ Live | Implemented in `newsletter_writer.py` |
+| Claude content generation | ✅ Live | Single call; uses `line1/line2/reveal/body` heading structure |
+| HTML email rendering | ✅ Live | Full Georgia serif design system; three-beat stacked headings |
+| SMTP delivery (`--send`) | ✅ Live | Gmail SMTP; reads `NEWSLETTER_RECIPIENTS` env var |
+| GitHub Actions (step 4c) | ✅ Live | Wired into `weekly_tracker.yml`; confirmed delivered 2026-02-25 |
+| Approval / preview workflow | 🔲 Not yet | Section 11 describes planned flow; currently sends directly |
+| GitHub Pages output (`docs/newsletters/`) | 🔲 Not yet | Output goes to `outputs/newsletter/` only |
+| Segmented audience editions | 🔲 Not yet | Phase 2 |
+| `--preview` CLI flag | 🔲 Not yet | `--send` is the only delivery flag currently |
