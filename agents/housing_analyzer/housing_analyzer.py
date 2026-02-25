@@ -42,6 +42,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import random
 import sys
 import time
 from datetime import datetime
@@ -82,6 +83,11 @@ DEFAULT_CONFIG = Path(__file__).parent / "config.yaml"
 DEFAULT_MODEL = "claude-sonnet-4-6"
 RATE_LIMIT_DELAY = 1.0   # seconds between Anthropic API calls
 TEXT_FETCH_DELAY = 2.0   # seconds between leginfo page fetches
+
+# Retry / backoff settings for transient Anthropic API errors (429, 500, 503, 529)
+MAX_RETRIES      = 5      # maximum number of retry attempts after initial failure
+RETRY_BASE_DELAY = 5.0   # seconds — doubles each attempt (exponential backoff)
+RETRY_MAX_DELAY  = 120.0  # seconds — cap so we never wait longer than 2 minutes
 
 SCORE_LABELS = {
     "strong":   "🔴 Strong Risk",
@@ -599,29 +605,59 @@ class HousingAnalyzer:
     def _call_claude(self, user_prompt: str) -> dict:
         """
         Call the Anthropic API with the scoring tool. Returns the tool input dict.
+
+        Automatically retries on transient server-side errors (HTTP 429, 500, 503,
+        529 Overloaded) using exponential backoff with ±20 % jitter.  After
+        MAX_RETRIES exhausted the final exception is re-raised so the caller can
+        log and skip to the next bill.
         """
         if self._anthropic is None:
             raise RuntimeError(
                 "anthropic package is not installed. Run: pip install anthropic"
             )
-        response = self._anthropic.messages.create(
-            model=self._model,
-            max_tokens=512,
-            system=SYSTEM_PROMPT,
-            tools=[SCORE_TOOL],
-            tool_choice={"type": "tool", "name": "score_bill"},
-            messages=[{"role": "user", "content": user_prompt}],
-        )
 
-        # Extract tool use block
-        tool_use_block = next(
-            (b for b in response.content if b.type == "tool_use"),
-            None,
-        )
-        if not tool_use_block:
-            raise ValueError("Claude did not return a tool_use block")
+        # Status codes that are safe to retry (transient server/capacity errors)
+        RETRYABLE = {429, 500, 503, 529}
 
-        return dict(tool_use_block.input)
+        last_exc: Exception | None = None
+        for attempt in range(MAX_RETRIES + 1):
+            try:
+                response = self._anthropic.messages.create(
+                    model=self._model,
+                    max_tokens=512,
+                    system=SYSTEM_PROMPT,
+                    tools=[SCORE_TOOL],
+                    tool_choice={"type": "tool", "name": "score_bill"},
+                    messages=[{"role": "user", "content": user_prompt}],
+                )
+
+                # Extract tool use block
+                tool_use_block = next(
+                    (b for b in response.content if b.type == "tool_use"),
+                    None,
+                )
+                if not tool_use_block:
+                    raise ValueError("Claude did not return a tool_use block")
+
+                return dict(tool_use_block.input)
+
+            except anthropic.APIStatusError as exc:
+                if exc.status_code in RETRYABLE and attempt < MAX_RETRIES:
+                    # Exponential backoff: 5s, 10s, 20s, 40s, 80s  (capped at 120s)
+                    delay = min(RETRY_BASE_DELAY * (2 ** attempt), RETRY_MAX_DELAY)
+                    # ±20 % jitter so parallel runs don't all retry simultaneously
+                    delay *= 0.8 + 0.4 * random.random()
+                    self.logger.warning(
+                        f"  ↻ Claude API {exc.status_code} (attempt {attempt + 1}/"
+                        f"{MAX_RETRIES + 1}) — retrying in {delay:.1f}s"
+                    )
+                    time.sleep(delay)
+                    last_exc = exc
+                else:
+                    raise
+
+        # All retries exhausted — surface the last error to the caller
+        raise last_exc  # type: ignore[misc]
 
     # -----------------------------------------------------------------------
     # Full text fetching
