@@ -137,6 +137,21 @@ jobs:
           python agents/newsletter/newsletter_writer.py --send
 
       # -----------------------------------------------------------------------
+      # 4d. Generate social media content
+      #
+      # Reads the freshly updated + analyzed tracked_bills.json, calls Claude
+      # to write 3 social media posts (X, Facebook, Instagram) plus image briefs.
+      # Output is a markdown file — no credentials needed, no posting occurs.
+      # Staff copy-paste from outputs/social/ into Buffer, Hootsuite, or directly
+      # into each platform's composer.
+      # -----------------------------------------------------------------------
+      - name: Generate social media content
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python agents/social/social_writer.py
+
+      # -----------------------------------------------------------------------
       # 5. Commit updated outputs back to the repo
       #
       # tracked_bills.json accumulates history across weekly runs —
@@ -148,10 +163,11 @@ jobs:
           git config user.name  "CSF Legislative Tracker"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Stage bill data, weekly reports, newsletter output, and GitHub Pages status page
+          # Stage bill data, weekly reports, newsletter, social content, and GitHub Pages status page
           git add data/bills/tracked_bills.json
           git add outputs/weekly_reports/
           git add outputs/newsletter/
+          git add outputs/social/
           git add docs/index.html
 
           # Only commit if something actually changed

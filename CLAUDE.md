@@ -11,12 +11,13 @@
 
 Multi-agent Python system for the **California Stewardship Fund (CSF)** — a conservative-leaning policy organization whose core belief is that **the best decisions come from people closest to them (local control)**. The system monitors California housing legislation and assesses bills for their risk to local government authority.
 
-**Three active agents:**
+**Four active agents:**
 1. **`agents/legislative/`** — Tracks 124+ CA housing bills weekly via LegiScan, detects new bills and status changes, generates markdown reports and HTML email digests
 2. **`agents/housing_analyzer/`** — Analyzes bills against CSF's 4-criterion local control risk framework using Claude (Anthropic API); stores results back into `tracked_bills.json`; retries transient API errors with exponential backoff (up to 5 attempts, 5 s→120 s)
 3. **`agents/newsletter/`** — Reads analyzed bill data and uses Claude to write the weekly "Local Control Intelligence" stakeholder newsletter (HTML email, prose-first, editorial voice)
+4. **`agents/social/`** — Reads analyzed bill data and uses Claude to generate 3 social media posts per week (X, Facebook, Instagram variants + image briefs); outputs copy-paste-ready markdown to `outputs/social/`
 
-**Pipeline:** `bill_tracker.py` → `tracked_bills.json` → `housing_analyzer.py` → `newsletter_writer.py`
+**Pipeline:** `bill_tracker.py` → `tracked_bills.json` → `housing_analyzer.py` → `newsletter_writer.py` + `social_writer.py`
 
 **Automation:** GitHub Actions (`weekly_tracker.yml`) runs every Monday at 6 AM PT, pulls fresh LegiScan data, commits updated `tracked_bills.json` + `docs/index.html`, and emails the digest.
 
@@ -38,6 +39,9 @@ csf-agents/
 │   │   ├── newsletter_writer.py   # Claude-powered newsletter generator
 │   │   ├── config.yaml            # Model, audience config, email settings
 │   │   └── SPEC.md                # Full technical + content spec
+│   ├── social/
+│   │   ├── social_writer.py       # Claude-powered social media content generator
+│   │   └── config.yaml            # Model, platform settings, brand colors
 │   └── shared/
 │       └── utils.py               # HTTP client, logging helpers
 │
@@ -51,7 +55,8 @@ csf-agents/
 ├── outputs/
 │   ├── analysis/                  # housing_analyzer markdown reports
 │   ├── weekly_reports/            # bill_tracker markdown weekly digests
-│   └── newsletter/                # newsletter_writer rendered HTML
+│   ├── newsletter/                # newsletter_writer rendered HTML
+│   └── social/                    # social_writer copy-paste markdown (gitignored pattern)
 │
 ├── scripts/
 │   └── generate_demo_email.py     # Builds demo HTML for stakeholder review
@@ -229,6 +234,21 @@ EOF
 
 # Output: outputs/newsletter/newsletter_YYYY-WNN.html
 # Prints subject line + preview text to terminal for use in your send tool
+```
+
+### Generate social media content (3 posts × 3 platforms + image briefs)
+```bash
+# Generate weekly social content (dry-run, writes to outputs/social/)
+.venv/bin/python agents/social/social_writer.py
+
+# Override lookback window for "new bills" detection
+.venv/bin/python agents/social/social_writer.py --lookback 7
+
+# Use a different bill data source
+.venv/bin/python agents/social/social_writer.py --bills path/to/tracked_bills.json
+
+# Output: outputs/social/social_YYYY-WNN.md
+# Copy-paste ready markdown with X, Facebook, Instagram variants + image briefs
 ```
 
 ### Generate stakeholder demo email

@@ -1,0 +1,33 @@
+# agents/social/config.yaml
+# CSF Social Media Content Generator
+
+model: claude-sonnet-4-6
+
+social:
+  posts_per_week: 3
+  platforms: [x, facebook, instagram]
+  lookback_days: 14           # Days to look back for "new this week" bills
+  hearing_lookahead_days: 7   # Days ahead to surface upcoming hearings
+  max_watch_list: 3           # Top watch-list bills passed to Claude for post selection
+
+# Post type assignment (in order)
+# 1. bill_spotlight  — Feature the top high-risk bill (what it does + specific threat)
+# 2. action_alert    — Upcoming hearing CTA, or "contact your rep" if no hearings
+# 3. mission_frame   — Broader "who decides" narrative connecting the week's pattern
+
+image_briefs:
+  sizes:
+    - "1080x1080 (Instagram/Facebook square)"
+    - "1600x900 (X/Facebook landscape)"
+  brand_colors:
+    background: "#1a3a5c"   # Deep navy
+    text:       "#ffffff"   # White
+    accent:     "#c9a227"   # Gold
+
+paths:
+  bills_file: data/bills/tracked_bills.json
+  output_dir: outputs/social
+
+logging:
+  level: INFO
+  file: logs/social_writer.log
