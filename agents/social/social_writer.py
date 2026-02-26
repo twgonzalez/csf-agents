@@ -302,7 +302,17 @@ IMAGE BRIEF RULES:
 - Subtext: 8-12 words — the specific mechanism or risk
 - Colors follow CSF brand: deep navy #1a3a5c background, white text, gold #c9a227 accent
 - Suggest the bill number as a large typographic element for bill-specific posts
-- Always specify both square and landscape sizes\
+- Always specify both square and landscape sizes
+
+AI IMAGE PROMPT RULES (the "ai_image_prompt" field):
+- This is a background asset prompt for AI image generators (DALL-E 3, Midjourney, Flux).
+- Purpose: generate the visual/graphic background only. Typography is added separately in Canva.
+- NEVER include text, words, letters, numbers, or typography in the prompt.
+- Describe the graphic element from "optional_graphic" in visual, generator-friendly language.
+- Translate brand colors into natural language: "deep navy blue", "warm gold accent", not hex codes.
+- Include style direction: "minimal flat design", "bold graphic", "clean policy/advocacy aesthetic".
+- Always end with: "No text. No typography. No people. No logos."
+- Keep it 2-4 sentences. Ready to paste directly into an image generator.\
 """
 
 
@@ -412,6 +422,7 @@ Return a JSON object with exactly this structure:
         "accent_color": "#c9a227",
         "typographic_element": "<e.g. 'Bill number AB1234 as oversized display type, upper-left'>",
         "optional_graphic": "<e.g. 'California Capitol silhouette, faint, bottom-right' or 'none'>",
+        "ai_image_prompt": "<2-4 sentences for AI image generator: describe background visual/graphic element, color palette in natural language, style direction. End with 'No text. No typography. No people. No logos.'>",
         "sizes": ["1080x1080 (Instagram/Facebook square)", "1600x900 (X/Facebook landscape)"]
       }}
     }},
@@ -432,6 +443,7 @@ Return a JSON object with exactly this structure:
         "accent_color": "#c9a227",
         "typographic_element": "...",
         "optional_graphic": "...",
+        "ai_image_prompt": "...",
         "sizes": ["1080x1080 (Instagram/Facebook square)", "1600x900 (X/Facebook landscape)"]
       }}
     }},
@@ -452,6 +464,7 @@ Return a JSON object with exactly this structure:
         "accent_color": "#c9a227",
         "typographic_element": "...",
         "optional_graphic": "...",
+        "ai_image_prompt": "...",
         "sizes": ["1080x1080 (Instagram/Facebook square)", "1600x900 (X/Facebook landscape)"]
       }}
     }}
@@ -587,6 +600,15 @@ def _render_markdown(content: dict, bill_set: dict, voice_name: str = DEFAULT_VO
 
         for sz in ib.get("sizes", []):
             lines.append(f"| **Size** | {sz} |")
+
+        ai_prompt = ib.get("ai_image_prompt", "")
+        if ai_prompt:
+            lines += [
+                "",
+                "**AI Image Prompt** *(paste into DALL-E 3 / Midjourney / Flux — background only, add text in Canva)*",
+                "",
+                f"> {ai_prompt}",
+            ]
 
         lines += ["", "---", ""]
 
@@ -735,6 +757,27 @@ def _render_post_card(post: dict, index: int) -> str:
                 f'</tr>'
             )
 
+    # AI image prompt — separate styled block below the Canva table
+    ai_prompt = ib.get("ai_image_prompt", "")
+    ai_prompt_block = ""
+    if ai_prompt:
+        ai_prompt_block = f"""
+          <div style="margin-top:14px;border-top:1px dashed {_RULE};padding-top:12px;">
+            <div style="{_SANS}font-size:11px;font-weight:700;color:{_MID};
+                        text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">
+              AI Image Prompt
+              <span style="font-weight:400;text-transform:none;letter-spacing:0;
+                           font-size:10px;color:{_MID};">
+                — paste into DALL·E 3 / Midjourney / Flux &nbsp;·&nbsp; add text in Canva
+              </span>
+            </div>
+            <div style="{_SANS}font-size:13px;color:{_INK};line-height:1.6;
+                        font-style:italic;background:#f0f4f8;border-radius:6px;
+                        padding:10px 14px;">
+              {_esc(ai_prompt)}
+            </div>
+          </div>"""
+
     # Color swatches
     color_row = ""
     for label_c, key_c in [("Background", "background_color"), ("Text", "text_color"), ("Accent", "accent_color")]:
@@ -762,6 +805,7 @@ def _render_post_card(post: dict, index: int) -> str:
           </table>
           <div style="margin-bottom:8px;">{color_row}</div>
           {f'<div style="{_SANS}font-size:12px;color:{_MID};">Sizes: {sizes}</div>' if sizes else ""}
+          {ai_prompt_block}
         </div>"""
 
     return f"""
