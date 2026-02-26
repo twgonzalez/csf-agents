@@ -10,6 +10,29 @@ social:
   hearing_lookahead_days: 7   # Days ahead to surface upcoming hearings
   max_watch_list: 3           # Top watch-list bills passed to Claude for post selection
 
+# ---------------------------------------------------------------------------
+# Voice system
+#
+# Each voice is a plain-markdown file in agents/social/voices/<name>.md.
+# Voices control tone, framing, and the content pattern (e.g. Expose→Outrage→
+# Activate→Change). Staff can edit or create voices without touching Python.
+#
+# Select a voice via CLI:  --voice <name>   (e.g. --voice urgent)
+# List all voices via CLI: --list-voices
+#
+# Available voices (add any <name>.md to agents/social/voices/ to extend):
+#   default    — General CSF advocacy voice (Expose→Outrage→Activate→Change)
+#   urgent     — Hearing imminent / time-critical action (Clock→Stakes→Action)
+#   coalition  — Peer-to-peer, partner/org-facing messaging (broad tent)
+#
+# For GitHub Actions, pass --voice to the social_writer.py call in
+# weekly_tracker.yml. Non-default voice names appear in the output filename:
+#   social_YYYY-WNN.md        (default)
+#   social_YYYY-WNN_urgent.md (urgent)
+# ---------------------------------------------------------------------------
+voice:
+  default: default    # Voice used when --voice is not specified
+
 # Post type assignment (in order)
 # 1. bill_spotlight  — Feature the top high-risk bill (what it does + specific threat)
 # 2. action_alert    — Upcoming hearing CTA, or "contact your rep" if no hearings

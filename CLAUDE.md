@@ -50,7 +50,11 @@ csf-agents/
 │   │   └── config.yaml            # Feeds, keywords, API settings, X stub config
 │   ├── social/
 │   │   ├── social_writer.py       # Claude-powered social media content generator
-│   │   └── config.yaml            # Model, platform settings, brand colors
+│   │   ├── config.yaml            # Model, platform settings, brand colors, default voice
+│   │   └── voices/                # Voice files — edit these to change tone/framing
+│   │       ├── default.md         # General CSF voice (Expose→Outrage→Activate→Change)
+│   │       ├── urgent.md          # Hearing imminent / time-critical action
+│   │       └── coalition.md       # Peer-to-peer, partner/org-facing messaging
 │   └── shared/
 │       └── utils.py               # HTTP client, logging helpers
 │
@@ -265,8 +269,17 @@ EOF
 
 ### Generate social media content (3 posts × 3 platforms + image briefs)
 ```bash
-# Generate weekly social content (dry-run, writes to outputs/social/)
+# Generate weekly social content with default voice
 .venv/bin/python agents/social/social_writer.py
+
+# Use the urgent voice (hearing this week — time-critical action)
+.venv/bin/python agents/social/social_writer.py --voice urgent
+
+# Use the coalition voice (partner/org-facing messaging)
+.venv/bin/python agents/social/social_writer.py --voice coalition
+
+# List all available voices
+.venv/bin/python agents/social/social_writer.py --list-voices
 
 # Override lookback window for "new bills" detection
 .venv/bin/python agents/social/social_writer.py --lookback 7
@@ -274,8 +287,14 @@ EOF
 # Use a different bill data source
 .venv/bin/python agents/social/social_writer.py --bills path/to/tracked_bills.json
 
-# Output: outputs/social/social_YYYY-WNN.md
+# Output (default voice):     outputs/social/social_YYYY-WNN.md + .html
+# Output (non-default voice): outputs/social/social_YYYY-WNN_<voice>.md + .html
 # Copy-paste ready markdown with X, Facebook, Instagram variants + image briefs
+
+# Voice system — to add a new voice for a campaign:
+#   1. Create agents/social/voices/<name>.md (plain markdown, no special syntax)
+#   2. Run: .venv/bin/python agents/social/social_writer.py --voice <name>
+#   No Python code changes required.
 ```
 
 ### Generate stakeholder demo email

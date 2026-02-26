@@ -14,15 +14,30 @@ Pipeline position:
                                                                   ↓
                                                          social_writer.py
 
+Voice system:
+    Each run uses a voice file from agents/social/voices/<name>.md.
+    The voice file controls tone, framing, and the Expose→Outrage→Activate→Change
+    pattern. Staff can edit or add voices without touching this script.
+
+    Default:    agents/social/voices/default.md   (general CSF advocacy voice)
+    Coalition:  agents/social/voices/coalition.md (peer-to-peer, broad tent)
+    Urgent:     agents/social/voices/urgent.md    (hearing imminent, time-critical)
+    Add more:   drop any <name>.md into agents/social/voices/ and use --voice <name>
+
 Usage:
-    .venv/bin/python agents/social/social_writer.py            # default
+    .venv/bin/python agents/social/social_writer.py                     # default voice
+    .venv/bin/python agents/social/social_writer.py --voice urgent      # urgent voice
+    .venv/bin/python agents/social/social_writer.py --voice coalition   # coalition voice
+    .venv/bin/python agents/social/social_writer.py --list-voices       # show all voices
     .venv/bin/python agents/social/social_writer.py --bills path/to/bills.json
     .venv/bin/python agents/social/social_writer.py --lookback 7
-    .venv/bin/python agents/social/social_writer.py --no-media # skip media digest
+    .venv/bin/python agents/social/social_writer.py --no-media          # skip media digest
 
 Output:
-    outputs/social/social_YYYY-WNN.md
-    outputs/social/social_YYYY-WNN.html
+    outputs/social/social_YYYY-WNN.md           (default voice)
+    outputs/social/social_YYYY-WNN_<voice>.md   (non-default voice)
+    outputs/social/social_YYYY-WNN.html         (default voice)
+    outputs/social/social_YYYY-WNN_<voice>.html (non-default voice)
 
 Requires:
     ANTHROPIC_API_KEY environment variable (or .env file at project root)
@@ -60,6 +75,9 @@ PROJECT_ROOT  = _PROJECT_ROOT
 BILLS_FILE    = PROJECT_ROOT / "data" / "bills" / "tracked_bills.json"
 MEDIA_DIGEST  = PROJECT_ROOT / "data" / "media" / "media_digest.json"
 OUTPUT_DIR    = PROJECT_ROOT / "outputs" / "social"
+VOICES_DIR    = PROJECT_ROOT / "agents" / "social" / "voices"
+
+DEFAULT_VOICE = "default"
 
 # ---------------------------------------------------------------------------
 # Bill selection (mirrors newsletter_writer.py logic)
@@ -213,29 +231,60 @@ def _format_media_context(digest: dict | None) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Voice system
+# ---------------------------------------------------------------------------
+
+def _list_voices(voices_dir: Path | None = None) -> list[str]:
+    """Return sorted list of available voice names (filename stems)."""
+    d = voices_dir or VOICES_DIR
+    if not d.exists():
+        return []
+    return sorted(p.stem for p in d.glob("*.md"))
+
+
+def _load_voice(name: str = DEFAULT_VOICE, voices_dir: Path | None = None) -> str:
+    """Load a voice file by name from the voices directory.
+
+    Returns the file content as a string. Falls back to DEFAULT_VOICE if the
+    named voice doesn't exist, and returns an empty string if nothing is found
+    so the base prompt still works (with a warning logged).
+
+    Voice files live in agents/social/voices/<name>.md and are plain markdown —
+    just prose instructions for Claude. No special syntax required.
+    """
+    d = voices_dir or VOICES_DIR
+    path = d / f"{name}.md"
+
+    if path.exists():
+        log.info(f"→ Voice: '{name}' ({path.name})")
+        return path.read_text(encoding="utf-8").strip()
+
+    if name != DEFAULT_VOICE:
+        log.warning(f"Voice '{name}' not found at {path}. Falling back to '{DEFAULT_VOICE}'.")
+        default_path = d / f"{DEFAULT_VOICE}.md"
+        if default_path.exists():
+            log.info(f"→ Voice: '{DEFAULT_VOICE}' (fallback)")
+            return default_path.read_text(encoding="utf-8").strip()
+
+    log.warning(f"No voice file found in {d}. Proceeding without voice guidance.")
+    return ""
+
+
+# ---------------------------------------------------------------------------
 # Claude content generation
 # ---------------------------------------------------------------------------
 
-_SYSTEM_PROMPT = """\
-You are the social media voice of the California Stewardship Fund — a policy organization \
-whose core belief is that the best decisions come from people closest to them.
+# Structural rules — platform mechanics and output format. Never changes.
+# Voice/tone/framing is loaded separately from agents/social/voices/<name>.md
+# and injected at runtime so it can be swapped per campaign without code changes.
+_BASE_SYSTEM_PROMPT = """\
+You are the social media content generator for the California Stewardship Fund — a policy \
+organization whose core belief is that the best decisions come from people closest to them.
 
 Your job is to write 3 social media posts per week based on the latest California housing \
 bill intelligence. These posts reach city council members, neighborhood advocates, major \
 donors, and engaged citizens who care about protecting local government authority from \
 state preemption.
-
-VOICE: Sharp, direct, credible. Never alarmist or hyperbolic. Think: a smart local \
-elected official explaining a real threat to their constituents — confident, factual, \
-and clear about what's at stake.
-
-FRAMING: The central message is always: "This isn't about stopping housing — it's about \
-who decides." Sacramento bills preempt local zoning authority, remove discretionary review, \
-mandate development patterns, and shift infrastructure costs to cities.
-
-USE THESE TERMS: "preempts local authority", "removes discretionary review", "state mandate", \
-"local control", "who decides", "your city council", "infrastructure cost-shifting"
-AVOID: "controversial", "opponents say", "some argue", false balance, hyperbole
 
 PLATFORM RULES:
 - X: Hard 280 character limit — count every character including spaces and punctuation. \
@@ -255,6 +304,13 @@ IMAGE BRIEF RULES:
 - Suggest the bill number as a large typographic element for bill-specific posts
 - Always specify both square and landscape sizes\
 """
+
+
+def _build_system_prompt(voice_text: str) -> str:
+    """Combine the structural base prompt with a loaded voice file."""
+    if not voice_text:
+        return _BASE_SYSTEM_PROMPT
+    return f"{_BASE_SYSTEM_PROMPT}\n\n---\n\n## VOICE & TONE\n\n{voice_text}"
 
 
 def _build_bill_context(bill: dict) -> str:
@@ -285,7 +341,12 @@ def _format_hearing(h: dict) -> str:
     )
 
 
-def _generate_content(bill_set: dict, client: anthropic.Anthropic, media_digest: dict | None = None) -> dict:
+def _generate_content(
+    bill_set: dict,
+    client: anthropic.Anthropic,
+    media_digest: dict | None = None,
+    voice_text: str = "",
+) -> dict:
     """Single Claude call returning all 3 posts as a structured dict."""
     watch_ctx   = "\n\n".join(_build_bill_context(b) for b in bill_set["watch_list"])
     new_ctx     = "\n\n".join(_build_bill_context(b) for b in bill_set["new_bills"])
@@ -401,11 +462,12 @@ Return ONLY valid JSON. No markdown fences. No commentary outside the JSON objec
 Count X characters carefully — every space and punctuation mark counts toward the 280 limit.
 """
 
+    system_prompt = _build_system_prompt(voice_text)
     log.info("→ Calling Claude to generate social media content...")
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=4000,
-        system=_SYSTEM_PROMPT,
+        system=system_prompt,
         messages=[{"role": "user", "content": user_prompt}],
     )
 
@@ -440,7 +502,7 @@ _POST_TYPE_ICONS = {
 # ---------------------------------------------------------------------------
 
 
-def _render_markdown(content: dict, bill_set: dict) -> str:
+def _render_markdown(content: dict, bill_set: dict, voice_name: str = DEFAULT_VOICE) -> str:
     """Render the full content package as a copy-paste-ready markdown file.
 
     Structured so staff can work top-to-bottom: read the post, check char counts,
@@ -448,10 +510,11 @@ def _render_markdown(content: dict, bill_set: dict) -> str:
     and hand the image brief to a designer or open Canva.
     """
     today = date.today()
+    voice_label = f" · Voice: `{voice_name}`" if voice_name != DEFAULT_VOICE else ""
     lines = [
         f"# CSF Social Media — Week of {today.strftime('%B %-d, %Y')}",
         "",
-        f"*3 posts · Meta platforms + X · Generated {today.isoformat()}*",
+        f"*3 posts · Meta platforms + X · Generated {today.isoformat()}{voice_label}*",
         "",
         f"> **This week:** {content.get('week_theme', '')}",
         "",
@@ -537,6 +600,7 @@ def _render_markdown(content: dict, bill_set: dict) -> str:
         f"- **Watch list bills:** {watch_bills or 'None (run housing_analyzer.py first)'}",
         f"- **Upcoming hearings:** {len(bill_set['upcoming_hearings'])}",
         f"- **New bills this week:** {len(bill_set['new_bills'])}",
+        f"- **Voice:** `{voice_name}` (`agents/social/voices/{voice_name}.md`)",
         f"- **Generated:** {today.isoformat()}",
         "",
         "*Generated by `agents/social/social_writer.py` — California Stewardship Fund*",
@@ -725,12 +789,13 @@ def _render_post_card(post: dict, index: int) -> str:
   </div>"""
 
 
-def _render_html(content: dict, bill_set: dict) -> str:
+def _render_html(content: dict, bill_set: dict, voice_name: str = DEFAULT_VOICE) -> str:
     """Render the full content package as a shareable inline-styled HTML page."""
     today     = date.today()
     week_str  = today.strftime("Week of %B %-d, %Y")
     theme     = _esc(content.get("week_theme", ""))
     watch_str = ", ".join(b["bill_number"] for b in bill_set["watch_list"])
+    voice_label = f" &nbsp;·&nbsp; Voice: <code>{voice_name}</code>" if voice_name != DEFAULT_VOICE else ""
 
     post_cards = "".join(
         _render_post_card(post, i)
@@ -816,6 +881,7 @@ def _render_html(content: dict, bill_set: dict) -> str:
         Generated by <code>agents/social/social_writer.py</code>
         &nbsp;·&nbsp; California Stewardship Fund
         &nbsp;·&nbsp; Content only — no posts have been published
+        {voice_label}
       </div>
     </td>
   </tr>
@@ -838,8 +904,17 @@ def _parse_args() -> argparse.Namespace:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 examples:
-  # Generate markdown output (default)
+  # Generate posts with the default advocacy voice
   python agents/social/social_writer.py
+
+  # Use the urgent voice (hearing imminent)
+  python agents/social/social_writer.py --voice urgent
+
+  # Use the coalition voice (partner-facing messaging)
+  python agents/social/social_writer.py --voice coalition
+
+  # List all available voices
+  python agents/social/social_writer.py --list-voices
 
   # Override lookback window for "new bills" detection
   python agents/social/social_writer.py --lookback 7
@@ -847,6 +922,18 @@ examples:
   # Use a different bill data source
   python agents/social/social_writer.py --bills data/bills/tracked_bills.json
         """,
+    )
+    p.add_argument(
+        "--voice", type=str, default=DEFAULT_VOICE,
+        help=(
+            f"Voice to use for content generation (default: '{DEFAULT_VOICE}'). "
+            f"Must match a filename in agents/social/voices/<name>.md. "
+            f"Run --list-voices to see all available voices."
+        ),
+    )
+    p.add_argument(
+        "--list-voices", action="store_true", default=False,
+        help="Print all available voice names and exit.",
     )
     p.add_argument(
         "--bills", type=Path, default=None,
@@ -866,6 +953,19 @@ examples:
 def main() -> None:
     args = _parse_args()
 
+    # ── --list-voices: print available voices and exit ───────────────────────
+    if args.list_voices:
+        voices = _list_voices()
+        if voices:
+            print("\n  Available voices (agents/social/voices/):\n")
+            for v in voices:
+                marker = " ← default" if v == DEFAULT_VOICE else ""
+                print(f"    {v}{marker}")
+            print(f"\n  Usage: --voice <name>   e.g. --voice urgent\n")
+        else:
+            print(f"\n  No voice files found in {VOICES_DIR}\n")
+        sys.exit(0)
+
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         log.error("ANTHROPIC_API_KEY not set. Add it to .env or your environment.")
@@ -873,6 +973,13 @@ def main() -> None:
 
     print("\n  CSF Social Media Writer")
     print("  " + "─" * 30)
+
+    # ── Load voice ───────────────────────────────────────────────────────────
+    voice_name = args.voice
+    voice_text = _load_voice(voice_name)
+    # Normalise to the actual loaded name in case of fallback
+    if voice_text and not (VOICES_DIR / f"{voice_name}.md").exists():
+        voice_name = DEFAULT_VOICE
 
     # ── Load bill data ──────────────────────────────────────────────────────
     bills_path = args.bills or BILLS_FILE
@@ -907,12 +1014,13 @@ def main() -> None:
 
     # ── Generate content via Claude ─────────────────────────────────────────
     client  = anthropic.Anthropic(api_key=api_key)
-    content = _generate_content(bill_set, client, media_digest)
+    content = _generate_content(bill_set, client, media_digest, voice_text)
     posts   = content.get("posts", [])
     log.info(f"   ✓ {len(posts)} posts generated")
 
     # ── Print summary ───────────────────────────────────────────────────────
-    print(f"\n  Week theme: {content.get('week_theme', '')}\n")
+    print(f"\n  Week theme: {content.get('week_theme', '')}")
+    print(f"  Voice:      {voice_name}\n")
     for post in posts:
         num      = post.get("post_number", "?")
         label    = _POST_TYPE_LABELS.get(post.get("post_type", ""), "Post")
@@ -923,13 +1031,14 @@ def main() -> None:
 
     # ── Write output ─────────────────────────────────────────────────────────
     log.info("→ Rendering outputs...")
-    markdown = _render_markdown(content, bill_set)
-    html     = _render_html(content, bill_set)
+    markdown = _render_markdown(content, bill_set, voice_name)
+    html     = _render_html(content, bill_set, voice_name)
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    iso_week  = date.today().strftime("%Y-W%W")
-    md_path   = OUTPUT_DIR / f"social_{iso_week}.md"
-    html_path = OUTPUT_DIR / f"social_{iso_week}.html"
+    iso_week     = date.today().strftime("%Y-W%W")
+    voice_suffix = f"_{voice_name}" if voice_name != DEFAULT_VOICE else ""
+    md_path      = OUTPUT_DIR / f"social_{iso_week}{voice_suffix}.md"
+    html_path    = OUTPUT_DIR / f"social_{iso_week}{voice_suffix}.html"
     md_path.write_text(markdown,  encoding="utf-8")
     html_path.write_text(html,    encoding="utf-8")
 
