@@ -1,9 +1,48 @@
 # CLAUDE.md — CSF Intelligence Agents
 ## Codebase snapshot for AI-assisted development
 
-**Last updated:** 2026-02-25
+**Last updated:** 2026-02-26
 **Repo:** https://github.com/twgonzalez/csf-agents
 **Live dashboard:** https://twgonzalez.github.io/csf-agents/
+
+---
+
+## 🔖 Next Session Pickup — Canva MCP Integration
+
+**Where we left off (2026-02-26):** Exploring Canva MCP to auto-generate social
+media graphics directly from the `social_writer.py` image briefs.
+
+**Status:** Canva MCP is registered in `~/.claude.json` but requires a Claude Code
+restart + OAuth authentication to activate.
+
+**First thing to do in the next session:**
+1. Type `/mcp` in Claude Code to check if Canva MCP shows as connected
+2. If not connected: click the OAuth link to authenticate with your Canva account
+3. Once authenticated: test by asking Claude to generate Post 1's graphic (see below)
+
+**The test prompt to run once Canva MCP is live:**
+
+> "Using the Canva MCP, create a social media graphic for Instagram (1080x1080).
+> Use this as the design brief: deep navy blue background (#1a3a5c), white text,
+> gold accent (#c9a227). Headline: [copy headline from outputs/social/social_2026-W08.md Post 1].
+> Bill number AB1751 in large gold display type upper-left. Subtext: [copy subtext].
+> California Capitol silhouette, faint, lower right. Minimal policy advocacy style."
+
+**The goal:** Determine if Canva's `generate-design` tool can produce a publish-ready
+graphic (text + imagery in one pass) or if we need the hybrid approach (AI background
++ manual text in Canva). If quality is good → wire a `--canva` flag into `social_writer.py`
+that auto-generates graphics after writing posts.
+
+**Key context on Canva MCP tiers:**
+- `generate-design` (AI design from prompt) → works on Pro accounts
+- Template autofill (pre-built CSF template + Claude fills fields) → requires Enterprise
+- Brand Kit (auto-apply CSF navy/gold/fonts) → Pro or Enterprise
+- Start with `generate-design` — if quality is there, no template/Enterprise needed
+
+**MCP config added to:** `~/.claude.json` → `mcpServers.canva`
+```json
+{ "type": "http", "url": "https://mcp.canva.com/mcp" }
+```
 
 ---
 
