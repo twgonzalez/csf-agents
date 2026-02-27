@@ -192,7 +192,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="  %(message)s")
 
     test_brief = {
-        "headline":           "Your City Can't Say No — Or Send the Bill",
+        "headline":           "AB1751 Bans Cities from Charging Impact Fees",
         "subtext":            "AB1751 eliminates impact fees and all local discretionary review",
         "background_color":   "#1a3a5c",
         "text_color":         "#ffffff",
@@ -206,7 +206,7 @@ if __name__ == "__main__":
         ],
     }
 
-    iso_week  = date.today().strftime("%Y-W%W")
+    iso_week  = date.today().strftime("%G-W%V")   # ISO 8601 — matches workflow %V
     out_dir   = _PROJECT_ROOT / "outputs" / "social" / "images" / iso_week
     post_slug = "post_1"
 

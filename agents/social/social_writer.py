@@ -55,10 +55,6 @@ from pathlib import Path
 
 # Load .env before importing anthropic so the key is available
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-# Ensure project root is on sys.path so `from agents.* import ...` works when the
-# script is invoked directly (e.g. python agents/social/social_writer.py)
-if str(_PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(_PROJECT_ROOT))
 from dotenv import load_dotenv
 load_dotenv(_PROJECT_ROOT / ".env", override=True)
 
@@ -702,7 +698,8 @@ def _img_data_uri(abs_path: Path, max_width: int) -> str:
         img.save(buf, format="PNG", optimize=True)
         b64 = base64.b64encode(buf.getvalue()).decode()
         return f"data:image/png;base64,{b64}"
-    except Exception:
+    except Exception as e:
+        log.warning(f"_img_data_uri failed for {abs_path.name}: {e}")
         return ""
 
 
@@ -1180,7 +1177,7 @@ def main() -> None:
 
     # ── Prepare output paths ──────────────────────────────────────────────────
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    iso_week     = date.today().strftime("%Y-W%W")
+    iso_week     = date.today().strftime("%G-W%V")   # ISO 8601 — matches workflow %V
     voice_suffix = f"_{voice_name}" if voice_name != DEFAULT_VOICE else ""
     md_path      = OUTPUT_DIR / f"social_{iso_week}{voice_suffix}.md"
     html_path    = OUTPUT_DIR / f"social_{iso_week}{voice_suffix}.html"
