@@ -22,3 +22,9 @@ anthropic>=0.40.0
 
 # RSS/Atom feed parsing (used by media_scanner agent)
 feedparser>=6.0.11
+
+# Google Gemini SDK (used by image_generator for Nano Banana Pro / gemini-3-pro-image-preview)
+google-genai>=1.0.0
+
+# PNG save from Gemini inline_data (used by image_generator)
+Pillow>=10.0.0

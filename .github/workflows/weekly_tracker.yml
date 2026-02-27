@@ -22,6 +22,7 @@
 #   EMAIL_PASSWORD         Gmail App Password (16-char, not your account password)
 #   EMAIL_RECIPIENTS       Comma-separated recipient list for the weekly digest
 #   ANTHROPIC_API_KEY      Claude API key (housing analyzer + newsletter writer)
+#   GEMINI_API_KEY         Google Gemini API key (social image generation via Nano Banana Pro)
 #   NEWSLETTER_RECIPIENTS  Comma-separated subscriber list for the newsletter
 #
 # Optional secrets (leave unset to skip that data source):
@@ -164,8 +165,9 @@ jobs:
       - name: Generate social media content
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY:    ${{ secrets.GEMINI_API_KEY }}
         run: |
-          python agents/social/social_writer.py
+          python agents/social/social_writer.py --images
 
       # -----------------------------------------------------------------------
       # 5. Commit updated outputs back to the repo

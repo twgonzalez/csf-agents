@@ -55,6 +55,10 @@ from pathlib import Path
 
 # Load .env before importing anthropic so the key is available
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+# Ensure project root is on sys.path so `from agents.* import ...` works when the
+# script is invoked directly (e.g. python agents/social/social_writer.py)
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
 from dotenv import load_dotenv
 load_dotenv(_PROJECT_ROOT / ".env", override=True)
 
@@ -298,8 +302,12 @@ PLATFORM RULES:
 
 IMAGE BRIEF RULES:
 - Keep it achievable: text card graphics that any staff member can build in Canva in 5 min
-- Headline: 6-10 words max — the single most alarming true fact about this bill/topic
-- Subtext: 8-12 words — the specific mechanism or risk
+- Headline: 6-10 words max — a direct, declarative statement of the single most alarming fact.
+  Must be immediately clear at a glance. No wordplay, puns, em-dash tricks, or double meanings.
+  Write as a plain active-voice sentence or a clear noun phrase. If a reader needs to stop and
+  parse it, rewrite it. Bad: "Your City Can't Say No — Or Send the Bill". Good: "AB1751 Bans
+  Cities from Charging Impact Fees" or "Sacramento Eliminates Local Zoning Authority".
+- Subtext: 8-12 words — the specific mechanism or risk, factual and unambiguous
 - Colors follow CSF brand: deep navy #1a3a5c background, white text, gold #c9a227 accent
 - Suggest the bill number as a large typographic element for bill-specific posts
 - Always specify both square and landscape sizes
@@ -415,7 +423,7 @@ Return a JSON object with exactly this structure:
       "instagram": "<Instagram caption: 2-3 short paragraphs, then blank line, then hashtags>",
       "hashtags": ["LocalControl", "CaliforniaHousing", "AB1234", "LocalGovernment"],
       "image_brief": {{
-        "headline": "<6-10 words — the most alarming true fact>",
+        "headline": "<6-10 words — direct declarative statement, no wordplay, immediately clear at a glance>",
         "subtext": "<8-12 words — the specific mechanism or risk>",
         "background_color": "#1a3a5c",
         "text_color": "#ffffff",
@@ -601,14 +609,21 @@ def _render_markdown(content: dict, bill_set: dict, voice_name: str = DEFAULT_VO
         for sz in ib.get("sizes", []):
             lines.append(f"| **Size** | {sz} |")
 
-        ai_prompt = ib.get("ai_image_prompt", "")
-        if ai_prompt:
-            lines += [
-                "",
-                "**AI Image Prompt** *(paste into DALL-E 3 / Midjourney / Flux — background only, add text in Canva)*",
-                "",
-                f"> {ai_prompt}",
-            ]
+        image_paths = post.get("image_paths", {})
+        if image_paths:
+            lines += ["", "**Generated Images**", ""]
+            for kind, rel_path in image_paths.items():
+                size_label = "1080×1080 Square" if kind == "square" else "1600×900 Landscape"
+                lines.append(f"- {size_label}: `outputs/social/{rel_path}`")
+        else:
+            ai_prompt = ib.get("ai_image_prompt", "")
+            if ai_prompt:
+                lines += [
+                    "",
+                    "**AI Image Prompt** *(paste into DALL-E 3 / Midjourney / Flux — background only, add text in Canva)*",
+                    "",
+                    f"> {ai_prompt}",
+                ]
 
         lines += ["", "---", ""]
 
@@ -665,6 +680,30 @@ def _esc(text: str) -> str:
         .replace("<", "&lt;")
         .replace(">", "&gt;")
         .replace("\n", "<br>"))
+
+
+def _img_data_uri(abs_path: Path, max_width: int) -> str:
+    """Resize image to max_width px wide and return as a PNG data URI.
+
+    Used to embed thumbnails directly in the HTML so the proof sheet is
+    self-contained and images survive copy-paste into email clients.
+    Returns an empty string on any error so the caller can skip gracefully.
+    """
+    try:
+        import base64
+        import io as _io
+        from PIL import Image
+        img = Image.open(abs_path).convert("RGB")
+        if img.width > max_width:
+            ratio     = max_width / img.width
+            new_size  = (max_width, int(img.height * ratio))
+            img       = img.resize(new_size, Image.LANCZOS)
+        buf = _io.BytesIO()
+        img.save(buf, format="PNG", optimize=True)
+        b64 = base64.b64encode(buf.getvalue()).decode()
+        return f"data:image/png;base64,{b64}"
+    except Exception:
+        return ""
 
 
 def _platform_badge(platform: str) -> str:
@@ -757,10 +796,11 @@ def _render_post_card(post: dict, index: int) -> str:
                 f'</tr>'
             )
 
-    # AI image prompt — separate styled block below the Canva table
+    # AI image prompt — shown only when no real generated images are present
     ai_prompt = ib.get("ai_image_prompt", "")
+    image_paths = post.get("image_paths", {})
     ai_prompt_block = ""
-    if ai_prompt:
+    if ai_prompt and not image_paths:
         ai_prompt_block = f"""
           <div style="margin-top:14px;border-top:1px dashed {_RULE};padding-top:12px;">
             <div style="{_SANS}font-size:11px;font-weight:700;color:{_MID};
@@ -777,6 +817,65 @@ def _render_post_card(post: dict, index: int) -> str:
               {_esc(ai_prompt)}
             </div>
           </div>"""
+
+    # Image proof strip — shown at the top of the post body when images were generated.
+    # Uses table layout (no flexbox) and base64-embedded thumbnails so the HTML is
+    # self-contained and images survive copy-paste into Gmail / Outlook.
+    image_proof_strip = ""
+    if image_paths:
+        sq_rel  = image_paths.get("square", "")
+        ls_rel  = image_paths.get("landscape", "")
+        sq_cell = ""
+        ls_cell = ""
+
+        if sq_rel:
+            sq_abs  = OUTPUT_DIR / sq_rel
+            sq_uri  = _img_data_uri(sq_abs, max_width=200)   # display-size thumbnail
+            sq_href = sq_rel                                   # relative link to full-res
+            sq_img  = (
+                f'<img src="{sq_uri or sq_href}" width="200" height="200" '
+                f'style="display:block;border-radius:8px;border:2px solid {_RULE};">'
+            )
+            sq_cell = f"""
+              <td valign="top" style="padding-right:16px;">
+                <div style="{_SANS}font-size:10px;font-weight:700;color:{_MID};
+                            text-transform:uppercase;letter-spacing:0.8px;
+                            margin-bottom:6px;">1080×1080 Square</div>
+                <a href="{sq_href}" target="_blank" style="display:block;">{sq_img}</a>
+              </td>"""
+
+        if ls_rel:
+            ls_abs  = OUTPUT_DIR / ls_rel
+            ls_uri  = _img_data_uri(ls_abs, max_width=520)   # display-size thumbnail
+            ls_href = ls_rel
+            # Fixed display width; height=auto via explicit calc (16:9 ratio of 520px wide = 293px)
+            ls_img  = (
+                f'<img src="{ls_uri or ls_href}" width="520" height="293" '
+                f'style="display:block;border-radius:8px;border:2px solid {_RULE};">'
+            )
+            ls_cell = f"""
+              <td valign="top">
+                <div style="{_SANS}font-size:10px;font-weight:700;color:{_MID};
+                            text-transform:uppercase;letter-spacing:0.8px;
+                            margin-bottom:6px;">1600×900 Landscape</div>
+                <a href="{ls_href}" target="_blank" style="display:block;">{ls_img}</a>
+              </td>"""
+
+        image_proof_strip = f"""
+        <div style="background:#f0f4f8;border:1px solid {_RULE};border-radius:10px;
+                    padding:16px 20px;margin-bottom:24px;">
+          <div style="{_SANS}font-size:11px;font-weight:700;color:{_NAVY};
+                      text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px;">
+            ✓ Generated Images &nbsp;
+            <span style="font-weight:400;color:{_MID};text-transform:none;
+                         letter-spacing:0;font-size:10px;">
+              — click to open full size
+            </span>
+          </div>
+          <table cellpadding="0" cellspacing="0">
+            <tr>{sq_cell}{ls_cell}</tr>
+          </table>
+        </div>"""
 
     # Color swatches
     color_row = ""
@@ -826,6 +925,7 @@ def _render_post_card(post: dict, index: int) -> str:
 
     <!-- Post body -->
     <div style="padding:24px 28px;">
+      {image_proof_strip}
       {platform_blocks}
       {hashtag_block}
       {image_brief_block}
@@ -991,6 +1091,11 @@ examples:
         "--no-media", action="store_true", default=False,
         help="Skip media digest even if data/media/media_digest.json exists",
     )
+    p.add_argument(
+        "--images", action="store_true", default=False,
+        help="Generate PNG images via Nano Banana Pro (gemini-3-pro-image-preview) for each post. "
+             "Requires GEMINI_API_KEY in environment or .env.",
+    )
     return p.parse_args()
 
 
@@ -1073,21 +1178,51 @@ def main() -> None:
         over_msg = f" ⚠ OVER by {x_chars - 280}" if x_chars > 280 else ""
         print(f"  Post {num} ({label:14s})  X: {x_chars}/280{over_msg}  bill: {bill}")
 
-    # ── Write output ─────────────────────────────────────────────────────────
-    log.info("→ Rendering outputs...")
-    markdown = _render_markdown(content, bill_set, voice_name)
-    html     = _render_html(content, bill_set, voice_name)
-
+    # ── Prepare output paths ──────────────────────────────────────────────────
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     iso_week     = date.today().strftime("%Y-W%W")
     voice_suffix = f"_{voice_name}" if voice_name != DEFAULT_VOICE else ""
     md_path      = OUTPUT_DIR / f"social_{iso_week}{voice_suffix}.md"
     html_path    = OUTPUT_DIR / f"social_{iso_week}{voice_suffix}.html"
+
+    # ── Generate images BEFORE rendering (proof sheet includes them) ──────────
+    if args.images:
+        from agents.social.image_generator import generate_images
+        images_dir = OUTPUT_DIR / "images" / iso_week
+        log.info("→ Generating images (Nano Banana Pro)...")
+        for post in posts:
+            brief = post.get("image_brief")
+            if not brief:
+                continue
+            # Ensure bill_number is in the brief for prompt resolution.
+            # Use `or ""` to convert JSON null (Python None) to empty string.
+            if "bill_number" not in brief or brief.get("bill_number") is None:
+                brief = dict(brief, bill_number=post.get("bill_number") or "")
+            post_slug = f"post_{post.get('post_number', 'N')}"
+            paths = generate_images(brief, images_dir, post_slug)
+            if paths:
+                # Store paths relative to OUTPUT_DIR so HTML <img src> resolves correctly
+                post["image_paths"] = {
+                    k: str(Path(v).relative_to(OUTPUT_DIR))
+                    for k, v in paths.items()
+                }
+        log.info("→ Image generation complete")
+
+    # ── Render and write outputs ──────────────────────────────────────────────
+    log.info("→ Rendering outputs...")
+    markdown = _render_markdown(content, bill_set, voice_name)
+    html     = _render_html(content, bill_set, voice_name)
+
     md_path.write_text(markdown,  encoding="utf-8")
     html_path.write_text(html,    encoding="utf-8")
 
     print(f"\n  ✓ Markdown: {md_path.relative_to(PROJECT_ROOT)}")
     print(f"  ✓ HTML:     {html_path.relative_to(PROJECT_ROOT)}")
+    if args.images:
+        for post in posts:
+            n = post.get("post_number", "?")
+            for kind, rel_path in post.get("image_paths", {}).items():
+                print(f"  ✓ Image post {n} ({kind}): {OUTPUT_DIR.relative_to(PROJECT_ROOT) / rel_path}")
     print(f"\n  Share preview: file://{html_path}")
     print(f"  Copy-paste:    file://{md_path}\n")
 
