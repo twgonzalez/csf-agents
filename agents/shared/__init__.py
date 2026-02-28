@@ -1,1 +1,1 @@
-# Shared utilities for all CSF intelligence agents
+# agents/shared — utilities shared across multiple CSF agents

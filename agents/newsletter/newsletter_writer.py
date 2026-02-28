@@ -42,18 +42,29 @@ import logging
 import os
 import smtplib
 import sys
-from datetime import date, datetime, timedelta
+from datetime import date
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
 
 # Load .env before importing anthropic so the key is available
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+
+# Ensure project root is on sys.path so intra-package imports work when the
+# script is run directly (python agents/newsletter/newsletter_writer.py).
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
+
 from dotenv import load_dotenv
 load_dotenv(_PROJECT_ROOT / ".env", override=True)
 
 import anthropic
-import yaml
+
+from agents.shared.client_utils import (
+    CLIENTS_DIR, DEFAULT_CLIENT, DEFAULT_VOICE,
+    _load_client, _list_clients, _load_voice, _list_voices,
+)
+from agents.shared.bill_utils import _CRIT_KEYS, _select_bills, _build_bill_context
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -68,10 +79,7 @@ log = logging.getLogger(__name__)
 
 PROJECT_ROOT   = _PROJECT_ROOT
 BILLS_FILE     = PROJECT_ROOT / "data" / "bills" / "tracked_bills.json"
-CLIENTS_DIR    = PROJECT_ROOT / "clients"
-
-DEFAULT_CLIENT = "csf"
-DEFAULT_VOICE  = "default"
+# CLIENTS_DIR, DEFAULT_CLIENT, DEFAULT_VOICE — imported from agents.shared.client_utils
 
 # ---------------------------------------------------------------------------
 # Design constants
@@ -88,138 +96,7 @@ _INK    = "#1c1c1e"   # body text
 _MID    = "#555555"   # muted / secondary text
 _RULE   = "#ddd8ce"   # horizontal rule
 
-# ---------------------------------------------------------------------------
-# Bill selection
-# ---------------------------------------------------------------------------
 
-_CRIT_KEYS = {
-    "A": "pro_housing_production",
-    "B": "densification",
-    "C": "reduce_discretion",
-    "D": "cost_to_cities",
-}
-
-
-def _select_bills(
-    bills: dict,
-    lookback_days: int = 14,
-    hearing_lookahead: int = 7,
-    max_watch: int = 5,
-    max_new: int = 4,
-) -> dict:
-    """Return the three bill sets that drive newsletter content."""
-    today    = date.today()
-    cutoff   = today - timedelta(days=lookback_days)
-    hear_end = today + timedelta(days=hearing_lookahead)
-
-    watch_list:        list[tuple] = []
-    new_bills:         list[dict]  = []
-    upcoming_hearings: list[dict]  = []
-
-    for bill in bills.values():
-        analysis     = bill.get("analysis", {})
-        risk_scores  = {k: analysis.get(v, "none") for k, v in _CRIT_KEYS.items()}
-        risk_count   = sum(1 for s in risk_scores.values() if s in ("strong", "moderate"))
-        strong_count = sum(1 for s in risk_scores.values() if s == "strong")
-
-        if risk_count >= 2:
-            watch_list.append((bill, risk_count, strong_count))
-
-        if bill.get("first_seen") and risk_count >= 1:
-            try:
-                first_seen = datetime.fromisoformat(bill["first_seen"]).date()
-                if first_seen >= cutoff:
-                    new_bills.append(bill)
-            except ValueError:
-                pass
-
-        for h in bill.get("upcoming_hearings", []):
-            try:
-                hdate = date.fromisoformat(h["date"])
-                if today <= hdate <= hear_end:
-                    upcoming_hearings.append({**h, "_bill": bill})
-            except (KeyError, ValueError):
-                pass
-
-    def _has_hearing(item: tuple) -> bool:
-        b, _, _ = item
-        return any(
-            today <= date.fromisoformat(h["date"]) <= hear_end
-            for h in b.get("upcoming_hearings", [])
-            if h.get("date")
-        )
-
-    watch_list.sort(key=lambda x: (-int(_has_hearing(x)), -x[1], -x[2]))
-
-    return {
-        "watch_list":        [b for b, _, _ in watch_list[:max_watch]],
-        "new_bills":         new_bills[:max_new],
-        "upcoming_hearings": sorted(upcoming_hearings, key=lambda h: h["date"]),
-    }
-
-
-# ---------------------------------------------------------------------------
-# Client system
-# ---------------------------------------------------------------------------
-
-def _list_clients() -> list[str]:
-    """Return sorted list of available client slugs."""
-    if not CLIENTS_DIR.exists():
-        return []
-    return sorted(
-        p.name for p in CLIENTS_DIR.iterdir()
-        if p.is_dir() and (p / "client.yml").exists()
-    )
-
-
-def _load_client(name: str = DEFAULT_CLIENT) -> dict:
-    """Load a client config from clients/<name>/client.yml."""
-    path = CLIENTS_DIR / name / "client.yml"
-    if path.exists():
-        log.info(f"→ Client: '{name}' ({path})")
-        return yaml.safe_load(path.read_text(encoding="utf-8"))
-
-    if name != DEFAULT_CLIENT:
-        log.warning(f"Client '{name}' not found at {path}. Falling back to '{DEFAULT_CLIENT}'.")
-        default_path = CLIENTS_DIR / DEFAULT_CLIENT / "client.yml"
-        if default_path.exists():
-            log.info(f"→ Client: '{DEFAULT_CLIENT}' (fallback)")
-            return yaml.safe_load(default_path.read_text(encoding="utf-8"))
-
-    log.error(f"No client config found for '{name}' and no '{DEFAULT_CLIENT}' fallback.")
-    sys.exit(1)
-
-
-# ---------------------------------------------------------------------------
-# Voice system
-# ---------------------------------------------------------------------------
-
-def _list_voices(voices_dir: Path) -> list[str]:
-    """Return sorted list of available voice names for a client."""
-    if not voices_dir.exists():
-        return []
-    return sorted(p.stem for p in voices_dir.glob("*.md"))
-
-
-def _load_voice(name: str = DEFAULT_VOICE, voices_dir: Path | None = None) -> str:
-    """Load a voice file by name from the client's voices directory."""
-    if voices_dir is None:
-        voices_dir = CLIENTS_DIR / DEFAULT_CLIENT / "voices"
-
-    path = voices_dir / f"{name}.md"
-    if path.exists():
-        log.info(f"→ Voice: '{name}' ({path.name})")
-        return path.read_text(encoding="utf-8").strip()
-
-    if name != DEFAULT_VOICE:
-        log.warning(f"Voice '{name}' not found at {path}. Falling back to '{DEFAULT_VOICE}'.")
-        default_path = voices_dir / f"{DEFAULT_VOICE}.md"
-        if default_path.exists():
-            log.info(f"→ Voice: '{DEFAULT_VOICE}' (fallback)")
-            return default_path.read_text(encoding="utf-8").strip()
-
-    log.warning(f"No voice file found in {voices_dir}. Proceeding without voice guidance.")
-    return ""
 
 
 # ---------------------------------------------------------------------------
@@ -268,24 +145,6 @@ def _build_system_prompt(client: dict, voice_text: str = "") -> str:
         return f"{base}\n\n---\n\n## VOICE & TONE\n\n{voice_text}"
     return base
 
-
-def _build_bill_context(bill: dict) -> str:
-    a = bill.get("analysis", {})
-    lines = [
-        f"BILL: {bill['bill_number']} — {bill['title']}",
-        f"Author: {bill.get('author', 'Unknown')}",
-        f"Status: {bill.get('status', '')} ({bill.get('status_date', '')})",
-    ]
-    if bill.get("summary"):
-        lines.append(f"Summary: {bill['summary'][:400]}")
-    if a:
-        scores = ", ".join(f"{k}={a.get(v, 'none')}" for k, v in _CRIT_KEYS.items())
-        lines.append(f"Risk scores: {scores}")
-        if a.get("notes"):
-            lines.append(f"Analysis notes: {a['notes']}")
-        if a.get("comms_brief"):
-            lines.append(f"Comms brief: {a['comms_brief']}")
-    return "\n".join(lines)
 
 
 def _generate_content(
@@ -819,7 +678,7 @@ def main() -> None:
 
     # ── Select bills for this issue ─────────────────────────────────────────
     log.info("→ Selecting bills for this issue...")
-    bill_set = _select_bills(bills, lookback_days=args.lookback)
+    bill_set = _select_bills(bills, lookback_days=args.lookback, max_watch=5, max_new=4)
     log.info(f"   Watch list:        {len(bill_set['watch_list'])} bills")
     log.info(f"   New this week:     {len(bill_set['new_bills'])} bills")
     log.info(f"   Upcoming hearings: {len(bill_set['upcoming_hearings'])}")
