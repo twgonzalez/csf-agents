@@ -14,30 +14,37 @@ Pipeline position:
                                                                   ↓
                                                          social_writer.py
 
-Voice system:
-    Each run uses a voice file from agents/social/voices/<name>.md.
-    The voice file controls tone, framing, and the Expose→Outrage→Activate→Change
-    pattern. Staff can edit or add voices without touching this script.
+Client system:
+    Each run targets a client from clients/<id>/client.yml.
+    The client file defines brand identity (org, audience, colors, image style).
+    Voice files live in clients/<id>/voices/<name>.md and control tone and framing.
+    Staff can add a new client by creating a directory — no code changes required.
 
-    Default:    agents/social/voices/default.md   (general CSF advocacy voice)
-    Coalition:  agents/social/voices/coalition.md (peer-to-peer, broad tent)
-    Urgent:     agents/social/voices/urgent.md    (hearing imminent, time-critical)
-    Add more:   drop any <name>.md into agents/social/voices/ and use --voice <name>
+    Default client: clients/csf/  (California Stewardship Fund)
+    Add a client:   create clients/<slug>/client.yml + clients/<slug>/voices/default.md
+    Select client:  --client <slug>
+    List clients:   --list-clients
+
+Voice system:
+    Each run uses a voice file from clients/<id>/voices/<name>.md.
+    CSF voices: default (general advocacy), coalition (broad tent), urgent (time-critical).
+    List voices: --list-voices  (scoped to selected client)
 
 Usage:
-    .venv/bin/python agents/social/social_writer.py                     # default voice
-    .venv/bin/python agents/social/social_writer.py --voice urgent      # urgent voice
-    .venv/bin/python agents/social/social_writer.py --voice coalition   # coalition voice
-    .venv/bin/python agents/social/social_writer.py --list-voices       # show all voices
+    .venv/bin/python agents/social/social_writer.py                        # csf + default voice
+    .venv/bin/python agents/social/social_writer.py --client cma           # cma + default voice
+    .venv/bin/python agents/social/social_writer.py --voice urgent         # csf + urgent voice
+    .venv/bin/python agents/social/social_writer.py --list-clients         # show all clients
+    .venv/bin/python agents/social/social_writer.py --list-voices          # show voices for client
     .venv/bin/python agents/social/social_writer.py --bills path/to/bills.json
     .venv/bin/python agents/social/social_writer.py --lookback 7
-    .venv/bin/python agents/social/social_writer.py --no-media          # skip media digest
+    .venv/bin/python agents/social/social_writer.py --no-media             # skip media digest
 
 Output:
-    outputs/social/social_YYYY-WNN.md           (default voice)
-    outputs/social/social_YYYY-WNN_<voice>.md   (non-default voice)
-    outputs/social/social_YYYY-WNN.html         (default voice)
-    outputs/social/social_YYYY-WNN_<voice>.html (non-default voice)
+    outputs/clients/<slug>/social/social_YYYY-WNN.md           (default voice)
+    outputs/clients/<slug>/social/social_YYYY-WNN_<voice>.md   (non-default voice)
+    outputs/clients/<slug>/social/social_YYYY-WNN.html         (default voice)
+    outputs/clients/<slug>/social/social_YYYY-WNN_<voice>.html (non-default voice)
 
 Requires:
     ANTHROPIC_API_KEY environment variable (or .env file at project root)
@@ -53,12 +60,17 @@ import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
-# Load .env before importing anthropic so the key is available
+# Ensure project root is on sys.path so intra-package imports work when the
+# script is run directly (python agents/social/social_writer.py).
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
+
 from dotenv import load_dotenv
 load_dotenv(_PROJECT_ROOT / ".env", override=True)
 
 import anthropic
+import yaml
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -71,13 +83,13 @@ log = logging.getLogger(__name__)
 # Paths
 # ---------------------------------------------------------------------------
 
-PROJECT_ROOT  = _PROJECT_ROOT
-BILLS_FILE    = PROJECT_ROOT / "data" / "bills" / "tracked_bills.json"
-MEDIA_DIGEST  = PROJECT_ROOT / "data" / "media" / "media_digest.json"
-OUTPUT_DIR    = PROJECT_ROOT / "outputs" / "social"
-VOICES_DIR    = PROJECT_ROOT / "agents" / "social" / "voices"
+PROJECT_ROOT   = _PROJECT_ROOT
+BILLS_FILE     = PROJECT_ROOT / "data" / "bills" / "tracked_bills.json"
+MEDIA_DIGEST   = PROJECT_ROOT / "data" / "media" / "media_digest.json"
+CLIENTS_DIR    = PROJECT_ROOT / "clients"
 
-DEFAULT_VOICE = "default"
+DEFAULT_CLIENT = "csf"
+DEFAULT_VOICE  = "default"
 
 # ---------------------------------------------------------------------------
 # Bill selection (mirrors newsletter_writer.py logic)
@@ -159,11 +171,7 @@ def _select_bills(
 # ---------------------------------------------------------------------------
 
 def _load_media_digest(path: Path | None = None) -> dict | None:
-    """Load media_digest.json if it exists. Returns None if absent or unreadable.
-
-    Silently skips if media_scanner.py hasn't been run yet — social_writer
-    works fine without it, just without news context.
-    """
+    """Load media_digest.json if it exists. Returns None if absent or unreadable."""
     digest_path = path or MEDIA_DIGEST
     if not digest_path.exists():
         return None
@@ -175,15 +183,11 @@ def _load_media_digest(path: Path | None = None) -> dict | None:
 
 
 def _format_media_context(digest: dict | None) -> str:
-    """Format media digest articles into a Claude-readable context block.
-
-    Returns an empty string if no digest is available — the prompt degrades
-    gracefully and Claude still produces good posts from bill data alone.
-    """
+    """Format media digest articles into a Claude-readable context block."""
     if not digest:
         return ""
 
-    articles = digest.get("articles", [])[:8]   # Top 8 by relevance score
+    articles = digest.get("articles", [])[:8]
     x_posts  = digest.get("x_posts",  [])[:5]
     summary  = digest.get("summary",  {})
 
@@ -200,11 +204,11 @@ def _format_media_context(digest: dict | None) -> str:
     if articles:
         lines.append("Recent news coverage:")
         for a in articles:
-            score       = a.get("relevance_score", 0)
-            source      = a.get("source", "")
-            title       = a.get("title", "")
-            pub         = a.get("published", "")
-            bills       = a.get("bill_mentions", [])
+            score         = a.get("relevance_score", 0)
+            source        = a.get("source", "")
+            title         = a.get("title", "")
+            pub           = a.get("published", "")
+            bills         = a.get("bill_mentions", [])
             article_blurb = a.get("summary", "")[:200]
 
             bill_str = f"  [bills: {', '.join(bills)}]" if bills else ""
@@ -216,9 +220,9 @@ def _format_media_context(digest: dict | None) -> str:
         lines.append("")
         lines.append("Recent X/social posts:")
         for p in x_posts:
-            author = p.get("author", "")
-            text   = p.get("text", "")[:200]
-            bills  = p.get("bill_mentions", [])
+            author   = p.get("author", "")
+            text     = p.get("text", "")[:200]
+            bills    = p.get("bill_mentions", [])
             bill_str = f"  [bills: {', '.join(bills)}]" if bills else ""
             lines.append(f"  @{author}: {text}{bill_str}")
 
@@ -231,29 +235,62 @@ def _format_media_context(digest: dict | None) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Client system
+# ---------------------------------------------------------------------------
+
+def _list_clients() -> list[str]:
+    """Return sorted list of available client slugs (subdirectory names)."""
+    if not CLIENTS_DIR.exists():
+        return []
+    return sorted(
+        p.name for p in CLIENTS_DIR.iterdir()
+        if p.is_dir() and (p / "client.yml").exists()
+    )
+
+
+def _load_client(name: str = DEFAULT_CLIENT) -> dict:
+    """Load a client config from clients/<name>/client.yml.
+
+    Falls back to DEFAULT_CLIENT if the named client doesn't exist.
+    Raises SystemExit if neither the named client nor the default can be loaded.
+    """
+    path = CLIENTS_DIR / name / "client.yml"
+    if path.exists():
+        log.info(f"→ Client: '{name}' ({path})")
+        return yaml.safe_load(path.read_text(encoding="utf-8"))
+
+    if name != DEFAULT_CLIENT:
+        log.warning(f"Client '{name}' not found at {path}. Falling back to '{DEFAULT_CLIENT}'.")
+        default_path = CLIENTS_DIR / DEFAULT_CLIENT / "client.yml"
+        if default_path.exists():
+            log.info(f"→ Client: '{DEFAULT_CLIENT}' (fallback)")
+            return yaml.safe_load(default_path.read_text(encoding="utf-8"))
+
+    log.error(f"No client config found for '{name}' and no '{DEFAULT_CLIENT}' fallback.")
+    sys.exit(1)
+
+
+# ---------------------------------------------------------------------------
 # Voice system
 # ---------------------------------------------------------------------------
 
-def _list_voices(voices_dir: Path | None = None) -> list[str]:
-    """Return sorted list of available voice names (filename stems)."""
-    d = voices_dir or VOICES_DIR
-    if not d.exists():
+def _list_voices(voices_dir: Path) -> list[str]:
+    """Return sorted list of available voice names for a client."""
+    if not voices_dir.exists():
         return []
-    return sorted(p.stem for p in d.glob("*.md"))
+    return sorted(p.stem for p in voices_dir.glob("*.md"))
 
 
 def _load_voice(name: str = DEFAULT_VOICE, voices_dir: Path | None = None) -> str:
-    """Load a voice file by name from the voices directory.
+    """Load a voice file by name from the client's voices directory.
 
     Returns the file content as a string. Falls back to DEFAULT_VOICE if the
-    named voice doesn't exist, and returns an empty string if nothing is found
-    so the base prompt still works (with a warning logged).
-
-    Voice files live in agents/social/voices/<name>.md and are plain markdown —
-    just prose instructions for Claude. No special syntax required.
+    named voice doesn't exist, and returns an empty string if nothing is found.
     """
-    d = voices_dir or VOICES_DIR
-    path = d / f"{name}.md"
+    if voices_dir is None:
+        voices_dir = CLIENTS_DIR / DEFAULT_CLIENT / "voices"
+
+    path = voices_dir / f"{name}.md"
 
     if path.exists():
         log.info(f"→ Voice: '{name}' ({path.name})")
@@ -261,12 +298,12 @@ def _load_voice(name: str = DEFAULT_VOICE, voices_dir: Path | None = None) -> st
 
     if name != DEFAULT_VOICE:
         log.warning(f"Voice '{name}' not found at {path}. Falling back to '{DEFAULT_VOICE}'.")
-        default_path = d / f"{DEFAULT_VOICE}.md"
+        default_path = voices_dir / f"{DEFAULT_VOICE}.md"
         if default_path.exists():
             log.info(f"→ Voice: '{DEFAULT_VOICE}' (fallback)")
             return default_path.read_text(encoding="utf-8").strip()
 
-    log.warning(f"No voice file found in {d}. Proceeding without voice guidance.")
+    log.warning(f"No voice file found in {voices_dir}. Proceeding without voice guidance.")
     return ""
 
 
@@ -275,17 +312,9 @@ def _load_voice(name: str = DEFAULT_VOICE, voices_dir: Path | None = None) -> st
 # ---------------------------------------------------------------------------
 
 # Structural rules — platform mechanics and output format. Never changes.
-# Voice/tone/framing is loaded separately from agents/social/voices/<name>.md
-# and injected at runtime so it can be swapped per campaign without code changes.
-_BASE_SYSTEM_PROMPT = """\
-You are the social media content generator for the California Stewardship Fund — a policy \
-organization whose core belief is that the best decisions come from people closest to them.
-
-Your job is to write 3 social media posts per week based on the latest California housing \
-bill intelligence. These posts reach city council members, neighborhood advocates, major \
-donors, and engaged citizens who care about protecting local government authority from \
-state preemption.
-
+# Client identity/audience/colors are injected by _build_base_prompt(client).
+# Voice/tone/framing is loaded from clients/<id>/voices/<name>.md at runtime.
+_PLATFORM_AND_IMAGE_RULES = """\
 PLATFORM RULES:
 - X: Hard 280 character limit — count every character including spaces and punctuation. \
   Lead with the hook. Bill number early. One specific CTA. 1-2 hashtags only. \
@@ -297,20 +326,19 @@ PLATFORM RULES:
   never paste a URL in Instagram copy.
 
 IMAGE BRIEF RULES:
-- Keep it achievable: text card graphics that any staff member can build in Canva in 5 min
+- Keep it achievable: text card graphics that any staff member can build in 5 min
 - Headline: 6-10 words max — a direct, declarative statement of the single most alarming fact.
   Must be immediately clear at a glance. No wordplay, puns, em-dash tricks, or double meanings.
   Write as a plain active-voice sentence or a clear noun phrase. If a reader needs to stop and
   parse it, rewrite it. Bad: "Your City Can't Say No — Or Send the Bill". Good: "AB1751 Bans
   Cities from Charging Impact Fees" or "Sacramento Eliminates Local Zoning Authority".
 - Subtext: 8-12 words — the specific mechanism or risk, factual and unambiguous
-- Colors follow CSF brand: deep navy #1a3a5c background, white text, gold #c9a227 accent
 - Suggest the bill number as a large typographic element for bill-specific posts
 - Always specify both square and landscape sizes
 
 AI IMAGE PROMPT RULES (the "ai_image_prompt" field):
-- This is a background asset prompt for AI image generators (DALL-E 3, Midjourney, Flux).
-- Purpose: generate the visual/graphic background only. Typography is added separately in Canva.
+- This is a fallback prompt for manual image generation (DALL-E 3, Midjourney, Flux).
+- When --images is used, Nano Banana Pro generates the complete graphic from the image brief instead.
 - NEVER include text, words, letters, numbers, or typography in the prompt.
 - Describe the graphic element from "optional_graphic" in visual, generator-friendly language.
 - Translate brand colors into natural language: "deep navy blue", "warm gold accent", not hex codes.
@@ -320,11 +348,37 @@ AI IMAGE PROMPT RULES (the "ai_image_prompt" field):
 """
 
 
-def _build_system_prompt(voice_text: str) -> str:
-    """Combine the structural base prompt with a loaded voice file."""
+def _build_base_prompt(client: dict) -> str:
+    """Build the client-specific opening of the system prompt.
+
+    Substitutes org name, audience, and brand colors from the client config.
+    Platform rules and image brief format are universal and appended after.
+    """
+    org_name    = client["client_name"]
+    org_desc    = client["identity"]["org_description"].strip()
+    audience    = client["identity"]["audience"].strip()
+    bg_hex      = client["colors"]["background"]["hex"]
+    text_hex    = client["colors"]["text"]["hex"]
+    accent_hex  = client["colors"]["accent"]["hex"]
+    bg_name     = client["colors"]["background"]["name"]
+    accent_name = client["colors"]["accent"]["name"]
+
+    return (
+        f"You are the social media content generator for {org_name} — {org_desc}\n\n"
+        f"Your job is to write 3 social media posts per week based on the latest California "
+        f"housing bill intelligence. These posts reach {audience}\n\n"
+        f"Colors follow {org_name} brand: {bg_name} {bg_hex} background, "
+        f"white {text_hex} text, {accent_name} {accent_hex} accent\n\n"
+        f"{_PLATFORM_AND_IMAGE_RULES}"
+    )
+
+
+def _build_system_prompt(voice_text: str, client: dict) -> str:
+    """Combine the client base prompt with a loaded voice file."""
+    base = _build_base_prompt(client)
     if not voice_text:
-        return _BASE_SYSTEM_PROMPT
-    return f"{_BASE_SYSTEM_PROMPT}\n\n---\n\n## VOICE & TONE\n\n{voice_text}"
+        return base
+    return f"{base}\n\n---\n\n## VOICE & TONE\n\n{voice_text}"
 
 
 def _build_bill_context(bill: dict) -> str:
@@ -360,12 +414,19 @@ def _generate_content(
     client: anthropic.Anthropic,
     media_digest: dict | None = None,
     voice_text: str = "",
+    client_cfg: dict | None = None,
 ) -> dict:
     """Single Claude call returning all 3 posts as a structured dict."""
     watch_ctx   = "\n\n".join(_build_bill_context(b) for b in bill_set["watch_list"])
     new_ctx     = "\n\n".join(_build_bill_context(b) for b in bill_set["new_bills"])
     hearing_ctx = "\n".join(_format_hearing(h) for h in bill_set["upcoming_hearings"])
     media_ctx   = _format_media_context(media_digest)
+
+    # Use client brand colors for the JSON schema defaults
+    cfg = client_cfg or {}
+    bg_hex     = cfg.get("colors", {}).get("background", {}).get("hex", "#1a3a5c")
+    text_hex   = cfg.get("colors", {}).get("text",       {}).get("hex", "#ffffff")
+    accent_hex = cfg.get("colors", {}).get("accent",     {}).get("hex", "#c9a227")
 
     user_prompt = f"""\
 Here is this week's bill intelligence. Write exactly 3 social media posts as specified.
@@ -421,9 +482,9 @@ Return a JSON object with exactly this structure:
       "image_brief": {{
         "headline": "<6-10 words — direct declarative statement, no wordplay, immediately clear at a glance>",
         "subtext": "<8-12 words — the specific mechanism or risk>",
-        "background_color": "#1a3a5c",
-        "text_color": "#ffffff",
-        "accent_color": "#c9a227",
+        "background_color": "{bg_hex}",
+        "text_color": "{text_hex}",
+        "accent_color": "{accent_hex}",
         "typographic_element": "<e.g. 'Bill number AB1234 as oversized display type, upper-left'>",
         "optional_graphic": "<e.g. 'California Capitol silhouette, faint, bottom-right' or 'none'>",
         "ai_image_prompt": "<2-4 sentences for AI image generator: describe background visual/graphic element, color palette in natural language, style direction. End with 'No text. No typography. No people. No logos.'>",
@@ -442,9 +503,9 @@ Return a JSON object with exactly this structure:
       "image_brief": {{
         "headline": "...",
         "subtext": "...",
-        "background_color": "#1a3a5c",
-        "text_color": "#ffffff",
-        "accent_color": "#c9a227",
+        "background_color": "{bg_hex}",
+        "text_color": "{text_hex}",
+        "accent_color": "{accent_hex}",
         "typographic_element": "...",
         "optional_graphic": "...",
         "ai_image_prompt": "...",
@@ -463,9 +524,9 @@ Return a JSON object with exactly this structure:
       "image_brief": {{
         "headline": "...",
         "subtext": "...",
-        "background_color": "#1a3a5c",
-        "text_color": "#ffffff",
-        "accent_color": "#c9a227",
+        "background_color": "{bg_hex}",
+        "text_color": "{text_hex}",
+        "accent_color": "{accent_hex}",
         "typographic_element": "...",
         "optional_graphic": "...",
         "ai_image_prompt": "...",
@@ -479,7 +540,7 @@ Return ONLY valid JSON. No markdown fences. No commentary outside the JSON objec
 Count X characters carefully — every space and punctuation mark counts toward the 280 limit.
 """
 
-    system_prompt = _build_system_prompt(voice_text)
+    system_prompt = _build_system_prompt(voice_text, client_cfg or {})
     log.info("→ Calling Claude to generate social media content...")
     message = client.messages.create(
         model="claude-sonnet-4-6",
@@ -519,17 +580,19 @@ _POST_TYPE_ICONS = {
 # ---------------------------------------------------------------------------
 
 
-def _render_markdown(content: dict, bill_set: dict, voice_name: str = DEFAULT_VOICE) -> str:
-    """Render the full content package as a copy-paste-ready markdown file.
-
-    Structured so staff can work top-to-bottom: read the post, check char counts,
-    copy each platform variant directly into Buffer/Hootsuite/native composer,
-    and hand the image brief to a designer or open Canva.
-    """
-    today = date.today()
+def _render_markdown(
+    content: dict,
+    bill_set: dict,
+    voice_name: str = DEFAULT_VOICE,
+    client_cfg: dict | None = None,
+) -> str:
+    """Render the full content package as a copy-paste-ready markdown file."""
+    cfg         = client_cfg or {}
+    client_name = cfg.get("client_name", "CSF")
+    today       = date.today()
     voice_label = f" · Voice: `{voice_name}`" if voice_name != DEFAULT_VOICE else ""
     lines = [
-        f"# CSF Social Media — Week of {today.strftime('%B %-d, %Y')}",
+        f"# {client_name} Social Media — Week of {today.strftime('%B %-d, %Y')}",
         "",
         f"*3 posts · Meta platforms + X · Generated {today.isoformat()}{voice_label}*",
         "",
@@ -549,9 +612,7 @@ def _render_markdown(content: dict, bill_set: dict, voice_name: str = DEFAULT_VO
         if bill_num:
             title_line += f": {bill_num}"
 
-        x_text      = post.get("x", "")
-        x_chars     = len(x_text)
-        # Recount chars (Claude's count may differ)
+        x_text       = post.get("x", "")
         actual_chars = len(x_text)
         if actual_chars <= 280:
             x_status = f"✓ {actual_chars}/280"
@@ -595,9 +656,9 @@ def _render_markdown(content: dict, bill_set: dict, voice_name: str = DEFAULT_VO
             "|-------|------|",
             f"| **Headline** | {ib.get('headline', '')} |",
             f"| **Subtext** | {ib.get('subtext', '')} |",
-            f"| **Background** | `{ib.get('background_color', '#1a3a5c')}` — deep navy |",
-            f"| **Text** | `{ib.get('text_color', '#ffffff')}` — white |",
-            f"| **Accent** | `{ib.get('accent_color', '#c9a227')}` — gold |",
+            f"| **Background** | `{ib.get('background_color', cfg.get('colors', {}).get('background', {}).get('hex', '#1a3a5c'))}` |",
+            f"| **Text** | `{ib.get('text_color', cfg.get('colors', {}).get('text', {}).get('hex', '#ffffff'))}` |",
+            f"| **Accent** | `{ib.get('accent_color', cfg.get('colors', {}).get('accent', {}).get('hex', '#c9a227'))}` |",
             f"| **Typographic element** | {ib.get('typographic_element', 'None')} |",
             f"| **Optional graphic** | {ib.get('optional_graphic', 'None')} |",
         ]
@@ -610,13 +671,13 @@ def _render_markdown(content: dict, bill_set: dict, voice_name: str = DEFAULT_VO
             lines += ["", "**Generated Images**", ""]
             for kind, rel_path in image_paths.items():
                 size_label = "1080×1080 Square" if kind == "square" else "1600×900 Landscape"
-                lines.append(f"- {size_label}: `outputs/social/{rel_path}`")
+                lines.append(f"- {size_label}: `{rel_path}`")
         else:
             ai_prompt = ib.get("ai_image_prompt", "")
             if ai_prompt:
                 lines += [
                     "",
-                    "**AI Image Prompt** *(paste into DALL-E 3 / Midjourney / Flux — background only, add text in Canva)*",
+                    "**AI Image Prompt** *(fallback — paste into DALL-E 3 / Midjourney / Flux for manual image creation)*",
                     "",
                     f"> {ai_prompt}",
                 ]
@@ -625,6 +686,7 @@ def _render_markdown(content: dict, bill_set: dict, voice_name: str = DEFAULT_VO
 
     # Source data footer
     watch_bills = ", ".join(b["bill_number"] for b in bill_set["watch_list"])
+    client_slug = cfg.get("slug", "csf")
     lines += [
         "---",
         "",
@@ -633,10 +695,11 @@ def _render_markdown(content: dict, bill_set: dict, voice_name: str = DEFAULT_VO
         f"- **Watch list bills:** {watch_bills or 'None (run housing_analyzer.py first)'}",
         f"- **Upcoming hearings:** {len(bill_set['upcoming_hearings'])}",
         f"- **New bills this week:** {len(bill_set['new_bills'])}",
-        f"- **Voice:** `{voice_name}` (`agents/social/voices/{voice_name}.md`)",
+        f"- **Client:** `{client_slug}` (`clients/{client_slug}/client.yml`)",
+        f"- **Voice:** `{voice_name}` (`clients/{client_slug}/voices/{voice_name}.md`)",
         f"- **Generated:** {today.isoformat()}",
         "",
-        "*Generated by `agents/social/social_writer.py` — California Stewardship Fund*",
+        f"*Generated by `agents/social/social_writer.py` — {client_name}*",
     ]
 
     return "\n".join(lines)
@@ -648,8 +711,6 @@ def _render_markdown(content: dict, bill_set: dict, voice_name: str = DEFAULT_VO
 
 _SANS  = "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;"
 _SERIF = "font-family:Georgia,'Times New Roman',Times,serif;"
-_NAVY  = "#1a3a5c"
-_GOLD  = "#c9a227"
 _SAND  = "#f5f2ed"
 _INK   = "#1c1c1e"
 _MID   = "#666666"
@@ -657,7 +718,7 @@ _RULE  = "#ddd8ce"
 _WHITE = "#ffffff"
 
 _PLATFORM_COLORS = {
-    "x":        ("#000000", "#ffffff"),   # bg, text
+    "x":        ("#000000", "#ffffff"),
     "facebook": ("#1877f2", "#ffffff"),
     "instagram": ("#833ab4", "#ffffff"),
 }
@@ -679,21 +740,16 @@ def _esc(text: str) -> str:
 
 
 def _img_data_uri(abs_path: Path, max_width: int) -> str:
-    """Resize image to max_width px wide and return as a PNG data URI.
-
-    Used to embed thumbnails directly in the HTML so the proof sheet is
-    self-contained and images survive copy-paste into email clients.
-    Returns an empty string on any error so the caller can skip gracefully.
-    """
+    """Resize image to max_width px wide and return as a PNG data URI."""
     try:
         import base64
         import io as _io
         from PIL import Image
         img = Image.open(abs_path).convert("RGB")
         if img.width > max_width:
-            ratio     = max_width / img.width
-            new_size  = (max_width, int(img.height * ratio))
-            img       = img.resize(new_size, Image.LANCZOS)
+            ratio    = max_width / img.width
+            new_size = (max_width, int(img.height * ratio))
+            img      = img.resize(new_size, Image.LANCZOS)
         buf = _io.BytesIO()
         img.save(buf, format="PNG", optimize=True)
         b64 = base64.b64encode(buf.getvalue()).decode()
@@ -715,7 +771,7 @@ def _platform_badge(platform: str) -> str:
 
 
 def _char_count_badge(text: str) -> str:
-    n = len(text)
+    n  = len(text)
     ok = n <= 280
     bg = "#e8f5e9" if ok else "#ffebee"
     fg = "#2e7d32" if ok else "#c62828"
@@ -727,7 +783,7 @@ def _char_count_badge(text: str) -> str:
     )
 
 
-def _render_post_card(post: dict, index: int) -> str:
+def _render_post_card(post: dict, index: int, client_cfg: dict, output_dir: Path) -> str:
     num      = post.get("post_number", index + 1)
     ptype    = post.get("post_type", "")
     label    = _POST_TYPE_LABELS.get(ptype, ptype.replace("_", " ").title())
@@ -736,10 +792,13 @@ def _render_post_card(post: dict, index: int) -> str:
     ib       = post.get("image_brief", {})
     hashtags = " ".join(f"#{h.lstrip('#')}" for h in post.get("hashtags", []))
 
+    navy   = client_cfg.get("colors", {}).get("background", {}).get("hex", "#1a3a5c")
+    gold   = client_cfg.get("colors", {}).get("accent",     {}).get("hex", "#c9a227")
+
     bill_badge = ""
     if bill_num:
         bill_badge = (
-            f'<span style="{_SANS}background:{_GOLD};color:{_NAVY};font-size:11px;'
+            f'<span style="{_SANS}background:{gold};color:{navy};font-size:11px;'
             f'font-weight:700;padding:3px 10px;border-radius:20px;margin-left:8px;">'
             f'{bill_num}</span>'
         )
@@ -770,7 +829,7 @@ def _render_post_card(post: dict, index: int) -> str:
                       text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">
             Hashtags (all platforms)
           </div>
-          <div style="{_SANS}font-size:13px;color:{_NAVY};line-height:1.9;">
+          <div style="{_SANS}font-size:13px;color:{navy};line-height:1.9;">
             {hashtags}
           </div>
         </div>"""
@@ -794,8 +853,8 @@ def _render_post_card(post: dict, index: int) -> str:
             )
 
     # AI image prompt — shown only when no real generated images are present
-    ai_prompt = ib.get("ai_image_prompt", "")
-    image_paths = post.get("image_paths", {})
+    ai_prompt      = ib.get("ai_image_prompt", "")
+    image_paths    = post.get("image_paths", {})
     ai_prompt_block = ""
     if ai_prompt and not image_paths:
         ai_prompt_block = f"""
@@ -805,7 +864,7 @@ def _render_post_card(post: dict, index: int) -> str:
               AI Image Prompt
               <span style="font-weight:400;text-transform:none;letter-spacing:0;
                            font-size:10px;color:{_MID};">
-                — paste into DALL·E 3 / Midjourney / Flux &nbsp;·&nbsp; add text in Canva
+                — fallback for manual image creation
               </span>
             </div>
             <div style="{_SANS}font-size:13px;color:{_INK};line-height:1.6;
@@ -815,9 +874,7 @@ def _render_post_card(post: dict, index: int) -> str:
             </div>
           </div>"""
 
-    # Image proof strip — shown at the top of the post body when images were generated.
-    # Uses table layout (no flexbox) and base64-embedded thumbnails so the HTML is
-    # self-contained and images survive copy-paste into Gmail / Outlook.
+    # Image proof strip
     image_proof_strip = ""
     if image_paths:
         sq_rel  = image_paths.get("square", "")
@@ -826,9 +883,9 @@ def _render_post_card(post: dict, index: int) -> str:
         ls_cell = ""
 
         if sq_rel:
-            sq_abs  = OUTPUT_DIR / sq_rel
-            sq_uri  = _img_data_uri(sq_abs, max_width=200)   # display-size thumbnail
-            sq_href = sq_rel                                   # relative link to full-res
+            sq_abs  = output_dir / sq_rel
+            sq_uri  = _img_data_uri(sq_abs, max_width=200)
+            sq_href = sq_rel
             sq_img  = (
                 f'<img src="{sq_uri or sq_href}" width="200" height="200" '
                 f'style="display:block;border-radius:8px;border:2px solid {_RULE};">'
@@ -842,10 +899,9 @@ def _render_post_card(post: dict, index: int) -> str:
               </td>"""
 
         if ls_rel:
-            ls_abs  = OUTPUT_DIR / ls_rel
-            ls_uri  = _img_data_uri(ls_abs, max_width=520)   # display-size thumbnail
+            ls_abs  = output_dir / ls_rel
+            ls_uri  = _img_data_uri(ls_abs, max_width=520)
             ls_href = ls_rel
-            # Fixed display width; height=auto via explicit calc (16:9 ratio of 520px wide = 293px)
             ls_img  = (
                 f'<img src="{ls_uri or ls_href}" width="520" height="293" '
                 f'style="display:block;border-radius:8px;border:2px solid {_RULE};">'
@@ -861,7 +917,7 @@ def _render_post_card(post: dict, index: int) -> str:
         image_proof_strip = f"""
         <div style="background:#f0f4f8;border:1px solid {_RULE};border-radius:10px;
                     padding:16px 20px;margin-bottom:24px;">
-          <div style="{_SANS}font-size:11px;font-weight:700;color:{_NAVY};
+          <div style="{_SANS}font-size:11px;font-weight:700;color:{navy};
                       text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px;">
             ✓ Generated Images &nbsp;
             <span style="font-weight:400;color:{_MID};text-transform:none;
@@ -890,9 +946,9 @@ def _render_post_card(post: dict, index: int) -> str:
 
     sizes = " &nbsp;·&nbsp; ".join(ib.get("sizes", []))
     image_brief_block = f"""
-        <div style="background:#fafaf7;border:1px solid {_RULE};border-left:3px solid {_GOLD};
+        <div style="background:#fafaf7;border:1px solid {_RULE};border-left:3px solid {gold};
                     border-radius:8px;padding:16px 20px;margin-top:4px;">
-          <div style="{_SANS}font-size:11px;font-weight:700;color:{_GOLD};
+          <div style="{_SANS}font-size:11px;font-weight:700;color:{gold};
                       text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">
             Image Brief
           </div>
@@ -910,8 +966,8 @@ def _render_post_card(post: dict, index: int) -> str:
               margin-bottom:32px;overflow:hidden;">
 
     <!-- Post header -->
-    <div style="background:{_NAVY};padding:20px 28px;">
-      <div style="{_SANS}font-size:13px;font-weight:700;color:{_GOLD};
+    <div style="background:{navy};padding:20px 28px;">
+      <div style="{_SANS}font-size:13px;font-weight:700;color:{gold};
                   text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">
         Post {num}
       </div>
@@ -930,16 +986,30 @@ def _render_post_card(post: dict, index: int) -> str:
   </div>"""
 
 
-def _render_html(content: dict, bill_set: dict, voice_name: str = DEFAULT_VOICE) -> str:
+def _render_html(
+    content: dict,
+    bill_set: dict,
+    voice_name: str = DEFAULT_VOICE,
+    client_cfg: dict | None = None,
+    output_dir: Path | None = None,
+) -> str:
     """Render the full content package as a shareable inline-styled HTML page."""
-    today     = date.today()
-    week_str  = today.strftime("Week of %B %-d, %Y")
-    theme     = _esc(content.get("week_theme", ""))
-    watch_str = ", ".join(b["bill_number"] for b in bill_set["watch_list"])
+    cfg         = client_cfg or {}
+    client_name = cfg.get("client_name", "CSF")
+    client_slug = cfg.get("slug", "csf")
+    navy        = cfg.get("colors", {}).get("background", {}).get("hex", "#1a3a5c")
+    gold        = cfg.get("colors", {}).get("accent",     {}).get("hex", "#c9a227")
+    label       = cfg.get("proof_sheet", {}).get("label", client_name)
+    out_dir     = output_dir or (PROJECT_ROOT / "outputs" / "clients" / client_slug / "social")
+
+    today      = date.today()
+    week_str   = today.strftime("Week of %B %-d, %Y")
+    theme      = _esc(content.get("week_theme", ""))
+    watch_str  = ", ".join(b["bill_number"] for b in bill_set["watch_list"])
     voice_label = f" &nbsp;·&nbsp; Voice: <code>{voice_name}</code>" if voice_name != DEFAULT_VOICE else ""
 
     post_cards = "".join(
-        _render_post_card(post, i)
+        _render_post_card(post, i, cfg, out_dir)
         for i, post in enumerate(content.get("posts", []))
     )
 
@@ -948,7 +1018,7 @@ def _render_html(content: dict, bill_set: dict, voice_name: str = DEFAULT_VOICE)
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>CSF Social Media — {week_str}</title>
+  <title>{client_name} Social Media — {week_str}</title>
 </head>
 <body style="margin:0;padding:0;background:{_SAND};">
 
@@ -966,10 +1036,10 @@ def _render_html(content: dict, bill_set: dict, voice_name: str = DEFAULT_VOICE)
       <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
           <td>
-            <div style="{_SANS}color:{_NAVY};font-size:13px;font-weight:700;
+            <div style="{_SANS}color:{navy};font-size:13px;font-weight:700;
                         text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;
-                        opacity:0.7;">California Stewardship Fund</div>
-            <div style="{_SERIF}color:{_NAVY};font-size:28px;font-weight:700;
+                        opacity:0.7;">{label}</div>
+            <div style="{_SERIF}color:{navy};font-size:28px;font-weight:700;
                         letter-spacing:-0.3px;line-height:1.1;">
               Social Media — {week_str}
             </div>
@@ -982,7 +1052,7 @@ def _render_html(content: dict, bill_set: dict, voice_name: str = DEFAULT_VOICE)
         </tr>
       </table>
       <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:14px;">
-        <tr><td style="border-top:2px solid {_NAVY};font-size:0;">&nbsp;</td></tr>
+        <tr><td style="border-top:2px solid {navy};font-size:0;">&nbsp;</td></tr>
       </table>
     </td>
   </tr>
@@ -990,8 +1060,8 @@ def _render_html(content: dict, bill_set: dict, voice_name: str = DEFAULT_VOICE)
   <!-- WEEK THEME -->
   <tr>
     <td style="padding-bottom:32px;">
-      <div style="background:{_NAVY};border-radius:10px;padding:20px 28px;">
-        <div style="{_SANS}font-size:11px;font-weight:700;color:{_GOLD};
+      <div style="background:{navy};border-radius:10px;padding:20px 28px;">
+        <div style="{_SANS}font-size:11px;font-weight:700;color:{gold};
                     text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
           This Week
         </div>
@@ -1020,7 +1090,7 @@ def _render_html(content: dict, bill_set: dict, voice_name: str = DEFAULT_VOICE)
     <td style="padding:16px 0 8px;text-align:center;">
       <div style="{_SANS}color:#aaa;font-size:11px;line-height:1.8;">
         Generated by <code>agents/social/social_writer.py</code>
-        &nbsp;·&nbsp; California Stewardship Fund
+        &nbsp;·&nbsp; {label}
         &nbsp;·&nbsp; Content only — no posts have been published
         {voice_label}
       </div>
@@ -1041,21 +1111,24 @@ def _render_html(content: dict, bill_set: dict, voice_name: str = DEFAULT_VOICE)
 
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
-        description="Generate weekly social media content for CSF.",
+        description="Generate weekly social media content for a configured client.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 examples:
-  # Generate posts with the default advocacy voice
+  # Generate posts for the default CSF client
   python agents/social/social_writer.py
 
-  # Use the urgent voice (hearing imminent)
-  python agents/social/social_writer.py --voice urgent
+  # Generate posts for a specific client
+  python agents/social/social_writer.py --client cma
 
-  # Use the coalition voice (partner-facing messaging)
-  python agents/social/social_writer.py --voice coalition
+  # Use the urgent voice for CSF (hearing imminent)
+  python agents/social/social_writer.py --client csf --voice urgent
 
-  # List all available voices
-  python agents/social/social_writer.py --list-voices
+  # List all configured clients
+  python agents/social/social_writer.py --list-clients
+
+  # List voices available for a client
+  python agents/social/social_writer.py --client cma --list-voices
 
   # Override lookback window for "new bills" detection
   python agents/social/social_writer.py --lookback 7
@@ -1065,16 +1138,29 @@ examples:
         """,
     )
     p.add_argument(
-        "--voice", type=str, default=DEFAULT_VOICE,
+        "--client", type=str, default=DEFAULT_CLIENT,
         help=(
-            f"Voice to use for content generation (default: '{DEFAULT_VOICE}'). "
-            f"Must match a filename in agents/social/voices/<name>.md. "
-            f"Run --list-voices to see all available voices."
+            f"Client to generate content for (default: '{DEFAULT_CLIENT}'). "
+            f"Must match a directory in clients/<name>/. "
+            f"Run --list-clients to see all configured clients."
+        ),
+    )
+    p.add_argument(
+        "--list-clients", action="store_true", default=False,
+        help="Print all available client names and exit.",
+    )
+    p.add_argument(
+        "--voice", type=str, default=None,
+        help=(
+            "Voice to use for content generation. "
+            "Must match a filename in clients/<client>/voices/<name>.md. "
+            "Defaults to the client's default_voice setting. "
+            "Run --list-voices to see all available voices for the selected client."
         ),
     )
     p.add_argument(
         "--list-voices", action="store_true", default=False,
-        help="Print all available voice names and exit.",
+        help="Print all available voice names for the selected client and exit.",
     )
     p.add_argument(
         "--bills", type=Path, default=None,
@@ -1099,17 +1185,17 @@ examples:
 def main() -> None:
     args = _parse_args()
 
-    # ── --list-voices: print available voices and exit ───────────────────────
-    if args.list_voices:
-        voices = _list_voices()
-        if voices:
-            print("\n  Available voices (agents/social/voices/):\n")
-            for v in voices:
-                marker = " ← default" if v == DEFAULT_VOICE else ""
-                print(f"    {v}{marker}")
-            print(f"\n  Usage: --voice <name>   e.g. --voice urgent\n")
+    # ── --list-clients: print available clients and exit ─────────────────────
+    if args.list_clients:
+        clients = _list_clients()
+        if clients:
+            print("\n  Available clients (clients/):\n")
+            for c in clients:
+                marker = " ← default" if c == DEFAULT_CLIENT else ""
+                print(f"    {c}{marker}")
+            print(f"\n  Usage: --client <name>   e.g. --client cma\n")
         else:
-            print(f"\n  No voice files found in {VOICES_DIR}\n")
+            print(f"\n  No client directories found in {CLIENTS_DIR}\n")
         sys.exit(0)
 
     api_key = os.environ.get("ANTHROPIC_API_KEY")
@@ -1117,15 +1203,37 @@ def main() -> None:
         log.error("ANTHROPIC_API_KEY not set. Add it to .env or your environment.")
         sys.exit(1)
 
-    print("\n  CSF Social Media Writer")
-    print("  " + "─" * 30)
+    # ── Load client config ────────────────────────────────────────────────────
+    client_cfg = _load_client(args.client)
+    client_id  = client_cfg.get("slug", args.client)
+    client_name = client_cfg.get("client_name", client_id)
 
-    # ── Load voice ───────────────────────────────────────────────────────────
-    voice_name = args.voice
-    voice_text = _load_voice(voice_name)
+    banner = f"{client_name} — Social Media Writer"
+    print(f"\n  {banner}")
+    print("  " + "─" * len(banner))
+
+    # ── Resolve voice ─────────────────────────────────────────────────────────
+    voices_dir = CLIENTS_DIR / client_id / "voices"
+    voice_name = args.voice or client_cfg.get("default_voice", DEFAULT_VOICE)
+
+    # ── --list-voices: print voices for selected client and exit ──────────────
+    if args.list_voices:
+        voices = _list_voices(voices_dir)
+        if voices:
+            default_v = client_cfg.get("default_voice", DEFAULT_VOICE)
+            print(f"\n  Available voices for '{client_id}' (clients/{client_id}/voices/):\n")
+            for v in voices:
+                marker = " ← default" if v == default_v else ""
+                print(f"    {v}{marker}")
+            print(f"\n  Usage: --voice <name>   e.g. --voice urgent\n")
+        else:
+            print(f"\n  No voice files found in {voices_dir}\n")
+        sys.exit(0)
+
+    voice_text = _load_voice(voice_name, voices_dir)
     # Normalise to the actual loaded name in case of fallback
-    if voice_text and not (VOICES_DIR / f"{voice_name}.md").exists():
-        voice_name = DEFAULT_VOICE
+    if voice_text and not (voices_dir / f"{voice_name}.md").exists():
+        voice_name = client_cfg.get("default_voice", DEFAULT_VOICE)
 
     # ── Load bill data ──────────────────────────────────────────────────────
     bills_path = args.bills or BILLS_FILE
@@ -1159,59 +1267,58 @@ def main() -> None:
             log.info("   (Run media_scanner.py first to enable news-aware posts)")
 
     # ── Generate content via Claude ─────────────────────────────────────────
-    client  = anthropic.Anthropic(api_key=api_key)
-    content = _generate_content(bill_set, client, media_digest, voice_text)
+    anthropic_client = anthropic.Anthropic(api_key=api_key)
+    content = _generate_content(bill_set, anthropic_client, media_digest, voice_text, client_cfg)
     posts   = content.get("posts", [])
     log.info(f"   ✓ {len(posts)} posts generated")
 
     # ── Print summary ───────────────────────────────────────────────────────
-    print(f"\n  Week theme: {content.get('week_theme', '')}")
+    print(f"\n  Client:     {client_name}")
+    print(f"  Week theme: {content.get('week_theme', '')}")
     print(f"  Voice:      {voice_name}\n")
     for post in posts:
-        num      = post.get("post_number", "?")
-        label    = _POST_TYPE_LABELS.get(post.get("post_type", ""), "Post")
-        bill     = post.get("bill_number", "n/a")
-        x_chars  = len(post.get("x", ""))
+        num     = post.get("post_number", "?")
+        label   = _POST_TYPE_LABELS.get(post.get("post_type", ""), "Post")
+        bill    = post.get("bill_number", "n/a")
+        x_chars = len(post.get("x", ""))
         over_msg = f" ⚠ OVER by {x_chars - 280}" if x_chars > 280 else ""
         print(f"  Post {num} ({label:14s})  X: {x_chars}/280{over_msg}  bill: {bill}")
 
     # ── Prepare output paths ──────────────────────────────────────────────────
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    iso_week     = date.today().strftime("%G-W%V")   # ISO 8601 — matches workflow %V
-    voice_suffix = f"_{voice_name}" if voice_name != DEFAULT_VOICE else ""
-    md_path      = OUTPUT_DIR / f"social_{iso_week}{voice_suffix}.md"
-    html_path    = OUTPUT_DIR / f"social_{iso_week}{voice_suffix}.html"
+    output_dir = PROJECT_ROOT / "outputs" / "clients" / client_id / "social"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    iso_week     = date.today().strftime("%G-W%V")
+    voice_suffix = f"_{voice_name}" if voice_name != client_cfg.get("default_voice", DEFAULT_VOICE) else ""
+    md_path      = output_dir / f"social_{iso_week}{voice_suffix}.md"
+    html_path    = output_dir / f"social_{iso_week}{voice_suffix}.html"
 
     # ── Generate images BEFORE rendering (proof sheet includes them) ──────────
     if args.images:
         from agents.social.image_generator import generate_images
-        images_dir = OUTPUT_DIR / "images" / iso_week
+        images_dir = output_dir / "images" / iso_week
         log.info("→ Generating images (Nano Banana Pro)...")
         for post in posts:
             brief = post.get("image_brief")
             if not brief:
                 continue
-            # Ensure bill_number is in the brief for prompt resolution.
-            # Use `or ""` to convert JSON null (Python None) to empty string.
             if "bill_number" not in brief or brief.get("bill_number") is None:
                 brief = dict(brief, bill_number=post.get("bill_number") or "")
             post_slug = f"post_{post.get('post_number', 'N')}"
-            paths = generate_images(brief, images_dir, post_slug)
+            paths = generate_images(brief, images_dir, post_slug, brand=client_cfg)
             if paths:
-                # Store paths relative to OUTPUT_DIR so HTML <img src> resolves correctly
                 post["image_paths"] = {
-                    k: str(Path(v).relative_to(OUTPUT_DIR))
+                    k: str(Path(v).relative_to(output_dir))
                     for k, v in paths.items()
                 }
         log.info("→ Image generation complete")
 
     # ── Render and write outputs ──────────────────────────────────────────────
     log.info("→ Rendering outputs...")
-    markdown = _render_markdown(content, bill_set, voice_name)
-    html     = _render_html(content, bill_set, voice_name)
+    markdown = _render_markdown(content, bill_set, voice_name, client_cfg)
+    html     = _render_html(content, bill_set, voice_name, client_cfg, output_dir)
 
-    md_path.write_text(markdown,  encoding="utf-8")
-    html_path.write_text(html,    encoding="utf-8")
+    md_path.write_text(markdown, encoding="utf-8")
+    html_path.write_text(html,   encoding="utf-8")
 
     print(f"\n  ✓ Markdown: {md_path.relative_to(PROJECT_ROOT)}")
     print(f"  ✓ HTML:     {html_path.relative_to(PROJECT_ROOT)}")
@@ -1219,7 +1326,7 @@ def main() -> None:
         for post in posts:
             n = post.get("post_number", "?")
             for kind, rel_path in post.get("image_paths", {}).items():
-                print(f"  ✓ Image post {n} ({kind}): {OUTPUT_DIR.relative_to(PROJECT_ROOT) / rel_path}")
+                print(f"  ✓ Image post {n} ({kind}): {output_dir.relative_to(PROJECT_ROOT) / rel_path}")
     print(f"\n  Share preview: file://{html_path}")
     print(f"  Copy-paste:    file://{md_path}\n")
 

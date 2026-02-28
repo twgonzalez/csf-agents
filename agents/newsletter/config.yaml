@@ -4,8 +4,8 @@
 model: claude-sonnet-4-5
 
 newsletter:
-  name: "Local Control Intelligence"
-  from_name: "California Stewardship Fund"
+  name: "Local Control Intelligence"      # overridden at runtime from client.yml newsletter.name
+  from_name: "California Stewardship Fund" # overridden at runtime from client.yml client_name
   high_risk_threshold: 2      # Min criteria count (strong/moderate) for watch list
   max_watch_list: 5           # Max bills in the watch list section
   max_new_bills: 4            # Max bills in emerging threats section
@@ -19,7 +19,7 @@ approval:
 
 paths:
   bills_file: data/bills/tracked_bills.json
-  output_dir: outputs/newsletter
+  output_dir: outputs/clients/csf/newsletter   # per-client path; overridden at runtime by --client
   pages_dir:  docs/newsletters
 
 email:

@@ -1,0 +1,59 @@
+# clients/cma/client.yml
+# City Managers Association of California — Client Configuration
+#
+# Example second client demonstrating the multi-client architecture.
+# Professional association representing city managers and chief administrative
+# officers across California. Same bills, different audience and brand.
+
+client_id: cma
+client_name: City Managers Association of California
+slug: cma
+
+# ---------------------------------------------------------------------------
+# Identity — who is speaking, and to whom
+# ---------------------------------------------------------------------------
+identity:
+  org_description: >
+    The professional association representing city managers and chief administrative
+    officers across California, committed to effective, accountable, and fiscally
+    sound local governance.
+  audience: >
+    City managers, chief administrative officers, city administrators, assistant city
+    managers, and senior local government professionals across California who are
+    responsible for implementing state mandates, managing municipal budgets, and
+    maintaining the operational capacity of their cities.
+
+# ---------------------------------------------------------------------------
+# Colors — hex values for HTML proof sheet; natural language for Nano Banana Pro
+# ---------------------------------------------------------------------------
+colors:
+  background: { hex: "#1a3d2b", name: "deep forest green"  }
+  text:        { hex: "#ffffff", name: "white"              }
+  accent:      { hex: "#c8941a", name: "warm amber"         }
+
+# ---------------------------------------------------------------------------
+# Image generation — Nano Banana Pro prompt fragments
+# ---------------------------------------------------------------------------
+image:
+  accent_stripe: "A warm amber horizontal accent stripe across the lower third"
+  style_notes: >
+    Clean, institutional, professional policy graphic.
+    No photos. No people. No logos.
+  bill_context: "California legislative bill"
+
+# ---------------------------------------------------------------------------
+# Proof sheet — HTML rendering labels
+# ---------------------------------------------------------------------------
+proof_sheet:
+  label: City Managers Association of California
+
+# ---------------------------------------------------------------------------
+# Newsletter — product name shown in the email masthead
+# ---------------------------------------------------------------------------
+newsletter:
+  name: City Management Legislative Briefing
+
+# ---------------------------------------------------------------------------
+# Voices — default voice name (must match a file in clients/cma/voices/<name>.md)
+# ---------------------------------------------------------------------------
+default_voice: default

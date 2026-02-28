@@ -1,0 +1,59 @@
+# clients/csf/client.yml
+# California Stewardship Fund — Client Configuration
+#
+# This file defines brand identity, audience, and image style for the CSF client.
+# It is consumed by social_writer.py and newsletter_writer.py at runtime.
+# Add a new client by creating clients/<slug>/client.yml with the same structure.
+
+client_id: csf
+client_name: California Stewardship Fund
+slug: csf
+
+# ---------------------------------------------------------------------------
+# Identity — who is speaking, and to whom
+# These fields are injected directly into the Claude system prompt.
+# ---------------------------------------------------------------------------
+identity:
+  org_description: >
+    A policy organization whose core belief is that the best decisions come from
+    people closest to them.
+  audience: >
+    City council members, planning commissioners, local government staff,
+    neighborhood advocates, major donors, and engaged citizens who care about
+    protecting local government authority from state preemption.
+
+# ---------------------------------------------------------------------------
+# Colors — hex values for HTML proof sheet; natural language for Nano Banana Pro
+# ---------------------------------------------------------------------------
+colors:
+  background: { hex: "#1a3a5c", name: "deep navy blue"  }
+  text:        { hex: "#ffffff", name: "white"           }
+  accent:      { hex: "#c9a227", name: "warm gold"       }
+
+# ---------------------------------------------------------------------------
+# Image generation — Nano Banana Pro prompt fragments
+# ---------------------------------------------------------------------------
+image:
+  accent_stripe: "A warm gold horizontal accent stripe across the lower third"
+  style_notes: >
+    Clean, minimal, professional policy-advocacy.
+    No photos. No people. No logos.
+  bill_context: "California legislative bill"
+
+# ---------------------------------------------------------------------------
+# Proof sheet — HTML rendering labels
+# ---------------------------------------------------------------------------
+proof_sheet:
+  label: California Stewardship Fund
+
+# ---------------------------------------------------------------------------
+# Newsletter — product name shown in the email masthead
+# ---------------------------------------------------------------------------
+newsletter:
+  name: Local Control Intelligence
+
+# ---------------------------------------------------------------------------
+# Voices — default voice name (must match a file in clients/csf/voices/<name>.md)
+# Override per-run with --voice <name>
+# ---------------------------------------------------------------------------
+default_voice: default

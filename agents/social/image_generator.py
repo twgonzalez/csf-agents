@@ -28,6 +28,21 @@ load_dotenv(_PROJECT_ROOT / ".env", override=True)
 log = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
+# CSF brand defaults — used when no client brand is provided (e.g. standalone test)
+# ---------------------------------------------------------------------------
+_CSF_BRAND_DEFAULTS: dict = {
+    "client_name": "California Stewardship Fund",
+    "colors": {
+        "background": {"name": "deep navy blue"},
+        "accent":     {"name": "warm gold"},
+    },
+    "image": {
+        "accent_stripe": "A warm gold horizontal accent stripe across the lower third",
+        "bill_context":  "California legislative bill",
+    },
+}
+
+# ---------------------------------------------------------------------------
 # Sizes: (aspect_ratio, slug, description)
 # ---------------------------------------------------------------------------
 _SIZES = [
@@ -36,18 +51,30 @@ _SIZES = [
 ]
 
 
-def build_prompt(brief: dict, aspect_ratio: str) -> str:
+def build_prompt(brief: dict, aspect_ratio: str, brand: dict | None = None) -> str:
     """Build the Nano Banana Pro prompt from an image_brief dict.
 
     Handles two post types:
-    - Bill-specific (bill_number present): large gold bill number is the dominant element.
+    - Bill-specific (bill_number present): large accent-color bill number is the dominant element.
     - Thematic / mission-frame (no bill_number): headline is the dominant element;
       typographic_element description is used for layout guidance.
 
     aspect_ratio is "1:1" or "16:9" — used only for the size descriptor in the
     prompt text; the actual API aspect ratio is passed separately.
+
+    brand is a client config dict (from clients/<id>/client.yml). Falls back to
+    _CSF_BRAND_DEFAULTS when None so the standalone test requires no changes.
     """
     import re
+
+    b = brand if brand is not None else _CSF_BRAND_DEFAULTS
+
+    # Resolve brand fragments
+    bg_name       = b["colors"]["background"]["name"]
+    accent_name   = b["colors"]["accent"]["name"]
+    accent_stripe = b["image"]["accent_stripe"]
+    bill_context  = b["image"]["bill_context"]
+    org_name      = b["client_name"]
 
     headline            = brief.get("headline", "")
     subtext             = brief.get("subtext", "")
@@ -74,12 +101,12 @@ def build_prompt(brief: dict, aspect_ratio: str) -> str:
 
     if bill_number:
         # Bill-specific post: bill number is the dominant typographic element
-        intro      = f"Create a {size_label} policy advocacy graphic for the California legislative bill {bill_number}."
-        typo_line  = f'- Large oversized bold display text "{bill_number}" in warm gold, upper-left — dominant element'
-        hierarchy  = f"Text hierarchy: {bill_number} (largest, gold) → headline (medium-large, white bold) → subtext (smaller, white)"
+        intro      = f"Create a {size_label} policy advocacy graphic for the {bill_context} {bill_number}."
+        typo_line  = f'- Large oversized bold display text "{bill_number}" in {accent_name}, upper-left — dominant element'
+        hierarchy  = f"Text hierarchy: {bill_number} (largest, {accent_name}) → headline (medium-large, white bold) → subtext (smaller, white)"
     else:
         # Thematic / mission-frame post: headline drives the layout
-        intro     = f"Create a {size_label} policy advocacy graphic for the California Stewardship Fund."
+        intro     = f"Create a {size_label} policy advocacy graphic for {org_name}."
         # Use typographic_element description as layout guidance if present
         te_note = f"\n- Typographic layout: {typographic_element}" if typographic_element else ""
         typo_line = f"- Bold headline is the dominant visual element, large white display type, upper portion{te_note}"
@@ -88,9 +115,9 @@ def build_prompt(brief: dict, aspect_ratio: str) -> str:
     return f"""{intro}
 
 Layout and design:
-- Deep navy blue background, flat solid color, no gradients
+- {bg_name.capitalize()} background, flat solid color, no gradients
 {typo_line}
-- A warm gold horizontal accent stripe across the lower third
+- {accent_stripe}
 {optional_graphic_line}
 
 Text to render exactly as written:
@@ -101,13 +128,20 @@ Text to render exactly as written:
 Style: Clean, minimal, professional policy-advocacy. No photos. No people. No logos."""
 
 
-def generate_images(brief: dict, output_dir: Path, post_slug: str) -> dict[str, Path]:
+def generate_images(
+    brief: dict,
+    output_dir: Path,
+    post_slug: str,
+    brand: dict | None = None,
+) -> dict[str, Path]:
     """Generate square and landscape PNGs for a single post.
 
     Args:
         brief:      image_brief dict from Claude's JSON output.
         output_dir: Directory to save PNGs (created if needed).
         post_slug:  Short slug for the post, e.g. "post_1".
+        brand:      Client config dict (from clients/<id>/client.yml). Falls back
+                    to _CSF_BRAND_DEFAULTS when None.
 
     Returns:
         {"square": Path, "landscape": Path}
@@ -133,7 +167,7 @@ def generate_images(brief: dict, output_dir: Path, post_slug: str) -> dict[str, 
     results: dict[str, Path] = {}
 
     for aspect_ratio, slug, description in _SIZES:
-        prompt = build_prompt(brief, aspect_ratio)
+        prompt = build_prompt(brief, aspect_ratio, brand=brand)
         out_path = output_dir / f"{post_slug}_{slug}.png"
 
         log.info(f"   → Generating {slug} ({description})...")
@@ -207,7 +241,7 @@ if __name__ == "__main__":
     }
 
     iso_week  = date.today().strftime("%G-W%V")   # ISO 8601 — matches workflow %V
-    out_dir   = _PROJECT_ROOT / "outputs" / "social" / "images" / iso_week
+    out_dir   = _PROJECT_ROOT / "outputs" / "clients" / "csf" / "social" / "images" / iso_week
     post_slug = "post_1"
 
     print(f"\n  Nano Banana Pro — standalone test")

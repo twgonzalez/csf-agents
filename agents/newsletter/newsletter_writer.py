@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-newsletter_writer.py — Local Control Intelligence
+newsletter_writer.py — Weekly Legislative Intelligence Newsletter
 California Stewardship Fund
 
 Reads tracked_bills.json (output of bill_tracker + housing_analyzer), calls Claude
@@ -9,14 +9,26 @@ to generate narrative content, and renders a polished inline-styled HTML newslet
 Pipeline position:
     bill_tracker.py → tracked_bills.json → housing_analyzer.py → newsletter_writer.py
 
+Client system:
+    Each run targets a client from clients/<id>/client.yml.
+    The client file defines brand identity (org, audience, colors, newsletter name).
+    Voice files in clients/<id>/voices/ control tone and framing.
+
+    Default client: clients/csf/  (California Stewardship Fund)
+    Add a client:   create clients/<slug>/client.yml + clients/<slug>/voices/default.md
+    Select client:  --client <slug>
+    List clients:   --list-clients
+
 Usage:
-    .venv/bin/python agents/newsletter/newsletter_writer.py            # dry-run (default)
-    .venv/bin/python agents/newsletter/newsletter_writer.py --dry-run
+    .venv/bin/python agents/newsletter/newsletter_writer.py              # csf, dry-run
+    .venv/bin/python agents/newsletter/newsletter_writer.py --client cma
+    .venv/bin/python agents/newsletter/newsletter_writer.py --send       # send to recipients
+    .venv/bin/python agents/newsletter/newsletter_writer.py --list-clients
     .venv/bin/python agents/newsletter/newsletter_writer.py --bills path/to/bills.json
     .venv/bin/python agents/newsletter/newsletter_writer.py --lookback 7
 
 Output:
-    outputs/newsletter/newsletter_YYYY-WNN.html
+    outputs/clients/<slug>/newsletter/newsletter_YYYY-WNN.html
 
 Requires:
     ANTHROPIC_API_KEY environment variable (or .env file at project root)
@@ -41,6 +53,7 @@ from dotenv import load_dotenv
 load_dotenv(_PROJECT_ROOT / ".env", override=True)
 
 import anthropic
+import yaml
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -53,21 +66,23 @@ log = logging.getLogger(__name__)
 # Paths
 # ---------------------------------------------------------------------------
 
-PROJECT_ROOT = _PROJECT_ROOT
-BILLS_FILE   = PROJECT_ROOT / "data" / "bills" / "tracked_bills.json"
-OUTPUT_DIR   = PROJECT_ROOT / "outputs" / "newsletter"
+PROJECT_ROOT   = _PROJECT_ROOT
+BILLS_FILE     = PROJECT_ROOT / "data" / "bills" / "tracked_bills.json"
+CLIENTS_DIR    = PROJECT_ROOT / "clients"
+
+DEFAULT_CLIENT = "csf"
+DEFAULT_VOICE  = "default"
 
 # ---------------------------------------------------------------------------
 # Design constants
 # Inline styles only — Gmail and Outlook strip <style> blocks entirely.
+# Brand colors (navy, gold) come from client config at runtime.
 # ---------------------------------------------------------------------------
 
 _SERIF  = "font-family:Georgia,'Times New Roman',Times,serif;"
 _SANS   = "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;"
-_NAVY   = "#1a3a5c"   # primary heading / masthead
 _RED    = "#b03a2e"   # highest-risk bill flag in watch list
 _ORANGE = "#c0522a"   # reveal line in three-beat stacked headings (burnt orange)
-_GOLD   = "#c9a227"   # section labels
 _SAND   = "#faf8f4"   # page background
 _INK    = "#1c1c1e"   # body text
 _MID    = "#555555"   # muted / secondary text
@@ -92,13 +107,7 @@ def _select_bills(
     max_watch: int = 5,
     max_new: int = 4,
 ) -> dict:
-    """Return the three bill sets that drive newsletter content.
-
-    watch_list       — bills with strong/moderate on 2+ of 4 criteria, ranked by
-                       (hearing soon, risk count, strong count)
-    new_bills        — bills first_seen within lookback window, ≥1 risk signal
-    upcoming_hearings — bills with hearings in the next hearing_lookahead days
-    """
+    """Return the three bill sets that drive newsletter content."""
     today    = date.today()
     cutoff   = today - timedelta(days=lookback_days)
     hear_end = today + timedelta(days=hearing_lookahead)
@@ -113,11 +122,9 @@ def _select_bills(
         risk_count   = sum(1 for s in risk_scores.values() if s in ("strong", "moderate"))
         strong_count = sum(1 for s in risk_scores.values() if s == "strong")
 
-        # Watch list: flagged on 2+ criteria
         if risk_count >= 2:
             watch_list.append((bill, risk_count, strong_count))
 
-        # New bills: recently seen with at least one risk signal
         if bill.get("first_seen") and risk_count >= 1:
             try:
                 first_seen = datetime.fromisoformat(bill["first_seen"]).date()
@@ -126,7 +133,6 @@ def _select_bills(
             except ValueError:
                 pass
 
-        # Upcoming hearings
         for h in bill.get("upcoming_hearings", []):
             try:
                 hdate = date.fromisoformat(h["date"])
@@ -153,22 +159,75 @@ def _select_bills(
 
 
 # ---------------------------------------------------------------------------
+# Client system
+# ---------------------------------------------------------------------------
+
+def _list_clients() -> list[str]:
+    """Return sorted list of available client slugs."""
+    if not CLIENTS_DIR.exists():
+        return []
+    return sorted(
+        p.name for p in CLIENTS_DIR.iterdir()
+        if p.is_dir() and (p / "client.yml").exists()
+    )
+
+
+def _load_client(name: str = DEFAULT_CLIENT) -> dict:
+    """Load a client config from clients/<name>/client.yml."""
+    path = CLIENTS_DIR / name / "client.yml"
+    if path.exists():
+        log.info(f"→ Client: '{name}' ({path})")
+        return yaml.safe_load(path.read_text(encoding="utf-8"))
+
+    if name != DEFAULT_CLIENT:
+        log.warning(f"Client '{name}' not found at {path}. Falling back to '{DEFAULT_CLIENT}'.")
+        default_path = CLIENTS_DIR / DEFAULT_CLIENT / "client.yml"
+        if default_path.exists():
+            log.info(f"→ Client: '{DEFAULT_CLIENT}' (fallback)")
+            return yaml.safe_load(default_path.read_text(encoding="utf-8"))
+
+    log.error(f"No client config found for '{name}' and no '{DEFAULT_CLIENT}' fallback.")
+    sys.exit(1)
+
+
+# ---------------------------------------------------------------------------
+# Voice system
+# ---------------------------------------------------------------------------
+
+def _list_voices(voices_dir: Path) -> list[str]:
+    """Return sorted list of available voice names for a client."""
+    if not voices_dir.exists():
+        return []
+    return sorted(p.stem for p in voices_dir.glob("*.md"))
+
+
+def _load_voice(name: str = DEFAULT_VOICE, voices_dir: Path | None = None) -> str:
+    """Load a voice file by name from the client's voices directory."""
+    if voices_dir is None:
+        voices_dir = CLIENTS_DIR / DEFAULT_CLIENT / "voices"
+
+    path = voices_dir / f"{name}.md"
+    if path.exists():
+        log.info(f"→ Voice: '{name}' ({path.name})")
+        return path.read_text(encoding="utf-8").strip()
+
+    if name != DEFAULT_VOICE:
+        log.warning(f"Voice '{name}' not found at {path}. Falling back to '{DEFAULT_VOICE}'.")
+        default_path = voices_dir / f"{DEFAULT_VOICE}.md"
+        if default_path.exists():
+            log.info(f"→ Voice: '{DEFAULT_VOICE}' (fallback)")
+            return default_path.read_text(encoding="utf-8").strip()
+
+    log.warning(f"No voice file found in {voices_dir}. Proceeding without voice guidance.")
+    return ""
+
+
+# ---------------------------------------------------------------------------
 # Claude content generation
 # ---------------------------------------------------------------------------
 
-_SYSTEM_PROMPT = """\
-You are the editorial voice of the California Stewardship Fund — a policy organization \
-whose core belief is that the best decisions come from people closest to them.
-
-You write the weekly "Local Control Intelligence" newsletter. It reaches city council \
-members, mayors, neighborhood advocacy leaders, and major donors who support protecting \
-local government authority from state preemption of land-use decisions.
-
-VOICE: Think sharp political journalism — confident, direct, insider tone. Not alarmist. \
-Not academic. Write for a busy executive who will give you 90 seconds. \
-Every sentence must earn its place. Name problems directly. Give the reader \
-intelligence they can't get anywhere else.
-
+# Structural format rules — newsletter layout, JSON schema. Never changes.
+_NEWSLETTER_FORMAT = """\
 FORMAT: The newsletter is prose-first. No bullet points in the main story. \
 No report-style headers. Each story section uses a three-beat stacked heading: \
   line1  — the fact (2–5 words)
@@ -177,22 +236,37 @@ No report-style headers. Each story section uses a three-beat stacked heading: \
 Example: line1="Not zoning.", line2="Not design review.", reveal="your city's infrastructure budget."
 The heading should make the reader want to read the paragraph below it.
 
-FRAMING: Sacramento is advancing legislation that preempts local zoning authority, \
-removes discretionary review, mandates development patterns, and shifts infrastructure \
-costs to cities. The central message is: "This isn't about stopping housing — \
-it's about who decides."
-
 USE THESE TERMS: "preempts local authority", "removes discretionary review", \
 "state mandate", "infrastructure cost-shifting", "local control"
-AVOID: "controversial", "opponents say", "some argue", false balance
-
-THREE AUDIENCES read this newsletter simultaneously:
-- Local electeds: need intelligence to act on before hearings
-- Neighborhood advocates: need coordinated framing and mobilization signal
-- Major donors: need to understand why sustained investment matters, not just crisis response
-
-Write so that all three feel the newsletter was written for them.\
+AVOID: "controversial", "opponents say", "some argue", false balance\
 """
+
+
+def _build_system_prompt(client: dict, voice_text: str = "") -> str:
+    """Build the system prompt from client config + voice file.
+
+    Client config provides: org identity, audience, newsletter name.
+    Voice file adds: tone, framing, content pattern.
+    Newsletter format rules are structural and stay hardcoded.
+    """
+    org_name       = client["client_name"]
+    org_desc       = client["identity"]["org_description"].strip()
+    audience       = client["identity"]["audience"].strip()
+    newsletter_name = client.get("newsletter", {}).get("name", f"{org_name} Legislative Intelligence")
+
+    base = (
+        f"You are the editorial voice of {org_name} — {org_desc}\n\n"
+        f"You write the weekly \"{newsletter_name}\" newsletter. It reaches {audience}\n\n"
+        f"VOICE: Think sharp political journalism — confident, direct, insider tone. "
+        f"Not alarmist. Not academic. Write for a busy executive who will give you 90 seconds. "
+        f"Every sentence must earn its place. Name problems directly. Give the reader "
+        f"intelligence they can't get anywhere else.\n\n"
+        f"{_NEWSLETTER_FORMAT}"
+    )
+
+    if voice_text:
+        return f"{base}\n\n---\n\n## VOICE & TONE\n\n{voice_text}"
+    return base
 
 
 def _build_bill_context(bill: dict) -> str:
@@ -214,18 +288,13 @@ def _build_bill_context(bill: dict) -> str:
     return "\n".join(lines)
 
 
-def _generate_content(bill_set: dict, client: anthropic.Anthropic) -> dict:
-    """Single Claude call returning all newsletter content as a structured dict.
-
-    Returned keys:
-        subject       — email subject line
-        preview_text  — inbox preview snippet (~85 chars)
-        dek           — standfirst paragraph (italic, above the story)
-        story         — list of 4 dicts: {line1, line2, reveal, body}
-        watch_items   — list of dicts: {bill_number, author, label, one_line, flag}
-        call_to_action — dict: {heading, body}
-        close          — dict: {heading, body}
-    """
+def _generate_content(
+    bill_set: dict,
+    anthropic_client: anthropic.Anthropic,
+    client_cfg: dict,
+    voice_text: str = "",
+) -> dict:
+    """Single Claude call returning all newsletter content as a structured dict."""
     watch_ctx = "\n\n".join(_build_bill_context(b) for b in bill_set["watch_list"])
     new_ctx   = "\n\n".join(_build_bill_context(b) for b in bill_set["new_bills"])
 
@@ -268,7 +337,7 @@ The 4 paragraphs must tell a coherent story arc:
   [0] = What happened this week and why it matters
   [1] = How these specific bills work together mechanically
   [2] = The deeper threat (usually the fee / budget angle)
-  [3] = Connects to the broader session pattern and CSF's mission
+  [3] = Connects to the broader session pattern and the organization's mission
 
 "watch_items": Array of objects for each watch-list bill, with:
   "bill_number": e.g. "AB1751"
@@ -279,7 +348,7 @@ The 4 paragraphs must tell a coherent story arc:
 
 "call_to_action": Object with:
   "heading": Short editorial statement (5–8 words). Frame the action, don't just describe it.
-  "body": 2–3 sentences. One specific, time-bound action that serves all three audiences. \
+  "body": 2–3 sentences. One specific, time-bound action that serves all audiences. \
 Include the framing line: "This isn't about stopping housing — it's about who decides."
 
 "close": Object with:
@@ -289,16 +358,16 @@ Include the framing line: "This isn't about stopping housing — it's about who 
 Return ONLY valid JSON. No markdown fences. No commentary outside the JSON object.
 """
 
+    system_prompt = _build_system_prompt(client_cfg, voice_text)
     log.info("→ Calling Claude to generate newsletter content...")
-    message = client.messages.create(
+    message = anthropic_client.messages.create(
         model="claude-sonnet-4-5",
         max_tokens=3000,
-        system=_SYSTEM_PROMPT,
+        system=system_prompt,
         messages=[{"role": "user", "content": user_prompt}],
     )
 
     raw = message.content[0].text.strip()
-    # Strip markdown fences if Claude wraps the response
     if raw.startswith("```"):
         raw = raw.split("\n", 1)[1]
         if raw.endswith("```"):
@@ -320,21 +389,16 @@ def _rule(margin_top: int = 32, margin_bottom: int = 32) -> str:
     )
 
 
-def _label(text: str) -> str:
+def _label(text: str, gold: str) -> str:
     return (
-        f'<div style="{_SERIF}color:{_GOLD};font-size:11px;font-weight:700;'
+        f'<div style="{_SERIF}color:{gold};font-size:11px;font-weight:700;'
         f'font-style:italic;margin-bottom:14px;">'
         f'{text}</div>'
     )
 
 
 def _preview_html(text: str) -> str:
-    """Hidden div that controls the inbox preview snippet in Gmail / Apple Mail / Outlook.
-
-    Without this, clients grab the first visible text — usually the masthead name
-    and date, which tell the reader nothing. The &nbsp; padding prevents clients
-    from pulling in additional body text after the preview snippet ends.
-    """
+    """Hidden div that controls the inbox preview snippet in Gmail / Apple Mail / Outlook."""
     pad = "&nbsp;" * 90
     return (
         f'<div style="display:none;max-height:0;overflow:hidden;'
@@ -344,14 +408,10 @@ def _preview_html(text: str) -> str:
     )
 
 
-def _dek_html(text: str) -> str:
-    """Standfirst paragraph — above-the-fold hook, below the masthead rule.
-
-    Answers "why does this matter to me right now?" before the first heading lands.
-    Italic, slightly muted — sets the stage without stealing from the story.
-    """
+def _dek_html(text: str, navy: str) -> str:
+    """Standfirst paragraph — above-the-fold hook, below the masthead rule."""
     return (
-        f'<p style="{_SERIF}color:{_NAVY};font-size:17px;font-weight:400;'
+        f'<p style="{_SERIF}color:{navy};font-size:17px;font-weight:400;'
         f'font-style:italic;line-height:1.65;margin:0 0 36px;padding:0;'
         f'opacity:0.85;">'
         f'{text}'
@@ -359,41 +419,28 @@ def _dek_html(text: str) -> str:
     )
 
 
-def _graf3(line1: str, line2: str, reveal: str, body: str) -> str:
-    """Three-beat stacked heading above a body paragraph.
-
-    line1  — the fact      (bold navy)
-    line2  — the tension   (bold navy)
-    reveal — the stakes    (bold italic burnt orange — the gut-punch)
-    body   — the paragraph (16px Georgia)
-
-    Color arc: cool navy → warm orange. Stakes escalate visually as the eye
-    descends through the three lines.
-    """
+def _graf3(line1: str, line2: str, reveal: str, body: str, navy: str) -> str:
+    """Three-beat stacked heading above a body paragraph."""
     return (
         f'<p style="margin:0 0 32px;">'
-        # Line 1 — the fact
-        f'<span style="{_SERIF}display:block;color:{_NAVY};font-size:22px;'
+        f'<span style="{_SERIF}display:block;color:{navy};font-size:22px;'
         f'font-weight:700;line-height:1.15;margin-bottom:3px;">'
         f'{line1}</span>'
-        # Line 2 — the tension
-        f'<span style="{_SERIF}display:block;color:{_NAVY};font-size:22px;'
+        f'<span style="{_SERIF}display:block;color:{navy};font-size:22px;'
         f'font-weight:700;line-height:1.15;margin-bottom:11px;">'
         f'{line2}</span>'
-        # Reveal — the stakes (italic, burnt orange)
         f'<span style="{_SERIF}display:block;color:{_ORANGE};font-size:22px;'
         f'font-weight:700;font-style:italic;line-height:1.15;margin-bottom:13px;">'
         f'{reveal}</span>'
-        # Body
         f'<span style="{_SERIF}color:{_INK};font-size:16px;line-height:1.85;">'
         f'{body}</span>'
         f'</p>'
     )
 
 
-def _watch_item(item: dict) -> str:
+def _watch_item(item: dict, navy: str) -> str:
     flag  = item.get("flag", False)
-    color = _RED if flag else _NAVY
+    color = _RED if flag else navy
     url   = item.get("url", "#")
     new   = item.get("new", False)
 
@@ -425,12 +472,17 @@ def _watch_item(item: dict) -> str:
 # HTML assembler
 # ---------------------------------------------------------------------------
 
-def _build_html(content: dict, bill_set: dict, week_label: str) -> str:
+def _build_html(content: dict, bill_set: dict, week_label: str, client_cfg: dict) -> str:
     """Assemble the full inline-styled HTML email from generated content + bill data."""
+    navy            = client_cfg.get("colors", {}).get("background", {}).get("hex", "#1a3a5c")
+    gold            = client_cfg.get("colors", {}).get("accent",     {}).get("hex", "#c9a227")
+    newsletter_name = client_cfg.get("newsletter", {}).get("name", "Legislative Intelligence")
+    client_name     = client_cfg.get("client_name", "")
+    footer_label    = client_cfg.get("proof_sheet", {}).get("label", client_name)
 
-    # Inject leginfo URLs into Claude's watch_items (Claude doesn't have these)
-    all_bills  = bill_set["watch_list"] + bill_set["new_bills"]
-    url_map    = {b["bill_number"]: b.get("text_url", "#") for b in all_bills}
+    # Inject leginfo URLs into Claude's watch_items
+    all_bills   = bill_set["watch_list"] + bill_set["new_bills"]
+    url_map     = {b["bill_number"]: b.get("text_url", "#") for b in all_bills}
     watch_items = content.get("watch_items", [])
     for item in watch_items:
         if not item.get("url"):
@@ -443,18 +495,19 @@ def _build_html(content: dict, bill_set: dict, week_label: str) -> str:
             p.get("line2",  ""),
             p.get("reveal", ""),
             p.get("body",   ""),
+            navy,
         )
         for p in content.get("story", [])
     )
 
     # Render watch list rows
-    watch_rows = "".join(_watch_item(item) for item in watch_items)
+    watch_rows = "".join(_watch_item(item, navy) for item in watch_items)
 
     # Render call to action
     cta = content.get("call_to_action", {})
     cta_html = (
         f'<p style="margin:0 0 20px;">'
-        f'<span style="{_SERIF}display:block;color:{_NAVY};font-size:20px;'
+        f'<span style="{_SERIF}display:block;color:{navy};font-size:20px;'
         f'font-weight:700;line-height:1.25;margin-bottom:9px;">'
         f'{cta.get("heading", "")}</span>'
         f'<span style="{_SERIF}color:{_INK};font-size:16px;line-height:1.85;">'
@@ -475,14 +528,14 @@ def _build_html(content: dict, bill_set: dict, week_label: str) -> str:
     )
 
     preview_div = _preview_html(content.get("preview_text", ""))
-    dek_para    = _dek_html(content.get("dek", ""))
+    dek_para    = _dek_html(content.get("dek", ""), navy)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Local Control Intelligence — {week_label}</title>
+  <title>{newsletter_name} — {week_label}</title>
 </head>
 <body style="margin:0;padding:0;background:{_SAND};">
 {preview_div}
@@ -501,9 +554,9 @@ def _build_html(content: dict, bill_set: dict, week_label: str) -> str:
       <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
           <td>
-            <div style="{_SERIF}color:{_NAVY};font-size:26px;font-weight:700;
+            <div style="{_SERIF}color:{navy};font-size:26px;font-weight:700;
                         letter-spacing:-0.4px;line-height:1;">
-              Local Control Intelligence
+              {newsletter_name}
             </div>
           </td>
           <td align="right" valign="middle">
@@ -514,7 +567,7 @@ def _build_html(content: dict, bill_set: dict, week_label: str) -> str:
         </tr>
       </table>
       <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px;">
-        <tr><td style="border-top:1px solid {_NAVY};font-size:0;">&nbsp;</td></tr>
+        <tr><td style="border-top:1px solid {navy};font-size:0;">&nbsp;</td></tr>
       </table>
     </td>
   </tr>
@@ -532,7 +585,7 @@ def _build_html(content: dict, bill_set: dict, week_label: str) -> str:
       {_rule(28, 28)}
 
       <!-- WATCH LIST -->
-      {_label("What to Watch")}
+      {_label("What to Watch", gold)}
       <table width="100%" cellpadding="0" cellspacing="0">
         <tbody>{watch_rows}</tbody>
       </table>
@@ -540,7 +593,7 @@ def _build_html(content: dict, bill_set: dict, week_label: str) -> str:
       {_rule(28, 28)}
 
       <!-- CALL TO ACTION -->
-      {_label("Before You Close This")}
+      {_label("Before You Close This", gold)}
       {cta_html}
 
       {_rule(28, 24)}
@@ -556,7 +609,7 @@ def _build_html(content: dict, bill_set: dict, week_label: str) -> str:
     <td style="padding:20px 0;text-align:center;">
       <div style="{_SANS}color:#aaa;font-size:10px;line-height:1.8;
                   text-transform:uppercase;letter-spacing:0.8px;">
-        California Stewardship Fund
+        {footer_label}
         &nbsp;·&nbsp;
         <a href="https://twgonzalez.github.io/csf-agents/"
            style="color:#aaa;text-decoration:none;">Full Dashboard</a>
@@ -578,18 +631,8 @@ def _build_html(content: dict, bill_set: dict, week_label: str) -> str:
 # Email delivery
 # ---------------------------------------------------------------------------
 
-def _send_email(html: str, subject: str) -> bool:
-    """Send the newsletter via Gmail SMTP with STARTTLS.
-
-    Reads credentials from environment variables (set in .env or GitHub Secrets):
-        EMAIL_USER            — SMTP username / sending address
-        EMAIL_PASSWORD        — Gmail App Password (16-char; NOT your account password)
-                                Generate at myaccount.google.com → Security → App passwords
-        NEWSLETTER_RECIPIENTS — comma-separated list of subscriber addresses
-
-    Returns True on success, False on any failure (logs error, does not raise).
-    Safe to call from GitHub Actions — a send failure will not crash the pipeline.
-    """
+def _send_email(html: str, subject: str, newsletter_name: str = "Newsletter") -> bool:
+    """Send the newsletter via Gmail SMTP with STARTTLS."""
     smtp_user      = os.environ.get("EMAIL_USER",            "").strip()
     smtp_pass      = os.environ.get("EMAIL_PASSWORD",        "").strip()
     recipients_raw = os.environ.get("NEWSLETTER_RECIPIENTS", "").strip()
@@ -606,16 +649,15 @@ def _send_email(html: str, subject: str) -> bool:
 
     recipients = [r.strip() for r in recipients_raw.split(",") if r.strip()]
 
-    # Plain text fallback for clients that don't render HTML
     plain = (
-        f"Local Control Intelligence\n\n"
+        f"{newsletter_name}\n\n"
         f"{subject}\n\n"
         f"Open this email in a browser to read the full newsletter."
     )
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
-    msg["From"]    = f"Local Control Intelligence <{smtp_user}>"
+    msg["From"]    = f"{newsletter_name} <{smtp_user}>"
     msg["To"]      = ", ".join(recipients)
     msg.attach(MIMEText(plain, "plain", "utf-8"))
     msg.attach(MIMEText(html,  "html",  "utf-8"))
@@ -651,20 +693,53 @@ def _send_email(html: str, subject: str) -> bool:
 
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
-        description="Generate the Local Control Intelligence newsletter.",
+        description="Generate the weekly legislative intelligence newsletter for a configured client.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 examples:
-  # Generate HTML only (dry-run — default, no email sent)
+  # Generate HTML only for CSF (dry-run — default)
   python agents/newsletter/newsletter_writer.py
 
+  # Generate for a specific client
+  python agents/newsletter/newsletter_writer.py --client cma
+
   # Generate and send to NEWSLETTER_RECIPIENTS
-  python agents/newsletter/newsletter_writer.py --send
+  python agents/newsletter/newsletter_writer.py --client csf --send
+
+  # List all configured clients
+  python agents/newsletter/newsletter_writer.py --list-clients
+
+  # List voices available for a client
+  python agents/newsletter/newsletter_writer.py --client csf --list-voices
 
   # Override lookback window or bill data source
   python agents/newsletter/newsletter_writer.py --lookback 7
   python agents/newsletter/newsletter_writer.py --bills data/bills/tracked_bills.json
         """,
+    )
+    p.add_argument(
+        "--client", type=str, default=DEFAULT_CLIENT,
+        help=(
+            f"Client to generate content for (default: '{DEFAULT_CLIENT}'). "
+            f"Must match a directory in clients/<name>/. "
+            f"Run --list-clients to see all configured clients."
+        ),
+    )
+    p.add_argument(
+        "--list-clients", action="store_true", default=False,
+        help="Print all available client names and exit.",
+    )
+    p.add_argument(
+        "--voice", type=str, default=None,
+        help=(
+            "Voice to use for content generation. "
+            "Must match a filename in clients/<client>/voices/<name>.md. "
+            "Defaults to the client's default_voice setting."
+        ),
+    )
+    p.add_argument(
+        "--list-voices", action="store_true", default=False,
+        help="Print all available voice names for the selected client and exit.",
     )
     p.add_argument(
         "--send", action="store_true", default=False,
@@ -688,13 +763,52 @@ examples:
 def main() -> None:
     args = _parse_args()
 
+    # ── --list-clients: print available clients and exit ─────────────────────
+    if args.list_clients:
+        clients = _list_clients()
+        if clients:
+            print("\n  Available clients (clients/):\n")
+            for c in clients:
+                marker = " ← default" if c == DEFAULT_CLIENT else ""
+                print(f"    {c}{marker}")
+            print(f"\n  Usage: --client <name>   e.g. --client cma\n")
+        else:
+            print(f"\n  No client directories found in {CLIENTS_DIR}\n")
+        sys.exit(0)
+
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         log.error("ANTHROPIC_API_KEY not set. Add it to .env or your environment.")
         sys.exit(1)
 
-    print("\n  Local Control Intelligence — Newsletter Writer")
-    print("  " + "─" * 47)
+    # ── Load client config ────────────────────────────────────────────────────
+    client_cfg      = _load_client(args.client)
+    client_id       = client_cfg.get("slug", args.client)
+    client_name     = client_cfg.get("client_name", client_id)
+    newsletter_name = client_cfg.get("newsletter", {}).get("name", f"{client_name} Legislative Intelligence")
+
+    print(f"\n  {newsletter_name} — Newsletter Writer")
+    print("  " + "─" * (len(newsletter_name) + 20))
+
+    # ── Resolve voice ─────────────────────────────────────────────────────────
+    voices_dir = CLIENTS_DIR / client_id / "voices"
+    voice_name = args.voice or client_cfg.get("default_voice", DEFAULT_VOICE)
+
+    # ── --list-voices: print voices for selected client and exit ──────────────
+    if args.list_voices:
+        voices = _list_voices(voices_dir)
+        if voices:
+            default_v = client_cfg.get("default_voice", DEFAULT_VOICE)
+            print(f"\n  Available voices for '{client_id}' (clients/{client_id}/voices/):\n")
+            for v in voices:
+                marker = " ← default" if v == default_v else ""
+                print(f"    {v}{marker}")
+            print(f"\n  Usage: --voice <name>   e.g. --voice urgent\n")
+        else:
+            print(f"\n  No voice files found in {voices_dir}\n")
+        sys.exit(0)
+
+    voice_text = _load_voice(voice_name, voices_dir)
 
     # ── Load bill data ──────────────────────────────────────────────────────
     bills_path = args.bills or BILLS_FILE
@@ -711,31 +825,33 @@ def main() -> None:
     log.info(f"   Upcoming hearings: {len(bill_set['upcoming_hearings'])}")
 
     # ── Generate content via Claude ─────────────────────────────────────────
-    client  = anthropic.Anthropic(api_key=api_key)
-    content = _generate_content(bill_set, client)
+    anthropic_client = anthropic.Anthropic(api_key=api_key)
+    content = _generate_content(bill_set, anthropic_client, client_cfg, voice_text)
     log.info("   ✓ Content generated")
 
-    # ── Print email metadata for clipboard use ──────────────────────────────
-    subject      = content.get("subject", "Local Control Intelligence")
+    # ── Print email metadata ─────────────────────────────────────────────────
+    subject      = content.get("subject", newsletter_name)
     preview_text = content.get("preview_text", "")
-    print(f"\n  Subject:      {subject}")
+    print(f"\n  Client:       {client_name}")
+    print(f"  Subject:      {subject}")
     print(f"  Preview text: {preview_text[:85]}{'…' if len(preview_text) > 85 else ''}")
 
     # ── Render and write HTML ───────────────────────────────────────────────
     log.info("→ Rendering HTML...")
     week_label = "WEEK OF " + date.today().strftime("%B %-d, %Y").upper()
-    html       = _build_html(content, bill_set, week_label)
+    html       = _build_html(content, bill_set, week_label, client_cfg)
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    iso_week = date.today().strftime("%Y-W%W")
-    out_path = OUTPUT_DIR / f"newsletter_{iso_week}.html"
+    output_dir = PROJECT_ROOT / "outputs" / "clients" / client_id / "newsletter"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    iso_week = date.today().strftime("%G-W%V")
+    out_path = output_dir / f"newsletter_{iso_week}.html"
     out_path.write_text(html, encoding="utf-8")
 
     print(f"\n  ✓ Written to: {out_path.relative_to(PROJECT_ROOT)}")
 
     # ── Send or report dry-run status ───────────────────────────────────────
     if args.send:
-        ok = _send_email(html, subject)
+        ok = _send_email(html, subject, newsletter_name)
         if not ok:
             sys.exit(1)
     else:

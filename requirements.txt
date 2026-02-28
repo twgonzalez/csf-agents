@@ -28,3 +28,8 @@ google-genai>=1.0.0
 
 # PNG save from Gemini inline_data (used by image_generator)
 Pillow>=10.0.0
+
+# Testing
+pytest>=8.0
+pytest-mock>=3.12
+freezegun>=1.4

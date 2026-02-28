@@ -135,7 +135,7 @@ jobs:
           EMAIL_PASSWORD:          ${{ secrets.EMAIL_PASSWORD }}
           NEWSLETTER_RECIPIENTS:   ${{ secrets.NEWSLETTER_RECIPIENTS }}
         run: |
-          python agents/newsletter/newsletter_writer.py --send
+          python agents/newsletter/newsletter_writer.py --client csf --send
 
       # -----------------------------------------------------------------------
       # 4d. Scan news and social media
@@ -167,7 +167,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GEMINI_API_KEY:    ${{ secrets.GEMINI_API_KEY }}
         run: |
-          python agents/social/social_writer.py --images
+          python agents/social/social_writer.py --client csf --images
 
       # -----------------------------------------------------------------------
       # 5. Commit updated outputs back to the repo
@@ -181,11 +181,10 @@ jobs:
           git config user.name  "CSF Legislative Tracker"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Stage bill data, weekly reports, newsletter, social content, and GitHub Pages status page
+          # Stage bill data, weekly reports, per-client outputs, and GitHub Pages status page
           git add data/bills/tracked_bills.json
           git add outputs/weekly_reports/
-          git add outputs/newsletter/
-          git add outputs/social/
+          git add outputs/clients/
           git add data/media/
           git add docs/index.html
 

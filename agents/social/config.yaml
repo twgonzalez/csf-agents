@@ -13,14 +13,14 @@ social:
 # ---------------------------------------------------------------------------
 # Voice system
 #
-# Each voice is a plain-markdown file in agents/social/voices/<name>.md.
+# Each voice is a plain-markdown file in clients/<id>/voices/<name>.md.
 # Voices control tone, framing, and the content pattern (e.g. Expose→Outrage→
 # Activate→Change). Staff can edit or create voices without touching Python.
 #
 # Select a voice via CLI:  --voice <name>   (e.g. --voice urgent)
 # List all voices via CLI: --list-voices
 #
-# Available voices (add any <name>.md to agents/social/voices/ to extend):
+# CSF voices (add any <name>.md to clients/csf/voices/ to extend):
 #   default    — General CSF advocacy voice (Expose→Outrage→Activate→Change)
 #   urgent     — Hearing imminent / time-critical action (Clock→Stakes→Action)
 #   coalition  — Peer-to-peer, partner/org-facing messaging (broad tent)
@@ -42,14 +42,11 @@ image_briefs:
   sizes:
     - "1080x1080 (Instagram/Facebook square)"
     - "1600x900 (X/Facebook landscape)"
-  brand_colors:
-    background: "#1a3a5c"   # Deep navy
-    text:       "#ffffff"   # White
-    accent:     "#c9a227"   # Gold
+  # brand_colors removed — now live in clients/<id>/client.yml
 
 paths:
   bills_file: data/bills/tracked_bills.json
-  output_dir: outputs/social
+  output_dir: outputs/clients/csf/social   # per-client path; overridden at runtime by --client
 
 logging:
   level: INFO

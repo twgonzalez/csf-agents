@@ -188,7 +188,7 @@ write a comms_brief in the following format — plain text, no markdown headers:
 • [Specific local control risk 2]
 • [Specific local control risk 3]
 • [Optional: additional risk if significant]
-Recommended: [Specific action CSF should take — oppose, seek amendments, monitor, testify, etc.]
+Recommended: [action type and rationale — e.g. "Oppose — no mechanism to replace lost infrastructure funding" or "Monitor — risk is indirect and bill has committee amendments pending"]
 
 For bills scoring on 0–1 criteria at strong/moderate, comms_brief should be an empty string.
 """
@@ -268,7 +268,7 @@ SCORE_TOOL = {
                     "• [Specific local control risk 1]\n"
                     "• [Specific local control risk 2]\n"
                     "• [Specific local control risk 3]\n"
-                    "Recommended: [Specific action CSF should take]\n\n"
+                    "Recommended: [action type and rationale — e.g. 'Oppose — no replacement for lost fee authority']\n\n"
                     "For bills scoring on 0–1 criteria at strong/moderate, return empty string."
                 ),
             },
