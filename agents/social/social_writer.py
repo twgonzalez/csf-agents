@@ -1018,6 +1018,25 @@ examples:
         help="Generate PNG images via Nano Banana Pro (gemini-3-pro-image-preview) for each post. "
              "Requires GEMINI_API_KEY in environment or .env.",
     )
+    p.add_argument(
+        "--visual-director", action="store_true", default=False,
+        help=(
+            "Route image generation through the Visual Director agent. "
+            "Claude reasons about composition, typographic hierarchy, and emotional register "
+            "before writing enriched Gemini prompts — one per post, differentiated across types. "
+            "Saves raw posts to data/social/<client>/social_posts.json and enriched prompts to "
+            "data/social/<client>/visual_director_briefs.json. "
+            "Use with --images to generate images from enriched prompts. "
+            "Use with --compare to print original vs enriched prompts side by side."
+        ),
+    )
+    p.add_argument(
+        "--compare", action="store_true", default=False,
+        help=(
+            "When used with --visual-director: print original Nano Banana Pro template prompts "
+            "alongside enriched Visual Director prompts for each post. For human review."
+        ),
+    )
     return p.parse_args()
 
 
@@ -1131,8 +1150,53 @@ def main() -> None:
     md_path      = output_dir / f"social_{iso_week}{voice_suffix}.md"
     html_path    = output_dir / f"social_{iso_week}{voice_suffix}.html"
 
+    # ── Visual Director: save posts JSON + optionally enrich image prompts ───────
+    if args.visual_director:
+        from agents.social.visual_director import enrich_briefs, generate_images_from_enriched
+        social_data_dir = PROJECT_ROOT / "data" / "social" / client_id
+        social_data_dir.mkdir(parents=True, exist_ok=True)
+        posts_json_path = social_data_dir / "social_posts.json"
+        posts_json_path.write_text(
+            json.dumps(
+                {"generated": date.today().isoformat(), "client": client_id, "week": iso_week,
+                 "week_theme": content.get("week_theme", ""), "posts": posts},
+                indent=2, ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        log.info(f"→ Posts saved to {posts_json_path.relative_to(PROJECT_ROOT)}")
+
+        if args.images:
+            compare = getattr(args, "compare", False)
+            images_dir = output_dir / "images" / iso_week
+            log.info("→ Visual Director: enriching image briefs via Claude...")
+            enriched_briefs = enrich_briefs(posts, client_cfg, voice_text, compare=compare)
+
+            # Save enriched briefs for inspection
+            briefs_path = social_data_dir / "visual_director_briefs.json"
+            briefs_path.write_text(
+                json.dumps(
+                    {"generated": date.today().isoformat(), "client": client_id,
+                     "week": iso_week, "briefs": enriched_briefs},
+                    indent=2, ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            log.info(f"→ Enriched briefs saved to {briefs_path.relative_to(PROJECT_ROOT)}")
+
+            image_results = generate_images_from_enriched(enriched_briefs, images_dir)
+            for post in posts:
+                num   = post.get("post_number")
+                paths = image_results.get(num, {})
+                if paths:
+                    post["image_paths"] = {
+                        k: str(Path(v).relative_to(output_dir))
+                        for k, v in paths.items()
+                    }
+            log.info("→ Visual Director image generation complete")
+
     # ── Generate images BEFORE rendering (proof sheet includes them) ──────────
-    if args.images:
+    elif args.images:
         from agents.social.image_generator import generate_images
         images_dir = output_dir / "images" / iso_week
         log.info("→ Generating images (Nano Banana Pro)...")
@@ -1161,11 +1225,16 @@ def main() -> None:
 
     print(f"\n  ✓ Markdown: {md_path.relative_to(PROJECT_ROOT)}")
     print(f"  ✓ HTML:     {html_path.relative_to(PROJECT_ROOT)}")
-    if args.images:
+    if args.images or args.visual_director:
         for post in posts:
             n = post.get("post_number", "?")
             for kind, rel_path in post.get("image_paths", {}).items():
                 print(f"  ✓ Image post {n} ({kind}): {output_dir.relative_to(PROJECT_ROOT) / rel_path}")
+    if args.visual_director:
+        social_data_dir = PROJECT_ROOT / "data" / "social" / client_id
+        print(f"  ✓ Posts JSON:    {(social_data_dir / 'social_posts.json').relative_to(PROJECT_ROOT)}")
+        if args.images:
+            print(f"  ✓ VD briefs:     {(social_data_dir / 'visual_director_briefs.json').relative_to(PROJECT_ROOT)}")
     print(f"\n  Share preview: file://{html_path}")
     print(f"  Copy-paste:    file://{md_path}\n")
 

@@ -1,0 +1,95 @@
+# clients/cprc/client.yml
+# California Policy Research Center — Client Configuration
+#
+# Nonpartisan policy research institute. Analyzes California housing legislation
+# for rigorous, evidence-based understanding. Audience is legislators, staff,
+# city attorneys, journalists, and researchers — not the general public.
+#
+# Visual identity: Editorial policy-journal aesthetic. Warm ivory background,
+# charcoal text, terracotta accent. Looks like a policy brief cover or academic
+# magazine spread — NOT an advocacy rally card. Dramatically different from
+# CSF (navy + gold) and CMA (forest + amber).
+
+client_id: cprc
+client_name: California Policy Research Center
+slug: cprc
+
+# ---------------------------------------------------------------------------
+# Identity — who is speaking, and to whom
+# ---------------------------------------------------------------------------
+identity:
+  org_description: >
+    A nonpartisan policy research center that produces rigorous, evidence-based
+    analysis of California housing legislation to inform policymakers, journalists,
+    and civic leaders.
+  audience: >
+    State legislators and their staff, city attorneys, city managers, academic
+    researchers, policy journalists, and senior government officials who need
+    precise, nonpartisan analysis of housing bills and their downstream effects
+    on local governance, fiscal capacity, and community planning.
+
+# ---------------------------------------------------------------------------
+# Colors — hex values for HTML proof sheet; natural language for Gemini prompts
+# ---------------------------------------------------------------------------
+colors:
+  background: { hex: "#F5F0E2", name: "warm ivory"     }
+  text:        { hex: "#1C1C1C", name: "deep charcoal"  }
+  accent:      { hex: "#B84236", name: "terracotta red" }
+
+# ---------------------------------------------------------------------------
+# Image generation — Nano Banana Pro template fields (legacy/fallback)
+# The Visual Director uses layout_approach and typography_style for enriched prompts.
+# ---------------------------------------------------------------------------
+image:
+  accent_stripe: >
+    A thin terracotta red horizontal rule (2–3px), used as a typographic section
+    divider between the category label and the headline — not a decorative band
+  style_notes: >
+    Editorial policy-journal aesthetic. This is a policy brief cover or academic
+    magazine feature, not an advocacy rally poster. The feeling is authoritative,
+    measured, and evidence-forward. Generous negative space. Structured zones.
+    No photos. No people. No logos. No decorative flourishes.
+  bill_context: "California legislative bill"
+
+  # Extended fields — read by Visual Director to override the default
+  # compositional approach for this client. These fields are OPTIONAL and
+  # backwards-compatible: agents that don't read them fall back to style_notes.
+
+  layout_approach: >
+    Structured editorial zones with clear vertical rhythm. Think policy brief
+    cover or journal feature opener. Use distinct typographic zones separated
+    by horizontal rules or generous spacing:
+    (1) a small category label zone — bill number or post type label in small
+    caps or italic, terracotta red, small — sitting above a thin terracotta rule
+    (2) the headline zone — large bold display type in deep charcoal, dominant
+    but contained; roughly 25–30% of frame height across its lines
+    (3) a body text zone — a 2–3 line excerpt in regular weight, smaller, below
+    the headline with clear breathing room
+    The overall layout reads left-to-right and top-to-bottom like a structured
+    document, not a single bold shout.
+  typography_style: >
+    Category label (terracotta red, small caps or italic, 12–14pt equivalent)
+    sits above a thin terracotta horizontal rule (2px).
+    Headline (deep charcoal, bold, large — but not oversized advocacy scale;
+    more contained, like a magazine cover headline).
+    Body text excerpt (deep charcoal, regular weight, 55–60% headline size).
+    The typographic scale is structured and editorial — multiple distinct weight
+    and size steps, each clearly differentiated. Not a single dominant element
+    with a small subordinate — a hierarchy of several equal but ordered steps.
+
+# ---------------------------------------------------------------------------
+# Proof sheet — HTML rendering labels
+# ---------------------------------------------------------------------------
+proof_sheet:
+  label: California Policy Research Center
+
+# ---------------------------------------------------------------------------
+# Newsletter — product name shown in the email masthead
+# ---------------------------------------------------------------------------
+newsletter:
+  name: California Housing Policy Review
+
+# ---------------------------------------------------------------------------
+# Voices
+# ---------------------------------------------------------------------------
+default_voice: default

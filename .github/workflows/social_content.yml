@@ -1,0 +1,180 @@
+# =============================================================================
+# Social Media Content — Visual Director + Gemini Images
+# =============================================================================
+#
+# Manual-only workflow (no schedule). Trigger from the GitHub Actions tab.
+#
+# Runs the full social media pipeline for one client or all clients:
+#   1. Scan news/RSS feeds → data/media/media_digest.json
+#   2. Generate 3 posts via Claude (Social Writer)
+#   3. Enrich image briefs via Claude (Visual Director — reasons about composition)
+#   4. Generate 6 images via Gemini (3 posts × square + landscape)
+#   5. Commit proof sheets, images, and intermediate data back to repo
+#
+# Why manual-only?
+#   The pipeline is working but clients are still in development. Once real
+#   client configs are finalized and output quality is approved, schedule this
+#   workflow weekly by adding a cron trigger (see comment below).
+#
+# To schedule weekly (when ready):
+#   Add this block under `on:` and remove the manual-only comment:
+#
+#     schedule:
+#       - cron: '0 15 * * 1'   # Monday 7 AM Pacific — runs after weekly_tracker
+#
+# Inputs:
+#   client   — csf / cma / cprc / all  (default: csf)
+#   compare  — print original template vs VD-enriched prompts in the run log
+#
+# Required secrets:
+#   ANTHROPIC_API_KEY   Claude API key (Social Writer + Visual Director)
+#   GEMINI_API_KEY      Google Gemini API key (image generation)
+#
+# Optional secrets (same as weekly_tracker.yml — used by media scanner):
+#   NEWSAPI_KEY        NewsAPI key for broader news coverage
+#   X_BEARER_TOKEN     X/Twitter API bearer token for social monitoring
+# =============================================================================
+
+name: Social Media Content
+
+on:
+  workflow_dispatch:
+    inputs:
+      client:
+        description: "Client"
+        required: true
+        default: "csf"
+        type: choice
+        options:
+          - csf
+          - cma
+          - cprc
+          - all
+      compare:
+        description: "Print original vs Visual Director prompts in logs"
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  social-content:
+    name: Social Writer → Visual Director → Gemini
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      # -----------------------------------------------------------------------
+      # 1. Checkout
+      # -----------------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # -----------------------------------------------------------------------
+      # 2. Python setup
+      # -----------------------------------------------------------------------
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # -----------------------------------------------------------------------
+      # 3. Scan news and RSS feeds
+      #
+      # Produces data/media/media_digest.json — read by the Social Writer to
+      # make posts news-aware and reactive to current coverage.
+      # Runs once regardless of how many clients are selected.
+      # No credentials required for RSS. NEWSAPI_KEY and X_BEARER_TOKEN are
+      # optional — leave unset to scan RSS only.
+      # -----------------------------------------------------------------------
+      - name: Scan news and RSS feeds
+        env:
+          NEWSAPI_KEY:    ${{ secrets.NEWSAPI_KEY }}
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: |
+          python agents/media/media_scanner.py
+
+      # -----------------------------------------------------------------------
+      # 4. Generate content — one step per client, gated on the input
+      #
+      # Each step is self-contained:
+      #   social_writer.py  — generates 3 posts from bill data + media digest,
+      #                        saves social_posts.json for the Visual Director
+      #   --visual-director — Claude enriches each image brief with compositional
+      #                        reasoning (1 call per post = 3 Claude calls)
+      #   --images          — Gemini generates 6 PNGs (3 posts × square + landscape)
+      #   --compare         — optional: prints original vs VD prompts in logs
+      #
+      # Clients run sequentially to avoid Gemini rate limits.
+      # -----------------------------------------------------------------------
+      - name: "Generate content — CSF"
+        if: inputs.client == 'csf' || inputs.client == 'all'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY:    ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          COMPARE_FLAG=""
+          if [ "${{ inputs.compare }}" = "true" ]; then COMPARE_FLAG="--compare"; fi
+          python agents/social/social_writer.py \
+            --client csf \
+            --visual-director \
+            --images \
+            $COMPARE_FLAG
+
+      - name: "Generate content — CMA"
+        if: inputs.client == 'cma' || inputs.client == 'all'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY:    ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          COMPARE_FLAG=""
+          if [ "${{ inputs.compare }}" = "true" ]; then COMPARE_FLAG="--compare"; fi
+          python agents/social/social_writer.py \
+            --client cma \
+            --visual-director \
+            --images \
+            $COMPARE_FLAG
+
+      - name: "Generate content — CPRC"
+        if: inputs.client == 'cprc' || inputs.client == 'all'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY:    ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          COMPARE_FLAG=""
+          if [ "${{ inputs.compare }}" = "true" ]; then COMPARE_FLAG="--compare"; fi
+          python agents/social/social_writer.py \
+            --client cprc \
+            --visual-director \
+            --images \
+            $COMPARE_FLAG
+
+      # -----------------------------------------------------------------------
+      # 5. Commit generated outputs
+      #
+      # outputs/clients/  — HTML proof sheets + generated PNG images
+      # data/social/      — social_posts.json + visual_director_briefs.json
+      # data/media/       — media_digest.json (from step 3)
+      # -----------------------------------------------------------------------
+      - name: Commit social content outputs
+        run: |
+          git config user.name  "Social Content Bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add outputs/clients/
+          git add data/social/
+          git add data/media/
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit — outputs unchanged since last run."
+          else
+            git commit -m "feat: social content $(date -u +%Y-%m-%d) [client: ${{ inputs.client }}]"
+            git push
+          fi

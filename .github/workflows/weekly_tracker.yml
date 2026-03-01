@@ -15,6 +15,10 @@
 #   5. Save updated ZIP to cache for subsequent runs this week
 #   6. Commit updated bill data, analysis, newsletter, and dashboard back to the repo
 #
+# Social media content (posts + images) runs in a separate manual workflow:
+#   .github/workflows/social_content.yml
+# Trigger it from the Actions tab. Schedule it here when ready for production.
+#
 # Required GitHub secrets (Settings → Secrets and variables → Actions):
 #   LEGISCAN_USER          legiscan.com login email (for ZIP auto-download)
 #   LEGISCAN_PASSWORD      legiscan.com password
@@ -22,7 +26,6 @@
 #   EMAIL_PASSWORD         Gmail App Password (16-char, not your account password)
 #   EMAIL_RECIPIENTS       Comma-separated recipient list for the weekly digest
 #   ANTHROPIC_API_KEY      Claude API key (housing analyzer + newsletter writer)
-#   GEMINI_API_KEY         Google Gemini API key (social image generation via Nano Banana Pro)
 #   NEWSLETTER_RECIPIENTS  Comma-separated subscriber list for the newsletter
 #
 # Optional secrets (leave unset to skip that data source):
@@ -91,7 +94,7 @@ jobs:
           restore-keys: legiscan-zip-
 
       # -----------------------------------------------------------------------
-      # 4. Run the tracker
+      # 4a. Run the tracker
       # -----------------------------------------------------------------------
       - name: Run legislative tracker
         env:
@@ -111,7 +114,7 @@ jobs:
       # 4b. Run housing analyzer
       #
       # Analyzes only bills that are missing analysis blocks (no --force).
-      # New bills added by the tracker in step 4 will be analyzed here.
+      # New bills added by the tracker in step 4a will be analyzed here.
       # Bills with existing analysis are skipped — scores persist until manually
       # re-run with --force if a bill's scope changes.
       # -----------------------------------------------------------------------
@@ -138,54 +141,33 @@ jobs:
           python agents/newsletter/newsletter_writer.py --client csf --send
 
       # -----------------------------------------------------------------------
-      # 4d. Scan news and social media
-      #
-      # Scans RSS feeds (CalMatters, Capitol Weekly, Google News) and optionally
-      # NewsAPI for recent CA housing coverage. Produces data/media/media_digest.json
-      # which social_writer.py reads to make posts news-aware.
-      # No credentials required for RSS. Set NEWSAPI_KEY to enable NewsAPI.
-      # Set X_BEARER_TOKEN (Basic tier, $100/mo) to enable X API search.
+      # 5. Save LegiScan ZIP cache for subsequent runs this week
       # -----------------------------------------------------------------------
-      - name: Scan news and social media
-        env:
-          NEWSAPI_KEY:     ${{ secrets.NEWSAPI_KEY }}
-          X_BEARER_TOKEN:  ${{ secrets.X_BEARER_TOKEN }}
-        run: |
-          python agents/media/media_scanner.py
+      - name: Save LegiScan ZIP cache
+        if: steps.zip-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: data/legiscan/
+          key: legiscan-zip-${{ steps.cache-key.outputs.week }}
 
       # -----------------------------------------------------------------------
-      # 4e. Generate social media content
-      #
-      # Reads tracked_bills.json + media_digest.json (from step 4d), calls Claude
-      # to write 3 news-aware social media posts (X, Facebook, Instagram) plus
-      # image briefs. Output is markdown + HTML — no credentials needed, no posting.
-      # Staff copy-paste from outputs/social/ into Buffer, Hootsuite, or directly
-      # into each platform's composer.
-      # -----------------------------------------------------------------------
-      - name: Generate social media content
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GEMINI_API_KEY:    ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          python agents/social/social_writer.py --client csf --images
-
-      # -----------------------------------------------------------------------
-      # 5. Commit updated outputs back to the repo
+      # 6. Commit updated outputs back to the repo
       #
       # tracked_bills.json accumulates history across weekly runs —
       # committing it back is what makes "new bill" and "status change"
       # detection work correctly on subsequent runs.
+      #
+      # outputs/clients/ includes newsletter HTML (newsletter_writer.py).
+      # Social media outputs are committed by social_content.yml instead.
       # -----------------------------------------------------------------------
       - name: Commit updated bill data and report
         run: |
           git config user.name  "CSF Legislative Tracker"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Stage bill data, weekly reports, per-client outputs, and GitHub Pages status page
           git add data/bills/tracked_bills.json
           git add outputs/weekly_reports/
           git add outputs/clients/
-          git add data/media/
           git add docs/index.html
 
           # Only commit if something actually changed
