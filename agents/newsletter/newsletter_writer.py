@@ -80,6 +80,8 @@ log = logging.getLogger(__name__)
 PROJECT_ROOT   = _PROJECT_ROOT
 BILLS_FILE     = PROJECT_ROOT / "data" / "bills" / "tracked_bills.json"
 DIGEST_FILE    = PROJECT_ROOT / "data" / "legislative" / "action_digest.json"
+ARCHIVE_DIR    = PROJECT_ROOT / "docs" / "newsletters"
+ARCHIVE_JSON   = ARCHIVE_DIR / "archive.json"
 # CLIENTS_DIR, DEFAULT_CLIENT, DEFAULT_VOICE — imported from agents.shared.client_utils
 
 # ---------------------------------------------------------------------------
@@ -98,6 +100,214 @@ _MID    = "#555555"   # muted / secondary text
 _RULE   = "#ddd8ce"   # horizontal rule
 
 
+
+
+# ---------------------------------------------------------------------------
+# Newsletter archive (docs/newsletters/ → GitHub Pages)
+# ---------------------------------------------------------------------------
+
+def _build_archive_index(entries: list[dict]) -> None:
+    """
+    Generate docs/newsletters/index.html from archive metadata.
+
+    Organises issues by client (alphabetical), newest first within each.
+    Designed for GitHub Pages hosting alongside the bill-tracker dashboard.
+    """
+    _SERIF = "font-family:Georgia,'Times New Roman',Times,serif;"
+    _SANS  = "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;"
+    navy   = "#1a3a5c"
+    gold   = "#c9a227"
+    sand   = "#faf8f4"
+    mid    = "#666666"
+    rule   = "#ddd8ce"
+
+    # Group entries by client_id, sorted newest first within each
+    from itertools import groupby
+    by_client: dict[str, list[dict]] = {}
+    for entry in entries:
+        cid = entry.get("client_id", "unknown")
+        by_client.setdefault(cid, [])
+        by_client[cid].append(entry)
+    for issues in by_client.values():
+        issues.sort(key=lambda e: e.get("date", ""), reverse=True)
+
+    client_sections: list[str] = []
+    for cid in sorted(by_client):
+        issues      = by_client[cid]
+        client_name = issues[0].get("client_name", cid)
+        rows        = []
+        for issue in issues:
+            path  = issue.get("path", "#")
+            week  = issue.get("week", "")
+            dt    = issue.get("date", "")
+            subj  = issue.get("subject", "(no subject)")
+            short = subj[:95] + ("…" if len(subj) > 95 else "")
+            rows.append(
+                f"<tr>"
+                f'<td style="padding:12px 14px 12px 0;border-bottom:1px solid {rule};'
+                f'{_SANS}font-size:12px;color:{mid};white-space:nowrap;">{week}</td>'
+                f'<td style="padding:12px 14px 12px 0;border-bottom:1px solid {rule};'
+                f'{_SANS}font-size:12px;color:{mid};white-space:nowrap;">{dt}</td>'
+                f'<td style="padding:12px 0;border-bottom:1px solid {rule};">'
+                f'<a href="{path}" style="{_SERIF}font-size:14px;color:{navy};'
+                f'text-decoration:none;line-height:1.5;">{short}</a></td>'
+                f'<td style="padding:12px 0 12px 16px;border-bottom:1px solid {rule};'
+                f'text-align:right;white-space:nowrap;">'
+                f'<a href="{path}" style="{_SANS}font-size:11px;font-weight:700;'
+                f'color:{gold};text-decoration:none;text-transform:uppercase;'
+                f'letter-spacing:0.5px;">Read →</a></td>'
+                f"</tr>"
+            )
+        rows_html = "\n        ".join(rows)
+        client_sections.append(
+            f'<div style="margin-bottom:40px;">'
+            f'<div style="{_SERIF}color:{navy};font-size:13px;font-weight:700;'
+            f'text-transform:uppercase;letter-spacing:1px;'
+            f'border-bottom:2px solid {gold};padding-bottom:8px;margin-bottom:0;">'
+            f'{client_name}</div>'
+            f'<table width="100%" cellpadding="0" cellspacing="0">'
+            f'<tbody>{rows_html}</tbody></table></div>'
+        )
+
+    content = "\n".join(client_sections) if client_sections else (
+        f'<p style="{_SANS}color:{mid};font-size:14px;">No newsletters archived yet.</p>'
+    )
+    total = len(entries)
+
+    index_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Newsletter Archive — CSF Legislative Intelligence</title>
+</head>
+<body style="margin:0;padding:0;background:{sand};">
+
+<table width="100%" cellpadding="0" cellspacing="0"
+       style="background:{navy};padding:32px 16px;">
+<tr><td align="center">
+  <table width="680" cellpadding="0" cellspacing="0" style="max-width:680px;width:100%;">
+  <tr><td>
+    <div style="{_SANS}color:{gold};font-size:11px;font-weight:700;
+                text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">
+      Legislative Intelligence Network
+    </div>
+    <div style="{_SERIF}color:#ffffff;font-size:28px;font-weight:700;
+                line-height:1.2;margin-bottom:8px;">
+      Newsletter Archive
+    </div>
+    <div style="{_SANS}color:rgba(255,255,255,0.6);font-size:13px;">
+      {total} issue{"s" if total != 1 else ""} archived
+      &nbsp;·&nbsp;
+      <a href="../index.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">
+        ← Back to Dashboard
+      </a>
+    </div>
+  </td></tr>
+  </table>
+</td></tr>
+</table>
+
+<table width="100%" cellpadding="0" cellspacing="0"
+       style="background:{sand};padding:32px 16px 48px;">
+<tr><td align="center">
+  <table width="680" cellpadding="0" cellspacing="0" style="max-width:680px;width:100%;">
+  <tr><td style="background:#ffffff;padding:36px 40px;">
+    {content}
+  </td></tr>
+  <tr><td style="padding:20px 0;text-align:center;">
+    <div style="{_SANS}color:#aaa;font-size:10px;
+                text-transform:uppercase;letter-spacing:0.8px;line-height:2;">
+      California Stewardship Fund
+      &nbsp;·&nbsp;
+      <a href="../index.html" style="color:#aaa;text-decoration:none;">Dashboard</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/twgonzalez/csf-agents"
+         style="color:#aaa;text-decoration:none;">GitHub</a>
+    </div>
+  </td></tr>
+  </table>
+</td></tr>
+</table>
+
+</body>
+</html>"""
+
+    (ARCHIVE_DIR / "index.html").write_text(index_html, encoding="utf-8")
+
+
+def _archive_newsletter(
+    html:        str,
+    subject:     str,
+    client_id:   str,
+    client_name: str,
+    week_str:    str,
+    week_date:   str,
+    filename:    str,
+) -> None:
+    """
+    Archive a completed newsletter to docs/newsletters/ for GitHub Pages hosting.
+
+    Copies the HTML file, updates docs/newsletters/archive.json, and regenerates
+    docs/newsletters/index.html so past issues are browsable at:
+        https://<user>.github.io/<repo>/newsletters/
+
+    Silently skips if the docs/ directory doesn't exist (e.g., fresh checkouts).
+
+    Args:
+        html:        Full newsletter HTML string.
+        subject:     Newsletter subject line (shown in archive index).
+        client_id:   Client slug (e.g. "csf").
+        client_name: Full client name (e.g. "California Stewardship Fund").
+        week_str:    ISO week string (e.g. "2026-W09").
+        week_date:   ISO date string for the week (e.g. "2026-03-01").
+        filename:    Newsletter filename (e.g. "newsletter_2026-W09.html").
+    """
+    if not ARCHIVE_DIR.parent.exists():
+        log.debug("Archive skipped — docs/ directory not found")
+        return
+
+    # Copy HTML to per-client archive directory
+    client_dir = ARCHIVE_DIR / client_id
+    client_dir.mkdir(parents=True, exist_ok=True)
+    dest = client_dir / filename
+    dest.write_text(html, encoding="utf-8")
+    log.info(f"   Archived → {dest.relative_to(PROJECT_ROOT)}")
+
+    # Load existing archive metadata
+    entries: list[dict] = []
+    if ARCHIVE_JSON.exists():
+        try:
+            entries = json.loads(ARCHIVE_JSON.read_text(encoding="utf-8"))
+        except Exception:
+            entries = []
+
+    # Upsert: remove any existing entry for the same week + client, then append
+    entries = [
+        e for e in entries
+        if not (e.get("week") == week_str and e.get("client_id") == client_id)
+    ]
+    entries.append({
+        "week":        week_str,
+        "date":        week_date,
+        "client_id":   client_id,
+        "client_name": client_name,
+        "subject":     subject,
+        "filename":    filename,
+        "path":        f"{client_id}/{filename}",
+    })
+    entries.sort(key=lambda e: (e.get("date", ""), e.get("week", "")), reverse=True)
+
+    # Write updated archive JSON
+    ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
+    ARCHIVE_JSON.write_text(
+        json.dumps(entries, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    # Regenerate the archive index page
+    _build_archive_index(entries)
+    log.info(f"   Archive index → {(ARCHIVE_DIR / 'index.html').relative_to(PROJECT_ROOT)}")
 
 
 # ---------------------------------------------------------------------------
@@ -585,7 +795,10 @@ def _build_html(content: dict, bill_set: dict, week_label: str, client_cfg: dict
     watch_rows = "".join(_watch_item(item, navy) for item in watch_items)
 
     # Render call to action
+    # Guard: Claude occasionally returns a list instead of a dict — take first element.
     cta = content.get("call_to_action", {})
+    if isinstance(cta, list):
+        cta = cta[0] if cta else {}
     cta_html = (
         f'<p style="margin:0 0 20px;">'
         f'<span style="{_SERIF}display:block;color:{navy};font-size:20px;'
@@ -598,6 +811,8 @@ def _build_html(content: dict, bill_set: dict, week_label: str, client_cfg: dict
 
     # Render close
     close = content.get("close", {})
+    if isinstance(close, list):
+        close = close[0] if close else {}
     close_html = (
         f'<p style="margin:0;">'
         f'<span style="{_SERIF}display:block;color:{_MID};font-size:17px;'
@@ -934,6 +1149,19 @@ def main() -> None:
     out_path.write_text(html, encoding="utf-8")
 
     print(f"\n  ✓ Written to: {out_path.relative_to(PROJECT_ROOT)}")
+
+    # ── Archive to docs/newsletters/ (GitHub Pages) ─────────────────────────
+    log.info("→ Archiving to docs/newsletters/...")
+    week_date = date.today().isoformat()
+    _archive_newsletter(
+        html=html,
+        subject=subject,
+        client_id=client_id,
+        client_name=client_name,
+        week_str=iso_week,
+        week_date=week_date,
+        filename=out_path.name,
+    )
 
     # ── Send or report dry-run status ───────────────────────────────────────
     if args.send:

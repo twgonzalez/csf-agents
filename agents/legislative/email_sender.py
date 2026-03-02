@@ -1328,6 +1328,10 @@ def _page_footer(date_str: str, repo_url: str) -> str:
       <a href="{repo_url}" style="color:{_COLOR_ACCENT};">
         View source on GitHub →
       </a>
+      &nbsp;·&nbsp;
+      <a href="newsletters/index.html" style="color:{_COLOR_ACCENT};">
+        Newsletter Archive →
+      </a>
     </p>
   </div>
 """, bg=_COLOR_CARD, padding="0")}
