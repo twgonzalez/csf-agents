@@ -154,8 +154,12 @@ def _generate_content(
     voice_text: str = "",
 ) -> dict:
     """Single Claude call returning all newsletter content as a structured dict."""
-    watch_ctx = "\n\n".join(_build_bill_context(b) for b in bill_set["watch_list"])
-    new_ctx   = "\n\n".join(_build_bill_context(b) for b in bill_set["new_bills"])
+    watch_ctx     = "\n\n".join(_build_bill_context(b) for b in bill_set["watch_list"])
+    new_ctx       = "\n\n".join(_build_bill_context(b) for b in bill_set["new_bills"])
+    watchlist_ctx = "\n\n".join(
+        _build_bill_context(b) + (f"\nStaff note: {b['watchlist_note']}" if b.get("watchlist_note") else "")
+        for b in bill_set.get("watchlist_bills", [])
+    )
 
     user_prompt = f"""\
 Here is this week's bill intelligence. Write the newsletter as specified.
@@ -165,6 +169,12 @@ Here is this week's bill intelligence. Write the newsletter as specified.
 
 == NEW BILLS THIS WEEK (recently tracked, at least 1 risk signal) ==
 {new_ctx if new_ctx else "(No new high-risk bills this week)"}
+
+== STAFF WATCHLIST (staff-curated bills — bypass discovery filters) ==
+These are two-year bills and staff-identified bills that may not appear above because \
+they lack AI risk scores. Weave them into the narrative where substantively relevant, \
+especially when they reinforce the broader session pattern.
+{watchlist_ctx if watchlist_ctx else "(No staff watchlist bills this week)"}
 
 ---
 
@@ -682,6 +692,7 @@ def main() -> None:
     log.info(f"   Watch list:        {len(bill_set['watch_list'])} bills")
     log.info(f"   New this week:     {len(bill_set['new_bills'])} bills")
     log.info(f"   Upcoming hearings: {len(bill_set['upcoming_hearings'])}")
+    log.info(f"   Staff watchlist:   {len(bill_set.get('watchlist_bills', []))} bills")
 
     # ── Generate content via Claude ─────────────────────────────────────────
     anthropic_client = anthropic.Anthropic(api_key=api_key)

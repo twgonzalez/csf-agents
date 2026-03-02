@@ -41,6 +41,8 @@ def _select_bills(
     watch_list        — top high-risk bills (2+ criteria strong/moderate), ranked
     new_bills         — recently tracked bills with at least 1 risk signal
     upcoming_hearings — bills with hearings in the next hearing_lookahead days
+    watchlist_bills   — all bills with watchlist: True, regardless of risk score
+                        (additive; watchlist bills may also appear in watch_list/new_bills)
     """
     today    = date.today()
     cutoff   = today - timedelta(days=lookback_days)
@@ -49,6 +51,7 @@ def _select_bills(
     watch_list:        list[tuple] = []
     new_bills:         list[dict]  = []
     upcoming_hearings: list[dict]  = []
+    watchlist_bills:   list[dict]  = []
 
     for bill in bills.values():
         analysis     = bill.get("analysis", {})
@@ -75,6 +78,9 @@ def _select_bills(
             except (KeyError, ValueError):
                 pass
 
+        if bill.get("watchlist"):
+            watchlist_bills.append(bill)
+
     def _has_hearing(item: tuple) -> bool:
         b, _, _ = item
         return any(
@@ -89,6 +95,7 @@ def _select_bills(
         "watch_list":        [b for b, _, _ in watch_list[:max_watch]],
         "new_bills":         new_bills[:max_new],
         "upcoming_hearings": sorted(upcoming_hearings, key=lambda h: h["date"]),
+        "watchlist_bills":   watchlist_bills,
     }
 
 

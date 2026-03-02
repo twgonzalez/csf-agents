@@ -1,0 +1,24 @@
+# Staff Watchlist — Bill Tracker
+# =================================
+# Bills in this file bypass discovery filters entirely (date + keyword).
+# Use for two-year bills (introduced 2025, carried to 2026) and any bill
+# staff wants to monitor regardless of keyword match.
+#
+# Bill numbers are normalized on read: AB-748 → AB748, "AB 748" → AB748
+# The "note" field is optional — it appears in the GitHub Pages dashboard.
+
+watchlist:
+  - bill_number: AB748
+    note: "Two-year bill — local zoning authority"
+  - bill_number: AB1070
+    note: "Two-year bill"
+  - bill_number: AB1406
+    note: "Two-year bill"
+  - bill_number: SB677
+    note: "Two-year bill"
+  - bill_number: AB1710
+    note: "Staff-identified"
+  - bill_number: AB2074
+  - bill_number: AB2433
+  - bill_number: SB908
+  - bill_number: SB1014

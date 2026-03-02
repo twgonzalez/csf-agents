@@ -1110,6 +1110,113 @@ def _html_footer(date_str: str, pages_url: str = "") -> str:
 # Status page helpers (standalone web page, not email)
 # ---------------------------------------------------------------------------
 
+def _html_watchlist_section(watchlist_bills: list[dict]) -> str:
+    """
+    Render the Staff Watchlist table for the GitHub Pages status dashboard.
+
+    Shows bills marked watchlist: True in tracked_bills.json, which includes
+    two-year bills and staff-identified bills that bypass discovery filters.
+
+    Columns: Bill (linked) | Status | Last Action Date | Next Hearing | Risk Score | Note
+    """
+    if not watchlist_bills:
+        return ""
+
+    today = datetime.now().date()
+
+    header_style = (
+        f"padding:8px 10px; background:{_COLOR_ACCENT}; color:#fff; "
+        f"font-size:11px; font-weight:600; text-align:left; {_FONT}"
+    )
+    cell_style = (
+        f"padding:8px 10px; font-size:12px; color:{_COLOR_TEXT}; "
+        f"border-bottom:1px solid {_COLOR_BORDER}; vertical-align:top; {_FONT}"
+    )
+    muted_cell = (
+        f"padding:8px 10px; font-size:12px; color:{_COLOR_MUTED}; "
+        f"border-bottom:1px solid {_COLOR_BORDER}; vertical-align:top; {_FONT}"
+    )
+
+    # Accent color for staff watchlist badge
+    _COLOR_WATCHLIST = "#6c5ce7"  # purple — distinct from green (new) and orange (changed)
+
+    rows = ""
+    for bill in sorted(watchlist_bills, key=lambda b: b.get("bill_number", "")):
+        num  = bill.get("bill_number", "")
+        url  = bill.get("text_url", "")
+        bill_cell = (
+            f'<a href="{url}" style="color:{_COLOR_ACCENT}; font-weight:600; '
+            f'{_FONT}">{num}</a>'
+            if url else f'<strong style="{_FONT}">{num}</strong>'
+        )
+        status     = (bill.get("status") or "—")[:55]
+        status_date = bill.get("status_date", "—")
+        note        = (bill.get("watchlist_note") or "")[:60]
+        pills       = _score_pills(bill.get("analysis") or {})
+        risk_cell   = pills if pills else f'<span style="color:{_COLOR_BORDER};">—</span>'
+
+        # Next upcoming hearing (if any)
+        next_hearing = "—"
+        hearings = bill.get("upcoming_hearings", [])
+        if hearings:
+            future_hearings = [
+                h for h in hearings
+                if h.get("date") and _safe_date(h["date"]) >= today
+            ]
+            if future_hearings:
+                h = min(future_hearings, key=lambda x: x["date"])
+                next_hearing = h["date"]
+                if h.get("committee"):
+                    next_hearing += f"<br><span style='font-size:11px;color:{_COLOR_MUTED};{_FONT}'>{h['committee'][:45]}</span>"
+
+        rows += f"""
+        <tr>
+          <td style="{cell_style} white-space:nowrap;">{bill_cell}</td>
+          <td style="{muted_cell}">{status}</td>
+          <td style="{muted_cell} white-space:nowrap;">{status_date}</td>
+          <td style="{muted_cell}">{next_hearing}</td>
+          <td style="{cell_style} white-space:nowrap;">{risk_cell}</td>
+          <td style="{muted_cell}; font-style:italic;">{note}</td>
+        </tr>"""
+
+    return (
+        _section_header(f"Staff Watchlist ({len(watchlist_bills)})")
+        + _row(f"""
+  <div style="padding:4px 32px 8px 32px;">
+    <p style="margin:0 0 12px 0; font-size:12px; color:{_COLOR_MUTED}; {_FONT}">
+      Two-year bills and staff-identified bills tracked regardless of keyword or date filters.
+      These bills appear here even before AI risk scores are assigned.
+    </p>
+    <div style="overflow-x:auto;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+             style="border-collapse:collapse; border:1px solid {_COLOR_BORDER};">
+        <thead>
+          <tr>
+            <th style="{header_style}">Bill</th>
+            <th style="{header_style}">Status</th>
+            <th style="{header_style}">Last Action</th>
+            <th style="{header_style}">Next Hearing</th>
+            <th style="{header_style}">Risk Score</th>
+            <th style="{header_style}">Note</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    </div>
+  </div>
+""", bg=_COLOR_CARD, padding="0")
+    )
+
+
+def _safe_date(date_str: str):
+    """Parse a YYYY-MM-DD string to a date object; return date.min on failure."""
+    from datetime import date as _date
+    try:
+        return datetime.strptime(date_str, "%Y-%m-%d").date()
+    except (ValueError, TypeError):
+        return _date.min
+
+
 def _html_stalled_section(stalled_bills: list[dict], lookback_days: int) -> str:
     """
     Render the 'Watching — No Recent Activity' table.
@@ -1240,11 +1347,18 @@ def _build_page_html(
     """Assemble the full standalone HTML status page string."""
     lookback = config["legislative"]["lookback_days"]
 
+    # Extract watchlist bills (identifiable by watchlist: True in tracked_bills.json)
+    watchlist_bills = [b for b in all_bills.values() if b.get("watchlist")]
+
     sections = [
         _html_header(date_str, lookback),
         _html_summary(len(new_bills), len(changed_bills), len(all_bills)),
         _html_analysis_section(all_bills),   # analysis at the top
     ]
+
+    # Staff watchlist appears above the "All Tracked Bills" index
+    if watchlist_bills:
+        sections.append(_html_watchlist_section(watchlist_bills))
 
     if stalled_bills:
         sections.append(_html_stalled_section(stalled_bills, stalled_days))

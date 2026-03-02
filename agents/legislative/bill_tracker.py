@@ -42,6 +42,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import time
 import zipfile
@@ -128,6 +129,7 @@ class BillTracker:
             level=self.config["logging"]["level"],
             log_file=self._log_file,
         )
+        self._watchlist = self._load_watchlist()
 
     # -----------------------------------------------------------------------
     # Setup
@@ -151,6 +153,34 @@ class BillTracker:
         ensure_dir(self.reports_dir)
         if self._log_file:
             ensure_dir(self._log_file.parent)
+
+    def _load_watchlist(self) -> list[dict]:
+        """
+        Load data/bills/watchlist.yml and return normalized watchlist entries.
+
+        Bill numbers are normalized (hyphens/spaces stripped, uppercased) so
+        that "AB-748", "AB 748", and "AB748" all map to the same key.
+
+        Returns an empty list if the file is absent or unreadable (graceful no-op).
+        """
+        path = PROJECT_ROOT / "data" / "bills" / "watchlist.yml"
+        if not path.exists():
+            return []
+        try:
+            with open(path, encoding="utf-8") as f:
+                data = yaml.safe_load(f)
+            entries = (data or {}).get("watchlist", []) or []
+            result = []
+            for entry in entries:
+                if not entry or not entry.get("bill_number"):
+                    continue
+                bn = re.sub(r"[\s\-]", "", str(entry["bill_number"])).upper()
+                result.append({"bill_number": bn, "note": entry.get("note") or ""})
+            return result
+        except Exception as exc:
+            # Logger may not be initialized yet — print instead
+            print(f"[bill_tracker] WARNING: Could not load watchlist.yml: {exc}")
+            return []
 
     # -----------------------------------------------------------------------
     # Main entry point
@@ -288,6 +318,11 @@ class BillTracker:
                 "No LEGISCAN_API_KEY set — skipping LegiScan API. "
                 "Get a free key at https://legiscan.com/legiscan"
             )
+            if self._watchlist:
+                self.logger.warning(
+                    f"Watchlist has {len(self._watchlist)} bills but LEGISCAN_API_KEY is not set "
+                    "— skipping watchlist fetch (API required; no ZIP/scraper fallback for watchlist)."
+                )
 
         # --- OpenStates API (secondary) ---
         openstates_key = (
@@ -456,6 +491,12 @@ class BillTracker:
             except Exception as exc:
                 self.logger.warning(f"LegiScan getBill failed for ID {bill_id}: {exc}")
 
+        # Fetch watchlist bills using the same legiscan_get closure and masterlist.
+        # Appended LAST so watchlist metadata (watchlist: True) overwrites any duplicate
+        # discovered via keyword filter.
+        watchlist_bills = self._fetch_watchlist(legiscan_get, masterlist, session_name)
+        bills.extend(watchlist_bills)
+
         return bills
 
     def _normalize_legiscan(self, raw: dict, session_name: str = "") -> dict:
@@ -544,6 +585,103 @@ class BillTracker:
             "source": "legiscan",
             "source_id": str(raw.get("bill_id", "")),
         }
+
+    def _fetch_watchlist(
+        self,
+        legiscan_get,
+        masterlist: dict,
+        session_name: str,
+    ) -> list[dict]:
+        """
+        Fetch staff-curated watchlist bills via the LegiScan API.
+
+        Uses the same legiscan_get closure and masterlist already obtained by
+        _fetch_legiscan(), so no extra session or masterlist queries are needed.
+
+        Logic per watchlist entry:
+          1. Normalize bill number → look up bill_id in masterlist.
+          2. If not found: log warning, skip (don't crash).
+          3. Check change_hash vs. stored value to skip unchanged bills.
+          4. Call getBill, normalize, and set watchlist: True / watchlist_note.
+
+        Returns a list of normalized bill dicts (empty list if watchlist is empty
+        or all bills are skipped).
+        """
+        if not self._watchlist:
+            return []
+
+        # Build normalized bill_number → {bill_id, change_hash} lookup
+        lookup: dict[str, dict] = {}
+        for key, entry in masterlist.items():
+            if key == "session" or not isinstance(entry, dict):
+                continue
+            raw_num = entry.get("number", "")
+            normalized = re.sub(r"[\s\-]", "", str(raw_num)).upper()
+            if normalized:
+                lookup[normalized] = {
+                    "bill_id": int(entry.get("bill_id", 0)),
+                    "change_hash": entry.get("change_hash", ""),
+                }
+
+        # Load stored bills for change_hash comparison (fast JSON read)
+        stored_bills: dict = {}
+        if self.bills_path.exists():
+            try:
+                stored_data = load_json(self.bills_path, logger=self.logger)
+                stored_bills = stored_data.get("bills", {})
+            except Exception:
+                pass
+
+        fetched: list[dict] = []
+        for entry in self._watchlist:
+            bn   = entry["bill_number"]  # already normalized
+            note = entry["note"]
+
+            if bn not in lookup:
+                self.logger.warning(
+                    f"Watchlist bill {bn} not found in LegiScan masterlist — skipping"
+                )
+                continue
+
+            bill_id     = lookup[bn]["bill_id"]
+            change_hash = lookup[bn]["change_hash"]
+
+            # Skip API call if bill is unchanged (hash matches stored value)
+            stored_bill = stored_bills.get(bn, {})
+            if change_hash and stored_bill.get("legiscan_change_hash") == change_hash:
+                self.logger.debug(
+                    f"Watchlist {bn}: unchanged (change_hash match) — "
+                    "preserving stored data without API call"
+                )
+                # Re-inject stored bill with watchlist metadata to ensure
+                # the flag is never silently dropped by keyword-filter results.
+                fetched.append({
+                    **stored_bill,
+                    "watchlist": True,
+                    "watchlist_note": note,
+                })
+                continue
+
+            try:
+                bill_data = legiscan_get("getBill", {"id": bill_id})
+                raw = bill_data.get("bill", {})
+                bill = self._normalize_legiscan(raw, session_name)
+                if bill["bill_number"]:
+                    bill["watchlist"]             = True
+                    bill["watchlist_note"]         = note
+                    bill["legiscan_change_hash"]   = change_hash
+                    fetched.append(bill)
+                    self.logger.info(f"[WATCHLIST] {bn}: fetched via API")
+                time.sleep(0.2)
+            except Exception as exc:
+                self.logger.warning(
+                    f"Watchlist getBill failed for {bn} (bill_id={bill_id}): {exc}"
+                )
+
+        self.logger.info(
+            f"Watchlist: {len(fetched)} of {len(self._watchlist)} bills fetched/preserved"
+        )
+        return fetched
 
     # ------------------------------------------------------------------
     # LegiScan Dataset ZIP (bridge — no approved API key needed)

@@ -180,6 +180,7 @@ def bill_set(high_risk_bill):
                 "_bill": high_risk_bill,
             }
         ],
+        "watchlist_bills": [],
     }
 
 

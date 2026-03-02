@@ -256,10 +256,14 @@ def _generate_content(
     client_cfg: dict | None = None,
 ) -> dict:
     """Single Claude call returning all 3 posts as a structured dict."""
-    watch_ctx   = "\n\n".join(_build_bill_context(b) for b in bill_set["watch_list"])
-    new_ctx     = "\n\n".join(_build_bill_context(b) for b in bill_set["new_bills"])
-    hearing_ctx = "\n".join(_format_hearing(h) for h in bill_set["upcoming_hearings"])
-    media_ctx   = _format_media_context(media_digest)
+    watch_ctx     = "\n\n".join(_build_bill_context(b) for b in bill_set["watch_list"])
+    new_ctx       = "\n\n".join(_build_bill_context(b) for b in bill_set["new_bills"])
+    hearing_ctx   = "\n".join(_format_hearing(h) for h in bill_set["upcoming_hearings"])
+    media_ctx     = _format_media_context(media_digest)
+    watchlist_ctx = "\n\n".join(
+        _build_bill_context(b) + (f"\nStaff note: {b['watchlist_note']}" if b.get("watchlist_note") else "")
+        for b in bill_set.get("watchlist_bills", [])
+    )
 
     # Use client brand colors for the JSON schema defaults
     cfg = client_cfg or {}
@@ -275,6 +279,12 @@ Here is this week's bill intelligence. Write exactly 3 social media posts as spe
 
 == NEW BILLS THIS WEEK (recently tracked, at least 1 risk signal) ==
 {new_ctx if new_ctx else "(No newly tracked bills this week)"}
+
+== STAFF WATCHLIST (staff-curated bills — bypass discovery filters) ==
+These are two-year bills and staff-identified bills that may not appear in the watch list \
+above because they lack AI risk scores. Include them in posts when they are substantively \
+relevant or when the watch list and new bills sections are thin.
+{watchlist_ctx if watchlist_ctx else "(No staff watchlist bills)"}
 
 == UPCOMING HEARINGS (next 7 days) ==
 {hearing_ctx if hearing_ctx else "(No hearings scheduled this week)"}
@@ -1106,9 +1116,10 @@ def main() -> None:
     log.info(f"   Watch list:        {len(bill_set['watch_list'])} bills")
     log.info(f"   New this week:     {len(bill_set['new_bills'])} bills")
     log.info(f"   Upcoming hearings: {len(bill_set['upcoming_hearings'])}")
+    log.info(f"   Staff watchlist:   {len(bill_set.get('watchlist_bills', []))} bills")
 
-    if not bill_set["watch_list"] and not bill_set["new_bills"]:
-        log.warning("No analyzed bills with risk signals found.")
+    if not bill_set["watch_list"] and not bill_set["new_bills"] and not bill_set.get("watchlist_bills"):
+        log.warning("No analyzed bills with risk signals found and no staff watchlist bills.")
         log.warning("Run housing_analyzer.py first to populate analysis data.")
         sys.exit(0)
 
