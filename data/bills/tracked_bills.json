@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-01T13:53:45.172925",
+  "last_updated": "2026-03-02T15:25:25.747298",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -1202,10 +1202,10 @@
         "densification": "moderate",
         "reduce_discretion": "moderate",
         "cost_to_cities": "moderate",
-        "notes": "AB 1997 amends the Housing Accountability Act (65589.5), anti-NIMBY enforcement (65589.9), and permit streamlining timelines (65950), while adding new mandatory approval timeline provisions (65943.3) and a Health and Safety Code enforcement mechanism (50411). These sections collectively compress local review windows, restrict the conditions and findings cities may use to deny or modify housing applications, and impose state-level process mandates that override local deliberative authority — presenting meaningful local control risk across all four criteria even prior to committee amendments.",
-        "comms_brief": "AB 1997 amends the Housing Accountability Act and permit streamlining statutes to impose stricter mandatory timelines and approval processes on local housing decisions, narrowing the grounds and time available for cities to conduct meaningful review.\n• Amendments to Government Code §65589.5 (HAA) further restrict the findings cities may use to deny, reduce, or condition housing projects, tightening state preemption of local zoning and design authority.\n• New §65943.3 mandates specific approval timelines that compress or eliminate discretionary local review windows, limiting cities' ability to conduct thorough infrastructure, design, and community input processes.\n• Amendments to §65950 (permit streamlining) and new Health & Safety Code §50411 layer additional procedural mandates and enforcement mechanisms, shifting compliance burden and litigation risk onto local governments without corresponding state funding.\n• Collectively, these changes constrain impact fee conditioning, infrastructure review, and hearing rights for qualifying projects, potentially shifting capacity costs onto existing residents.\nRecommended: Oppose — bill stacks multiple preemption mechanisms across HAA, permit streamlining, and new enforcement authority, compounding local control erosion with no offset for lost review authority or infrastructure conditioning rights.",
+        "notes": "AB 1997 amends Housing Accountability Act provisions (§65589.5, §65589.9) and approval timeline statutes (§65950), and adds new streamlining mandates (§65943.3, HSC §50411). Taken together, these amendments tighten state control over local approval timelines, limit cities' ability to deny or condition housing projects under the HAA, and impose compliance requirements on local agencies — all of which restrict local discretion and shift infrastructure review authority away from cities without clear funding offsets.",
+        "comms_brief": "AB 1997 amends the Housing Accountability Act and local approval timeline statutes to restrict cities' ability to deny housing projects, compress permitting timelines, and impose new compliance mandates on local agencies.\n• Amendments to §65589.5 (HAA) further limit the findings cities may use to deny or condition housing projects, narrowing local discretion over project approval.\n• Changes to §65950 compress or restructure local approval timelines, reducing cities' capacity to conduct thorough infrastructure, design, and community review before project approval.\n• Addition of §65943.3 and HSC §50411 creates new streamlining mandates and compliance obligations on local agencies with no clear state funding offset for staffing or administrative costs.\n• Tightened HAA enforcement under §65589.9 increases litigation exposure for cities that attempt to apply objective local standards or deny projects on capacity grounds.\nRecommended: Oppose — bill layers multiple HAA and timeline restrictions that cumulatively strip local discretion over project conditions, timelines, and denial authority with no mechanism to replace lost infrastructure review safeguards.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1286,9 +1286,10 @@
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 2005 amends Government Code §66411.7, the urban lot split provision enacted under SB 9, which already mandates ministerial (no-discretion) approval of parcel maps for lot splits in single-family zones statewide. Any amendment to this section is highly likely to expand, clarify, or strengthen that ministerial approval framework — further preempting local zoning authority, eliminating discretionary review, and compelling cities to approve lot splits and associated two-unit developments beyond what local planning would otherwise allow. The ministerial approval structure inherently removes CEQA review and public hearing rights for qualifying parcels, and increased lot splits create incremental infrastructure and permitting capacity pressure on city systems without guaranteed fee offsets.",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "notes": "AB 2005 amends Government Code §66411.7, which governs urban lot splits (SB 9's parcel map provisions). Amendments to this section typically expand or clarify ministerial by-right approval of urban lot splits, further constraining local discretion to deny or condition such subdivisions. The summary is too brief to confirm the precise mechanism, so full text review is warranted; however, any amendment to §66411.7 carries strong a priori risk of deepening state preemption of local subdivision and zoning authority, eliminating discretionary review for qualifying splits, and mandating approval of density increases cities have not locally chosen.",
+        "comms_brief": "AB 2005 amends the SB 9 urban lot split statute (Gov. Code §66411.7), likely expanding or clarifying ministerial by-right parcel approvals that override local zoning and subdivision authority.\n• Amendments to §66411.7 have historically expanded the set of parcels eligible for ministerial lot splits, removing cities' ability to apply local subdivision standards or deny nonconforming splits.\n• Ministerial approval under this section strips cities of discretionary review, public hearings, and design conditions for qualifying urban lot split applications.\n• By mandating approval of lot splits that effectively double allowable density on single-family parcels, the bill forces cities to accommodate development volumes beyond locally adopted general plan and zoning choices.\n• Infrastructure and utility capacity review is severely constrained under ministerial approval, potentially shifting connection and frontage costs to existing residents without city recourse.\nRecommended: Oppose pending full text review — any expansion of §66411.7's ministerial approval scope directly and materially erodes city zoning, subdivision, and infrastructure conditioning authority with no local opt-out.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1327,10 +1328,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2020 adds Section 50406.4.5 to the Health and Safety Code and pertains to housing financing programs administered at the state level. Based on the available summary and digest, the bill appears to create or modify a state housing finance mechanism without imposing local zoning preemptions, mandating approvals, eliminating discretionary review, or restricting local fee or infrastructure authority. No local control risk is evident from the bill text provided.",
+        "notes": "AB 2020 adds Section 50406.4.5 to the Health and Safety Code and concerns housing financing programs administered at the state level. Based on the available summary, the bill appears to modify or establish a state financing mechanism with no provisions preempting local zoning authority, eliminating discretionary review, mandating local approvals, or restricting impact fee or infrastructure authority.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1369,10 +1370,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2035 amends Civil Code Section 4275, which governs the process by which HOA governing documents (CC&Rs) in common interest developments can be amended by court petition when member consent thresholds cannot be met. This is an internal HOA governance mechanism with no bearing on local zoning, planning authority, discretionary review, development mandates, or infrastructure fee authority. No local control risk is identified across any criterion.",
+        "notes": "AB 2035 amends Civil Code Section 4275, which governs the process for courts to approve amendments to common interest development (CID) declarations when the required owner vote cannot be obtained. This is an internal HOA governance procedural matter — it does not touch city/county zoning, land use authority, CEQA, impact fees, or development mandates. No local control risk is identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1453,10 +1454,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2041 amends Section 63000 of the Government Code, which governs the Bergeson-Peace Infrastructure and Economic Development Bank — a state financing entity. Based on the available digest, this is a technical amendment to a state economic development finance statute with no apparent preemption of local zoning or land use authority, no removal of discretionary review, no development mandates, and no restriction on local infrastructure fee or improvement authority.",
+        "notes": "AB 2041 amends Section 63000 of the Government Code, which governs the Bergeson-Peace Infrastructure and Economic Development Bank — a state financing entity. Based on the available summary, the bill appears to make administrative or definitional changes to the bank's enabling statute, with no provisions touching local zoning authority, discretionary review processes, development mandates, or impact fee/infrastructure conditions. No local control risk is identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1495,10 +1496,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2050 amends Civil Code Section 5550 and adds Section 5552 to regulate reserve accounts within common interest developments (HOAs). This bill governs internal HOA financial management — specifically how HOAs fund and maintain reserves for common area repairs and replacements. It imposes no requirements on city or county zoning, planning, or land use authority, does not affect discretionary review processes, mandates no development approvals, and creates no infrastructure burden or fee restrictions on local governments.",
+        "notes": "AB 2050 amends Civil Code Section 5550 and adds Section 5552 governing reserve accounts for common interest developments (HOAs). This bill operates entirely within the internal financial governance of HOAs — it does not touch city or county zoning authority, land use entitlements, discretionary review processes, or infrastructure fee structures. No local control risk is identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1533,14 +1534,14 @@
       "source_id": "2119585",
       "first_seen": "2026-02-23T17:38:05.407302",
       "analysis": {
-        "pro_housing_production": "none",
+        "pro_housing_production": "indirect",
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2058 amends Health and Safety Code Section 19991.1, which governs factory-built housing standards and certification — a state-level manufacturing and building code matter. Based on the bill's digest and scope, there is no indication of local zoning preemption, removal of discretionary review, development mandates, or infrastructure fee restrictions. The bill appears to make technical or administrative adjustments to the existing factory-built housing program, which operates at the state level and does not directly alter local land use or planning authority.",
+        "notes": "AB 2058 amends Health and Safety Code Section 19991.1 governing factory-built housing standards. Based on the available summary, the bill appears to modify state-level construction or approval standards for factory-built housing — a domain already heavily state-regulated — with no evident preemption of local zoning, removal of discretionary review, explicit development mandates, or restriction on local fee or infrastructure authority. An indirect local control override score is warranted only if the amendment expands the types or sites where factory-built housing must be accepted by local jurisdictions, but the digest is too sparse to confirm this; the full text would clarify.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1621,10 +1622,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "The bill text provided is essentially a shell — it amends Government Code Section 65913 (a general housing streamlining provision), but no substantive language or digest is available beyond the title and procedural history. There is insufficient content to identify any specific local control risk mechanism. Scoring \"none\" across all criteria pending full text.",
+        "notes": "The bill text provided is essentially a legislative shell — it references amending Government Code Section 65913 (a general housing streamlining provision) but contains no substantive digest language, no operative text, and no committee analysis to evaluate. Without knowing what specific changes are proposed to §65913, no local control risk can be confidently assessed. Full bill text is needed to score meaningfully.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1663,10 +1664,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2110 establishes a local tax increment financing (TIF) district mechanism for workforce housing — a voluntary, locally-initiated finance tool. Nothing in the bill's digest suggests state preemption of zoning or land use authority, elimination of discretionary review, mandated approvals, or restrictions on local impact fee or infrastructure authority. Local governments would opt in and retain control over how the tool is deployed.",
+        "notes": "AB 2110 establishes a local tax increment financing (TIF) district mechanism for workforce housing — a voluntary local finance tool. The bill amends Government Code Section 53993 and adds a new chapter enabling localities to capture property tax increment to fund workforce housing projects. Because participation is locally initiated and discretionary, the bill does not preempt local zoning authority, strip discretionary review, mandate approvals, or restrict impact fee or infrastructure authority. The summary and digest contain no language suggesting state preemption, ministerial approval mandates, or fee restrictions.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1705,10 +1706,10 @@
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 2118 amends the Affordable Housing and High Road Jobs Act of 2022 (Gov. Code §§65912.101, 65912.123), which already establishes a use-by-right, ministerial approval pathway for qualifying affordable housing projects — explicitly overriding local zoning and eliminating discretionary review. The bill's amendment to \"objective standards\" language likely further constrains the conditions cities may apply to qualifying projects, tightening state preemption of local design, land use, and development review authority. Cities bear compliance and permitting costs with no identified state offset for ministerial processing burdens.",
-        "comms_brief": "AB 2118 amends the Affordable Housing and High Road Jobs Act of 2022 to modify the use-by-right, ministerial approval framework and the objective standards cities may apply to qualifying affordable housing projects, further narrowing local discretion.\n• Use-by-right mandate strips cities of all discretionary approval authority — including design review, conditional use permits, and public hearings — for qualifying projects, regardless of local zoning or community plans.\n• Amendments to \"objective standards\" language (§65912.123) risk further restricting the only remaining local tool for shaping project design and site compatibility, potentially invalidating locally adopted standards that exceed state floors.\n• Ministerial approval pathway eliminates CEQA review for qualifying projects, removing cities' ability to analyze or condition projects based on local infrastructure, traffic, or environmental impacts.\n• Cities bear unfunded administrative and permitting costs to implement mandatory ministerial processing with no state reimbursement mechanism identified.\nRecommended: Oppose — bill tightens an existing preemption framework that already eliminates local discretionary authority, and further constrains the objective standards that are cities' last meaningful lever for project oversight.",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "notes": "This bill amends the Affordable Housing and High Road Jobs Act of 2022 (Gov. Code §§65912.101, 65912.123), which already establishes a use-by-right approval pathway. Amendments to these sections most likely expand or clarify the ministerial approval mandate and the role of objective standards — both of which directly preempt local discretionary zoning authority, eliminate CEQA and hearing rights for qualifying projects, and compel cities to approve qualifying affordable housing projects regardless of local land use preferences. The infrastructure burden is moderate given ministerial approval pathways that limit cities' ability to condition approvals on utility or frontage improvements.",
+        "comms_brief": "AB 2118 amends the Affordable Housing and High Road Jobs Act of 2022 to modify use-by-right approval rules and objective standards, further constraining how cities may review and condition qualifying affordable housing projects.\n• Expands or entrenches ministerial (no-discretion) approval for qualifying projects, stripping cities of case-by-case zoning and land use authority under §65912.101.\n• Limits cities to \"objective standards\" only under §65912.123, eliminating design review, conditional use permits, and public hearings that communities rely on for neighborhood-sensitive development decisions.\n• Forces cities to approve qualifying projects regardless of local general plan or zoning preferences, effectively mandating development volumes and types beyond community choice.\n• Ministerial approval pathways constrain cities' ability to require infrastructure improvements or utility upgrades as conditions of approval, shifting potential capacity costs to existing residents.\nRecommended: Oppose — bill entrenches state preemption of local planning authority with no meaningful mechanism for communities to ensure projects are compatible with local infrastructure capacity or neighborhood character.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1747,10 +1748,10 @@
         "densification": "indirect",
         "reduce_discretion": "indirect",
         "cost_to_cities": "indirect",
-        "notes": "The bill is in its earliest stage — introduced with only a placeholder title (\"An act relating to land use\") and no substantive text or digest available. It is titled as an ADU bill, and California ADU legislation historically has carried local control risks (ministerial approval mandates, CEQA exemptions, preemption of local development standards), but none of those provisions are confirmed here. All four criteria are scored \"indirect\" solely because the ADU subject matter creates a reasonable presumption of such risks; no specific bill language supports a stronger score at this time.",
+        "notes": "The bill title and subject matter — accessory dwelling units — suggests some potential for local control erosion, as ADU legislation in California has historically preempted local zoning standards, streamlined approvals, and limited fee authority. However, the bill is in its earliest stage (introduced, no committee referral, no substantive text beyond a placeholder title) and contains no operative language available for analysis. All four criteria are scored \"indirect\" as a precautionary flag given the ADU subject area, but confident scoring is not possible without bill text.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1789,10 +1790,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2128 governs the internal governance of housing authorities — specifically imposing term limits and work requirements on housing authority members or residents. This is an administrative/governance bill that does not touch city or county zoning authority, discretionary review processes, development mandates, or infrastructure fee authority. No local control risk is identified across any criterion.",
+        "notes": "AB 2128 adds governance requirements to housing authorities — specifically term limits and work requirements for authority members. This is an internal administration/accountability bill for housing authority boards and does not touch city or county zoning authority, discretionary review processes, development mandates, or infrastructure fee authority. No local control risk is identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1831,10 +1832,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2144 amends Education Code Section 35179.6 to address adult presence and CPR training requirements at on-campus swimming pool events — a school safety measure with no nexus to zoning, land use, housing production, or local planning authority. No local control risk is identified across any criterion.",
+        "notes": "AB 2144 amends Education Code Section 35179.6 to address adult supervision and CPR training requirements at on-campus swimming pool events — a school safety measure with no connection to zoning, land use, housing production, or local planning authority. No local control risk identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1873,10 +1874,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2146 amends Health and Safety Code Section 50675.1.3, which governs the Multifamily Housing Program (MHP) and its integration with the Homekey program — both are state-administered grant/loan programs for affordable and supportive housing. Based on the bill digest and summary available, this appears to be a technical or administrative amendment to state program eligibility or funding rules, with no evident preemption of local zoning authority, no ministerial approval mandates, no development quotas, and no restriction on local impact fee or infrastructure authority. The bill does not appear to impose any local control risks across the four criteria.",
+        "notes": "AB 2146 amends the Multifamily Housing Program statute (HSC §50675.1.3) in connection with the Homekey program, which is a state-administered competitive grant program for converting existing buildings into affordable or supportive housing. Based on the available summary and digest, the bill appears to modify state program parameters rather than impose local planning mandates — no preemption of local zoning, no ministerial approval requirements, no fee restrictions, and no development mandates on cities are evident. The bill's operative effect appears to be administrative changes to a voluntary state funding program.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1915,10 +1916,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2157 extends and modifies a pilot program under the Unemployment Insurance Code focused on workforce development for displaced oil and gas workers. This is a state-administered labor and workforce program with no connection to local zoning, land use, planning authority, or housing development. None of the four local control risk criteria are implicated.",
+        "notes": "AB 2157 extends and adds an assessment component to the Displaced Oil and Gas Worker Pilot Program under the Unemployment Insurance Code — a state workforce development initiative with no connection to local zoning, planning, or land use authority. None of the four local control risk criteria are implicated.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1957,10 +1958,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2162 amends Health and Safety Code Sections 50807 and 50811, which govern county funding allocations for housing assistance to nonminor dependents and young adults. Based on the bill's title, author, and the statutory sections targeted, this appears to modify how state housing funds are distributed to counties for a specific vulnerable population — not a zoning, land use, or development approval measure. No local control override, discretionary review elimination, development mandate, or infrastructure cost burden is present or implied.",
+        "notes": "AB 2162 amends Health and Safety Code Sections 50807 and 50811, which govern county funding allocations for housing assistance to nonminor dependents and young adults — a state-administered grant/allocation program. Based on the bill's title, author focus, and statutory targets, this appears to adjust eligibility or funding distribution formulas within an existing state program, with no provisions preempting local zoning, removing discretionary review, mandating development approvals, or restricting local infrastructure fee authority.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -1999,10 +2000,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2166 amends Section 50401 of the Health and Safety Code, which governs the organizational structure and functions of the Department of Housing and Community Development (HCD). At this early introduced stage, the bill text contains only navigation/metadata and no substantive amendment language is visible. Nothing in the available summary or digest indicates any preemption of local zoning authority, removal of discretionary review, development mandates, or infrastructure fee restrictions. This appears to be an administrative/housekeeping measure related to HCD's internal operations or statutory definitions.",
+        "notes": "AB 2166 amends Section 50401 of the Health and Safety Code, which governs the organizational and administrative functions of the Department of Housing and Community Development (HCD). Based on the available text, this appears to be an administrative or housekeeping measure affecting HCD's internal structure or statutory mandate — not a land use, zoning, or development approval bill. No local control override, discretionary review removal, development mandate, or infrastructure burden is evident.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2041,10 +2042,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2174 amends Health and Safety Code Section 18100.5 to address registration and titling documentation for mobilehomes and manufactured housing — an administrative/records function administered at the state level. Nothing in the bill's title or summary suggests preemption of local zoning, elimination of discretionary review, development mandates, or infrastructure fee restrictions. The summary is brief, but the narrow subject matter (documentation/titling) is unlikely to implicate local land use authority.",
+        "notes": "AB 2174 amends Health and Safety Code Section 18100.5 to address registration and titling documentation for mobilehomes and manufactured housing — an administrative/procedural matter within the Department of Housing and Community Development's titling program. There is no preemption of local zoning or land use authority, no removal of discretionary review, no development mandate, and no infrastructure cost shift to local governments.",
         "comms_brief": "",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2083,10 +2084,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2176 adds Section 66221 to the Education Code to establish an intersegmental working group on student housing — a study/coordination body with no zoning preemption, no ministerial approval mandates, and no impact fee restrictions. The bill operates entirely within the higher education administrative framework and imposes no obligations on cities or counties regarding land use, planning, or infrastructure.",
+        "notes": "AB 2176 establishes an intersegmental working group on student housing — a study or coordination mechanism within the Education Code. Working groups of this type do not preempt local zoning, eliminate discretionary review, mandate approvals, or restrict infrastructure fee authority. No local control risk is evident from the title, summary, or bill posture. Full text is unlikely to change this assessment materially, as the bill adds a single Education Code section and the title is specific.",
         "comms_brief": "",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2121,14 +2122,14 @@
       "source_id": "2120651",
       "first_seen": "2026-02-23T17:38:05.408198",
       "analysis": {
-        "pro_housing_production": "indirect",
+        "pro_housing_production": "none",
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2177 amends Government Code Section 65912, which governs open-space zoning designations. Based on the available summary, the bill likely adjusts or expands open-space zoning protections, which could indirectly constrain where cities may permit residential development — creating a mild implied erosion of local flexibility to rezone open-space-designated parcels for housing. No explicit preemption, discretionary review removal, development mandate, or infrastructure fee restriction is evident from the introduced text. Full bill text was not available in the digest to confirm specific operative language.",
+        "notes": "AB 2177 amends Government Code Section 65912, which relates to open-space zoning — a provision that governs how local governments designate and manage open-space lands. At the introduced stage, no bill text or digest language is available beyond the title and code section reference, so no specific preemption, discretion-removal, development mandate, or infrastructure burden language can be identified. The bill's open-space zoning subject matter suggests it is more likely to reinforce or clarify local conservation authority than to override it, but the full text should be reviewed once available to confirm. A fetch of the full bill text is flagged given the absence of substantive language in the summary.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2167,10 +2168,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2185 amends Section 65581 of the Government Code, which contains the Legislature's findings and declarations related to housing element law — a policy statement section, not an operative mandate. At the introduced stage, the bill's digest contains no substantive operative changes to zoning authority, review processes, development mandates, or infrastructure fee authority. No local control risk is identifiable from the available text.",
+        "notes": "AB 2185 amends Government Code Section 65581, which contains the Legislature's policy findings and declarations regarding housing elements — it is a declaratory/findings section with no operative mandates. At this early introduced stage, the bill contains no substantive provisions that preempt local zoning, eliminate discretionary review, mandate development approvals, or restrict infrastructure fee authority. The bill is non-fiscal, non-appropriation, and non-state-mandated, consistent with a policy-statement amendment.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2209,10 +2210,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2189 amends Section 4540 of the Welfare and Institutions Code relating to the State Council on Developmental Disabilities — a state-level advisory and oversight body for developmental services. This bill has no bearing on local zoning, land use authority, planning discretion, housing mandates, or infrastructure fee authority. It poses no identifiable risk to local control across any of the four criteria.",
+        "notes": "AB 2189 amends Section 4540 of the Welfare and Institutions Code, which governs the State Council on Developmental Disabilities — a state advisory/oversight body for developmental services. This bill has no nexus to local zoning, land use authority, housing production, discretionary review, or infrastructure funding. It poses no local control risk across any of the four criteria.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2251,10 +2252,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2191 amends Education Code Section 52073.2 to address high school graduation requirements and alternate pathways for individuals with exceptional needs. This is an education policy bill with no bearing on local land use authority, zoning, planning, discretionary review, development mandates, or infrastructure funding. No local control risk is identified across any of the four criteria.",
+        "notes": "AB 2191 amends Education Code Section 52073.2 to address high school graduation requirements and alternate pathways for students with exceptional needs. This is an education/pupil instruction bill with no bearing on local land use authority, zoning, planning, or housing development. None of the four local control risk criteria are implicated.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2293,10 +2294,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2209 amends Welfare and Institutions Code Section 4646.5, which governs individual program plans for persons with developmental disabilities. The bill concerns caregiver succession planning within the developmental services system — it has no connection to local zoning, land use authority, housing approvals, or infrastructure. No local control risk is identified across any criterion.",
+        "notes": "AB 2209 amends Welfare and Institutions Code Section 4646.5, which governs individual program plans for persons with developmental disabilities — specifically caregiver succession planning. This bill operates entirely within the state's developmental services framework and has no bearing on local zoning, land use authority, discretionary review processes, housing mandates, or infrastructure funding. No local control risk is present across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2377,10 +2378,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2252 is a placeholder bill — it has only a title and a one-line purpose statement (\"An act relating to housing\") with no substantive text, operative provisions, or digest language beyond the title. No scoring is possible on any local control criterion because no policy mechanism exists yet to evaluate. The bill may be a vehicle for future amendments.",
+        "notes": "AB 2252 is a placeholder \"spot bill\" at introduction stage — the title references single stair entry and exit standards for housing, but no substantive text, operative provisions, or specific local control mechanisms have been introduced. No scoring is possible beyond the title alone; the bill contains no language preempting local zoning, eliminating discretionary review, mandating approvals, or restricting infrastructure fee authority.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2419,10 +2420,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2263 amends Section 17912 of the Health and Safety Code, which relates to building standards and housing code enforcement — not zoning, land use authority, or development approval processes. The bill is newly introduced with no committee referral yet, and the available summary contains insufficient detail to identify any local control risk mechanism. No preemption, discretionary review removal, development mandate, or infrastructure fee restriction is evident from the bill's face or digest.",
+        "notes": "AB 2263 amends Section 17912 of the Health and Safety Code, which governs building standards and housing code enforcement — not local zoning, planning, or land use authority. At this early stage (just introduced, pending committee referral), the digest reveals no preemption language, no ministerial approval mandate, no density requirement, and no impact fee restriction. No local control risk is identifiable from the available text.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2461,10 +2462,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2264 amends Food and Agricultural Code Section 4051 to address how district agricultural associations may use or lease real property for affordable housing purposes. Based on the summary and digest, this bill appears to modify state-level authority governing fairground or ag association property — it does not preempt local zoning, mandate approvals, strip discretionary review, or restrict infrastructure fee authority. Any affordable housing developed on such property would still be subject to local land use processes unless the bill contains explicit ministerial or preemption language not present in the available summary.",
+        "notes": "AB 2264 amends Food and Agricultural Code Section 4051 to authorize district agricultural associations to lease or use their real property for affordable housing purposes. This is an enabling change to state agency authority — it creates permissive capacity for a specific class of state-chartered entities (fairgrounds, etc.) without preempting local zoning, mandating approvals, removing discretionary review, or restricting local impact fee authority. Any resulting development on DAA land would still be subject to local entitlement and CEQA processes.",
         "comms_brief": "",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2503,10 +2504,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2270 amends the Revenue and Taxation Code to modify the state Low-Income Housing Tax Credit (LIHTC) program as it applies to farmworker housing. This is a state tax incentive mechanism — it adjusts credit eligibility or allocation rules for a specific housing type and imposes no preemption of local zoning, no ministerial approval mandates, no discretionary review restrictions, and no impact fee limitations. Local governments retain full planning and land use authority over any projects that may seek these credits.",
+        "notes": "AB 2270 amends the Revenue and Taxation Code to modify the state low-income housing tax credit program as it applies to farmworker housing. This is a state tax credit allocation mechanism — it creates financial incentives for developers at the state level but imposes no preemption of local zoning authority, no ministerial approval mandates, no removal of discretionary review, and no restrictions on local impact fee or infrastructure authority. Cities retain full local control over whether and how any such projects are permitted.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2584,13 +2585,13 @@
       "first_seen": "2026-02-23T17:38:05.408754",
       "analysis": {
         "pro_housing_production": "moderate",
-        "densification": "indirect",
+        "densification": "none",
         "reduce_discretion": "moderate",
         "cost_to_cities": "indirect",
-        "notes": "AB 2295 adds Section 65584.2.3 to the Government Code, targeting the regional housing needs allocation (RHNA) process with a focus on affordable housing. Bills of this type typically adjust how RHNA allocations are calculated or distributed — potentially increasing the affordable unit quotas assigned to jurisdictions, which constitutes a moderate mandate on local planning beyond community preference and a partial limitation on local land use authority through state-controlled allocation formulas. Infrastructure burden is indirect, as higher affordable unit targets increase permitting and service-delivery pressure without explicit fee restrictions.",
-        "comms_brief": "AB 2295 amends the RHNA process by adding a new Government Code section focused on affordable housing allocations, likely increasing or restructuring the mandatory affordable unit quotas assigned to cities and counties through state regional planning bodies.\n• RHNA quota increases directly override local planning choices by mandating cities accommodate more affordable units than they would otherwise zone for under local deliberation.\n• State-controlled allocation formulas restrict local authority to determine appropriate density and affordability mix based on community needs and infrastructure capacity.\n• Higher affordable housing targets impose indirect infrastructure and service-delivery pressure on cities without accompanying state funding or fee authority to offset costs.\nRecommended: Monitor — bill is newly introduced with no committee analysis yet; risk level depends heavily on the specific allocation methodology added by the new code section, and full text review is warranted before escalating to Oppose.",
+        "notes": "AB 2295 adds Section 65584.2.3 to the Government Code, which relates to the Regional Housing Need Allocation (RHNA) process with a focus on affordable housing. Bills modifying RHNA methodology or allocation formulas partially constrain how cities plan and zone by adjusting the state-imposed housing quotas they must accommodate, representing a moderate local control override and moderate mandate pressure. The bill's early stage and limited digest prevent precise scoring of infrastructure cost impacts, though RHNA-driven compliance obligations routinely generate indirect staffing and planning burdens for localities.",
+        "comms_brief": "AB 2295 modifies the Regional Housing Need Allocation process to adjust how affordable housing need is calculated and assigned to cities and counties, potentially increasing or reshaping local housing quotas outside of local deliberation.\n• RHNA changes constrain local General Plan and zoning choices by setting state-imposed numerical targets cities must plan for, regardless of local infrastructure, capacity, or community preference.\n• Revised allocation formulas may increase the share of affordable units cities are required to site, effectively directing land use policy from Sacramento rather than city hall.\n• Cities that fail to meet adjusted RHNA targets face builder's remedy exposure and loss of local zoning authority, creating strong compliance pressure even if penalties are not explicit in this bill.\nRecommended: Monitor — bill is pre-committee with limited text available; risk level depends heavily on whether the allocation formula increases local quotas or imposes new methodology; full bill text should be reviewed once available.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2629,10 +2630,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2300 is a placeholder (\"spot\") bill at introduction stage, with only a title referencing workforce development and no substantive policy language. There is no mechanism, mandate, preemption, or fee restriction that would affect local zoning, land use authority, discretionary review, or infrastructure financing.",
+        "notes": "AB 2300 is a placeholder (\"spot\") bill on workforce development with no substantive text beyond the title. There is no language preempting local zoning, removing discretionary review, mandating housing approvals, or restricting infrastructure fee authority. No local control risk is identifiable at this stage.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2671,10 +2672,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2308 amends Health & Safety Code Section 34177.7 to address successor agency debt obligations specific to the City and County of San Francisco — a narrow, jurisdiction-specific redevelopment wind-down matter. There is no preemption of local zoning or land use authority, no removal of discretionary review, no development mandate, and no infrastructure fee restriction. This is a fiscal/administrative cleanup bill within the existing redevelopment dissolution framework.",
+        "notes": "AB 2308 amends Health & Safety Code Section 34177.7, which governs successor agency obligations following California's dissolution of redevelopment agencies — this is a narrow, city-specific fiscal/debt management bill applicable only to San Francisco. Nothing in the bill's title, digest, or history suggests it touches local zoning authority, discretionary review processes, development mandates, or impact fee/infrastructure conditions. The bill appears to adjust how San Francisco's successor agency handles legacy redevelopment debt, with no land use preemption mechanism.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2713,10 +2714,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2315 amends findings and declarations language in the Unemployment Insurance Code related to workforce development — a purely declaratory/policy-statement bill with no land use, zoning, planning, or infrastructure provisions. It poses no identifiable risk to local control over housing or development decisions.",
+        "notes": "AB 2315 amends Section 14000 of the Unemployment Insurance Code to update findings and declarations related to workforce development. This is a purely declaratory/policy-statement bill with no land use, zoning, planning, CEQA, housing mandate, or infrastructure fee provisions. It poses no identifiable risk to local control over housing or land use decisions.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2751,14 +2752,14 @@
       "source_id": "2120794",
       "first_seen": "2026-02-23T17:38:05.408988",
       "analysis": {
-        "pro_housing_production": "indirect",
+        "pro_housing_production": "none",
         "densification": "none",
-        "reduce_discretion": "indirect",
+        "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2320 amends the Multifamily Housing Program to expand eligibility or terms for Homekey adaptive reuse projects under Health & Safety Code §50675.1.3. As a state grant/loan program modification, it does not explicitly preempt local zoning or mandate approvals, but Homekey projects can carry streamlining provisions that indirectly reduce local discretion. The bill is too early in the process (pre-committee referral) and the digest too sparse to confirm specific preemptive mechanisms; full text review would sharpen the analysis.",
+        "notes": "AB 2320 amends the Multifamily Housing Program to expand Homekey eligibility to include adaptive reuse projects. Based on the digest and summary, this bill modifies a state grant/loan program's eligibility criteria and does not appear to preempt local zoning authority, mandate ministerial approvals, eliminate discretionary review, or restrict local impact fee or infrastructure conditioning authority. Cities retain full discretion over whether and how to permit adaptive reuse projects within their jurisdictions.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2797,10 +2798,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2329 amends Government Code Section 54239.6, which governs surplus residential property disposition, to add a city-specific carve-out or modification for the City of South Pasadena. Based on the bill's narrow, locality-specific scope and the underlying statute's purpose (managing how surplus residential land is offered or sold), there is no evidence of state preemption of local zoning, removal of discretionary review, mandate to approve density, or restriction of impact fee/infrastructure authority. This appears to be a ministerial or procedural amendment tailored to one jurisdiction's circumstances.",
+        "notes": "AB 2329 amends Government Code Section 54239.6, which governs surplus residential property disposition, specifically for the City of South Pasadena. Based on the summary, this appears to be a narrow, city-specific carve-out or amendment to existing surplus land rules — likely a local exception or technical fix rather than a broad preemption of local authority. No evidence of zoning override, mandated approvals, fee restrictions, or discretionary review removal. Full text was not fetched because the bill's title and structure (single-city amendment to an existing surplus land statute) strongly suggest a targeted local adjustment with no systemic local control risk.",
         "comms_brief": "",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2835,13 +2836,14 @@
       "source_id": "2120816",
       "first_seen": "2026-02-23T17:38:05.409092",
       "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "AB 2342 amends Government Code §65912.157, which sits within California's Transit-Oriented Development (TOD) law. Existing TOD law grants ministerial, by-right approval for qualifying housing projects near transit — explicitly preempting local zoning, eliminating discretionary review and CEQA, and mandating approval of density beyond what local plans may allow. An amendment to this section most likely expands the scope, lowers thresholds, or tightens compliance obligations, all of which carry strong local control risk. Full text is needed to confirm the specific mechanism, but the statutory context alone warrants strong scores on preemption, review removal, and development mandates, with a moderate infrastructure burden from ministerial approvals that prevent cities from conditioning projects on utility or frontage improvements.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "pro_housing_production": "moderate",
+        "densification": "moderate",
+        "reduce_discretion": "moderate",
+        "cost_to_cities": "indirect",
+        "notes": "AB 2342 amends Government Code §65912.157, which governs transit-oriented development (TOD) streamlining under existing law. Amendments to this section typically extend or expand by-right or ministerial approval pathways for housing near transit, limiting local zoning discretion and conditioning or restricting design review and conditional use processes for qualifying projects. The infrastructure burden is indirect — increased density near transit stations pressures utility and traffic capacity without explicit fee restriction language confirmed in the text.",
+        "comms_brief": "AB 2342 amends the state's transit-oriented development statute (Gov. Code §65912.157) to alter streamlining provisions that override local zoning and reduce discretionary review for housing projects near transit.\n• Amendments to §65912.157 typically expand or extend ministerial/by-right approval pathways, stripping cities of project-level discretion over qualifying TOD housing proposals.\n• Existing TOD streamlining law limits the objective standards and conditions cities may impose, constraining local design review and conditional use permit authority.\n• Any expansion of project eligibility or approval mandates forces cities to approve density or housing types beyond what local planning processes would otherwise allow.\n• Increased development density near transit stations creates indirect infrastructure capacity pressure without confirmed local mitigation authority.\nRecommended: Monitor — bill is newly introduced with no committee analysis or amendments available; full text review needed to confirm scope of changes to ministerial approval thresholds and eligibility criteria.",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2880,10 +2882,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2353 is a health care affordability bill with no apparent connection to local land use, zoning, or housing authority. Nothing in the title, author, or legislative history suggests any preemption of local planning decisions, removal of discretionary review, development mandates, or infrastructure/fee impacts on cities.",
+        "notes": "AB 2353 is a health care affordability bill with no apparent connection to housing, zoning, land use, or local planning authority. Despite the very short summary, the title and subject matter indicate this bill operates entirely within the health care regulatory domain. No local control risk is identified across any of the four criteria.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -2955,14 +2957,14 @@
       "source_id": "2121467",
       "first_seen": "2026-02-23T17:38:05.409252",
       "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "moderate",
-        "reduce_discretion": "moderate",
+        "pro_housing_production": "strong",
+        "densification": "strong",
+        "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 2390 amends Government Code §65913.4 — the SB 35 streamlined ministerial approval statute — to extend its by-right approval process to projects on hazardous waste sites. This expands state preemption of local discretionary review to a site category that cities currently retain authority to condition or deny based on contamination concerns, public safety, and remediation adequacy. Cities could lose the ability to impose site-specific conditions tied to cleanup verification, and ministerial approval could force approvals before remediation is complete or certified adequate.",
-        "comms_brief": "AB 2390 expands SB 35's ministerial, by-right housing approval process to include hazardous waste sites, stripping cities of discretionary review authority over projects on contaminated land.\n• Extends state preemption of local zoning and land use authority to a new, high-risk site category — hazardous waste locations — where cities have historically retained critical review rights.\n• Eliminates or severely limits cities' ability to impose site-specific conditions tied to contamination remediation, cleanup certification, or phasing of development relative to cleanup progress.\n• Removes discretionary review (design review, public hearings, conditional use permits) for qualifying projects on hazardous sites, reducing local tools for protecting public health and safety.\n• Shifts potential infrastructure and mitigation costs to cities and existing residents if remediation standards or conditions cannot be imposed as part of the approval process.\nRecommended: Oppose — ministerial approval on hazardous waste sites removes essential local public safety review with no replacement mechanism for cities to ensure adequate remediation before residents occupy new housing.",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "notes": "AB 2390 amends Government Code §65913.4 — the SB 35 streamlined ministerial approval statute — to extend its by-right, no-discretion approval pathway to housing projects on hazardous waste sites. This is a strong local control override because SB 35 already eliminates CEQA review and discretionary hearings for qualifying projects; expanding it to contaminated sites further strips cities of authority to condition or deny projects based on site-specific environmental and safety concerns. The infrastructure/capacity burden is moderate: ministerial approval on hazardous sites may prevent cities from imposing remediation-linked conditions or delaying approvals pending cleanup verification.",
+        "comms_brief": "AB 2390 expands California's SB 35 ministerial (by-right) approval statute to housing projects on hazardous waste sites, stripping cities of discretionary review authority over contaminated properties.\n• Eliminates local discretionary review and CEQA applicability for qualifying projects on hazardous waste sites, removing the primary tool cities use to evaluate remediation adequacy before residents move in.\n• Extends state preemption of local zoning and development standards to a new category of environmentally sensitive sites, where community-specific conditions are most critical.\n• Prevents cities from conditioning or delaying approvals pending independent verification of site cleanup, shifting liability and safety risk onto future residents and neighboring communities.\n• Limits ability of cities to impose site-specific infrastructure or remediation-related conditions that would otherwise be required through discretionary review.\nRecommended: Oppose — ministerial approval on hazardous waste sites removes the last local checkpoint for public health and safety review, with no replacement mechanism for cities to ensure adequate remediation before occupancy.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3001,10 +3003,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2397 amends Government Code Section 65098, which governs the California Coastal Commission's relationship with local planning — a largely procedural/reporting section with no direct zoning preemption, discretionary review elimination, development mandate, or infrastructure fee restriction. The bill's digest and available text provide no language indicating any of the four local control risk criteria are triggered. The bill is too early in the process and the summary too sparse to identify specific operative provisions.",
+        "notes": "AB 2397 amends Government Code Section 65098, which relates to the Office of Planning and Research's general planning coordination functions — not a zoning mandate, discretionary review override, or infrastructure fee restriction. Based on available text, the bill appears to make administrative or technical amendments to state-level planning coordination with no direct local control implications. Full bill text is unavailable in the provided summary, but the statutory target (§65098) and the bill's classification as non-fiscal, non-state-mandated, and non-appropriation all suggest low local control risk.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3043,10 +3045,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2398 establishes a Physician Graduate License Act under the Business and Professions Code, governing the practice of medicine for physician graduates. This is a healthcare workforce licensing measure with no nexus to local land use, zoning, planning authority, or infrastructure — it poses zero risk to local control over housing and development decisions.",
+        "notes": "AB 2398 establishes a Physician Graduate License Act under the Business and Professions Code, regulating the practice of medicine and licensing of physician graduates. This is a state-level healthcare workforce and professional licensing measure with no connection to local land use, zoning, planning authority, or housing development. None of the four local control risk criteria are implicated.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3085,10 +3087,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "indirect",
-        "notes": "AB 2400 amends Government Code Section 65400, which governs the annual general plan progress report cities and counties submit to the Department of Housing and Community Development (HCD). Adding a new reporting category — suite-style student housing quarters — does not preempt local zoning, remove discretionary review, or mandate any approvals, but it does impose a minor incremental administrative/compliance burden on local planning departments to track and report this new housing subcategory.",
+        "notes": "AB 2400 amends Government Code Section 65400 to require cities and counties to include suite-style student housing quarters in their annual general plan progress reports. This is a reporting mandate only — it does not preempt local zoning, eliminate discretionary review, force approvals, or restrict impact fee authority. The sole local control risk is an indirect, minor administrative burden: cities must track and categorize a new housing type in their annual report, which may require updated data collection systems without dedicated state funding to offset compliance costs.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3127,10 +3129,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2414 amends the Welfare and Institutions Code relating to developmental services and direct support professionals — a workforce and social services matter. It has no bearing on local zoning, land use authority, discretionary review, housing mandates, or infrastructure fee authority. No local control risk is identified across any criterion.",
+        "notes": "AB 2414 amends the Welfare and Institutions Code to address developmental services and direct support professionals — a workforce/social services matter. It has no bearing on local zoning, land use authority, discretionary review processes, housing mandates, or infrastructure fee authority. No local control risk is identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3169,10 +3171,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "indirect",
-        "notes": "AB 2418 expands private (third-party) plan check review for nonresidential building permits under Health & Safety Code §19837. The bill poses no direct threat to local zoning, discretionary review, or development mandates. The sole local control concern is an indirect administrative/capacity burden: cities may face unfunded obligations to oversee, coordinate with, or accept work product from private permitting reviewers, potentially shifting staffing and liability costs onto local building departments without a state offset.",
+        "notes": "AB 2418 appears to expand or modify the existing private (third-party) building permit review program under Health & Safety Code §19837 for nonresidential projects. This does not preempt local zoning or land use authority, but expanding private permitting review could impose indirect administrative or capacity costs on local building departments if cities are required to accept or coordinate with private reviewers. No explicit fee restriction, zoning override, or discretionary review elimination is evident from the summary alone.",
         "comms_brief": "",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3256,10 +3258,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2439 amends Civil Code Section 5650, which governs assessment delinquency and collection in common interest developments (HOAs). This is a private-law bill regulating HOA financial operations and has no apparent nexus to municipal zoning, land use authority, discretionary review processes, development mandates, or local infrastructure fee authority. No local control risk identified across all four criteria.",
+        "notes": "AB 2439 amends Civil Code Section 5650, which governs assessment delinquency and enforcement procedures within common interest developments (HOAs). This is a private civil law matter between HOAs and their members — it does not touch city or county zoning authority, discretionary review processes, development mandates, or infrastructure fee authority. No local control risk is identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3298,10 +3300,10 @@
         "densification": "moderate",
         "reduce_discretion": "moderate",
         "cost_to_cities": "indirect",
-        "notes": "AB 2480 amends Government Code §65915 to expand density bonus law applicability to student housing developments, likely granting qualifying projects mandatory density increases and reduced local review authority under existing density bonus framework. Cities would be required to grant density bonuses and potentially ministerial approvals to qualifying student housing projects, limiting their ability to condition approvals on local design or zoning standards beyond objective criteria.",
-        "comms_brief": "AB 2480 amends state density bonus law to extend mandatory density bonus entitlements to student housing developments, requiring cities to grant increased density and limiting local discretion over qualifying projects.\n• Extends state preemption of local zoning to student housing projects — cities must grant density bonuses regardless of local plans or neighborhood context.\n• Density bonus law routinely restricts the conditions and standards cities may apply to qualifying projects, reducing design review and local objective standard authority.\n• Mandatory density bonus approvals create indirect infrastructure pressure by allowing higher-density student projects without full local capacity review or fee flexibility.\nRecommended: Monitor — bill text is not yet in full detail; if it mirrors existing density bonus mandates and ministerial approval pathways, escalate to Oppose.",
+        "notes": "AB 2480 expands California's Density Bonus Law (Gov. Code §65915) to enhance density bonus entitlements for student housing developments, which by statute compels cities to grant additional density beyond what local zoning would otherwise allow — a conditional preemption of local zoning authority. Density bonus law is ministerially applied once eligibility criteria are met, limiting discretionary review and the conditions cities may impose on qualifying projects.",
+        "comms_brief": "AB 2480 amends the state Density Bonus Law to extend or enhance bonus density entitlements for student housing developments, compelling cities to approve greater density than local zoning permits for qualifying projects.\n• Overrides local zoning authority by mandating density bonuses cities must grant regardless of local general plan or zoning designations.\n• Density bonus approvals are ministerially applied, stripping cities of discretionary review, design review flexibility, and ability to condition projects on community compatibility.\n• Cities cannot decline to grant the bonus once eligibility is established, effectively mandating higher-density student housing development beyond local choice.\n• Increased density at ministerial approval may pressure existing infrastructure (water, sewer, parking) without adequate local authority to require developer-funded mitigation.\nRecommended: Monitor — bill text is not yet in print; risk level depends on the specific bonus percentages and eligibility thresholds added. Oppose if amendments materially expand mandatory bonus tiers or further restrict local conditions on student housing projects.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3340,10 +3342,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2486 amends Welfare and Institutions Code Section 4750.5, which governs developmental services data collection and reporting. This bill has no bearing on local zoning, land use, planning authority, discretionary review processes, housing mandates, or infrastructure fee authority. It is a state-level data/administrative measure entirely within the developmental services domain.",
+        "notes": "AB 2486 amends Welfare and Institutions Code Section 4750.5, which governs data reporting within California's developmental services system (regional centers and related services for individuals with developmental disabilities). This bill has no nexus to housing, zoning, land use, or local planning authority — it poses zero local control risk across all four criteria.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3382,10 +3384,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2521 amends Government Code Section 66620, which governs the composition or procedures of the San Francisco Bay Conservation and Development Commission (BCDC). Based on the available text, this is an administrative/structural bill focused on the BCDC — a regional body overseeing bay shoreline development — with no apparent provisions preempting local zoning authority, mandating housing approvals, stripping discretionary review, or restricting local infrastructure fee authority. No local control risk is identifiable from the summary or digest.",
+        "notes": "AB 2521 amends Government Code Section 66620, which governs the composition or authority of the San Francisco Bay Conservation and Development Commission (BCDC) — a state regulatory body focused on bay preservation, not local housing or zoning. Based on the available summary and digest, there is no indication this bill touches city/county land use authority, discretionary review processes, development mandates, or infrastructure fee structures. The bill appears to be an administrative or structural amendment to BCDC's enabling statute.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3424,10 +3426,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2526 concerns education finance — specifically special education grants within the Local Control Funding Formula. This is a K-12 school funding mechanism with no apparent connection to zoning, land use, housing production, or local planning authority. No local control risk identified under any criterion.",
+        "notes": "AB 2526 concerns education finance — specifically a special education grant under the Local Control Funding Formula (LCFF). This is a K-12 school funding mechanism with no apparent connection to housing, zoning, land use, or local planning authority. No local control risk identified across any of the four criteria.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3466,10 +3468,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2576 amends Government Code Section 65580, which contains the legislative findings and declarations for the Housing Element Law — a policy preamble section, not an operative provision. At this early introduced stage, the bill digest provides no substantive operative language, and amending findings/declarations alone does not preempt local zoning, mandate approvals, strip discretionary review, or impose infrastructure burdens. No local control risk can be scored on currently available text.",
+        "notes": "AB 2576 amends Section 65580 of the Government Code, which contains the legislative findings and declarations underlying the Housing Element Law. At the introduced stage, the bill has no digest language, no operative amendments, and no substantive text available beyond the title and section reference — making it impossible to identify any specific local control risk mechanism. Without substantive text, no scoring criteria can be confidently triggered.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3508,10 +3510,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2581 is a placeholder (\"spot\") bill with only a title and no substantive text — the digest contains no operative provisions, findings, or policy language whatsoever. No local control risk can be identified at this stage. Full scoring must await an amended version with actual bill language.",
+        "notes": "AB 2581 is a placeholder (\"spot\") bill with no substantive content — the title and summary contain only \"An act relating to housing\" with no operative provisions, mandates, preemptions, or fiscal mechanisms. No scoring is possible on any criterion until policy language is introduced via amendment.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3550,10 +3552,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2596 adds Civil Code Section 798.14.5 to address mobilehome parks participating in federally approved housing programs and their compliance with state and local laws. Based on the title and digest alone, the bill appears to clarify or codify compliance obligations at the intersection of federal program requirements and local/state law — likely resolving conflicts where federal program rules may preempt or tension with local mobilehome park regulations. The indirect local control risk arises only if the bill subordinates local ordinances to federal program standards, but the title's emphasis on \"compliance with state and local laws\" suggests the bill may actually reinforce rather than undermine local authority. Full text is not available in the digest to confirm the precise mechanism.",
+        "notes": "AB 2596 adds Civil Code Section 798.14.5 to address mobilehome parks participating in federally approved housing programs, requiring compliance with state and local laws in that context. Based on the bill digest alone, the local control risk appears minimal — the bill appears to clarify rather than preempt local authority, and there is no evident preemption of zoning, removal of discretionary review, development mandate, or infrastructure fee restriction. A slight indirect risk exists if \"compliance with state and local laws\" language is used to override local park regulations or conditions, but the digest is too limited to confirm this mechanism.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3592,9 +3594,9 @@
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 2601 amends multiple streamlined approval and subdivision statutes (§§65852.21, 65852.28, 65913.4.5, 66411.7, 66499.41) that collectively mandate ministerial/by-right approvals, limit local discretionary review, and expand subdivision entitlements — all of which directly preempt city and county zoning and planning authority. The combination of streamlining and subdivision amendments is likely to restrict the conditions and standards cities may impose on qualifying projects, creating an indirect infrastructure and capacity burden where local mitigation authority may be curtailed.",
+        "notes": "AB 2601 amends multiple Government Code sections governing streamlined/ministerial housing approvals (§65852.21 urban lot splits, §65852.28 SB 9 duplexes, §65913.4.5 SB 35 streamlining, §66411.7 subdivision streamlining, §66499.41 subdivision map conditions), each of which already preempts local zoning and removes discretionary review. Amendments to these sections are highly likely to expand or tighten state override of local land use authority, broaden ministerial approval mandates, and further restrict conditions cities may impose on qualifying projects — including infrastructure improvement requirements tied to subdivision approvals.",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3633,10 +3635,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2602 amends Section 18030.5 of the Health and Safety Code, which governs manufactured housing and mobilehome construction standards under the Department of Housing and Community Development's building code authority. Based on the bill's digest and status, there is no indication of any preemption of local zoning or planning authority, elimination of discretionary review, mandated development approvals, or infrastructure/fee restrictions. The amendment appears to be a technical or administrative adjustment to state building standards, not a local land use measure.",
+        "notes": "AB 2602 amends Health and Safety Code Section 18030.5, which relates to manufactured housing and factory-built housing administrative standards — not local zoning, planning, or land use authority. Based on the available digest and bill history, there is no indication of any preemption of local zoning, removal of discretionary review, development mandate, or infrastructure fee restriction.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3675,10 +3677,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "indirect",
-        "notes": "AB 2616 amends Government Code Section 65400, which governs the annual progress report that cities and counties must submit on their General Plan implementation and housing production. Based on the bill's title and early stage, the most likely mechanism is an expansion of reporting requirements — adding new data fields, metrics, or submission obligations to the existing annual report. This creates an indirect administrative/compliance burden on local planning departments (staff time, data collection, systems updates) but does not preempt zoning authority, eliminate discretionary review, mandate development approvals, or restrict impact fee or infrastructure authority.",
+        "notes": "AB 2616 amends Government Code Section 65400, which governs general plan annual progress reports. Based on the bill's title and digest, it likely modifies reporting requirements for cities and counties, which could impose an indirect administrative burden (staff time, data collection) but does not appear to preempt local zoning authority, remove discretionary review, or mandate development approvals. The indirect cost-to-cities score reflects potential unfunded compliance obligations from expanded or modified reporting duties, though the scope is limited and administrative in nature.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3717,10 +3719,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2626 is a placeholder (\"spot\") bill introduced at the very start of the legislative process — its title references \"housing programs: financing\" but the full text contains no substantive provisions, no operative language, and no local mandates. There is nothing in the available text to score against any local control risk criterion. A confident assessment requires the full amended bill text once substantive language is inserted.",
+        "notes": "AB 2626 is a placeholder (\"spot\") bill at the introductory stage — its title references housing financing programs, but the digest contains no substantive statutory language, no operative provisions, and no specific mandates or preemptions. No local control risk can be assessed from the current text. A full-text fetch would not yield additional content beyond what is shown, as the bill has not yet been amended with substantive language.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3759,10 +3761,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2634 amends the Unemployment Insurance Code to make changes to the California Workforce Development Board — a state-level labor and workforce policy body. Nothing in the bill's title, author, or summary suggests any interaction with local zoning, land use authority, planning discretion, or infrastructure requirements. This is a workforce/labor administration bill with no apparent local control implications.",
+        "notes": "AB 2634 amends the Unemployment Insurance Code to modify the composition or duties of the California Workforce Development Board — a state-level workforce policy body. Nothing in the bill's title, summary, or recent actions suggests any connection to local zoning, land use authority, housing approvals, development review, or infrastructure fee authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3801,10 +3803,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2637 amends the Insurance Code (Section 2070.1) and pertains to residential property insurance — a state-regulated domain with no direct connection to local zoning, land use, discretionary review, or infrastructure authority. While the summary is brief, the bill's subject matter (insurance regulation) is squarely within the California Department of Insurance's jurisdiction and does not implicate city or county planning powers.",
+        "notes": "AB 2637 amends the Insurance Code (Section 2070.1) and relates to residential property insurance — a state-regulated domain with no direct connection to local zoning, land use authority, discretionary review, or infrastructure fee authority. Nothing in the title, author, or legislative history suggests local planning preemption or development mandates.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3843,10 +3845,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2656 proposes only an amendment to Government Code Section 65010, which contains definitions and general provisions within the Planning and Zoning Law. At this early stage (introduced, pending committee referral), no substantive policy language is available in the digest or bill text to indicate any preemption of local zoning authority, removal of discretionary review, development mandates, or infrastructure fee restrictions. The bill's scope appears to be a technical or definitional amendment rather than a substantive land use override.",
+        "notes": "AB 2656 amends Section 65010 of the Government Code, which contains general definitional and interpretive provisions of the Planning and Zoning Law. At its introduced stage, the bill text beyond the digest is not substantively available, and the digest reveals only a technical amendment to a definitions section — no preemption language, ministerial approval mandates, fee restrictions, or development quotas are indicated. No local control risk is identifiable from the available text.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3882,13 +3884,13 @@
       "first_seen": "2026-02-23T17:38:05.410474",
       "analysis": {
         "pro_housing_production": "strong",
-        "densification": "moderate",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "indirect",
-        "notes": "AB 2676 amends Section 66300 of the Government Code — the core anti-downzoning provision of the Housing Crisis Act of 2019 — which explicitly preempts cities and counties from reducing residential density, intensity of use, or the number of housing units permitted in any zone. Any amendment to this section carries strong local control override risk, as the underlying statute already bars local governments from applying zoning changes that would reduce housing capacity, and amendments could expand or strengthen those prohibitions. Discretionary review risk is moderate because HCA compliance constrains the conditions and standards cities may apply to conforming projects. The infrastructure burden is indirect, as RHNA and anti-downzoning pressures increase permitting volume without dedicated infrastructure offset funding.",
-        "comms_brief": "AB 2676 amends Government Code Section 66300 — the Housing Crisis Act of 2019's anti-downzoning core — which prohibits cities and counties from reducing residential zoning density or intensity, potentially expanding or entrenching state preemption of local land use authority.\n• Amending the HCA's anti-downzoning provision risks broadening the existing prohibition on cities adjusting zoning standards, density limits, or permitted uses downward — removing a key tool for communities managing growth responsibly.\n• HCA compliance already constrains the conditions and objective standards cities may apply to covered projects; any expansion of Section 66300's scope would further limit discretionary review authority.\n• Increased anti-downzoning mandates add indirect pressure on local infrastructure capacity by preventing cities from calibrating density to existing water, sewer, and traffic systems.\nRecommended: Oppose — the underlying statute already represents a significant local control override, and any amendment strengthening or expanding its reach warrants strong opposition until full bill text and intent are disclosed.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "AB 2676 amends Section 66300 of the Government Code — the core anti-downzoning provision of the Housing Crisis Act of 2019 — which explicitly prohibits cities and counties from reducing residential zoning density or enacting development moratoria. The amendment's specific direction is unknown at this early stage (introduced, no committee referral yet), but any change to §66300 directly touches the state's primary preemption of local zoning authority. Without full bill text, the precise mechanism cannot be confirmed, so fetch is recommended.",
+        "comms_brief": "",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3927,10 +3929,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2689 amends Education Code Section 88651 relating to the California Community Colleges Economic and Workforce Development Program — a state-level education and labor policy matter with no connection to local zoning, land use, planning authority, or infrastructure funding. There are no provisions that preempt local control, remove discretionary review, mandate housing development, or impose infrastructure costs on cities or counties.",
+        "notes": "AB 2689 amends Education Code Section 88651 relating to the California Community Colleges Economic and Workforce Development Program — a state-level educational/workforce initiative with no apparent nexus to local zoning, land use, or planning authority. No local control risk is identifiable from the bill title, summary, or subject matter. The summary is very short, but the bill's focus on community college economic development programming does not suggest any housing or land use component.",
         "comms_brief": "",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3969,10 +3971,10 @@
         "densification": "moderate",
         "reduce_discretion": "moderate",
         "cost_to_cities": "indirect",
-        "notes": "The bill title signals a ministerial or streamlined approval pathway for residential care facilities for the elderly (RCFEs), which would likely preempt or constrain local zoning discretion over where and how these facilities are sited. Streamlined approval bills of this type typically mandate by-right or reduced-review processing, removing or limiting CEQA review, design review, and conditional use permit requirements that cities currently apply to RCFEs. The full bill text has not yet been published (introduced 02/20/26), so the precise preemption mechanism, scope of discretion removal, and any infrastructure fee restrictions cannot be confirmed.",
-        "comms_brief": "AB 2702 would establish a streamlined — likely ministerial — approval pathway for residential care facilities for the elderly, potentially overriding local zoning standards, discretionary review processes, and conditions cities currently apply to these land uses.\n• Cities could lose authority to apply local zoning designations, setback, parking, or design standards to qualifying RCFE projects.\n• Streamlined approval likely eliminates or sharply curtails CEQA review, public hearings, and conditional use permit requirements that give neighbors and councils meaningful input.\n• Ministerial processing would strip cities of the ability to condition approvals on site-specific infrastructure improvements or compatibility findings.\nRecommended: Monitor closely pending full bill text — if ministerial by-right language is confirmed, escalate to Oppose given the breadth of discretion removal across all three land use criteria.",
+        "notes": "AB 2702 is titled as a streamlined approval bill for residential care facilities for the elderly (RCFEs), a land use category that cities currently regulate through discretionary zoning and permitting. \"Streamlined approval\" language in California housing law typically means ministerial or by-right approval, which would strip cities of discretionary review authority — including design review, conditional use permits, and CEQA applicability — for qualifying RCFE projects. The infrastructure burden is indirect: ministerial approvals may prevent cities from conditioning RCFE projects on adequate utility or access improvements, though the fiscal impact is uncertain without the full bill text.",
+        "comms_brief": "AB 2702 would establish a streamlined (likely ministerial, by-right) approval pathway for residential care facilities for the elderly, overriding local discretionary zoning and permitting authority for this use class.\n• Preempts local zoning by mandating approval of RCFEs regardless of whether the use is permitted or conditionally permitted under local ordinance\n• Eliminates discretionary review tools — design review, conditional use permits, public hearings — that cities use to evaluate neighborhood compatibility and site suitability for care facilities\n• Likely triggers CEQA exemption for qualifying projects, removing a key environmental and community review tool\n• May prevent cities from imposing infrastructure conditions (traffic, utility, access improvements) as a condition of approval\nRecommended: Monitor pending full bill text and committee referral — if \"streamlined\" is confirmed as ministerial/by-right with CEQA exemption, escalate to Oppose based on removal of all local discretion over a sensitive land use.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4011,10 +4013,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2734 amends Section 416.13 of the Health and Safety Code relating to developmental services — a state program governing services for individuals with developmental disabilities. Nothing in the bill title, author focus, or statutory target suggests any nexus to local zoning, land use authority, discretionary review, development mandates, or infrastructure fee authority. No local control risk is identified across any criterion.",
+        "notes": "AB 2734 amends Section 416.13 of the Health and Safety Code relating to developmental services — a social services topic with no apparent connection to zoning, land use, housing approvals, or infrastructure. Nothing in the title, author, or bill history suggests any local planning authority risk.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4049,14 +4051,14 @@
       "source_id": "2121818",
       "first_seen": "2026-02-23T17:38:05.410675",
       "analysis": {
-        "pro_housing_production": "indirect",
+        "pro_housing_production": "moderate",
         "densification": "none",
         "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "AB 2741 relates to housing element land inventory and \"substantial compliance,\" a concept that could affect how strictly cities must conform their sites inventories to state requirements — potentially limiting local flexibility to define compliant sites. However, the bill is newly introduced (02/20/26) with only a title and a placeholder digest (\"An act relating to housing elements\"), providing no substantive bill text or operative provisions to evaluate. No explicit preemption, discretionary review removal, development mandates, or infrastructure fee restrictions can be confirmed at this stage.",
+        "cost_to_cities": "indirect",
+        "notes": "The bill addresses \"substantial compliance\" standards for housing element land inventories, which typically means defining when a city's inventory is deemed adequate under state law — this can limit HCD's or a court's ability to reject a city's housing element on technical grounds, or conversely expand state oversight of local inventory methodology. Without full bill text, the primary local control risk is moderate: if \"substantial compliance\" lowers the bar for state acceptance, it may reduce pressure on cities; if it codifies stricter inventory standards, it could impose unfunded compliance obligations on local planning departments. The indirect infrastructure burden reflects potential staff and administrative costs associated with revised inventory documentation requirements.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4095,10 +4097,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "indirect",
-        "notes": "AB 2748 establishes building standards for EV charging infrastructure in affordable housing developments — a technical construction requirement that does not touch zoning, land use authority, or discretionary review. The indirect cost-to-cities score reflects a potential unfunded compliance and enforcement burden on local building departments required to implement and inspect new state-mandated EV charging standards, though the bill's full scope is unclear from the summary alone.",
+        "notes": "AB 2748 establishes building standards for EV charging infrastructure in affordable housing developments. This primarily operates as a state building code requirement, imposing no zoning or land use preemption. The indirect infrastructure burden score reflects potential unfunded compliance obligations for local jurisdictions that administer building permits and inspections under the new standards, though the cost pressure is modest and applies narrowly to affordable housing projects.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4136,11 +4138,11 @@
         "pro_housing_production": "indirect",
         "densification": "indirect",
         "reduce_discretion": "indirect",
-        "cost_to_cities": "indirect",
-        "notes": "AB 2750 amends Government Code §65941.1, which governs the \"completeness review\" process for development project applications (the Permit Streamlining Act's application checklist requirements). Amendments to this section typically affect how cities administer application intake and completeness determinations, which could indirectly compress local discretion over pre-application review. However, the bill text/digest is too sparse at introduction to confirm specific mechanisms or mandates — all four criteria are scored indirect pending full text review.",
+        "cost_to_cities": "none",
+        "notes": "AB 2750 amends Government Code §65941.1, which governs the Permit Streamlining Act's application to development project applications — specifically the completeness review process. Amendments to this section typically affect how cities may request information, deem applications incomplete, or set timelines for review, which can indirectly compress local discretionary review windows and limit cities' ability to request supplemental materials. However, the bill text and digest are too sparse at introduction stage to assess the specific mechanism or scope of the proposed amendment with confidence.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4179,10 +4181,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2757 is a placeholder (\"spot\") bill introduced at the very start of the legislative process — the full text contains no operative statutory language, only a title referencing \"affordability and cost of living.\" There is no mechanism, mandate, preemption, or local government burden that can be assessed at this stage. All four criteria score \"none\" pending substantive amendments.",
+        "notes": "AB 2757 is a spot bill with no substantive content — the full text contains only navigational UI elements from the Legislature's website and no operative statutory language. The title references \"affordability and cost of living,\" but without any enacted provisions, no local control risk can be identified across any criterion. A full text fetch is warranted if and when substantive amendments are introduced.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4221,10 +4223,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2766 amends Education Code sections governing student housing programs at public postsecondary institutions, specifically targeting protections or accommodations for foster youth and homeless youth. This bill operates entirely within the postsecondary education system — it places obligations on colleges and universities, not on cities or counties — and contains no zoning preemption, discretionary review restrictions, development mandates, or impact fee limitations.",
+        "notes": "AB 2766 amends Education Code sections related to student housing for foster youth and homeless youth at public postsecondary institutions. This bill operates entirely within the higher education system — directing CSU, UC, and community college campuses on student housing policies — and does not touch city or county zoning authority, land use discretion, development approvals, or local infrastructure funding mechanisms. There is no local control risk identifiable across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4315,10 +4317,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1116 amends three Government Code sections related to housing development projects and subdivisions (§65400 annual report requirements, §65852.28 accessory dwelling unit or related provisions, and §66499.41 subdivision map act provisions). Based on the bill digest alone, the specific mechanism and scope of changes are ambiguous — the summary does not reveal whether amendments strengthen state preemption, adjust reporting obligations, or make technical/clarifying changes. The indirect local control override score reflects the possibility that amendments to these sections could tighten compliance requirements or expand ministerial approval pathways, but no explicit preemption or mandate is confirmed at this stage.",
+        "notes": "SB 1116 amends Government Code Sections 65400 (annual planning report), 65852.28 (ADU/housing development provisions), and 66499.41 (subdivision map act bond/improvement requirements). Based on the digest alone, the specific mechanism is ambiguous — amendments to 65400 and 66499.41 could touch reporting obligations or subdivision improvement conditions, which may carry indirect compliance pressure on local planning departments, but no explicit preemption, ministerial approval mandate, or fee restriction is evident from the summary. Full text would be needed to confirm.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4361,13 +4363,14 @@
       "source_id": "2118675",
       "first_seen": "2026-02-23T17:38:05.411102",
       "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "SB 1117 amends Government Code §66311.5, the core ADU/JADU ministerial approval statute, which already mandates by-right, ministerial approval of ADUs and JADUs statewide — explicitly preempting local zoning standards and eliminating discretionary review. Without the full text it is unclear whether this bill expands those existing preemptions (e.g., further restricting local objective standards, increasing size limits, or broadening eligible sites), but any amendment to this section carries strong local control risk across override, discretion, and mandate criteria. Infrastructure burden is scored moderate because ADU streamlining statutes already limit cities' ability to impose utility connection and impact fee conditions on ADUs, and amendments may extend those restrictions.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "pro_housing_production": "moderate",
+        "densification": "moderate",
+        "reduce_discretion": "moderate",
+        "cost_to_cities": "indirect",
+        "notes": "SB 1117 amends Government Code §66311.5, which governs ADU and JADU permitting — a statutory framework that has historically expanded ministerial approval requirements and reduced local discretion over where and how ADUs may be approved. Without the full text, the specific mechanism is unclear, but amendments to this section typically further restrict local standards, expand eligible sites, or streamline approvals in ways that limit city conditioning authority. The infrastructure burden is indirect, as increased ADU density may stress utilities without explicit fee restriction language confirmed in the digest.",
+        "comms_brief": "SB 1117 amends the state ADU/JADU permitting statute (Gov. Code §66311.5), likely further restricting the conditions and standards cities may apply to accessory dwelling unit approvals.\n• Amendments to §66311.5 have historically narrowed the local objective standards cities may enforce, reducing community input on design, siting, and compatibility.\n• Ministerial approval requirements embedded in the ADU framework remove discretionary review, meaning cities cannot condition approvals on neighborhood context or infrastructure adequacy.\n• Expanded ADU permissions increase residential density without a commensurate local authority to require infrastructure contributions, shifting capacity costs to existing residents.\nRecommended: Monitor — full bill text is needed to confirm the specific mechanism; if amendments further restrict local standards or expand by-right approvals, escalate to Oppose.",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4414,10 +4417,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1132 amends the Unemployment Insurance Code to address workforce development and workplace rights training — a state labor/workforce program with no provisions touching local zoning, land use, planning authority, or development approvals. There is no mechanism in this bill that preempts local control, removes discretionary review, mandates housing development, or imposes infrastructure burdens on cities or counties.",
+        "notes": "SB 1132 amends the Unemployment Insurance Code to address workforce development and workplace rights training — a state labor/workforce program with no nexus to local zoning, land use, planning authority, or housing development. None of the four local control risk criteria are implicated.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4463,10 +4466,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1145 amends Section 75215 of the Public Resources Code, which governs the Affordable Housing and Sustainable Communities (AHSC) Program — a state grant/loan program funded through cap-and-trade revenues. Based on the available digest, this is a state-administered funding program amendment with no language preempting local zoning, eliminating discretionary review, mandating approvals, or restricting local impact fee authority. Participation by localities is voluntary, and no local control mechanisms appear to be overridden.",
+        "notes": "SB 1145 amends Section 75215 of the Public Resources Code, which governs the Affordable Housing and Sustainable Communities (AHSC) Program — a state grant/loan program funded through cap-and-trade revenues. The bill summary is too thin to confirm specific changes, but AHSC is a voluntary competitive grant program; it does not preempt local zoning, mandate approvals, strip discretionary review, or restrict local fee authority. No local control risk is apparent from the available text.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4513,10 +4516,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1160 directs the Judicial Council to collect and report eviction-related court data. This is a judicial branch reporting requirement with no provisions touching local zoning, land use authority, discretionary review processes, development mandates, or infrastructure fee authority. The bill operates entirely within the court system and imposes no obligations on cities or counties regarding planning or housing approvals.",
+        "notes": "SB 1160 requires the Judicial Council to collect and report eviction-related court data. This is a state judiciary administrative reporting measure with no provisions affecting local zoning, land use authority, discretionary review processes, development mandates, or infrastructure fee authority. The bill operates entirely within the court system and imposes no obligations on cities or counties related to planning or housing approvals.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4563,10 +4566,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1170 amends Government Code Section 990.8 and adds Section 6525.5 to allow joint powers agreements (JPAs) to include nonprofit housing developers as participants. This is a structural/governance enabling bill — it expands who may participate in JPAs, but imposes no zoning preemption, no ministerial approval mandates, no discretionary review restrictions, and no impact fee limitations on cities or counties. Local governments retain full discretion over whether to enter such agreements and what terms to set.",
+        "notes": "SB 1170 amends Government Code Section 990.8 and adds Section 6525.5 to allow nonprofit housing developers to participate in joint powers agreements (JPAs) — a structural financing and liability-sharing mechanism. This does not preempt local zoning, eliminate discretionary review, mandate approvals, or restrict impact fee authority. Cities retain full control over whether and how to engage with nonprofit developers through JPAs, and participation appears voluntary.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4607,10 +4610,10 @@
         "densification": "moderate",
         "reduce_discretion": "moderate",
         "cost_to_cities": "indirect",
-        "notes": "SB 1196 amends Government Code Section 66313, which governs ADU approval standards. Bills targeting this section typically restrict the objective standards and conditions cities may apply to ADU permits, limit local design review authority, and/or expand the categories of ADUs entitled to ministerial approval — each of which partially or significantly curtails local land use discretion. The full text was not available in the digest, so the precise mechanism (e.g., fee restrictions, setback preemption, expanded ministerial approval) cannot be confirmed without the bill text.",
-        "comms_brief": "SB 1196 amends the state ADU statute (Gov. Code §66313) in a way that is likely to further restrict cities' ability to apply local standards, conditions, or review to accessory dwelling unit applications.\n• Amendments to §66313 historically narrow the objective standards cities may impose on ADUs, reducing meaningful local design and compatibility review.\n• Expanded ministerial or streamlined approval pathways shift ADU permitting away from local deliberation and toward automatic state-mandated approval.\n• Cities may face increased permitting volume with reduced ability to condition approvals on infrastructure capacity, parking, or neighborhood compatibility.\nRecommended: Monitor — full bill text is not yet available; the specific amendment language is needed to confirm whether risk rises to \"strong\" on any criterion. Flag for reassessment once text is in print after March 22.",
+        "notes": "SB 1196 amends Government Code Section 66313, which governs ADU permitting standards — the most likely mechanism is expanding by-right ADU approval rights, limiting local development standards cities may apply, or extending ADU streamlining requirements, all of which partially preempt local zoning discretion. The bill's specific amendments are not yet visible (introduced stage), but any change to Section 66313 carries meaningful local control risk given that section's history of restricting local ADU ordinances. Full bill text should be fetched to confirm exact mechanism and scoring.",
+        "comms_brief": "SB 1196 amends the core ADU permitting statute (Gov. Code §66313), likely expanding state-mandated ADU approval requirements that override local zoning and development standards.\n• Amendments to §66313 historically restrict the objective standards and conditions cities may apply to ADU permits, reducing local design and land use discretion.\n• Any expansion of by-right or streamlined ADU approval removes cities' ability to conduct project-specific review, including compatibility review with existing neighborhood character.\n• Increased ADU throughput mandates can create indirect infrastructure and capacity burdens (water, sewer, parking) without restoring cities' authority to require developer-funded mitigation.\nRecommended: Monitor pending full text — if bill expands ministerial approval scope or further restricts local standards, escalate to Oppose.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4651,10 +4654,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "indirect",
-        "notes": "SB 1215 amends the Public Utilities Code to regulate electrical corporations' obligations regarding EV charging infrastructure at multifamily residential properties — this is a utility regulation bill, not a land use or zoning measure. The only indirect local control risk is a potential unfunded compliance or administrative burden on cities that own or manage multifamily housing stock, or increased permitting demand, but no explicit fee restriction, infrastructure mandate, or zoning preemption is present in the bill's scope.",
+        "notes": "SB 1215 amends the Public Utilities Code to address EV charging station programs at multifamily residential properties — a utility regulation matter squarely within the CPUC's jurisdiction. It does not touch local zoning, planning authority, or discretionary review. The only plausible indirect local control risk is a modest compliance or infrastructure cost burden if utilities are required to expand charging infrastructure at multifamily properties in ways that interact with local permitting or grid capacity, but no explicit fee restriction or development mandate is present in the bill text.",
         "comms_brief": "",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4695,10 +4698,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1216 establishes a \"housing leadership designation\" framework under Government Code Section 65589.10 — likely a voluntary recognition or incentive program for jurisdictions demonstrating housing production progress. Based on the available summary, the bill does not appear to explicitly preempt local zoning, mandate approvals, strip discretionary review, or restrict fee authority. Any local control erosion would be indirect, arising from reputational or political pressure on jurisdictions to qualify for the designation by aligning local policy with state housing priorities.",
+        "notes": "SB 1216 proposes a \"housing leadership designation\" framework under Government Code Section 65589.10, which based on the title and digest is likely a voluntary recognition or incentive program for jurisdictions that exceed housing production or compliance benchmarks — a common legislative structure that does not on its face mandate zoning changes or strip local discretion. The indirect score on Criterion A reflects the possibility that the designation system creates implicit pressure on cities to adopt pro-housing policies to qualify, though no explicit preemption is evident in the introduced version. Full bill text would confirm whether the designation carries any preemptive conditions or compliance triggers.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4739,10 +4742,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1217 addresses prevention and investigation of crimes related to online exploitation, trafficking, and abuse of adult victims. Nothing in the bill's title, authorship, or summary suggests any connection to housing, zoning, land use, CEQA, infrastructure fees, or local planning authority. This is a criminal law/public safety measure with no local control risk across all four criteria.",
+        "notes": "SB 1217 addresses prevention and investigation of crimes related to online exploitation, trafficking, and abuse of adult victims. Nothing in the title, author intent, or legislative history suggests any connection to local zoning, land use authority, housing approvals, discretionary review, development mandates, or infrastructure fees. This is a criminal law/victim protection bill with no local planning implications.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4783,10 +4786,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1229 amends Public Resources Code Section 30610 to modify or expand the disaster exemption under the Coastal Act for coastal development permits. This is a narrow procedural adjustment within the Coastal Commission's permitting framework — it does not preempt local zoning authority, eliminate discretionary review by local governments, mandate housing approvals, or restrict infrastructure fee authority. Any loosening of the disaster exemption operates within the state Coastal Act structure and does not shift power from cities/counties to developers or the state in ways that affect land use planning for housing.",
+        "notes": "SB 1229 amends Public Resources Code Section 30610 to modify the coastal development permit disaster exemption under the Coastal Act — a state-level regulatory framework administered by the Coastal Commission. This bill does not preempt local zoning authority, strip discretionary review from cities, mandate housing approvals, or restrict local infrastructure or impact fee authority. Any changes to the disaster exemption affect Coastal Commission permitting processes, not municipal land use decisions.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4827,10 +4830,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1238 amends Business and Professions Code sections governing administrative adjudication and Civil Code sections governing common interest development (HOA/CID) management, disclosures, and financial reporting. These are internal governance and licensing provisions for HOAs and their managers — they do not touch city/county zoning, land use authority, discretionary review processes, development mandates, or impact fee authority. No local control risk is identified across any criterion.",
+        "notes": "SB 1238 amends Business and Professions Code sections governing HOA management licensing/administration and Civil Code sections governing common interest development (CID) disclosures, elections, and financial reporting. These are internal governance and consumer protection reforms targeted at HOAs and their managers — not at city/county planning, zoning, or land use authority. No provisions preempt local zoning, remove discretionary review, mandate development approvals, or restrict infrastructure fee authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4871,9 +4874,10 @@
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "SB 1258 amends Government Code §65913.4 — the SB 35 streamlined ministerial approval statute — to expand its applicability to hazardous waste sites, which are currently ineligible for by-right, no-discretion housing approvals. This is a direct extension of SB 35's strong local control preemption: cities would be required to grant ministerial (no-CEQA, no-hearing) approvals for qualifying housing projects on formerly hazardous sites, stripping discretionary review even where local governments have legitimate infrastructure, remediation, and public safety concerns. The infrastructure/capacity risk is moderate because hazardous site remediation costs and long-term monitoring obligations may shift to localities if developer conditions are restricted under the ministerial framework.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "notes": "SB 1258 amends Government Code §65913.4 — the SB 35 streamlined ministerial approval statute — to expand its applicability to hazardous waste sites, which are currently excluded. This directly preempts local zoning and discretionary review authority by mandating ministerial (by-right) approval for qualifying multifamily projects on sites that cities may have deliberately excluded from residential development pipelines due to contamination concerns. The cost-to-cities risk is moderate: ministerial approval pathways prevent cities from conditioning approvals on full remediation timelines or site-specific infrastructure improvements, potentially shifting liability management and public health oversight costs onto local governments.",
+        "comms_brief": "SB 1258 expands the SB 35 ministerial housing approval mandate to hazardous waste sites, stripping cities of discretionary authority to condition or deny housing projects on contaminated land.\n• Eliminates local discretionary review — including public hearings, design review, and conditional use permits — for qualifying projects on hazardous waste sites via ministerial approval mandate\n• Preempts cities' ability to apply site-specific remediation conditions or sequencing requirements before housing approvals on contaminated parcels\n• Removes cities' authority to pace or stage approvals in coordination with state and federal environmental cleanup timelines, potentially forcing approvals before remediation is complete\n• Limits cities' ability to impose infrastructure and public health conditions tied to contamination status, shifting risk management responsibility onto local governments without state funding backstop\nRecommended: Oppose — mandating ministerial approval on hazardous waste sites removes the last layer of local oversight protecting residents from premature development on contaminated land, with no mechanism to ensure remediation is complete before occupancy.",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4914,10 +4918,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1267 amends Civil Code Section 4745 to address EV charging stations owned by members in common interest development (HOA/CID) common areas. This is a private property governance bill operating within the HOA statutory framework — it does not touch city/county zoning authority, discretionary review processes, development mandates, or municipal infrastructure fee authority. No local control risk is apparent from the title or summary.",
+        "notes": "SB 1267 amends Civil Code Section 4745, which governs EV charging station installation rights within common interest developments (HOAs/condos). This is a private property/HOA governance matter — it does not touch city or county zoning authority, discretionary review processes, development mandates, or municipal infrastructure fee authority. No local control risk is identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5002,10 +5006,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1297 amends Government Code Section 65100, which governs the structure and composition of local planning agencies. Based on the available summary and digest, the bill appears to make administrative or organizational adjustments to how cities and counties establish planning agencies — not to override local zoning authority, mandate approvals, strip discretionary review, or restrict infrastructure fee authority. No local control risk is identifiable from the bill text provided.",
+        "notes": "SB 1297 amends Government Code Section 65100, which governs the organizational structure of local planning agencies. Based on available information, the bill appears to make administrative or structural changes to how cities and counties establish planning agencies — not to preempt zoning authority, mandate approvals, strip discretionary review, or restrict infrastructure fee authority. No local control risk is evident from the bill text or digest provided.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5051,10 +5055,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1301 amends the Insurance Code to regulate residential property insurance nonrenewals — this is a state-level insurance market regulation with no provisions touching local zoning, land use authority, discretionary review, development mandates, or infrastructure fee authority. Cities and counties are not actors in this bill's regulatory scheme.",
+        "notes": "SB 1301 amends the Insurance Code to regulate residential property insurance nonrenewals — a purely state-level insurance regulatory matter. It imposes no requirements on city or county zoning, land use, planning, or development approval processes, and creates no infrastructure or fee-related burden on local governments.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5096,14 +5100,14 @@
       "source_id": "2121928",
       "first_seen": "2026-02-23T17:38:05.411941",
       "analysis": {
-        "pro_housing_production": "indirect",
+        "pro_housing_production": "none",
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1344 amends Code of Civil Procedure Section 529.2, which governs undertakings (bonds) required when plaintiffs seek injunctions against housing development projects. Modifying this provision likely makes it harder or more costly for opponents to enjoin housing projects mid-litigation, creating indirect pressure on local discretionary processes by limiting the effectiveness of legal challenges — but does not directly preempt zoning authority, eliminate local review, mandate approvals, or restrict infrastructure fee authority.",
+        "notes": "SB 1344 amends Code of Civil Procedure Section 529.2, which governs undertakings (bonds/security) required when a preliminary injunction is sought against a housing development project. This is a procedural civil litigation mechanism — it does not preempt local zoning, alter discretionary review, mandate approvals, or restrict impact fee or infrastructure authority. Its effect is on the litigation posture of parties challenging housing projects, not on local land use decision-making powers.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5149,10 +5153,10 @@
         "densification": "none",
         "reduce_discretion": "moderate",
         "cost_to_cities": "none",
-        "notes": "SB 1353 amends Health & Safety Code §11834.23, which governs the residential use classification of alcohol/drug recovery and treatment facilities. Existing law typically requires cities to treat these facilities as residential uses in certain zones, limiting local zoning authority over their siting — an amendment in this space most likely adjusts or extends those state-imposed residential use mandates, constituting a moderate override of local land use classification authority (Criterion A) and a moderate mandate on what uses cities must permit in residential zones (Criterion C). The summary is thin and the bill is pre-referral; full text is needed to confirm the precise mechanism and direction of the amendment.",
-        "comms_brief": "SB 1353 amends the state law governing how cities must classify alcohol and drug recovery or treatment facilities as residential uses, potentially expanding or adjusting the state mandate that limits local zoning discretion over siting these facilities.\n• Cities may be required to approve or permit these facilities in residential zones regardless of local zoning preferences or community input.\n• State classification mandates remove local authority to apply land use conditions, spacing requirements, or density limits to these facilities.\n• Expansion of residential use mandates could effectively override local general plan and zoning code designations without city or county consent.\nRecommended: Monitor — bill text is too early-stage to confirm the direction of the amendment; if §11834.23 is broadened, opposition may be warranted on local control grounds.",
+        "notes": "SB 1353 amends Health & Safety Code §11834.23, which governs how cities and counties may treat alcohol/drug recovery and treatment facilities in residential zones. Existing law generally requires these facilities (6 or fewer residents) to be treated as a residential use by right — this bill likely modifies the conditions or scope of that mandate, potentially expanding the categories of facilities entitled to residential use classification or limiting the local conditions cities may impose. The local control risk stems from the state overriding local zoning discretion to compel residential treatment of these facilities and limiting what local governments may require before granting that status.",
+        "comms_brief": "SB 1353 amends state law governing when alcohol and drug recovery or treatment facilities must be treated as a residential use of property, potentially expanding state preemption of local zoning and limiting local conditions on these facilities.\n• Existing §11834.23 already requires cities to classify qualifying facilities as residential by right — amendments could broaden the facilities entitled to this override, reducing local discretion over what facilities operate in residential neighborhoods.\n• By mandating residential use classification, the bill limits cities' ability to apply local zoning standards, neighborhood compatibility review, or conditions tailored to community context.\n• Any expansion of \"by right\" residential status further erodes the ability of local governments to evaluate siting, density of similar uses, or proximity concerns through discretionary review.\nRecommended: Monitor — the full bill text is not available and the specific amendment language is critical to determining whether this materially expands state preemption beyond current law; fetch full text before taking a formal position.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5198,10 +5202,9 @@
         "densification": "moderate",
         "reduce_discretion": "moderate",
         "cost_to_cities": "moderate",
-        "notes": "SB 1383 amends Government Code §65913.3, which governs postentitlement phase permits (building, grading, encroachment, and similar ministerial permits issued after project entitlement). The existing statute already imposes mandatory timelines and limits local discretion over postentitlement permit processing; this bill's amendments likely extend, tighten, or expand those requirements, further constraining city authority to condition, delay, or withhold postentitlement approvals and potentially restricting the infrastructure conditions or fees cities may impose at that phase. Full bill text was not available in the digest, so scores reflect the known statutory context and moderate uncertainty about the specific amendment scope.",
-        "comms_brief": "SB 1383 amends the postentitlement phase permit statute (Gov. Code §65913.3), further restricting city authority over building, grading, and encroachment permits issued after project entitlement.\n• Tightened or expanded mandatory timelines limit cities' ability to use postentitlement permit processing as a backstop for unresolved land use, safety, or infrastructure concerns.\n• Restrictions on conditions cities may impose at the postentitlement phase could prevent cities from requiring infrastructure improvements or corrections identified during permit review.\n• Reduced local discretion at the postentitlement stage shifts compliance and capacity costs onto existing residents and city departments without guaranteed state funding.\nRecommended: Monitor pending full text — if the bill eliminates or compresses current postentitlement review authority or restricts fee/condition imposition, escalate to Oppose.",
+        "notes": "SB 1383 amends Government Code §65913.3, which governs postentitlement phase permits (building permits, grading permits, and other ministerial approvals that follow project entitlement). This existing code section already imposes timelines and constraints on local postentitlement review; this bill's amendments likely tighten or extend those mandates, further compressing city discretion over permitting timelines and conditions after entitlement. Because the full text is not yet available in the digest beyond the code section reference, the precise mechanism is uncertain — but the statutory target (§65913.3) is itself a local control preemption provision, indicating meaningful risk across all four criteria. Fetching the full bill text would materially improve confidence in scoring.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5247,10 +5250,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1385 amends the Unemployment Insurance Code relating to unemployment compensation administered by the Employment Development Department — a state-level labor/workforce matter with no connection to local zoning, land use, planning authority, or housing development. None of the four local control risk criteria are implicated.",
+        "notes": "SB 1385 amends Section 301.6 of the Unemployment Insurance Code and pertains solely to the Employment Development Department and unemployment compensation — a state-administered labor/workforce program. It has no connection to local zoning, land use, planning authority, housing approvals, or infrastructure financing. No local control risk is identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5296,10 +5299,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1410 amends Health and Safety Code Section 1509.6 to require adult community care facilities to maintain an email address of record — an administrative/licensing recordkeeping requirement with no bearing on local zoning, land use, discretionary review, or infrastructure authority. This is a state-level regulatory update to facility communication requirements and poses no local control risk on any criterion.",
+        "notes": "SB 1410 amends Health and Safety Code Section 1509.6 to require adult community care facilities to maintain an email address of record — an administrative/licensing update with no bearing on local zoning, land use, or planning authority. There is no preemption of local control, no discretionary review impact, no development mandate, and no infrastructure or fee implications for cities or counties.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5344,11 +5347,11 @@
         "pro_housing_production": "none",
         "densification": "none",
         "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "SB 1415 amends the welfare exemption under Revenue and Taxation Code §214 to extend property tax relief to moderate-income housing projects. This is primarily a state tax policy bill with no direct preemption of local zoning or planning authority. The only indirect local control risk is a modest reduction in property tax revenue to local governments (cities, counties, school districts) if additional parcels qualify for the welfare exemption, shifting a small fiscal burden without restricting any local land use discretion.",
+        "cost_to_cities": "none",
+        "notes": "SB 1415 amends Revenue and Taxation Code Section 214 to expand the property tax welfare exemption to cover moderate-income housing. This is a state tax policy change administered by county assessors — it does not preempt local zoning, remove discretionary review, mandate development approvals, or restrict cities' infrastructure fee authority. Any fiscal impact to local governments would be through reduced property tax base, but this is an indirect and diffuse effect of a state tax exemption, not a direct restriction on local land use authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5384,10 +5387,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SCR 131 is a Senate Concurrent Resolution, which is a non-binding legislative measure. Resolutions of this type express the Legislature's intent or position but do not create law, impose mandates, or preempt local authority. A resolution relative to achieving \"functional zero unsheltered homelessness\" would be an aspirational policy statement only, with no operative provisions affecting local zoning, planning, discretionary review, or infrastructure fee authority.",
+        "notes": "SCR 131 is a Senate Concurrent Resolution — a non-binding legislative statement of intent or policy aspiration. Resolutions do not enact law, preempt local authority, eliminate discretionary review, mandate development approvals, or impose infrastructure burdens. The title references achieving \"functional zero unsheltered homelessness,\" which is a goal-setting measure with no operative local control implications.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5424,13 +5427,14 @@
       "source_id": "2123626",
       "first_seen": "2026-02-25T15:05:23.114521",
       "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "moderate",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "moderate",
-        "notes": "SB 1426 amends multiple Government Code sections governing annual planning reports (§65400), Housing Element law (§65583.1), ADU/JADU statutes (§65852.21, §65852.24), and lot split provisions (§66411.7), while repealing §65400.1 and §65625. Taken together, amendments to these sections typically tighten state reporting and compliance obligations tied to housing production, streamline ADU/lot-split approvals, and remove locally retained discretion — posing moderate risk across all four local control criteria. Full bill text is needed to confirm specific operative language and scoring.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "pro_housing_production": "indirect",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "indirect",
+        "notes": "SB 1426 amends and repeals sections related to local planning annual reporting requirements (Gov. Code §65400 et seq.), surplus land procedures, and ADU/SB 9 provisions. The repeal of §65400.1 and §65625 and amendments to annual report requirements could streamline or alter accountability mechanisms, creating indirect pressure on cities to demonstrate housing production compliance. The amendments to §65852.21, §65852.24 (SB 9 lots/units), and §66411.7 (lot splits) suggest tightening or clarifying existing by-right and ministerial approval frameworks, which may carry indirect local control implications depending on the specific language changes.",
+        "comms_brief": "",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-02",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
