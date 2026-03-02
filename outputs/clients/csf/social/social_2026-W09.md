@@ -1,51 +1,51 @@
-# California Stewardship Fund Social Media — Week of February 28, 2026
+# California Stewardship Fund Social Media — Week of March 1, 2026
 
-*3 posts · Meta platforms + X · Generated 2026-02-28*
+*3 posts · Meta platforms + X · Generated 2026-03-01*
 
-> **This week:** AB1751 strips cities of all zoning authority and impact fee power for townhome development statewide.
+> **This week:** AB1751 would strip cities of all zoning authority over townhome development and ban impact fees entirely.
 
 ---
 
 ## Post 1 — Bill Spotlight: AB1751
 
 ### X
-*✓ 215/280*
+*✓ 226/280*
 
-AB1751 bans your city from charging impact fees for new townhomes — water, sewer, traffic, schools. Existing taxpayers pay. No hearings. No CEQA. No local vote. Call your Assembly member today. #LocalControl #AB1751
+AB1751 bans your city from charging impact fees for new townhomes. Water, sewer, traffic — existing taxpayers pay. No hearings. No CEQA. No local vote. Sacramento decides. Call your Assembly member today. #LocalControl #AB1751
 
 ---
 
 ### Facebook
 
-AB1751 — the Missing Middle Townhome Ownership Act — does something most Californians don't know yet: it strips your city of the authority to charge impact fees for new townhome development. Not reduced fees. Zero fees.
+AB1751 — the Missing Middle Townhome Ownership Act — does something your city council never agreed to: it hands Sacramento complete authority over townhome development on any residential parcel in California.
 
-Water. Sewer. Traffic. Schools. The infrastructure costs that new residents will generate — your existing taxpayers foot the bill. The developer pays nothing toward the services their project demands.
+Here's the mechanism. Under AB1751, any townhome project that meets state objective standards must be approved — ministerially, automatically, without a public hearing, without design review, and without CEQA environmental analysis. Your planning commission has no role. Your community has no say.
 
-That's only part of it. AB1751 creates a statewide ministerial pathway for townhomes on any residential parcel. Projects that meet state objective standards must be approved — no public hearings, no design review, no CEQA analysis, no consideration of neighborhood infrastructure capacity. Your city council doesn't get a vote. Your planning commission doesn't get a hearing. Sacramento has already decided.
+But the most alarming provision is the fee ban. AB1751 prohibits cities from charging impact fees for new townhome residents. That means no water connection fees. No sewer capacity fees. No traffic mitigation. No school fees. The infrastructure costs triggered by new development shift entirely to your existing taxpayers — the people who already live there and already paid for the system they're now being asked to absorb.
 
-This isn't about whether housing gets built. It's about whether your community has any say in how it's built and who pays for it.
+This isn't a housing bill. It's a cost transfer. Developers build. Existing residents pay.
 
-Contact your Assembly member this week. Ask them directly: do you support letting developers skip impact fees while your constituents absorb the cost? Demand they go on record before AB1751 advances.
+AB1751 was introduced February 9. It's moving. Your Assembly member needs to hear from you now — ask them directly: do you support banning cities from charging impact fees for new development? Make them answer.
 
 ---
 
 ### Instagram
 
-AB1751 just eliminated your city's authority to charge impact fees for new townhomes. Water hookups. Sewer capacity. Traffic mitigation. School facilities. Developers pay nothing. Your neighbors pay everything.
+AB1751 makes it illegal for your city to charge impact fees for new townhome development. Water. Sewer. Traffic. Schools. Infrastructure costs shift entirely to the people already living there.
 
-The bill creates a statewide ministerial pathway for townhomes on any residential parcel. No public hearings. No design review. No CEQA. If a project meets Sacramento's checklist, your city must approve it — full stop.
+On top of that, AB1751 eliminates all discretionary review. No public hearings. No design review. No CEQA. Any townhome that meets state standards gets automatic approval — regardless of what your local zoning says, your general plan allows, or your community wants.
 
-This is not about stopping housing. It's about who decides how it's built and who pays for it. Right now, Sacramento is making that decision for your community. Call your Assembly member today and ask where they stand on AB1751.
+Sacramento introduced this on February 9. Your Assembly member needs to hear from you before it advances. Call their office. Ask where they stand on AB1751. That's the action — one call, right now.
 
 🔗 Link in bio
 
-#LocalControl #AB1751 #CaliforniaHousing #LocalGovernment #ZoningRights #CityCouncil #ImpactFees #HousingPolicy #CaliforniaPolicy #PlanningCommission #CommunityVoice #Preemption
+#LocalControl #AB1751 #CaliforniaHousing #ZoningMatters #LocalGovernment #CityCouncil #ImpactFees #CaliforniaPolicy #HousingPolicy #PlanningMatters #CommunityInput #Preemption
 
 ---
 
 ### Hashtags (all platforms)
 
-#LocalControl #AB1751 #CaliforniaHousing #LocalGovernment #ZoningRights #CityCouncil #ImpactFees #HousingPolicy #CaliforniaPolicy #PlanningCommission #CommunityVoice #Preemption
+#LocalControl #AB1751 #CaliforniaHousing #ZoningMatters #LocalGovernment #CityCouncil #ImpactFees #CaliforniaPolicy #HousingPolicy #PlanningMatters #CommunityInput #Preemption
 
 ---
 
@@ -53,63 +53,62 @@ This is not about stopping housing. It's about who decides how it's built and wh
 
 | Field | Spec |
 |-------|------|
-| **Headline** | AB1751 Bans Cities from Charging Any Impact Fees |
-| **Subtext** | Developers pay nothing. Existing taxpayers cover all new infrastructure costs. |
+| **Headline** | AB1751 Bans Cities from Charging Impact Fees |
+| **Subtext** | Water, sewer, and traffic costs shift entirely to existing taxpayers |
 | **Background** | `#1a3a5c` |
 | **Text** | `#ffffff` |
 | **Accent** | `#c9a227` |
-| **Typographic element** | Bill number 'AB1751' as oversized display type, anchored upper-left, warm gold color |
-| **Optional graphic** | Faint outline of a California state map, bottom-right corner, as a subtle background element |
+| **Typographic element** | Bill number AB1751 as oversized display type, warm gold, upper-left corner |
+| **Optional graphic** | California state outline, minimal, faint white, lower-right corner |
 | **Size** | 1080x1080 (Instagram/Facebook square) |
 | **Size** | 1600x900 (X/Facebook landscape) |
 
-**Generated Images**
+**AI Image Prompt** *(fallback — paste into DALL-E 3 / Midjourney / Flux for manual image creation)*
 
-- 1080×1080 Square: `images/2026-W09/post_1_square.png`
-- 1600×900 Landscape: `images/2026-W09/post_1_landscape.png`
+> Minimal flat design graphic on a deep navy blue background. A warm gold geometric accent bar or bracket shape frames the upper-left area of the composition. A faint, simplified outline of the state of California rendered in translucent white sits in the lower-right corner. Clean policy advocacy aesthetic, bold and uncluttered. No text. No typography. No people. No logos.
 
 ---
 
-## Post 2 — Action Alert: AB2288
+## Post 2 — Action Alert: AB2005
 
 ### X
-*✓ 194/280*
+*✓ 204/280*
 
-AB2288 forces cities to allow housing in industrial zones — on contaminated land, with no utilities, and no power to make developers pay for upgrades. Contact your rep now. #LocalControl #AB2288
+AB2005 expands SB9 lot splits — more ministerial approvals, no public hearings, no CEQA. Your city gets zero say. Contact your Assembly member this week. Ask: will you oppose AB2005? #LocalControl #AB2005
 
 ---
 
 ### Facebook
 
-AB2288 forces your city to allow residential conversions in industrial-zoned areas — and it strips cities of any authority to require developers to pay for the infrastructure those residents will need.
+You may remember SB 9 — the bill that forced cities to allow lot splits in single-family zones without discretionary review. AB2005 amends that law to go further.
 
-Industrial zones weren't designed for people to live in. They often lack residential water and sewer capacity, pedestrian infrastructure, and parks. Many have contamination histories from prior industrial use. AB2288 makes conversion approvals ministerial — meaning they proceed automatically, with no local environmental review, even on sites adjacent to active industrial operations.
+AB2005 modifies Government Code §66411.7 — the urban lot split provision SB 9 created. Amendments to this section almost always expand the ministerial approval mandate, widen eligibility, or tighten state control. That means more parcels approved automatically. More projects without public hearings. More development without CEQA review. And more infrastructure pressure on city systems without the fee authority to offset it.
 
-Here's what's also at stake: your city's economic future. Industrial land generates jobs and tax revenue. Once it converts to residential, that transition is essentially permanent. Cities lose the employment base they depend on — and they never get it back.
+Your city council didn't ask for SB 9. AB2005 doubles down on it.
 
-Sacramento is deciding your city's economic development strategy for you. Your planning staff, your economic development team, your city council — none of them get a meaningful role.
+There are no hearings scheduled yet — but that's exactly when your call matters most. Before a bill reaches committee, Assembly members are still forming positions. Your voice carries more weight now than it will during a floor vote.
 
-This week, contact your Assembly member and your State Senator. Tell them AB2288 puts residents in unsafe conditions and eliminates local economic planning authority. Ask them to oppose it. Your city's long-term tax base and your future residents' safety both depend on this fight.
+Find your Assembly member's office and ask them one question: do you support AB2005 expanding mandatory, no-hearing lot split approvals in California cities? Make them answer before they vote.
 
 ---
 
 ### Instagram
 
-AB2288 forces cities to allow housing conversions in industrial zones — even on contaminated sites, even where there's no residential water or sewer infrastructure, even where developers don't have to pay for a single upgrade.
+SB9 forced cities to approve lot splits in single-family zones with no public hearings and no CEQA review. AB2005 amends that law — and amendments to SB9's core provision almost always mean expanding the mandate, not narrowing it.
 
-Once industrial land converts to residential, it's gone. The jobs. The tax base. The economic strategy your city spent years building. A one-way door, opened by Sacramento, with no community vote.
+More parcels. More automatic approvals. More development without community input. And more infrastructure pressure on city systems that cities cannot recover through fees.
 
-Your Assembly member needs to hear from you this week. Tell them AB2288 endangers future residents, eliminates local economic authority, and shifts infrastructure costs onto your taxpayers. Ask them to oppose it.
+No hearings are scheduled yet — which means right now is the moment to act. Call your Assembly member this week. Ask them directly: will you oppose AB2005? Before a bill hits committee, your call still shapes how they vote.
 
 🔗 Link in bio
 
-#LocalControl #AB2288 #CaliforniaHousing #IndustrialLand #LocalGovernment #EconomicDevelopment #ZoningRights #HousingPolicy #CaliforniaPolicy #CityPlanning #CommunityVoice #Preemption
+#LocalControl #AB2005 #SB9 #CaliforniaHousing #ZoningMatters #LocalGovernment #CityCouncil #UrbanLotSplit #CaliforniaPolicy #HousingPolicy #PlanningMatters #TakeAction
 
 ---
 
 ### Hashtags (all platforms)
 
-#LocalControl #AB2288 #CaliforniaHousing #IndustrialLand #LocalGovernment #EconomicDevelopment #ZoningRights #HousingPolicy #CaliforniaPolicy #CityPlanning #CommunityVoice #Preemption
+#LocalControl #AB2005 #SB9 #CaliforniaHousing #ZoningMatters #LocalGovernment #CityCouncil #UrbanLotSplit #CaliforniaPolicy #HousingPolicy #PlanningMatters #TakeAction
 
 ---
 
@@ -117,65 +116,62 @@ Your Assembly member needs to hear from you this week. Tell them AB2288 endanger
 
 | Field | Spec |
 |-------|------|
-| **Headline** | AB2288 Forces Housing into Industrial Zones |
-| **Subtext** | Cities lose authority over employment land and cannot require developer infrastructure funding. |
+| **Headline** | AB2005 Expands Mandatory Lot Splits with No Local Review |
+| **Subtext** | Cities must approve more projects automatically, with no hearings and no CEQA |
 | **Background** | `#1a3a5c` |
 | **Text** | `#ffffff` |
 | **Accent** | `#c9a227` |
-| **Typographic element** | Bill number 'AB2288' as oversized display type, anchored upper-left, warm gold color |
-| **Optional graphic** | Simplified flat icon of an industrial building beside a residential building, separated by a vertical warm gold dividing line, centered lower half of composition |
+| **Typographic element** | Bill number AB2005 as oversized display type, warm gold, upper-left corner |
+| **Optional graphic** | Abstract divided parcel or grid shape, minimal, faint white lines, lower-right corner |
 | **Size** | 1080x1080 (Instagram/Facebook square) |
 | **Size** | 1600x900 (X/Facebook landscape) |
 
-**Generated Images**
+**AI Image Prompt** *(fallback — paste into DALL-E 3 / Midjourney / Flux for manual image creation)*
 
-- 1080×1080 Square: `images/2026-W09/post_2_square.png`
-- 1600×900 Landscape: `images/2026-W09/post_2_landscape.png`
+> Minimal flat design graphic on a deep navy blue background. A warm gold geometric accent stripe runs along the left edge of the composition. In the lower-right corner, a faint abstract grid of thin white lines suggests subdivided land parcels — clean and geometric, not literal. Bold policy advocacy aesthetic, uncluttered and high contrast. No text. No typography. No people. No logos.
 
 ---
 
 ## Post 3 — Mission Frame
 
 ### X
-*✓ 187/280*
+*✓ 224/280*
 
-AB1751. AB2288. SB1014. Three bills. Same pattern: Sacramento takes the authority, developers skip the cost, your taxpayers pay. The fight is about who decides. We're in it. #LocalControl
+This week: 5 bills stripping local zoning authority. The pattern is the same every time — Sacramento decides, your city approves, existing residents pay. Who decides how your community grows? #LocalControl #CaliforniaHousing
 
 ---
 
 ### Facebook
 
-The Supreme Court just refused to hear Huntington Beach's appeal. Sacramento's housing preemption bills keep moving. And this week, three new pieces of legislation — AB1751, AB2288, and SB1014 — arrived carrying the same underlying logic.
+The U.S. Supreme Court just declined to hear Huntington Beach's appeal. Cities are losing the legal fight to hold the line on local zoning authority — and Sacramento knows it.
 
-Strip cities of discretionary authority. Remove the requirement that development fund its own infrastructure. Shift costs to existing taxpayers. Repeat.
+This week's legislative calendar makes the pattern impossible to ignore. AB1751 eliminates impact fees and bans hearings for townhome development. AB2005 expands SB 9's mandatory lot split approvals. AB2118 tightens the use-by-right mandate for affordable housing, restricting the only local tool cities have left to shape qualifying projects. SB1014 limits the infrastructure improvement conditions cities can require from developers — shifting road, utility, and frontage costs onto existing residents.
 
-AB1751 bans impact fees for townhome development and eliminates all public hearings. AB2288 forces residential conversions in industrial zones with no developer infrastructure obligations. SB1014 restricts cities from requiring offsite improvements that new development makes necessary.
+Every one of these bills follows the same structure: Sacramento defines the standard, cities must comply ministerially, communities have no formal voice, and existing taxpayers absorb the infrastructure costs that new development triggers.
 
-These aren't isolated bills. They're a pattern. And the pattern has a clear direction: decisions about how California communities grow are moving from city halls to Sacramento, and the costs of that growth are moving from developers to the people who already live there.
+This isn't about whether California needs housing. It does. The question is who bears the cost and who makes the call. Right now, Sacramento is systematically answering both questions on your community's behalf — and the bills keep coming.
 
-This is the fight California Stewardship Fund exists for. Not against housing — for accountability. For the principle that the people closest to a decision make it best. For communities that have the authority and the resources to grow in ways that actually work.
-
-If you believe local voices belong in this conversation, now is the time to be loud. Share this. Talk to your council member. Tell your neighbors. The fight is happening whether they know about it or not.
+Local councils, planning commissioners, and community advocates are the only counterweight. The fight isn't in court anymore. It's in your Assembly member's inbox. Stay engaged — this is the moment it matters.
 
 ---
 
 ### Instagram
 
-The Supreme Court refused to hear Huntington Beach's appeal this week. Sacramento's preemption machinery keeps moving. And three new bills — AB1751, AB2288, SB1014 — arrived carrying the exact same logic: take authority from cities, let developers skip the costs, send the bill to existing taxpayers.
+The Supreme Court just turned away Huntington Beach. Local governments are losing ground in the courts — and Sacramento's 2026 bill package makes clear the preemption campaign isn't slowing down.
 
-This isn't a string of coincidences. It's a pattern. Discretionary review, eliminated. Impact fees, banned. Infrastructure requirements, restricted. Public hearings, removed. Every bill moves the same direction — decisions flow up to Sacramento, costs flow down to your community.
+This week alone: AB1751 bans impact fees and eliminates public hearings for townhomes. AB2005 expands mandatory lot split approvals. AB2118 tightens use-by-right mandates. SB1014 strips cities of infrastructure improvement conditions. Each bill follows the same pattern — Sacramento sets the rule, cities comply automatically, and existing residents pay the cost that developers no longer bear.
 
-We are not against housing. We are for accountability. We are for the principle that the people closest to a decision make it best. That fight is happening right now, and local voices belong in it.
+The fight for local control isn't over. It never was a single bill or a single lawsuit. It's a sustained effort by people closest to their communities — council members, commissioners, advocates, and engaged residents — to hold the line on who decides. That fight is happening right now. Stay in it.
 
 🔗 Link in bio
 
-#LocalControl #CaliforniaHousing #WhoDecides #LocalGovernment #AB1751 #AB2288 #SB1014 #CityCouncil #HousingPolicy #CaliforniaPolicy #CommunityVoice #Stewardship
+#LocalControl #CaliforniaHousing #WhoDecides #CaliforniaPolicy #ZoningMatters #LocalGovernment #CityCouncil #PlanningMatters #HousingPolicy #StatePreemption #CommunityVoice #Accountability
 
 ---
 
 ### Hashtags (all platforms)
 
-#LocalControl #CaliforniaHousing #WhoDecides #LocalGovernment #AB1751 #AB2288 #SB1014 #CityCouncil #HousingPolicy #CaliforniaPolicy #CommunityVoice #Stewardship
+#LocalControl #CaliforniaHousing #WhoDecides #CaliforniaPolicy #ZoningMatters #LocalGovernment #CityCouncil #PlanningMatters #HousingPolicy #StatePreemption #CommunityVoice #Accountability
 
 ---
 
@@ -183,20 +179,19 @@ We are not against housing. We are for accountability. We are for the principle 
 
 | Field | Spec |
 |-------|------|
-| **Headline** | Sacramento Is Taking Over Local Housing Decisions |
-| **Subtext** | Three new bills strip city authority and shift infrastructure costs to existing taxpayers. |
+| **Headline** | Sacramento Is Deciding How Your Community Grows |
+| **Subtext** | Five bills this week remove local authority over zoning, fees, and review |
 | **Background** | `#1a3a5c` |
 | **Text** | `#ffffff` |
 | **Accent** | `#c9a227` |
-| **Typographic element** | Three warm gold vertical bars of equal height, arranged left to right across the lower third, suggesting three bills — a minimal, abstract typographic accent rather than literal bill numbers |
-| **Optional graphic** | California Capitol dome silhouette, faint, centered at bottom of composition |
+| **Typographic element** | Large numeral '5' as warm gold display type, upper-left, with a thin gold underline rule beneath it |
+| **Optional graphic** | California Capitol dome silhouette, minimal and faint, centered bottom |
 | **Size** | 1080x1080 (Instagram/Facebook square) |
 | **Size** | 1600x900 (X/Facebook landscape) |
 
-**Generated Images**
+**AI Image Prompt** *(fallback — paste into DALL-E 3 / Midjourney / Flux for manual image creation)*
 
-- 1080×1080 Square: `images/2026-W09/post_3_square.png`
-- 1600×900 Landscape: `images/2026-W09/post_3_landscape.png`
+> Minimal flat design graphic on a deep navy blue background. A faint, simplified silhouette of a government capitol dome — rendered in translucent white — sits centered along the bottom edge of the composition. A warm gold horizontal rule or accent bar cuts across the upper third of the image. The overall mood is serious, restrained, and institutional. Clean bold policy advocacy aesthetic. No text. No typography. No people. No logos.
 
 ---
 
@@ -204,11 +199,11 @@ We are not against housing. We are for accountability. We are for the principle 
 
 ## Source Data
 
-- **Watch list bills:** AB1751, AB2288, SB1014
+- **Watch list bills:** AB1751, AB2005, AB2118
 - **Upcoming hearings:** 0
 - **New bills this week:** 3
 - **Client:** `csf` (`clients/csf/client.yml`)
 - **Voice:** `default` (`clients/csf/voices/default.md`)
-- **Generated:** 2026-02-28
+- **Generated:** 2026-03-01
 
 *Generated by `agents/social/social_writer.py` — California Stewardship Fund*
