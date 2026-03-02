@@ -671,15 +671,40 @@ def _build_html(
     date_str: str,
 ) -> str:
     """Assemble the full HTML email string."""
-    lookback = config["legislative"]["lookback_days"]
+    lookback    = config["legislative"]["lookback_days"]
+    stalled_days = config["legislative"].get("stalled_days", 14)
     include_index = config["email"].get("include_full_index", True)
     pages_url = config.get("github", {}).get("pages_url", "")
+
+    # Staff watchlist — same derivation as the status page
+    watchlist_bills = [b for b in all_bills.values() if b.get("watchlist")]
+
+    # Stalled bills — no status update in the last stalled_days
+    today  = datetime.now().date()
+    cutoff = today - timedelta(days=stalled_days)
+    stalled_bills: list[dict] = []
+    for bill in all_bills.values():
+        sd = bill.get("status_date", "")
+        if sd:
+            try:
+                if datetime.strptime(sd, "%Y-%m-%d").date() < cutoff:
+                    stalled_bills.append(bill)
+            except ValueError:
+                pass
+    stalled_bills.sort(key=lambda b: b.get("status_date", ""))
 
     sections = [
         _html_header(date_str, lookback),
         _html_summary(len(new_bills), len(changed_bills), len(all_bills)),
         _html_analysis_section(all_bills),   # analysis at the top
     ]
+
+    # Watchlist and stalled match the dashboard section order
+    if watchlist_bills:
+        sections.append(_html_watchlist_section(watchlist_bills))
+
+    if stalled_bills:
+        sections.append(_html_stalled_section(stalled_bills, stalled_days))
 
     if new_bills:
         sections.append(_html_bill_section(
