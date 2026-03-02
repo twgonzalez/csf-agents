@@ -79,6 +79,7 @@ log = logging.getLogger(__name__)
 
 PROJECT_ROOT   = _PROJECT_ROOT
 BILLS_FILE     = PROJECT_ROOT / "data" / "bills" / "tracked_bills.json"
+DIGEST_FILE    = PROJECT_ROOT / "data" / "legislative" / "action_digest.json"
 # CLIENTS_DIR, DEFAULT_CLIENT, DEFAULT_VOICE — imported from agents.shared.client_utils
 
 # ---------------------------------------------------------------------------
@@ -97,6 +98,171 @@ _MID    = "#555555"   # muted / secondary text
 _RULE   = "#ddd8ce"   # horizontal rule
 
 
+
+
+# ---------------------------------------------------------------------------
+# Action digest loader (legislative_intel.py output)
+# ---------------------------------------------------------------------------
+
+def _load_digest() -> dict:
+    """
+    Load data/legislative/action_digest.json produced by legislative_intel.py.
+
+    Returns an empty dict if the file is absent — the newsletter writer falls
+    back to its pre-digest behavior, so the pipeline is backward-compatible.
+    """
+    if not DIGEST_FILE.exists():
+        log.info("   No action_digest.json found — running without legislative intelligence layer")
+        return {}
+    try:
+        digest = json.loads(DIGEST_FILE.read_text(encoding="utf-8"))
+        log.info(
+            f"   Digest loaded: {digest.get('week', '?')} | "
+            f"urgent={len(digest.get('urgent', []))} | "
+            f"moving={len(digest.get('moving', []))} | "
+            f"amended={len(digest.get('amended', []))} | "
+            f"spot_bills={len(digest.get('spot_bills', []))}"
+        )
+        return digest
+    except Exception as exc:
+        log.warning(f"   Could not load action_digest.json: {exc} — proceeding without digest")
+        return {}
+
+
+def _build_digest_context(digest: dict) -> str:
+    """
+    Format the action_digest.json into a Claude-readable context block.
+
+    Injected as the first section of the user prompt so Claude anchors the
+    newsletter story to actual legislative activity rather than static bill lists.
+
+    Only includes non-empty buckets — keeps the prompt concise.
+    """
+    if not digest:
+        return ""
+
+    lines: list[str] = [
+        "== THIS WEEK'S LEGISLATIVE ACTIVITY (factual spine — anchor your story here) =="
+    ]
+
+    # Week summary (Claude-written in legislative_intel.py)
+    week_summary = digest.get("week_summary", "").strip()
+    if week_summary:
+        lines += ["", "WHAT HAPPENED THIS WEEK:", week_summary]
+
+    # Urgent hearings — only high-risk bills (2+ criteria) get prominent billing;
+    # lower-risk bills with hearings are noted briefly.
+    urgent = digest.get("urgent", [])
+    high_risk_urgent = [u for u in urgent if u.get("risk_count", 0) >= 2]
+    low_risk_urgent  = [u for u in urgent if u.get("risk_count", 0) < 2]
+
+    if high_risk_urgent:
+        lines += ["", f"URGENT HEARINGS — HIGH-RISK BILLS (within {len(urgent)} days window):"]
+        for u in high_risk_urgent[:6]:
+            wl = " [STAFF WATCHLIST]" if u.get("watchlist") else ""
+            lines.append(
+                f"  • {u['bill_number']}{wl}: {u['title'][:65]}"
+            )
+            lines.append(
+                f"    Eligible: {u['eligible_date']} ({u['days_until']} days) | "
+                f"risk criteria: {u['risk_count']}/4"
+            )
+            committees = u.get("committees", [])
+            if committees:
+                lines.append(f"    Committee(s): {', '.join(committees[:2])}")
+    elif urgent:
+        lines += [
+            "",
+            f"UPCOMING HEARINGS: {len(urgent)} bills eligible within {len(urgent)} days "
+            "(none rated high-risk this window).",
+        ]
+
+    if low_risk_urgent and high_risk_urgent:
+        lines += [
+            f"  (plus {len(low_risk_urgent)} lower-risk bills with upcoming eligibility dates)",
+        ]
+
+    # Moving bills
+    moving = digest.get("moving", [])
+    if moving:
+        lines += ["", "MOVING BILLS (advanced a legislative stage this week):"]
+        for m in moving[:6]:
+            wl = " [STAFF WATCHLIST]" if m.get("watchlist") else ""
+            stage = m.get("current_stage", "unknown").replace("_", " ")
+            lines.append(f"  • {m['bill_number']}{wl}: {m['title'][:65]}")
+            lines.append(f"    Stage: {stage} | risk criteria: {m['risk_count']}/4")
+            for adv in m.get("advance_actions", [])[:1]:
+                lines.append(f"    [{adv['date']}] {adv['description'][:100]}")
+
+    # Amended bills
+    amended = digest.get("amended", [])
+    if amended:
+        lines += ["", "AMENDED BILLS (received author's amendments this week):"]
+        for am in amended[:4]:
+            wl = " [STAFF WATCHLIST]" if am.get("watchlist") else ""
+            lines.append(f"  • {am['bill_number']}{wl}: {am['title'][:65]}")
+            lines.append(f"    [{am['amendment_date']}] {am['amendment_description'][:120]}")
+
+    # Gut-and-amend alerts
+    gut = digest.get("gut_and_amend", [])
+    if gut:
+        lines += ["", "⚠️  GUT-AND-AMEND ALERTS (entire bill content may have been replaced):"]
+        for g in gut:
+            lines.append(f"  • {g['bill_number']}: {g['why']}")
+
+    # Spot bill alerts
+    spot = digest.get("spot_bills", [])
+    if spot:
+        lines += [
+            "",
+            f"SPOT BILL ALERT ({len(spot)} placeholder bills — substantive content could be "
+            "dropped in before their hearing eligibility dates):",
+        ]
+        for s in spot[:5]:
+            lines.append(f"  • {s['bill_number']}: {s['why']}")
+
+    lines += ["", "=" * 68]
+    return "\n".join(lines)
+
+
+def _build_anti_repetition_block(digest: dict) -> str:
+    """
+    Build the anti-repetition instruction block from the last issue's story beats.
+
+    Injected at the end of the user prompt so Claude actively avoids reusing
+    the same structural framings as last week.
+    """
+    last_issue = digest.get("last_issue", {})
+    if not last_issue:
+        return ""
+
+    beats  = last_issue.get("story_beats", [])
+    subj   = last_issue.get("subject", "")
+    source = last_issue.get("source_file", "last week")
+
+    if not beats and not subj:
+        return ""
+
+    lines = [
+        "",
+        "== ANTI-REPETITION: DO NOT REPEAT LAST WEEK'S FRAMINGS ==",
+        f"(Source: {source})",
+    ]
+    if subj:
+        lines.append(f"Last subject line: \"{subj}\"")
+    if beats:
+        lines.append("Last week's three-beat headings (avoid all of these patterns):")
+        for b in beats:
+            lines.append(f"  - \"{b}\"")
+    lines += [
+        "",
+        "REQUIREMENT: The story arc headings (line1/line2/reveal) for this week MUST be "
+        "structurally and factually different from those above. Do not reuse the same "
+        "numerical framing, the same first word, or the same reveal angle.",
+        "Anchor paragraph [0] in the WEEK SUMMARY above — not in a pattern used last week.",
+        "",
+    ]
+    return "\n".join(lines)
 
 
 # ---------------------------------------------------------------------------
@@ -148,24 +314,66 @@ def _build_system_prompt(client: dict, voice_text: str = "") -> str:
 
 
 def _generate_content(
-    bill_set: dict,
+    bill_set:         dict,
     anthropic_client: anthropic.Anthropic,
-    client_cfg: dict,
-    voice_text: str = "",
+    client_cfg:       dict,
+    voice_text:       str  = "",
+    digest:           dict = None,
 ) -> dict:
-    """Single Claude call returning all newsletter content as a structured dict."""
+    """Single Claude call returning all newsletter content as a structured dict.
+
+    Args:
+        bill_set:         Bills selected by _select_bills() — watch_list, new_bills, etc.
+        anthropic_client: Anthropic API client.
+        client_cfg:       Client brand + identity config.
+        voice_text:       Voice file content for tone/framing.
+        digest:           Action digest from legislative_intel.py (optional — falls back
+                          gracefully to pre-digest behavior if None or empty).
+    """
+    if digest is None:
+        digest = {}
+
     watch_ctx     = "\n\n".join(_build_bill_context(b) for b in bill_set["watch_list"])
     new_ctx       = "\n\n".join(_build_bill_context(b) for b in bill_set["new_bills"])
     watchlist_ctx = "\n\n".join(
-        _build_bill_context(b) + (f"\nStaff note: {b['watchlist_note']}" if b.get("watchlist_note") else "")
+        _build_bill_context(b)
+        + (f"\nStaff note: {b['watchlist_note']}" if b.get("watchlist_note") else "")
         for b in bill_set.get("watchlist_bills", [])
     )
 
-    user_prompt = f"""\
-Here is this week's bill intelligence. Write the newsletter as specified.
+    # Build digest and anti-repetition context blocks (empty strings if no digest)
+    digest_ctx      = _build_digest_context(digest)
+    anti_rep_block  = _build_anti_repetition_block(digest)
 
+    # Story arc guidance — updated when digest is present to anchor [0] on real activity
+    arc_guidance = (
+        "The 4 paragraphs must tell a coherent story arc:\n"
+        "  [0] = START HERE: use the WEEK SUMMARY above as your factual anchor. What actually\n"
+        "        happened in the legislature this week + why it matters RIGHT NOW to your reader.\n"
+        "        Lead with the most urgent concrete fact — a hearing date, a bill that passed,\n"
+        "        an imminent eligibility deadline. Not a general preemption recap.\n"
+        "  [1] = How the specific bills listed above work together mechanically\n"
+        "  [2] = The deeper threat (usually the fee / budget / fiscal authority angle)\n"
+        "  [3] = Connects to the broader session pattern and the organization's mission"
+    ) if digest else (
+        "The 4 paragraphs must tell a coherent story arc:\n"
+        "  [0] = What happened this week and why it matters\n"
+        "  [1] = How these specific bills work together mechanically\n"
+        "  [2] = The deeper threat (usually the fee / budget angle)\n"
+        "  [3] = Connects to the broader session pattern and the organization's mission"
+    )
+
+    # Digest section (injected first, before bill lists, so Claude uses it as the spine)
+    digest_section = (
+        f"{digest_ctx}\n\n" if digest_ctx else ""
+    )
+
+    user_prompt = f"""\
+Here is this week's legislative intelligence. Write the newsletter as specified.
+
+{digest_section}\
 == HIGH-RISK WATCH LIST (strong/moderate on 2+ criteria) ==
-{watch_ctx}
+{watch_ctx if watch_ctx else "(No bills currently scored high-risk)"}
 
 == NEW BILLS THIS WEEK (recently tracked, at least 1 risk signal) ==
 {new_ctx if new_ctx else "(No new high-risk bills this week)"}
@@ -175,7 +383,7 @@ These are two-year bills and staff-identified bills that may not appear above be
 they lack AI risk scores. Weave them into the narrative where substantively relevant, \
 especially when they reinforce the broader session pattern.
 {watchlist_ctx if watchlist_ctx else "(No staff watchlist bills this week)"}
-
+{anti_rep_block}
 ---
 
 Return a JSON object with exactly these keys:
@@ -183,6 +391,7 @@ Return a JSON object with exactly these keys:
 "subject": A single compelling email subject line. \
 Formula: [specific threat or number] + [implication or tension]. \
 Make it the most alarming true thing from this issue. 8–14 words. \
+Ground it in this week's concrete activity (hearing date, bill passage, amendment). \
 Example: "Sacramento just introduced its opening argument. Your city is the rebuttal."
 
 "preview_text": ~85 characters shown in Gmail/Apple Mail after the subject. \
@@ -198,15 +407,11 @@ Must compel the reader to continue.
   "line2": Second short declarative (2–5 words). The tension.
   "reveal": Third line (2–6 words). The stakes — what it all means. \
 This is displayed in italic burnt orange. Make it the gut-punch. \
-Examples: "your city's infrastructure budget." / "who controls California's land." / "closed in this package."
+Examples: "your city's infrastructure budget." / "who controls California's land." / "six days."
   "body": One paragraph (3–5 sentences) of narrative prose. No bullet points. \
 Weave specific bill numbers and risk details into the prose naturally.
 
-The 4 paragraphs must tell a coherent story arc:
-  [0] = What happened this week and why it matters
-  [1] = How these specific bills work together mechanically
-  [2] = The deeper threat (usually the fee / budget angle)
-  [3] = Connects to the broader session pattern and the organization's mission
+{arc_guidance}
 
 "watch_items": Array of objects for each watch-list bill, with:
   "bill_number": e.g. "AB1751"
@@ -230,19 +435,26 @@ Return ONLY valid JSON. No markdown fences. No commentary outside the JSON objec
     system_prompt = _build_system_prompt(client_cfg, voice_text)
     log.info("→ Calling Claude to generate newsletter content...")
     message = anthropic_client.messages.create(
-        model="claude-sonnet-4-5",
-        max_tokens=3000,
+        model="claude-sonnet-4-6",
+        max_tokens=4500,   # increased from 3000 — digest context grows the response
         system=system_prompt,
         messages=[{"role": "user", "content": user_prompt}],
     )
 
     raw = message.content[0].text.strip()
+    # Strip markdown fences (Claude sometimes wraps JSON in ```json ... ```)
     if raw.startswith("```"):
-        raw = raw.split("\n", 1)[1]
-        if raw.endswith("```"):
-            raw = raw.rsplit("```", 1)[0]
+        raw = raw.split("\n", 1)[1] if "\n" in raw else raw[3:]
+        raw = raw.rsplit("```", 1)[0].strip()
 
-    return json.loads(raw)
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as exc:
+        log.error(
+            f"Claude returned invalid JSON (stop_reason={message.stop_reason}): {exc}\n"
+            f"Raw response (first 500 chars): {raw[:500]}"
+        )
+        raise
 
 
 # ---------------------------------------------------------------------------
@@ -694,9 +906,13 @@ def main() -> None:
     log.info(f"   Upcoming hearings: {len(bill_set['upcoming_hearings'])}")
     log.info(f"   Staff watchlist:   {len(bill_set.get('watchlist_bills', []))} bills")
 
+    # ── Load legislative intelligence digest (optional — graceful fallback) ─
+    log.info("→ Loading legislative intelligence digest...")
+    digest = _load_digest()
+
     # ── Generate content via Claude ─────────────────────────────────────────
     anthropic_client = anthropic.Anthropic(api_key=api_key)
-    content = _generate_content(bill_set, anthropic_client, client_cfg, voice_text)
+    content = _generate_content(bill_set, anthropic_client, client_cfg, voice_text, digest)
     log.info("   ✓ Content generated")
 
     # ── Print email metadata ─────────────────────────────────────────────────

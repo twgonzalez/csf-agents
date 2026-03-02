@@ -1,0 +1,378 @@
+{
+  "generated": "2026-03-01T19:05:14.331373",
+  "week": "2026-W09",
+  "bills_analyzed": 132,
+  "urgent": [
+    {
+      "bill_number": "AB1710",
+      "title": "Housing developments: ordinances, policies, and standards.",
+      "author": "Juan Carrillo",
+      "status": "Introduced",
+      "eligible_date": "2026-03-07",
+      "days_until": 6,
+      "date_source": "parsed",
+      "committees": [
+        "Housing and Community Development"
+      ],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1710",
+      "analysis": {
+        "pro_housing_production": "strong",
+        "densification": "strong",
+        "reduce_discretion": "strong",
+        "cost_to_cities": "moderate",
+        "notes": "AB 1710 amends Government Code §65589.5 — the Housing Accountability Act — and adds §65958, both of which are core state preemption mechanisms. Amendments to §65589.5 typically strengthen HAA's prohibition on local disapproval or conditioning of compliant housing projects, removing discretionary grounds cities may invoke. Adding §65958 likely layers additional mandates or streamlining requirements on local ordinances, policies, and standards, further limiting the conditions cities can impose on housing developments. Together these provisions represent explicit state preemption of local land use authority, elimination or severe restriction of discretionary review for qualifying projects, and effective mandates on cities to approve housing beyond what local deliberation would produce. Infrastructure review authority is also likely constrained to the extent cities cannot condition approvals on capacity or improvement requirements.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-01",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6"
+      },
+      "watchlist": true,
+      "watchlist_note": "Staff-identified",
+      "risk_count": 4
+    },
+    {
+      "bill_number": "AB1751",
+      "title": "Missing Middle Townhome Ownership Act.",
+      "author": "Sharon Quirk-Silva",
+      "status": "Introduced",
+      "eligible_date": "2026-03-12",
+      "days_until": 11,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1751",
+      "analysis": {
+        "pro_housing_production": "strong",
+        "densification": "strong",
+        "reduce_discretion": "strong",
+        "cost_to_cities": "strong",
+        "notes": "Creates a statewide ministerial pathway for townhomes on any residential parcel, directly preempting local zoning and eliminating all discretionary review; cities cannot require impact fees or infrastructure improvements for new townhome residents.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-02-23",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6 (via Claude Code) — D criterion reanalysis",
+        "comms_brief": "AB1751 (Missing Middle Townhome Ownership Act) creates a statewide ministerial pathway for townhome development on any residential parcel, overriding local single-family zoning without community input.\n• Cities lose all discretionary authority — projects meeting state objective standards must be approved regardless of neighborhood character, infrastructure capacity, or local planning\n• Eliminates design review and public hearings for qualifying developments; no CEQA review applies\n• No impact fee authority: cities cannot charge water, sewer, traffic, or school impact fees for new townhome residents — infrastructure costs shift entirely to existing taxpayers\n• Sets a precedent for further ministerial preemption of residential zoning across the state\nRecommended: CSF should actively oppose; submit formal comment letters and coordinate with planning directors to document infrastructure and service capacity concerns."
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 4
+    },
+    {
+      "bill_number": "AB1771",
+      "title": "State Housing Law: apartment houses.",
+      "author": "David Alvarez",
+      "status": "Introduced",
+      "eligible_date": "2026-03-12",
+      "days_until": 11,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1771",
+      "analysis": {
+        "pro_housing_production": "moderate",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "Establishes statewide minimum building standards for apartments that preempt local codes where cities have adopted more restrictive requirements.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-02-23",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
+        "comms_brief": ""
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 1
+    },
+    {
+      "bill_number": "AB1815",
+      "title": "Factory-built housing.",
+      "author": "Buffy Wicks",
+      "status": "Introduced",
+      "eligible_date": "2026-03-13",
+      "days_until": 12,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1815",
+      "analysis": {
+        "pro_housing_production": "moderate",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "Streamlines factory-built housing approvals under state standards, limiting local building code application for qualifying manufactured units.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-02-23",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
+        "comms_brief": ""
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 1
+    },
+    {
+      "bill_number": "AB1795",
+      "title": "Fire insurance: residential property.",
+      "author": "Mike Gipson",
+      "status": "Introduced",
+      "eligible_date": "2026-03-13",
+      "days_until": 12,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1795",
+      "analysis": {
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "Fire insurance regulation with no housing or land use preemption provisions.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-02-23",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
+        "comms_brief": ""
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 0
+    },
+    {
+      "bill_number": "AB1925",
+      "title": "Developmental services.",
+      "author": "Jeff Gonzalez",
+      "status": "Introduced",
+      "eligible_date": "2026-03-15",
+      "days_until": 14,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1925",
+      "analysis": {
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "AB 1925 amends Section 4501 of the Welfare and Institutions Code, which governs the state's developmental services system for individuals with intellectual and developmental disabilities. This is a social services bill with no apparent nexus to local land use, zoning, planning authority, discretionary review, housing mandates, or infrastructure fee authority.",
+        "comms_brief": "",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-01",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6"
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 0
+    },
+    {
+      "bill_number": "AB1899",
+      "title": "Office of Youth Homelessness Prevention.",
+      "author": "Jessica Caloza",
+      "status": "Introduced",
+      "eligible_date": "2026-03-15",
+      "days_until": 14,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1899",
+      "analysis": {
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "AB 1899 establishes an Office of Youth Homelessness Prevention, which is a state administrative/programmatic function. Despite the very short summary, the title strongly suggests a state-level coordination or services office focused on youth homelessness — not a land use, zoning, or development mandate. No local control risk is apparent from the title or available context; this appears to be a state organizational bill with no direct bearing on local planning authority, discretionary review, development mandates, or infrastructure fee authority.",
+        "comms_brief": "",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-01",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6"
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 0
+    },
+    {
+      "bill_number": "AB1895",
+      "title": "Surplus Land Act: exemptions: land unsuitable for housing.",
+      "author": "Heather Hadwick",
+      "status": "Introduced",
+      "eligible_date": "2026-03-15",
+      "days_until": 14,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1895",
+      "analysis": {
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "AB 1895 amends the Surplus Land Act (Gov. Code § 54221) to add or expand an exemption for land deemed unsuitable for housing. Expanding exemptions from the SLA reduces — not increases — state preemption pressure on local agencies, as it gives local governments more flexibility to dispose of surplus land without triggering mandatory affordable housing offering requirements. There is no preemption of local zoning, no removal of discretionary review, no development mandate, and no infrastructure cost shift.",
+        "comms_brief": "",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-01",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6"
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 0
+    },
+    {
+      "bill_number": "AB1924",
+      "title": "Statewide homelessness prevention strategy.",
+      "author": "Jesse Gabriel",
+      "status": "Introduced",
+      "eligible_date": "2026-03-15",
+      "days_until": 14,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1924",
+      "analysis": {
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "AB 1924 is a placeholder bill at introduction stage — the title references a \"statewide homelessness prevention strategy\" and the act clause is limited to \"an act relating to housing,\" with no operative text, substantive provisions, or local mandates discernible from the digest or full text. No zoning preemption, discretionary review elimination, development mandate, or infrastructure fee restriction is present at this stage.",
+        "comms_brief": "",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-01",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6"
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 0
+    },
+    {
+      "bill_number": "AB1892",
+      "title": "Common interest developments: associations.",
+      "author": "Laurie Davies",
+      "status": "Introduced",
+      "eligible_date": "2026-03-15",
+      "days_until": 14,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1892",
+      "analysis": {
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "AB 1892 amends Civil Code Sections 4775, 5103, and 5105, which govern internal HOA governance in common interest developments — specifically maintenance responsibilities, election procedures, and ballot rules. These provisions regulate private HOA operations and have no bearing on city/county zoning, land use authority, discretionary review processes, development mandates, or infrastructure fee authority. No local control risk is present across any criterion.",
+        "comms_brief": "",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-01",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6"
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 0
+    },
+    {
+      "bill_number": "AB1890",
+      "title": "County of Napa: farmworker housing: funding.",
+      "author": "Cecilia Aguiar-Curry",
+      "status": "Introduced",
+      "eligible_date": "2026-03-15",
+      "days_until": 14,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1890",
+      "analysis": {
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "AB 1890 amends Health and Safety Code Section 50711.5, which governs farmworker housing funding specifically for the County of Napa. This appears to be a narrow, locality-specific funding bill with no preemption of local zoning authority, no ministerial approval mandates, no development quotas, and no restriction on local impact fees or infrastructure conditions. There is no mechanism in this bill that overrides city or county land use discretion.",
+        "comms_brief": "",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-01",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6"
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 0
+    },
+    {
+      "bill_number": "AB1879",
+      "title": "Substance use: treatment or residential data reporting.",
+      "author": "Diane Dixon",
+      "status": "Introduced",
+      "eligible_date": "2026-03-15",
+      "days_until": 14,
+      "date_source": "parsed",
+      "committees": [],
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1879",
+      "analysis": {
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "AB 1879 establishes data reporting requirements for substance use treatment or residential programs under the Health and Safety Code. This is a state-level public health reporting measure with no provisions affecting local zoning, land use authority, discretionary review processes, development mandates, or infrastructure/impact fee authority.",
+        "comms_brief": "",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-03-01",
+        "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6"
+      },
+      "watchlist": false,
+      "watchlist_note": "",
+      "risk_count": 0
+    }
+  ],
+  "moving": [],
+  "amended": [],
+  "stalled": [],
+  "gut_and_amend": [],
+  "spot_bills": [
+    {
+      "bill_number": "AB1899",
+      "why": "Titled 'Office of Youth Homelessness Prevention' but carries only the boilerplate summary 'An act relating to homelessness,' with no substantive content beyond the printer stage."
+    },
+    {
+      "bill_number": "SB1016",
+      "why": "Titled 'Transitional housing bond' but carries only 'An act relating to housing' and has advanced no further than referral to the Rules Committee, the classic holding pattern for a spot bill."
+    },
+    {
+      "bill_number": "AB1924",
+      "why": "Titled 'Statewide homelessness prevention strategy' but carries only 'An act relating to housing,' with no substantive content at the printer stage."
+    },
+    {
+      "bill_number": "SB1090",
+      "why": "Titled 'Housing: disaster impacted areas' but carries only 'An act relating to housing,' with no substantive content beyond the printer stage."
+    },
+    {
+      "bill_number": "AB1795",
+      "why": "Titled 'Fire insurance: residential property' but carries only 'An act relating to insurance,' with no substantive content beyond the printer stage."
+    },
+    {
+      "bill_number": "AB2079",
+      "why": "Titled 'Adaptive reuse' but carries only 'An act relating to housing,' with no substantive content beyond the printer stage."
+    },
+    {
+      "bill_number": "AB2127",
+      "why": "Titled 'Accessory dwelling units' but carries only 'An act relating to land use,' with no substantive content beyond the printer stage—a high-risk placeholder given ADU preemption history."
+    },
+    {
+      "bill_number": "AB2252",
+      "why": "Titled 'Housing: Single stair entry and exit' but carries only 'An act relating to housing,' with no substantive content beyond the printer stage."
+    }
+  ],
+  "last_issue": {
+    "subject": "Local Control Intelligence — WEEK OF MARCH 1, 2026",
+    "preview_text": "The pattern isn't subtle anymore. Once you see it, you understand the session.",
+    "story_beats": [
+      "Four bills.",
+      "Seven days.",
+      "one target: your planning commission.",
+      "Ministerial approval.",
+      "No CEQA review.",
+      "no infrastructure conditions.",
+      "No impact fees.",
+      "No improvement requirements.",
+      "existing taxpayers cover the cost.",
+      "This is the opening.",
+      "Not the exception.",
+      "the session pattern you'll see all year."
+    ],
+    "source_file": "newsletter_2026-W09.html"
+  },
+  "week_summary": "No bills advanced a legislative stage and no amendments were filed this week, leaving the action calendar dominated by fast-approaching committee eligibility deadlines rather than floor or committee votes. AB1710 (housing ordinances, policies, and standards) is the most immediately pressing, becoming eligible for its first committee hearing in six days on March 7, followed by AB1751 (Missing Middle Townhome Ownership Act) and AB1771 (State Housing Law: apartment houses), both eligible March 12. Eight bills in total cross their hearing-eligibility threshold within the next 14 days, with AB2127 (accessory dwelling units) and AB2079 (adaptive reuse) currently carrying empty spot-bill summaries—meaning substantive preemption language could be inserted into either at any moment before those hearings are noticed."
+}
