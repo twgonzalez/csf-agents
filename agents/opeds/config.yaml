@@ -1,0 +1,48 @@
+# agents/opeds/config.yaml
+# CSF Op-Ed and Letter to Editor Writer
+
+model: claude-sonnet-4-6
+
+opeds:
+  # Default format when --format is not specified
+  # "oped"   — 700-900 word op-ed column
+  # "letter" — 250-450 word letter to editor
+  default_format: oped
+
+  # Default target publication when --target is not specified
+  # "calmatters"     — CalMatters (California-specific, accessible)
+  # "wsj"            — Wall Street Journal / national outlets (financial/market angle)
+  # "capitol-weekly" — Capitol Weekly (insider, political, Sacramento-fluent)
+  # "local"          — Local newspapers (community stakes, plain-language mechanisms)
+  default_target: calmatters
+
+  # Bill selection caps (op-eds use fewer bills than social — 1 anchor, 2 supporting)
+  max_anchor: 1           # The primary bill the piece is built around
+  max_supporting: 2       # Supporting bills cited as pattern evidence
+
+  # Lookback window for "new bills" context
+  lookback_days: 14
+
+  # Hearing lookahead for urgency signals
+  hearing_lookahead_days: 7
+
+# ---------------------------------------------------------------------------
+# Voice system
+#
+# Each voice is a plain-markdown file in clients/<id>/voices/<name>.md.
+# The oped_mike_lewis voice captures the author's persuasion arc, signature
+# language, and format calibration for op-eds vs. letters to editor.
+#
+# Select a voice via CLI:  --voice <name>   (e.g. --voice oped_mike_lewis)
+# List all voices via CLI: --list-voices
+# ---------------------------------------------------------------------------
+voice:
+  default: oped_mike_lewis   # Voice used when --voice is not specified
+
+paths:
+  bills_file: data/bills/tracked_bills.json
+  output_dir: outputs/clients/csf/opeds   # per-client path; overridden at runtime by --client
+
+logging:
+  level: INFO
+  file: logs/oped_writer.log
