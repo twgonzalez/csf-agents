@@ -405,6 +405,10 @@ Count X characters carefully — every space and punctuation mark counts toward 
         if raw.endswith("```"):
             raw = raw.rsplit("```", 1)[0]
 
+    # Claude occasionally emits trailing commas before } or ] — strip them.
+    import re as _re
+    raw = _re.sub(r",\s*([}\]])", r"\1", raw)
+
     return json.loads(raw)
 
 

@@ -657,8 +657,12 @@ Return ONLY valid JSON. No markdown fences. No commentary outside the JSON objec
         raw = raw.split("\n", 1)[1] if "\n" in raw else raw[3:]
         raw = raw.rsplit("```", 1)[0].strip()
 
+    # Claude occasionally emits trailing commas before } or ] — strip them.
+    import re as _re
+    cleaned = _re.sub(r",\s*([}\]])", r"\1", raw)
+
     try:
-        return json.loads(raw)
+        return json.loads(cleaned)
     except json.JSONDecodeError as exc:
         log.error(
             f"Claude returned invalid JSON (stop_reason={message.stop_reason}): {exc}\n"
