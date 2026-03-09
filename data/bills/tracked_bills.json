@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-09T20:52:12.581900",
+  "last_updated": "2026-03-09T22:10:11.703107",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -5437,8 +5437,7 @@
         "densification": "indirect",
         "reduce_discretion": "indirect",
         "cost_to_cities": "moderate",
-        "notes": "SB 1426 amends the annual housing element reporting requirements under GC §65400 and related sections, while also touching SB 9 (§65852.21), SB 10 (§65852.24), and lot split (§66411.7) provisions — suggesting it tightens compliance tracking and accountability mechanisms for local housing approvals. Repealing §65400.1 and §65625 may eliminate existing reporting safe harbors or flexibility, increasing unfunded administrative burden on cities and potentially strengthening state enforcement leverage over local land use decisions.",
-        "comms_brief": "SB 1426 amends annual housing element reporting requirements and modifies key by-right and lot-split statutes (SB 9/SB 10/ADU), likely tightening state oversight and enforcement of local housing approvals.\n• Repealing GC §65400.1 and §65625 may eliminate existing reporting flexibility or safe harbors that cities rely on to manage compliance obligations.\n• Amendments to §65852.21 and §65852.24 (SB 9 and SB 10 implementing statutes) could further constrain local discretion over duplex, lot split, and urban lot split approvals.\n• Expanded or modified reporting requirements under §65400 and §65583.1 impose additional administrative burdens on city planning staff without clear state funding offset.\n• Urgency clause means the bill takes effect immediately upon signing, leaving no adjustment period for local governments.\nRecommended: Monitor closely — the breadth of amended sections across reporting, SB 9/10 implementation, and lot-split authority warrants full bill text review before determining an oppose posture.",
+        "notes": "SB 1426 amends multiple Government Code sections governing local planning and zoning annual reports (§65400), surplus land procedures (§§54222.3.1, 54230), ADU law (§§65852.21, 65852.24), and subdivision mapping (§66411.7), while repealing two reporting sections (§§65400.1, 65625). The breadth of amendments — touching ADU mandates, surplus land disposition, and housing element compliance reporting — creates moderate local control risk: amended reporting requirements under §65400 often carry compliance enforcement teeth, and changes to ADU sections (§§65852.21, 65852.24) and lot-split rules (§66411.7) may tighten state-imposed ministerial approval obligations. However, the summary is insufficiently detailed to confirm the precise direction of each amendment, and full bill text is needed to score with confidence.",
         "full_text_fetched": false,
         "analyzed_date": "2026-03-09",
         "status_at_analysis": "Introduced",
