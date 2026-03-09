@@ -1,5 +1,28 @@
 [
   {
+    "week": "2026-W11",
+    "date": "2026-03-09",
+    "client_id": "csf",
+    "client_name": "California Stewardship Fund",
+    "subject": "AB1751 hits committee in six days. Your city loses impact fee authority the moment it does.",
+    "filename": "newsletter_2026-W11.html",
+    "path": "csf/newsletter_2026-W11.html",
+    "featured_bills": [
+      "AB1751",
+      "AB1710",
+      "SB1014",
+      "SB677",
+      "SB908",
+      "AB1997",
+      "AB2005",
+      "AB2118",
+      "AB2079",
+      "SB1258",
+      "AB2433",
+      "AB748"
+    ]
+  },
+  {
     "week": "2026-W09",
     "date": "2026-03-01",
     "client_id": "csf",

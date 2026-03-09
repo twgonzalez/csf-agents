@@ -35,6 +35,8 @@ def _select_bills(
     hearing_lookahead: int = 7,
     max_watch: int = 3,
     max_new: int = 3,
+    recently_featured: set = None,
+    recently_active: set = None,
 ) -> dict:
     """Return bill sets for content generation.
 
@@ -43,6 +45,11 @@ def _select_bills(
     upcoming_hearings — bills with hearings in the next hearing_lookahead days
     watchlist_bills   — all bills with watchlist: True, regardless of risk score
                         (additive; watchlist bills may also appear in watch_list/new_bills)
+
+    recently_featured — bill numbers that led recent issues; deprioritized unless
+                        they also appear in recently_active (new development this week).
+    recently_active   — bill numbers with new developments this week (moved stage
+                        or received amendments); overrides the featured penalty.
     """
     today    = date.today()
     cutoff   = today - timedelta(days=lookback_days)
@@ -81,6 +88,9 @@ def _select_bills(
         if bill.get("watchlist"):
             watchlist_bills.append(bill)
 
+    _recently_featured = recently_featured or set()
+    _recently_active   = recently_active or set()
+
     def _has_hearing(item: tuple) -> bool:
         b, _, _ = item
         return any(
@@ -89,7 +99,19 @@ def _select_bills(
             if h.get("date")
         )
 
-    watch_list.sort(key=lambda x: (-int(_has_hearing(x)), -x[1], -x[2]))
+    def _is_newly_active(bill: dict) -> bool:
+        return bill["bill_number"] in _recently_active
+
+    watch_list.sort(key=lambda x: (
+        -int(_has_hearing(x)),
+        -int(_is_newly_active(x[0])),            # new dev this week → override penalty
+        -x[1],                                   # risk_count desc
+        -x[2],                                   # strong_count desc
+        int(                                     # featured + no new dev → deprioritize
+            x[0]["bill_number"] in _recently_featured
+            and not _is_newly_active(x[0])
+        ),
+    ))
 
     return {
         "watch_list":        [b for b, _, _ in watch_list[:max_watch]],

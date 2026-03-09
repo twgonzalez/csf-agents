@@ -237,13 +237,14 @@ def _build_archive_index(entries: list[dict]) -> None:
 
 
 def _archive_newsletter(
-    html:        str,
-    subject:     str,
-    client_id:   str,
-    client_name: str,
-    week_str:    str,
-    week_date:   str,
-    filename:    str,
+    html:           str,
+    subject:        str,
+    client_id:      str,
+    client_name:    str,
+    week_str:       str,
+    week_date:      str,
+    filename:       str,
+    featured_bills: list = None,
 ) -> None:
     """
     Archive a completed newsletter to docs/newsletters/ for GitHub Pages hosting.
@@ -255,13 +256,15 @@ def _archive_newsletter(
     Silently skips if the docs/ directory doesn't exist (e.g., fresh checkouts).
 
     Args:
-        html:        Full newsletter HTML string.
-        subject:     Newsletter subject line (shown in archive index).
-        client_id:   Client slug (e.g. "csf").
-        client_name: Full client name (e.g. "California Stewardship Fund").
-        week_str:    ISO week string (e.g. "2026-W09").
-        week_date:   ISO date string for the week (e.g. "2026-03-01").
-        filename:    Newsletter filename (e.g. "newsletter_2026-W09.html").
+        html:           Full newsletter HTML string.
+        subject:        Newsletter subject line (shown in archive index).
+        client_id:      Client slug (e.g. "csf").
+        client_name:    Full client name (e.g. "California Stewardship Fund").
+        week_str:       ISO week string (e.g. "2026-W09").
+        week_date:      ISO date string for the week (e.g. "2026-03-01").
+        filename:       Newsletter filename (e.g. "newsletter_2026-W09.html").
+        featured_bills: Bill numbers that appeared in this issue's watch list
+                        (used for editorial memory in future issues).
     """
     if not ARCHIVE_DIR.parent.exists():
         log.debug("Archive skipped — docs/ directory not found")
@@ -288,13 +291,14 @@ def _archive_newsletter(
         if not (e.get("week") == week_str and e.get("client_id") == client_id)
     ]
     entries.append({
-        "week":        week_str,
-        "date":        week_date,
-        "client_id":   client_id,
-        "client_name": client_name,
-        "subject":     subject,
-        "filename":    filename,
-        "path":        f"{client_id}/{filename}",
+        "week":           week_str,
+        "date":           week_date,
+        "client_id":      client_id,
+        "client_name":    client_name,
+        "subject":        subject,
+        "filename":       filename,
+        "path":           f"{client_id}/{filename}",
+        "featured_bills": featured_bills or [],
     })
     entries.sort(key=lambda e: (e.get("date", ""), e.get("week", "")), reverse=True)
 
@@ -308,6 +312,85 @@ def _archive_newsletter(
     # Regenerate the archive index page
     _build_archive_index(entries)
     log.info(f"   Archive index → {(ARCHIVE_DIR / 'index.html').relative_to(PROJECT_ROOT)}")
+
+
+# ---------------------------------------------------------------------------
+# Editorial memory — recent coverage history
+# ---------------------------------------------------------------------------
+
+def _load_recent_coverage(client_id: str, n: int = 3) -> list[dict]:
+    """
+    Return metadata from the last N newsletter issues for this client.
+
+    Each entry has at minimum: week, date, subject, featured_bills (list of
+    bill numbers that appeared in that issue's watch list).
+
+    Returns [] if the archive doesn't exist or is unreadable.
+    """
+    if not ARCHIVE_JSON.exists():
+        return []
+    try:
+        entries = json.loads(ARCHIVE_JSON.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    client_entries = [e for e in entries if e.get("client_id") == client_id]
+    return client_entries[:n]
+
+
+def _build_coverage_block(recent: list[dict], all_bills: dict) -> str:
+    """
+    Build an editorial memory block for the Claude prompt.
+
+    Shows which bills led recent issues and surfaces high-risk bills that
+    haven't been featured yet — giving Claude raw material for variety.
+    Returns an empty string if there's no prior coverage data.
+    """
+    if not recent:
+        return ""
+
+    all_featured = {b for entry in recent for b in entry.get("featured_bills", [])}
+
+    lines = ["== EDITORIAL MEMORY — RECENT COVERAGE =="]
+    for entry in recent:
+        fb = entry.get("featured_bills", [])
+        bill_str = ", ".join(fb) if fb else "(not tracked)"
+        lines.append(f"  {entry['week']}: {bill_str}")
+        lines.append(f"    Subject: \"{entry.get('subject', '')}\"")
+
+    # Surface analyzed high-risk bills not yet featured — candidates for variety
+    unfeatured = [
+        b for b in all_bills.values()
+        if b.get("bill_number") not in all_featured
+        and b.get("analysis")
+        and sum(
+            1 for s in [
+                b["analysis"].get(k, "none")
+                for k in ("pro_housing_production", "densification",
+                          "reduce_discretion", "cost_to_cities")
+            ] if s in ("strong", "moderate")
+        ) >= 2
+    ][:6]
+
+    if unfeatured:
+        lines += [
+            "",
+            "HIGH-RISK BILLS NOT YET FEATURED IN RECENT ISSUES (candidates for variety):",
+        ]
+        for b in unfeatured:
+            lines.append(f"  • {b['bill_number']}: {b.get('title', '')[:70]}")
+
+    lines += [
+        "",
+        "EDITORIAL GUIDANCE:",
+        "  • Deprioritize bills that led recent issues UNLESS they have new developments",
+        "    this week (hearing, amendment, stage change).",
+        "  • When the legislative week is quiet (no bills moved stage, no amendments),",
+        "    go deeper rather than recycling the same framing: profile one bill in detail,",
+        "    explain a procedural mechanism, or synthesize the pattern across multiple bills.",
+        "  • Draw on the unfeatured bills above where substantively relevant.",
+        "",
+    ]
+    return "\n".join(lines)
 
 
 # ---------------------------------------------------------------------------
@@ -431,6 +514,17 @@ def _build_digest_context(digest: dict) -> str:
         for s in spot[:5]:
             lines.append(f"  • {s['bill_number']}: {s['why']}")
 
+    # Quiet week signal — no bills moved stage or received amendments
+    if not moving and not amended:
+        lines += [
+            "",
+            "QUIET WEEK SIGNAL: No bills advanced a legislative stage this week and no",
+            "author amendments were filed. Do not manufacture urgency that isn't there.",
+            "Use this issue for depth instead: profile one bill thoroughly, explain a",
+            "procedural pattern (gut-and-amend, eligibility windows, committee sequencing),",
+            "or synthesize the broader threat pattern across multiple bills on the watch list.",
+        ]
+
     lines += ["", "=" * 68]
     return "\n".join(lines)
 
@@ -529,6 +623,8 @@ def _generate_content(
     client_cfg:       dict,
     voice_text:       str  = "",
     digest:           dict = None,
+    recent_coverage:  list = None,
+    all_bills:        dict = None,
 ) -> dict:
     """Single Claude call returning all newsletter content as a structured dict.
 
@@ -539,6 +635,8 @@ def _generate_content(
         voice_text:       Voice file content for tone/framing.
         digest:           Action digest from legislative_intel.py (optional — falls back
                           gracefully to pre-digest behavior if None or empty).
+        recent_coverage:  Last N archive entries for this client (editorial memory).
+        all_bills:        Full bill dict — used to surface unfeatured high-risk bills.
     """
     if digest is None:
         digest = {}
@@ -554,6 +652,7 @@ def _generate_content(
     # Build digest and anti-repetition context blocks (empty strings if no digest)
     digest_ctx      = _build_digest_context(digest)
     anti_rep_block  = _build_anti_repetition_block(digest)
+    coverage_block  = _build_coverage_block(recent_coverage or [], all_bills or {})
 
     # Story arc guidance — updated when digest is present to anchor [0] on real activity
     arc_guidance = (
@@ -594,6 +693,7 @@ they lack AI risk scores. Weave them into the narrative where substantively rele
 especially when they reinforce the broader session pattern.
 {watchlist_ctx if watchlist_ctx else "(No staff watchlist bills this week)"}
 {anti_rep_block}
+{coverage_block}
 ---
 
 Return a JSON object with exactly these keys:
@@ -1117,21 +1217,50 @@ def main() -> None:
     bills = data["bills"]
     log.info(f"   {len(bills)} bills loaded")
 
-    # ── Select bills for this issue ─────────────────────────────────────────
-    log.info("→ Selecting bills for this issue...")
-    bill_set = _select_bills(bills, lookback_days=args.lookback, max_watch=5, max_new=4)
-    log.info(f"   Watch list:        {len(bill_set['watch_list'])} bills")
-    log.info(f"   New this week:     {len(bill_set['new_bills'])} bills")
-    log.info(f"   Upcoming hearings: {len(bill_set['upcoming_hearings'])}")
-    log.info(f"   Staff watchlist:   {len(bill_set.get('watchlist_bills', []))} bills")
+    # ── Load editorial memory (recent coverage history) ─────────────────────
+    log.info("→ Loading editorial memory (recent coverage)...")
+    recent_coverage   = _load_recent_coverage(client_id, n=3)
+    recently_featured = {b for e in recent_coverage for b in e.get("featured_bills", [])}
+    recently_featured_log = ", ".join(sorted(recently_featured)) or "(none)"
+    log.info(f"   Recent issues: {len(recent_coverage)} | Featured bills: {recently_featured_log}")
 
     # ── Load legislative intelligence digest (optional — graceful fallback) ─
     log.info("→ Loading legislative intelligence digest...")
     digest = _load_digest()
 
+    # Build the set of bills with new developments this week (overrides featured penalty)
+    recently_active = {
+        m["bill_number"] for m in digest.get("moving", [])
+    } | {
+        a["bill_number"] for a in digest.get("amended", [])
+    }
+
+    # ── Select bills for this issue ─────────────────────────────────────────
+    log.info("→ Selecting bills for this issue...")
+    bill_set = _select_bills(
+        bills,
+        lookback_days=args.lookback,
+        max_watch=5,
+        max_new=4,
+        recently_featured=recently_featured,
+        recently_active=recently_active,
+    )
+    log.info(f"   Watch list:        {len(bill_set['watch_list'])} bills")
+    log.info(f"   New this week:     {len(bill_set['new_bills'])} bills")
+    log.info(f"   Upcoming hearings: {len(bill_set['upcoming_hearings'])}")
+    log.info(f"   Staff watchlist:   {len(bill_set.get('watchlist_bills', []))} bills")
+
     # ── Generate content via Claude ─────────────────────────────────────────
     anthropic_client = anthropic.Anthropic(api_key=api_key)
-    content = _generate_content(bill_set, anthropic_client, client_cfg, voice_text, digest)
+    content = _generate_content(
+        bill_set,
+        anthropic_client,
+        client_cfg,
+        voice_text,
+        digest,
+        recent_coverage=recent_coverage,
+        all_bills=bills,
+    )
     log.info("   ✓ Content generated")
 
     # ── Print email metadata ─────────────────────────────────────────────────
@@ -1156,7 +1285,11 @@ def main() -> None:
 
     # ── Archive to docs/newsletters/ (GitHub Pages) ─────────────────────────
     log.info("→ Archiving to docs/newsletters/...")
-    week_date = date.today().isoformat()
+    week_date      = date.today().isoformat()
+    featured_bills = [
+        item.get("bill_number", "") for item in content.get("watch_items", [])
+        if item.get("bill_number")
+    ]
     _archive_newsletter(
         html=html,
         subject=subject,
@@ -1165,6 +1298,7 @@ def main() -> None:
         week_str=iso_week,
         week_date=week_date,
         filename=out_path.name,
+        featured_bills=featured_bills,
     )
 
     # ── Send or report dry-run status ───────────────────────────────────────
