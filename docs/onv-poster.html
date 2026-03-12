@@ -476,35 +476,6 @@ footer {
 .footer-bottom a { color: rgba(245,239,226,0.28); text-decoration: none; }
 .footer-bottom a:hover { color: var(--gold); }
 
-/* ─── IMAGE PROMPTS ─── */
-.prompts {
-  background: var(--paper2); padding: 72px 56px;
-  border-top: 3px double var(--ink);
-}
-.prompts-intro { font-size: 0.88rem; color: var(--ink-soft); margin: 8px 0 36px; line-height: 1.7; max-width: 680px; }
-.prompts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.p-card {
-  background: var(--paper); border: 1px solid var(--rule);
-  border-left: 4px solid var(--navy); padding: 24px;
-}
-.p-card.r { border-left-color: var(--red); }
-.p-card.g { border-left-color: var(--gold); }
-.p-card.n { border-left-color: var(--navy); }
-.p-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.88rem; letter-spacing: 0.18em; color: var(--ink-soft); margin-bottom: 6px;
-}
-.p-use {
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--red); margin-bottom: 12px; display: block;
-}
-.p-text {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 0.86rem; line-height: 1.72; color: var(--ink-mid);
-  background: var(--paper2); padding: 14px 16px;
-  border: 1px solid var(--rule); user-select: all;
-}
-.p-note { font-size: 0.71rem; color: var(--ink-soft); margin-top: 10px; font-style: italic; line-height: 1.5; }
 
 /* ─── REVEAL ─── */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -549,8 +520,6 @@ footer {
   .endorsements { padding: 40px 24px; }
   footer { padding: 40px 24px 24px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .prompts { padding: 56px 24px; }
-  .prompts-grid { grid-template-columns: 1fr; }
   .masthead { grid-template-columns: 1fr; text-align: center; gap: 6px; }
   .masthead-right { text-align: center; }
 }
@@ -600,8 +569,6 @@ footer {
   footer { padding: 32px 18px 20px; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
-
-  .prompts { padding: 40px 18px; }
   h1 { font-size: clamp(2.8rem, 11vw, 4.5rem); }
   h2 { font-size: clamp(1.9rem, 7vw, 2.6rem); }
 }
@@ -939,49 +906,6 @@ footer {
   </div>
 </footer>
 
-<!-- ═══════════════════════════
-     IMAGE PROMPTS FOR HERO
-═══════════════════════════ -->
-<section class="prompts">
-  <div class="s-rule">
-    <div class="s-label">Hero Image Prompts</div>
-    <div class="s-rule-line"></div>
-  </div>
-  <h2>Image Prompts for the Hero Panel</h2>
-  <p class="prompts-intro">Use these in Midjourney, DALL·E 3, Firefly, or Stable Diffusion. The hero image sits under a sepia + multiply blend in CSS, so warm-toned photos with good contrast and a clear subject work best. Avoid flat, stock-photo-looking images — you want something with genuine light and texture.</p>
-
-  <div class="prompts-grid">
-
-    <div class="p-card n">
-      <div class="p-title">Option 1 — The Neighborhood Street</div>
-      <span class="p-use">Best for: Emotional resonance · community identity</span>
-      <div class="p-text">A quiet tree-lined California residential street bathed in late afternoon golden light, craftsman bungalows and mature oak trees lining the sidewalk, a family walking a dog far in the distance, slightly overcast warm sky, documentary photography style, Kodak Portra 400 film grain, desaturated warm tones, no cars, shallow depth of field, medium format film aesthetic, timeless, editorial</div>
-      <p class="p-note">💡 Midjourney: add --ar 4:5 --style raw for a portrait crop that fills the hero panel naturally. Avoid anything that looks like a real estate listing photo.</p>
-    </div>
-
-    <div class="p-card r">
-      <div class="p-title">Option 2 — The Packed City Council Meeting</div>
-      <span class="p-use">Best for: Urgency · civic energy · activist appeal</span>
-      <div class="p-text">Interior of a California city council chamber packed with concerned residents, hands raised, people standing along the walls, warm fluorescent municipal lighting, documentary photojournalism style, slight motion blur in the crowd, desaturated warm tones, film grain, sense of civic urgency, wide angle 24mm lens, authentic not staged, black and white with slight sepia tone, editorial photography, 1970s protest documentary feel</div>
-      <p class="p-note">💡 If ONV has real photos from city council appearances, this is the slot to use them — authenticity will outperform any generated image here.</p>
-    </div>
-
-    <div class="p-card g">
-      <div class="p-title">Option 3 — The Shadow and the Neighborhood</div>
-      <span class="p-use">Best for: Visual argument · editorial impact · storytelling</span>
-      <div class="p-text">A warm sunlit California craftsman neighborhood street with children playing, the long dramatic shadow of a massive unseen glass apartment tower falling across the homes and street, desaturated editorial photography, strong directional afternoon light, film grain, high contrast with warm shadows, photojournalism style, no people visible except children in distance, quiet dread, documentary</div>
-      <p class="p-note">💡 This image tells the entire story without a word. Works best as a full-bleed with the "Your Neighborhood. Your Vote." caption overlaid. Very strong for social sharing too.</p>
-    </div>
-
-    <div class="p-card n">
-      <div class="p-title">Option 4 — WPA Illustration Style</div>
-      <span class="p-use">Best for: Matching Bebas Neue poster aesthetic · timeless · graphic</span>
-      <div class="p-text">Vintage 1930s WPA New Deal era poster illustration of a California hillside neighborhood, rows of modest craftsman houses, families on front porches, mature trees, warm cream and terracotta and sienna palette, flat graphic style with bold simple shapes, silhouetted mountains in background, warm golden sky, no text, clean iconic composition, gouache illustration, Works Progress Administration aesthetic, American civic art</div>
-      <p class="p-note">💡 If you use this illustrated version, remove the CSS filter: sepia() and mix-blend-mode: multiply from .hero-image img so the illustration colors render cleanly.</p>
-    </div>
-
-  </div>
-</section>
 
 <script>
   // Scroll reveal
