@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Neighborhood Voices — Restore Local Control in California</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chivo:ital,wght@0,300;0,400;0,700;1,300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:    #f5efe2;
+  --paper2:   #ede5d3;
+  --paper3:   #e5dbc8;
+  --ink:      #1c1409;
+  --ink-mid:  #3d3020;
+  --ink-soft: #7a6a52;
+  --red:      #c8312a;
+  --red-dk:   #a32220;
+  --navy:     #0e2240;
+  --gold:     #c9922a;
+  --rule:     rgba(28,20,9,0.14);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Chivo', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px; height: 54px;
+  position: sticky; top: 0; z-index: 200;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem; letter-spacing: 0.14em; color: var(--paper);
+}
+.nav-links { display: flex; gap: 30px; align-items: center; }
+.nav-links a {
+  color: rgba(245,239,226,0.5); text-decoration: none;
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--paper); }
+.nav-cta {
+  background: var(--red) !important; color: white !important;
+  padding: 7px 20px; font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--red-dk) !important; }
+
+/* ─── MASTHEAD ─── */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 14px 56px;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; gap: 20px;
+}
+.masthead-left { font-size: 0.68rem; color: var(--ink-soft); letter-spacing: 0.08em; }
+.masthead-center {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.masthead-right { text-align: right; font-size: 0.68rem; color: var(--ink-soft); letter-spacing: 0.06em; }
+
+/* ─── HERO ─── */
+.hero {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 90px);
+  border-bottom: 3px solid var(--ink);
+}
+
+.hero-text {
+  padding: 64px 56px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+.hero-flag {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 28px;
+}
+.flag-pill {
+  background: var(--red); color: white;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.82rem; letter-spacing: 0.2em;
+  padding: 4px 14px;
+}
+.flag-text {
+  font-size: 0.67rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.6rem, 6vw, 5.8rem);
+  line-height: 0.91; letter-spacing: 0.04em;
+  color: var(--ink); margin-bottom: 28px;
+}
+h1 .red { color: var(--red); }
+h1 .h1-rule {
+  display: block;
+  border-top: 4px solid var(--ink);
+  margin: 14px 0 10px; width: 100%;
+}
+
+.hero-subhead {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1rem; font-style: italic;
+  line-height: 1.75; color: var(--ink-mid);
+  max-width: 460px; margin-bottom: 36px;
+  padding-left: 16px;
+  border-left: 3px solid var(--red);
+}
+
+.petition-box {
+  background: var(--navy);
+  padding: 28px 30px; max-width: 460px;
+}
+.petition-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem; letter-spacing: 0.14em;
+  color: var(--paper); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.petition-label::after {
+  content: ''; flex: 1; height: 1px; background: rgba(245,239,226,0.18);
+}
+.form-row { display: flex; gap: 8px; margin-bottom: 8px; }
+.form-input {
+  flex: 1; padding: 11px 14px;
+  background: rgba(245,239,226,0.07);
+  border: 1px solid rgba(245,239,226,0.18);
+  color: var(--paper);
+  font-family: 'Chivo', sans-serif; font-size: 0.88rem;
+  outline: none; transition: border-color 0.2s;
+}
+.form-input::placeholder { color: rgba(245,239,226,0.3); }
+.form-input:focus { border-color: rgba(245,239,226,0.5); }
+.form-input.zip { max-width: 88px; flex: none; }
+.form-submit {
+  width: 100%; padding: 13px;
+  background: var(--red); color: white; border: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15rem; letter-spacing: 0.14em;
+  cursor: pointer; transition: background 0.2s; margin-top: 4px;
+}
+.form-submit:hover { background: var(--red-dk); }
+.form-micro {
+  font-size: 0.67rem; color: rgba(245,239,226,0.3);
+  margin-top: 10px; text-align: center; letter-spacing: 0.04em;
+}
+.sig-row {
+  display: flex; align-items: center; gap: 10px; margin-top: 16px;
+}
+.sig-bar-wrap {
+  flex: 1; height: 3px; background: rgba(245,239,226,0.1); border-radius: 2px;
+}
+.sig-bar {
+  height: 3px; width: 0%; background: var(--gold); border-radius: 2px;
+  transition: width 1.2s ease 0.5s;
+}
+.sig-text { font-size: 0.68rem; color: rgba(245,239,226,0.35); white-space: nowrap; }
+
+/* Hero Image */
+.hero-image {
+  position: relative; overflow: hidden; background: var(--paper3);
+  min-height: 500px;
+}
+.hero-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: sepia(30%) contrast(1.12) brightness(0.88);
+  mix-blend-mode: multiply;
+}
+.hero-image-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 45%, rgba(28,20,9,0.6) 100%);
+}
+.hero-caption {
+  position: absolute; bottom: 28px; left: 28px; right: 28px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem; line-height: 0.95; letter-spacing: 0.06em;
+  color: var(--paper);
+  text-shadow: 2px 2px 0 rgba(28,20,9,0.35);
+}
+.hero-caption .cap-red { color: #ff9088; }
+
+/* ─── TICKER ─── */
+.ticker {
+  background: var(--red);
+  border-top: 2px solid var(--red-dk);
+  border-bottom: 2px solid var(--red-dk);
+  padding: 9px 0; overflow: hidden; white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem; letter-spacing: 0.18em; color: white;
+  animation: ticker 32s linear infinite;
+}
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.tick-sep { color: rgba(255,255,255,0.38); margin: 0 20px; }
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper2);
+}
+.stat { padding: 36px 48px; border-right: 1px solid var(--rule); }
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem; line-height: 1; color: var(--ink); margin-bottom: 6px;
+}
+.stat-n .acc { color: var(--red); }
+.stat-l {
+  font-size: 0.77rem; letter-spacing: 0.04em; color: var(--ink-soft);
+  line-height: 1.55; border-top: 1px solid var(--rule);
+  padding-top: 10px; margin-top: 8px;
+}
+
+/* ─── SECTION RULE ─── */
+.s-rule {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+}
+.s-rule-line { flex: 1; height: 2px; background: var(--ink); }
+.s-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.88rem; letter-spacing: 0.22em; color: var(--ink-soft);
+}
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 3.2vw, 3rem);
+  line-height: 0.96; letter-spacing: 0.04em; color: var(--ink);
+  margin-bottom: 20px;
+}
+h2 .red { color: var(--red); }
+
+/* ─── MYTHS ─── */
+.myths {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 2px solid var(--ink);
+}
+.myths-left {
+  padding: 64px 56px;
+  border-right: 2px solid var(--ink);
+}
+.myths-right { padding: 64px 56px; background: var(--paper2); }
+
+.lead-text {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.97rem; line-height: 1.82;
+  color: var(--ink-mid); margin-bottom: 16px;
+}
+.myth-item { padding: 20px 0; border-bottom: 1px solid var(--rule); }
+.myth-item:last-child { border-bottom: none; }
+.myth-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.08rem; letter-spacing: 0.08em;
+  color: var(--red); margin-bottom: 7px;
+  display: flex; align-items: center; gap: 10px;
+}
+.myth-x {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--red); color: white;
+  font-size: 0.65rem; font-family: 'Chivo', sans-serif; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.myth-body { font-size: 0.87rem; line-height: 1.72; color: var(--ink-soft); padding-left: 30px; }
+
+/* ─── INITIATIVE ─── */
+.initiative {
+  background: var(--navy); color: var(--paper);
+  padding: 80px 56px; border-bottom: 2px solid var(--ink);
+}
+.initiative .s-rule-line { background: rgba(245,239,226,0.18); }
+.initiative .s-label { color: rgba(245,239,226,0.38); }
+.initiative h2 { color: var(--paper); }
+
+.ini-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; margin-top: 40px;
+}
+.ini-lead {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.02rem; font-style: italic;
+  line-height: 1.78; color: rgba(245,239,226,0.68);
+  margin-bottom: 32px;
+}
+.ini-steps { list-style: none; }
+.ini-step {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 18px 0; border-bottom: 1px solid rgba(245,239,226,0.08);
+}
+.ini-step:last-child { border-bottom: none; }
+.step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem; color: var(--gold); line-height: 1; flex-shrink: 0; width: 28px;
+}
+.step-body h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.98rem; letter-spacing: 0.1em; color: var(--paper); margin-bottom: 5px;
+}
+.step-body p { font-size: 0.83rem; line-height: 1.65; color: rgba(245,239,226,0.48); }
+
+.ini-right {
+  background: rgba(245,239,226,0.05);
+  border: 1px solid rgba(245,239,226,0.1);
+  padding: 40px 36px;
+}
+.ini-quote {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.22rem; font-style: italic;
+  line-height: 1.6; color: var(--paper);
+  margin-bottom: 14px;
+  padding-left: 20px; border-left: 3px solid var(--gold);
+}
+.ini-quote-src {
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 36px; padding-left: 20px;
+}
+.ini-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ini-num {
+  border: 1px solid rgba(245,239,226,0.1); padding: 18px;
+}
+.ini-num-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.9rem; color: var(--gold);
+  display: block; margin-bottom: 6px;
+}
+.ini-num-label { font-size: 0.7rem; color: rgba(245,239,226,0.38); line-height: 1.45; }
+
+/* ─── NEWS ─── */
+.news { padding: 64px 56px; border-bottom: 2px solid var(--ink); }
+.news-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--rule); margin-top: 32px;
+}
+.news-card {
+  padding: 28px;
+  border-right: 1px solid var(--rule);
+  text-decoration: none; color: inherit; display: block;
+  transition: background 0.2s;
+}
+.news-card:last-child { border-right: none; }
+.news-card:hover { background: var(--paper2); }
+.news-tag {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem; letter-spacing: 0.18em; color: var(--red);
+  display: block; margin-bottom: 10px;
+}
+.news-card h4 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.98rem; line-height: 1.48; color: var(--ink); margin-bottom: 10px;
+}
+.news-card p { font-size: 0.82rem; line-height: 1.65; color: var(--ink-soft); }
+.news-foot {
+  margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule);
+  font-size: 0.7rem; color: var(--ink-soft);
+  display: flex; justify-content: space-between;
+}
+.news-foot .read { color: var(--red); font-weight: 700; letter-spacing: 0.06em; }
+
+/* ─── JOIN ─── */
+.join {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 2px solid var(--ink);
+}
+.join-left {
+  background: var(--red); padding: 72px 56px; color: white;
+}
+.join-left h2 { color: white; font-size: clamp(2.2rem, 3.5vw, 3.4rem); margin-bottom: 16px; }
+.join-left p { font-size: 0.93rem; line-height: 1.72; color: rgba(255,255,255,0.72); max-width: 380px; }
+.join-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 36px; max-width: 300px; }
+.btn-white {
+  background: white; color: var(--red);
+  padding: 14px 24px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.08rem; letter-spacing: 0.12em;
+  text-decoration: none; text-align: center; display: block;
+  transition: background 0.2s;
+}
+.btn-white:hover { background: var(--paper2); }
+.btn-outline-w {
+  border: 2px solid rgba(255,255,255,0.38); color: white;
+  padding: 14px 24px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.08rem; letter-spacing: 0.12em;
+  text-decoration: none; text-align: center; display: block;
+  transition: border-color 0.2s;
+}
+.btn-outline-w:hover { border-color: white; }
+
+.join-right { background: var(--paper2); padding: 72px 56px; }
+.join-right h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.7rem; letter-spacing: 0.08em; color: var(--ink); margin-bottom: 20px;
+}
+.meeting-card {
+  background: var(--paper); border: 1px solid var(--rule);
+  padding: 22px; margin-bottom: 14px;
+}
+.m-dot {
+  width: 7px; height: 7px; background: var(--red); border-radius: 50%;
+  display: inline-block; margin-right: 8px;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.4)} }
+.m-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem; letter-spacing: 0.1em; color: var(--ink);
+}
+.m-desc { font-size: 0.83rem; line-height: 1.62; color: var(--ink-soft); margin-top: 8px; }
+.m-link {
+  display: inline-block; margin-top: 12px;
+  font-size: 0.74rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--red); text-decoration: none;
+}
+
+/* ─── ENDORSEMENTS ─── */
+.endorsements { padding: 52px 56px; border-bottom: 2px solid var(--ink); }
+.endorsements .intro { font-size: 0.84rem; color: var(--ink-soft); margin-top: 6px; margin-bottom: 36px; }
+.endorse-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.endorse-tag {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.76rem; letter-spacing: 0.16em;
+  color: var(--ink-mid); padding: 6px 16px;
+  border: 1px solid var(--rule); background: var(--paper2);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink); color: rgba(245,239,226,0.45);
+  padding: 48px 56px 30px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; padding-bottom: 36px;
+  border-bottom: 1px solid rgba(245,239,226,0.08);
+  margin-bottom: 24px;
+}
+.f-brand-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem; letter-spacing: 0.14em;
+  color: var(--paper); display: block; margin-bottom: 12px;
+}
+.f-brand p { font-size: 0.81rem; line-height: 1.72; max-width: 252px; }
+.f-col h5 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.76rem; letter-spacing: 0.2em;
+  color: var(--gold); margin-bottom: 14px;
+}
+.f-col a {
+  display: block; color: rgba(245,239,226,0.4);
+  text-decoration: none; font-size: 0.81rem; margin-bottom: 8px;
+  transition: color 0.2s;
+}
+.f-col a:hover { color: var(--paper); }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  font-size: 0.7rem; color: rgba(245,239,226,0.22);
+}
+.footer-bottom a { color: rgba(245,239,226,0.28); text-decoration: none; }
+.footer-bottom a:hover { color: var(--gold); }
+
+/* ─── IMAGE PROMPTS ─── */
+.prompts {
+  background: var(--paper2); padding: 72px 56px;
+  border-top: 3px double var(--ink);
+}
+.prompts-intro { font-size: 0.88rem; color: var(--ink-soft); margin: 8px 0 36px; line-height: 1.7; max-width: 680px; }
+.prompts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.p-card {
+  background: var(--paper); border: 1px solid var(--rule);
+  border-left: 4px solid var(--navy); padding: 24px;
+}
+.p-card.r { border-left-color: var(--red); }
+.p-card.g { border-left-color: var(--gold); }
+.p-card.n { border-left-color: var(--navy); }
+.p-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.88rem; letter-spacing: 0.18em; color: var(--ink-soft); margin-bottom: 6px;
+}
+.p-use {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 12px; display: block;
+}
+.p-text {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.86rem; line-height: 1.72; color: var(--ink-mid);
+  background: var(--paper2); padding: 14px 16px;
+  border: 1px solid var(--rule); user-select: all;
+}
+.p-note { font-size: 0.71rem; color: var(--ink-soft); margin-top: 10px; font-style: italic; line-height: 1.5; }
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── HAMBURGER MENU ─── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 8px;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px; background: var(--paper);
+  transition: all 0.25s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── TABLET (≤ 900px) ─── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .masthead { padding: 12px 24px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-text { padding: 48px 24px; border-right: none; border-bottom: 2px solid var(--ink); }
+  .hero-image { min-height: 360px; }
+  .stats-bar { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 1px solid var(--rule); padding: 28px 24px; }
+  .stat:last-child { border-bottom: none; }
+  .myths { grid-template-columns: 1fr; }
+  .myths-left { padding: 48px 24px; border-right: none; border-bottom: 2px solid var(--ink); }
+  .myths-right { padding: 48px 24px; }
+  .initiative { padding: 56px 24px; }
+  .ini-grid { grid-template-columns: 1fr; gap: 40px; }
+  .news { padding: 48px 24px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .news-card { border-right: none; border-bottom: 1px solid var(--rule); }
+  .news-card:last-child { border-bottom: none; }
+  .join { grid-template-columns: 1fr; }
+  .join-left { padding: 56px 24px; }
+  .join-right { padding: 48px 24px; }
+  .endorsements { padding: 40px 24px; }
+  footer { padding: 40px 24px 24px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .prompts { padding: 56px 24px; }
+  .prompts-grid { grid-template-columns: 1fr; }
+  .masthead { grid-template-columns: 1fr; text-align: center; gap: 6px; }
+  .masthead-right { text-align: center; }
+}
+
+/* ─── MOBILE (≤ 600px) ─── */
+@media (max-width: 600px) {
+  nav { padding: 0 18px; height: 52px; }
+  .nav-links { display: none; flex-direction: column; position: absolute;
+    top: 52px; left: 0; right: 0; background: var(--ink);
+    padding: 16px 18px 20px; gap: 0; z-index: 199; }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 0; border-bottom: 1px solid rgba(245,239,226,0.08);
+    font-size: 0.8rem; }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav-cta { margin-top: 6px; display: inline-block; text-align: center; }
+  .nav-hamburger { display: flex; }
+
+  .masthead { padding: 10px 18px; gap: 4px; }
+  .masthead-left, .masthead-center, .masthead-right { font-size: 0.62rem; }
+
+  .hero-text { padding: 36px 18px; }
+  .petition-box { padding: 22px 18px; max-width: 100%; }
+  .form-row { flex-wrap: wrap; }
+  .form-input.zip { max-width: 100%; flex: 1 1 100%; }
+
+  .hero-image { min-height: 280px; }
+  .hero-caption { font-size: 1.9rem; }
+
+  .stats-bar { }
+  .stat { padding: 24px 18px; }
+  .stat-n { font-size: 3rem; }
+
+  .myths-left, .myths-right { padding: 36px 18px; }
+  .initiative { padding: 40px 18px; }
+  .ini-right { padding: 28px 20px; }
+  .ini-nums { grid-template-columns: 1fr 1fr; }
+
+  .news { padding: 36px 18px; }
+  .news-card { padding: 20px 18px; }
+
+  .join-left { padding: 40px 18px; }
+  .join-actions { max-width: 100%; }
+  .join-right { padding: 36px 18px; }
+
+  .endorsements { padding: 32px 18px; }
+
+  footer { padding: 32px 18px 20px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
+
+  .prompts { padding: 40px 18px; }
+  h1 { font-size: clamp(2.8rem, 11vw, 4.5rem); }
+  h2 { font-size: clamp(1.9rem, 7vw, 2.6rem); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Our Neighborhood Voices</div>
+  
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="#">The Problem</a>
+    <a href="#">The Initiative</a>
+    <a href="#">News</a>
+    <a href="#">Meetings</a>
+    <a href="#" class="nav-cta">Sign the Petition</a>
+  </div>
+</nav>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-left">Vol. V · No. 12 · California Statewide</div>
+  <div class="masthead-center">Restoring Local Control Since 2021</div>
+  <div class="masthead-right">Wednesday, March 12, 2026</div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-flag">
+      <div class="flag-pill">Citizens Initiative</div>
+      <div class="flag-text">Statewide · California · 2026</div>
+    </div>
+
+    <h1>
+      400 Laws.<br>
+      <span class="red">Zero Results.</span>
+      <span class="h1-rule"></span>
+      Time to Vote.
+    </h1>
+
+    <p class="hero-subhead">
+      Sacramento passed 400+ laws stripping your city's right to plan its own future.
+      Housing costs went up. Families got pushed out. A citizen ballot initiative
+      is the one move they can't legislate away.
+    </p>
+
+    <div class="petition-box">
+      <div class="petition-label">Sign the Initiative Petition</div>
+      <div class="form-row">
+        <input class="form-input" type="text" placeholder="First name" />
+        <input class="form-input" type="text" placeholder="Last name" />
+      </div>
+      <div class="form-row">
+        <input class="form-input" type="email" placeholder="Email address" />
+        <input class="form-input zip" type="text" placeholder="ZIP" />
+      </div>
+      <button class="form-submit">Add My Signature →</button>
+      <p class="form-micro">No spam. Your data stays with ONV only. Unsubscribe anytime.</p>
+      <div class="sig-row">
+        <div class="sig-bar-wrap"><div class="sig-bar" id="sigbar"></div></div>
+        <div class="sig-text">12,418 of 50,000 signatures</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <!-- Replace with your generated image -->
+    <img src="onv-hero.png" alt="California neighborhood" />
+    <div class="hero-image-overlay"></div>
+    <div class="hero-caption">
+      Your Neighborhood.<br>
+      <span class="cap-red">Your Vote.</span>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-inner">
+    400+ STATE LAWS STRIPPED LOCAL CONTROL
+    <span class="tick-sep">·</span>
+    LUXURY UPZONING HAS NOT LOWERED PRICES
+    <span class="tick-sep">·</span>
+    WALL STREET NOW OWNS ~20% OF CALIFORNIA HOMES
+    <span class="tick-sep">·</span>
+    EVERY LAWSUIT HAS FAILED — ONLY A BALLOT INITIATIVE CAN WIN
+    <span class="tick-sep">·</span>
+    JOIN 12,000+ CALIFORNIANS WHO HAVE ALREADY SIGNED
+    <span class="tick-sep">·</span>
+    400+ STATE LAWS STRIPPED LOCAL CONTROL
+    <span class="tick-sep">·</span>
+    LUXURY UPZONING HAS NOT LOWERED PRICES
+    <span class="tick-sep">·</span>
+    WALL STREET NOW OWNS ~20% OF CALIFORNIA HOMES
+    <span class="tick-sep">·</span>
+    EVERY LAWSUIT HAS FAILED — ONLY A BALLOT INITIATIVE CAN WIN
+    <span class="tick-sep">·</span>
+    JOIN 12,000+ CALIFORNIANS WHO HAVE ALREADY SIGNED
+    <span class="tick-sep">·</span>
+  </span>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar reveal">
+  <div class="stat">
+    <div class="stat-n"><span class="acc">400</span>+</div>
+    <div class="stat-l">State laws passed in 8 years overriding local zoning — more than the prior 40 years combined</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n">~<span class="acc">20</span>%</div>
+    <div class="stat-l">California homes now held by institutional investors — up sharply since upzoning mandates began</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n"><span class="acc">$0</span></div>
+    <div class="stat-l">Net reduction in median housing costs attributable to luxury density mandates</div>
+  </div>
+</div>
+
+<!-- MYTHS -->
+<section class="myths">
+  <div class="myths-left reveal">
+    <div class="s-rule">
+      <div class="s-label">The Broken Narrative</div>
+      <div class="s-rule-line"></div>
+    </div>
+    <h2>Sacramento Sold You a <span class="red">Lie.</span></h2>
+    <p class="lead-text">Build more luxury towers and prices will fall. Strip cities of planning authority and working families will benefit. Eight years of data say otherwise — and the lobbyists funding Sacramento's housing bills know it.</p>
+    <p class="lead-text">This is not an anti-housing campaign. It is a pro-community, pro-affordability campaign. We want working families to stay in their neighborhoods. We want cities to decide what that looks like — not Wall Street.</p>
+  </div>
+  <div class="myths-right reveal" style="transition-delay:0.15s">
+    <div class="s-rule">
+      <div class="s-label">Three Myths Exposed</div>
+      <div class="s-rule-line"></div>
+    </div>
+    <div class="myth-item">
+      <div class="myth-head"><span class="myth-x">✕</span> "Build More and Prices Will Fall"</div>
+      <div class="myth-body">Market-rate towers in high-demand urban cores do not filter down to working families. They accelerate land speculation and displace the people they claim to help.</div>
+    </div>
+    <div class="myth-item">
+      <div class="myth-head"><span class="myth-x">✕</span> "Local Zoning Causes the Crisis"</div>
+      <div class="myth-body">California's affordability crisis predates the local control era. It is driven by investor ownership, interest rates, and chronic underinvestment in truly affordable housing — not city planning boards.</div>
+    </div>
+    <div class="myth-item">
+      <div class="myth-head"><span class="myth-x">✕</span> "Sacramento Knows Best"</div>
+      <div class="myth-body">One-size-fits-all state mandates ignore vast differences between a coastal city, a suburb, and a rural community. Local governance exists because communities are not interchangeable.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INITIATIVE -->
+<section class="initiative reveal">
+  <div class="s-rule">
+    <div class="s-label">The Solution</div>
+    <div class="s-rule-line"></div>
+  </div>
+  <h2>Why a Ballot Initiative Is the <span class="red">Only Path Forward</span></h2>
+  <div class="ini-grid">
+    <div>
+      <p class="ini-lead">Lawsuits fail. Electing new legislators hasn't worked. Sacramento closes every door with a new law. A citizen constitutional initiative is the one mechanism they cannot block.</p>
+      <ol class="ini-steps">
+        <li class="ini-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Signature Collection</h4>
+            <p>We gather verified signatures from California voters to place the initiative on the statewide ballot.</p>
+          </div>
+        </li>
+        <li class="ini-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Statewide Ballot Vote</h4>
+            <p>California voters decide directly. Not lobbyists, not developer PACs. A simple majority passes the measure.</p>
+          </div>
+        </li>
+        <li class="ini-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Local Authority Restored</h4>
+            <p>The 400+ overriding state laws become opt-in. Cities choose what fits — and opt out of what doesn't.</p>
+          </div>
+        </li>
+        <li class="ini-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Affordable Housing Prioritized</h4>
+            <p>State housing investment redirects to income-qualified, deed-restricted units — not luxury towers that satisfy state metrics while pricing out families.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div class="ini-right">
+      <p class="ini-quote">"The YIMBY experiment is unraveling. Despite years of state preemption and density mandates, California home prices have not meaningfully declined — and displacement has accelerated."</p>
+      <div class="ini-quote-src">— Planet Money / NPR, 2026</div>
+      <div class="ini-nums">
+        <div class="ini-num">
+          <span class="ini-num-val">400+</span>
+          <span class="ini-num-label">Laws stripped from cities in 8 years</span>
+        </div>
+        <div class="ini-num">
+          <span class="ini-num-val">$0</span>
+          <span class="ini-num-label">Net affordability gains from luxury upzoning</span>
+        </div>
+        <div class="ini-num">
+          <span class="ini-num-val">100s</span>
+          <span class="ini-num-label">Failed lawsuits draining community funds</span>
+        </div>
+        <div class="ini-num">
+          <span class="ini-num-val">1</span>
+          <span class="ini-num-label">Path Sacramento can't block: the ballot</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news reveal">
+  <div class="s-rule">
+    <div class="s-label">Latest News</div>
+    <div class="s-rule-line"></div>
+  </div>
+  <h2>The Narrative Is <span class="red">Shifting.</span></h2>
+  <div class="news-grid">
+    <a href="#" class="news-card">
+      <span class="news-tag">Broken Narrative</span>
+      <h4>Home Buying Declines Sharply in January — And So Does the Pricing</h4>
+      <p>New data shows the California market cooling even as density mandates remain in place — undermining the core upzoning argument.</p>
+      <div class="news-foot">February 2026 <span class="read">Read →</span></div>
+    </a>
+    <a href="#" class="news-card">
+      <span class="news-tag">Research</span>
+      <h4>Is the YIMBY Movement Dead? The Real Effects of Top-Down Zoning</h4>
+      <p>Planet Money and NPR examine why the promised affordability gains from California's upzoning experiment never materialized.</p>
+      <div class="news-foot">February 2026 <span class="read">Read →</span></div>
+    </a>
+    <a href="#" class="news-card">
+      <span class="news-tag">Investigation</span>
+      <h4>Nearly 20% of California Homes Are Wall Street Profit Machines</h4>
+      <p>Institutional investor ownership has accelerated alongside state upzoning — and your state legislators are helping it happen.</p>
+      <div class="news-foot">February 2026 <span class="read">Read →</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- JOIN / CTA -->
+<section class="join">
+  <div class="join-left reveal">
+    <h2>This Is How We Win.</h2>
+    <p>Lawsuits drain money Sacramento replenishes with new laws. Elections take years. A citizen initiative is direct democracy — and it's the one tool that bypasses Sacramento entirely. Every signature counts.</p>
+    <div class="join-actions">
+      <a href="#" class="btn-white">Sign the Petition</a>
+      <a href="#" class="btn-outline-w">Donate to the Campaign</a>
+      <a href="#" class="btn-outline-w">Volunteer Your Time</a>
+    </div>
+  </div>
+  <div class="join-right reveal" style="transition-delay:0.15s">
+    <h3>Join Us Weekly</h3>
+    <div class="meeting-card">
+      <div><span class="m-dot"></span><span class="m-time">Wednesdays · 6:00 PM · Zoom</span></div>
+      <p class="m-desc">Open to all Californians. One hour. We explain what Sacramento is doing to your community, how the initiative works, and how you can help right now.</p>
+      <a href="#" class="m-link">Reserve Your Spot →</a>
+    </div>
+    <div class="meeting-card">
+      <div><span class="m-time">Draft Initiative Now Public</span></div>
+      <p class="m-desc">Read the full text of the proposed constitutional initiative — written with legal review to be airtight and effective against Sacramento's playbook.</p>
+      <a href="#" class="m-link">Read the Draft →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ENDORSEMENTS -->
+<section class="endorsements reveal">
+  <div class="s-rule">
+    <div class="s-label">Endorsed By</div>
+    <div class="s-rule-line"></div>
+  </div>
+  <p class="intro">Organizations representing hundreds of thousands of California residents across every region</p>
+  <div class="endorse-grid">
+    <div class="endorse-tag">Wake Up California</div>
+    <div class="endorse-tag">Livable California</div>
+    <div class="endorse-tag">Neighbors for a Better California</div>
+    <div class="endorse-tag">Citizen Marin</div>
+    <div class="endorse-tag">Save Downtown Menlo</div>
+    <div class="endorse-tag">Save Hermosa</div>
+    <div class="endorse-tag">Sensible Zoning</div>
+    <div class="endorse-tag">Local Control CA</div>
+    <div class="endorse-tag">Carmel Residents Association</div>
+    <div class="endorse-tag">Protect MB Neighborhoods</div>
+    <div class="endorse-tag">United Neighbors</div>
+    <div class="endorse-tag">FCA Home</div>
+    <div class="endorse-tag">+ Dozens More →</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="f-brand">
+      <span class="f-brand-logo">Our Neighborhood Voices</span>
+      <p>A statewide coalition of residents and civic organizations fighting to restore local democratic control over land use and housing policy in California.</p>
+    </div>
+    <div class="f-col">
+      <h5>Get Involved</h5>
+      <a href="#">Sign the Petition</a>
+      <a href="#">Weekly Zoom Meetings</a>
+      <a href="#">Volunteer</a>
+      <a href="#">Donate</a>
+      <a href="#">Endorse ONV</a>
+    </div>
+    <div class="f-col">
+      <h5>Learn</h5>
+      <a href="#">The Initiative</a>
+      <a href="#">FAQs</a>
+      <a href="#">Glossary</a>
+      <a href="#">Research</a>
+      <a href="#">News</a>
+    </div>
+    <div class="f-col">
+      <h5>Organization</h5>
+      <a href="#">About ONV</a>
+      <a href="#">Endorsements</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2021–2026 Our Neighborhood Voices · All Rights Reserved</span>
+    <span><a href="#"><span class="__cf_email__" data-cfemail="8ee7e0e8e1cee1fbfce0ebe7e9e6ece1fce6e1e1eaf8e1e7edebfda0ede1e3">[email&#160;protected]</span></a> · <a href="#">Privacy Policy</a></span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════
+     IMAGE PROMPTS FOR HERO
+═══════════════════════════ -->
+<section class="prompts">
+  <div class="s-rule">
+    <div class="s-label">Hero Image Prompts</div>
+    <div class="s-rule-line"></div>
+  </div>
+  <h2>Image Prompts for the Hero Panel</h2>
+  <p class="prompts-intro">Use these in Midjourney, DALL·E 3, Firefly, or Stable Diffusion. The hero image sits under a sepia + multiply blend in CSS, so warm-toned photos with good contrast and a clear subject work best. Avoid flat, stock-photo-looking images — you want something with genuine light and texture.</p>
+
+  <div class="prompts-grid">
+
+    <div class="p-card n">
+      <div class="p-title">Option 1 — The Neighborhood Street</div>
+      <span class="p-use">Best for: Emotional resonance · community identity</span>
+      <div class="p-text">A quiet tree-lined California residential street bathed in late afternoon golden light, craftsman bungalows and mature oak trees lining the sidewalk, a family walking a dog far in the distance, slightly overcast warm sky, documentary photography style, Kodak Portra 400 film grain, desaturated warm tones, no cars, shallow depth of field, medium format film aesthetic, timeless, editorial</div>
+      <p class="p-note">💡 Midjourney: add --ar 4:5 --style raw for a portrait crop that fills the hero panel naturally. Avoid anything that looks like a real estate listing photo.</p>
+    </div>
+
+    <div class="p-card r">
+      <div class="p-title">Option 2 — The Packed City Council Meeting</div>
+      <span class="p-use">Best for: Urgency · civic energy · activist appeal</span>
+      <div class="p-text">Interior of a California city council chamber packed with concerned residents, hands raised, people standing along the walls, warm fluorescent municipal lighting, documentary photojournalism style, slight motion blur in the crowd, desaturated warm tones, film grain, sense of civic urgency, wide angle 24mm lens, authentic not staged, black and white with slight sepia tone, editorial photography, 1970s protest documentary feel</div>
+      <p class="p-note">💡 If ONV has real photos from city council appearances, this is the slot to use them — authenticity will outperform any generated image here.</p>
+    </div>
+
+    <div class="p-card g">
+      <div class="p-title">Option 3 — The Shadow and the Neighborhood</div>
+      <span class="p-use">Best for: Visual argument · editorial impact · storytelling</span>
+      <div class="p-text">A warm sunlit California craftsman neighborhood street with children playing, the long dramatic shadow of a massive unseen glass apartment tower falling across the homes and street, desaturated editorial photography, strong directional afternoon light, film grain, high contrast with warm shadows, photojournalism style, no people visible except children in distance, quiet dread, documentary</div>
+      <p class="p-note">💡 This image tells the entire story without a word. Works best as a full-bleed with the "Your Neighborhood. Your Vote." caption overlaid. Very strong for social sharing too.</p>
+    </div>
+
+    <div class="p-card n">
+      <div class="p-title">Option 4 — WPA Illustration Style</div>
+      <span class="p-use">Best for: Matching Bebas Neue poster aesthetic · timeless · graphic</span>
+      <div class="p-text">Vintage 1930s WPA New Deal era poster illustration of a California hillside neighborhood, rows of modest craftsman houses, families on front porches, mature trees, warm cream and terracotta and sienna palette, flat graphic style with bold simple shapes, silhouetted mountains in background, warm golden sky, no text, clean iconic composition, gouache illustration, Works Progress Administration aesthetic, American civic art</div>
+      <p class="p-note">💡 If you use this illustrated version, remove the CSS filter: sepia() and mix-blend-mode: multiply from .hero-image img so the illustration colors render cleanly.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    })
+  });
+  reveals.forEach(el => obs.observe(el));
+
+  // Signature bar fill
+  setTimeout(() => {
+    document.getElementById('sigbar').style.width = '25%';
+  }, 500);
+</script>
+
+<script>
+  const hamburger = document.getElementById('nav-hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      })
+    );
+  }
+</script>
+
+</body>
+</html>
