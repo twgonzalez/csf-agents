@@ -2,7 +2,7 @@
 ## Week of 2026-03-16
 
 > **Prepared by:** California Stewardship Fund Legislative Tracker  
-> **Scan completed:** 2026-03-16 15:30 PST  
+> **Scan completed:** 2026-03-16 22:28 PST  
 > **Lookback window:** 14 days  
 > **Total bills tracked:** 132
 
@@ -22,9 +22,9 @@
 
 | | |
 |---|---|
-| Bills analyzed | **131** |
-| Relevant to CSF mission | **29** |
-| High-interest (2+ criteria) | **25** |
+| Bills analyzed | **132** |
+| Relevant to CSF mission | **30** |
+| High-interest (2+ criteria) | **26** |
 
 ### Key Bills This Cycle
 
@@ -44,6 +44,10 @@ This bill amends the Affordable Housing and High Road Jobs Act of 2022 (Gov. Cod
 *Pilar Schiavo | Criteria: **A** · **B** · **C** · D*  
 AB 2390 amends Government Code §65913.4 — the SB 35 streamlined ministerial approval statute — to extend its by-right, n
 
+**[AB2433](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2433)** — Housing development: affordable homes bonus.  
+*David Alvarez | Criteria: **A** · **B** · **C** · D*  
+AB 2433 amends Government Code §65915 — California's Density Bonus Law — which already mandates that cities grant densit
+
 **[AB2601](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2601)** — Planning and zoning: housing development: streamlined approval and subdivisions.  
 *Alex Lee | Criteria: **A** · **B** · **C** · D*  
 AB 2601 amends multiple Government Code sections governing streamlined/ministerial housing approvals (§65852.21 urban lo
@@ -56,13 +60,9 @@ SB 1258 amends Government Code §65913.4 — the SB 35 streamlined ministerial a
 *Scott Wiener | Criteria: **A** · **B** · **C** · D*  
 SB 677 amends Government Code §65912.156, which sits within California's existing Transit-Oriented Development (TOD) str
 
-**[AB1710](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1710)** — Housing developments: ordinances, policies, and standards.  
-*Juan Carrillo | Criteria: **A** · **B** · **C** · D*  
-AB 1710 amends Government Code §65589.5 — the Housing Accountability Act — and adds §65958, both of which are core state
-
-**A — Local Control Override:** [AB1751](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1751), [AB2005](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2005), [AB2118](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2118), [AB2390](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2390), [AB2601](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2601)  
-**B — Removes Discretionary Review:** [AB1751](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1751), [AB2005](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2005), [AB2118](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2118), [AB2390](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2390), [AB2601](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2601)  
-**C — Mandates Development:** [AB1751](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1751), [AB2005](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2005), [AB2118](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2118), [AB2390](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2390), [AB2601](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2601)  
+**A — Local Control Override:** [AB1751](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1751), [AB2005](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2005), [AB2118](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2118), [AB2390](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2390), [AB2433](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2433)  
+**B — Removes Discretionary Review:** [AB1751](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1751), [AB2005](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2005), [AB2118](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2118), [AB2390](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2390), [AB2433](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2433)  
+**C — Mandates Development:** [AB1751](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1751), [AB2005](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2005), [AB2118](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2118), [AB2390](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2390), [AB2433](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2433)  
 **D — Infrastructure & Capacity Burden:** [AB1751](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1751), [SB1014](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1014)  
 
 ---
@@ -225,4 +225,4 @@ AB 1710 amends Government Code §65589.5 — the Housing Accountability Act — 
 ---
 
 *This report was automatically generated by the CSF Legislative Tracker.*  
-*Data: LegiScan (legiscan.com) | Generated: 2026-03-16T15:30:21.640079*
+*Data: LegiScan (legiscan.com) | Generated: 2026-03-16T22:28:29.478883*
