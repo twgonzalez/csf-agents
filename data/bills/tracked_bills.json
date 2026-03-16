@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-09T22:10:11.703107",
+  "last_updated": "2026-03-16T15:30:52.804217",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -3191,7 +3191,9 @@
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2433",
       "summary": "An act to amend Section 65915 of the Government Code, relating to housing.",
       "subjects": [],
-      "committees": [],
+      "committees": [
+        "Housing and Community Development"
+      ],
       "upcoming_hearings": [],
       "actions": [
         {
@@ -3203,23 +3205,27 @@
           "date": "2026-02-21",
           "description": "From printer. May be heard in committee March 23.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-03-09",
+          "description": "Referred to Coms. on H. & C.D., L. GOV. and NAT. RES.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121510",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "f1471cce1319ace857bda72c6ca35e09",
+      "legiscan_change_hash": "ac7fb0f6a6c9a146b933dffcd7dabb3b",
       "first_seen": "2026-02-23T17:38:05.409555",
       "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "moderate",
-        "reduce_discretion": "moderate",
+        "pro_housing_production": "strong",
+        "densification": "strong",
+        "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 2433 amends Government Code Section 65915 — the core Density Bonus Law statute — and is titled an \"affordable homes bonus,\" strongly suggesting it expands density bonus entitlements, streamlines approval, or broadens eligibility criteria. Amendments to §65915 typically preempt local zoning by requiring cities to grant additional density and reduced parking/development standards beyond what local plans allow, and often include ministerial or limited-discretion approval pathways for qualifying projects. The summary is too brief to confirm the exact mechanism; full bill text is needed to determine whether the expansion is substantial (strong) or incremental (moderate).",
-        "comms_brief": "AB 2433 amends California's Density Bonus Law (Gov. Code §65915) to expand affordable homes bonuses, likely requiring cities to grant additional density entitlements and reduced development standards beyond what local zoning allows.\n• Local Control Override: Expansions to §65915 are state preemptions — cities must grant bonuses regardless of local general plan or zoning designations, eroding community-driven land use decisions.\n• Removes Discretionary Review: Density Bonus Law projects typically qualify for limited or ministerial review, restricting cities' ability to apply objective design standards or require full project-level deliberation.\n• Mandates Development: Any broadening of eligibility or bonus tiers effectively forces cities to approve greater density than locally adopted plans would otherwise permit.\n• Infrastructure Burden: Bonus density granted by state mandate may exceed infrastructure capacity that local impact fee conditions were calibrated to address, shifting costs to existing residents.\nRecommended: Monitor pending full bill text — if bonus tiers or eligibility are substantially expanded, escalate to Oppose given cumulative preemption of local planning authority with no infrastructure relief mechanism.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "notes": "AB 2433 amends Government Code §65915 — California's Density Bonus Law — which already mandates that cities grant density bonuses, reduced parking, and incentive concessions to qualifying affordable housing projects by-right, overriding local zoning standards. Amendments to this section typically expand eligibility thresholds, increase bonus densities, broaden the range of mandated concessions, or restrict objective standards cities may apply, each of which would further erode local zoning authority, eliminate remaining discretionary review for qualifying projects, and compound infrastructure capacity burdens by enabling higher densities without commensurate local mitigation authority. The full bill text is not reproduced in the digest, so the precise mechanism of the \"affordable homes bonus\" expansion cannot be confirmed from the summary alone.",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-16",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
