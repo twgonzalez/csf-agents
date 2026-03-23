@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-16T22:28:29.471733",
+  "last_updated": "2026-03-23T14:24:07.365514",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -856,13 +856,13 @@
     },
     "AR83": {
       "bill_number": "AR83",
-      "session": "2025-2026",
+      "session": "2025-2026 Regular Session",
       "title": "Relative to Developmental Disabilities Awareness Month.",
       "author": "Stephanie Nguyen",
-      "status": "Introduced",
-      "status_date": "2026-02-09",
+      "status": "Passed",
+      "status_date": "2026-03-19",
       "introduced_date": "2026-02-09",
-      "last_updated": "2026-02-09",
+      "last_updated": "2026-03-19",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260HR83",
       "summary": "Relative to Developmental Disabilities Awareness Month.",
       "subjects": [],
@@ -880,6 +880,21 @@
           "date": "2026-02-17",
           "description": "Referred to Com. on RLS.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-03-09",
+          "description": "From committee: Be adopted. Ordered to Third Reading. (Ayes 10. Noes 0.) (March 9).",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-03-19",
+          "description": "Coauthors revised.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-03-19",
+          "description": "Read. Adopted.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
@@ -890,12 +905,12 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "Assembly Resolution recognizing Developmental Disabilities Awareness Month; no policy implications.",
+        "notes": "AR 83 is a symbolic Assembly Resolution designating Developmental Disabilities Awareness Month. It contains no operative provisions affecting zoning, land use, development approvals, infrastructure fees, or local planning authority of any kind.",
+        "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-02-23",
-        "status_at_analysis": "Introduced",
-        "model": "claude-sonnet-4-6 (via Claude Code) — local control risk reanalysis",
-        "comms_brief": ""
+        "analyzed_date": "2026-03-23",
+        "status_at_analysis": "Passed",
+        "model": "claude-sonnet-4-6"
       }
     },
     "AB1771": {
@@ -5862,16 +5877,18 @@
     "AB2074": {
       "bill_number": "AB2074",
       "session": "2025-2026 Regular Session",
-      "title": "Land use.",
+      "title": "Regional transit hub districts: downtown housing developments.",
       "author": "Matt Haney",
       "status": "Introduced",
       "status_date": "2026-02-18",
       "introduced_date": "2026-02-18",
       "last_updated": "2026-02-18",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2074",
-      "summary": "An act relating to land use.",
+      "summary": "An act to add Section 65913.13 to the Government Code, relating to land use, and making an appropriation therefor.",
       "subjects": [],
-      "committees": [],
+      "committees": [
+        "Housing and Community Development"
+      ],
       "upcoming_hearings": [],
       "actions": [
         {
@@ -5883,23 +5900,32 @@
           "date": "2026-02-19",
           "description": "From printer. May be heard in committee March 21.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-03-19",
+          "description": "Referred to Coms. on H. & C.D., L. GOV. and NAT. RES.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-03-19",
+          "description": "From committee chair, with author's amendments: Amend, and re-refer to Com. on H. & C.D. Read second time and amended.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2119601",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "8aa83ceddcc67a97e1ca520e9c8a7768",
+      "legiscan_change_hash": "bf79a972adecdeb1ccec994b2ad1f086",
       "first_seen": "2026-03-01T13:27:14.883007",
       "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "AB 2074 is a placeholder (\"spot\") bill introduced on 2/18/26 with no substantive content — the full text contains only a title (\"Land use.\") and a one-line act statement. No operative language, zoning preemption, discretionary review changes, development mandates, or infrastructure provisions exist at this stage. Scoring is not possible from available text; all criteria scored \"none\" pending substantive amendments.",
-        "comms_brief": "",
+        "pro_housing_production": "strong",
+        "densification": "strong",
+        "reduce_discretion": "strong",
+        "cost_to_cities": "moderate",
+        "notes": "AB 2074 adds Government Code §65913.13 to create a by-right approval pathway for downtown housing developments in regional transit hub districts, which strongly implies state preemption of local zoning and discretionary review within those geographies. The \"regional transit hub district\" framing and the bill's referral to Housing & Community Development, Local Government, and Natural Resources committees — combined with an appropriation — signals a streamlining/ministerial approval structure that overrides local land use authority, eliminates CEQA and discretionary review, and mandates housing density near transit that cities may not have chosen to permit.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-23",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
