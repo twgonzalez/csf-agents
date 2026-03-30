@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-23T14:24:07.365514",
+  "last_updated": "2026-03-30T14:32:40.988303",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -905,10 +905,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AR 83 is a symbolic Assembly Resolution designating Developmental Disabilities Awareness Month. It contains no operative provisions affecting zoning, land use, development approvals, infrastructure fees, or local planning authority of any kind.",
+        "notes": "AR 83 is a simple Assembly Resolution designating Developmental Disabilities Awareness Month. Resolutions of this type are purely symbolic and carry no legal force, impose no mandates, and have no bearing on local planning, zoning, land use authority, or infrastructure obligations.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-23",
+        "analyzed_date": "2026-03-30",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -3197,7 +3197,7 @@
     "AB2433": {
       "bill_number": "AB2433",
       "session": "2025-2026 Regular Session",
-      "title": "Housing development: affordable homes bonus.",
+      "title": "Housing development: density bonus.",
       "author": "David Alvarez",
       "status": "Introduced",
       "status_date": "2026-02-20",
@@ -3207,7 +3207,8 @@
       "summary": "An act to amend Section 65915 of the Government Code, relating to housing.",
       "subjects": [],
       "committees": [
-        "Housing and Community Development"
+        "Housing and Community Development",
+        "Local Government"
       ],
       "upcoming_hearings": [],
       "actions": [
@@ -3225,22 +3226,33 @@
           "date": "2026-03-09",
           "description": "Referred to Coms. on H. & C.D., L. GOV. and NAT. RES.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-03-25",
+          "description": "From committee: Amend, and do pass as amended and re-refer to Com. on L. GOV. (Ayes 12. Noes 0.) (March 25).",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-03-26",
+          "description": "Read second time and amended.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121510",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "ac7fb0f6a6c9a146b933dffcd7dabb3b",
+      "legiscan_change_hash": "a31e9968324d3aa8cdb50c01bd386780",
       "first_seen": "2026-02-23T17:38:05.409555",
       "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "AB 2433 amends Government Code §65915 — California's Density Bonus Law — which already mandates that cities grant density bonuses, reduced parking, and incentive concessions to qualifying affordable housing projects by-right, overriding local zoning standards. Amendments to this section typically expand eligibility thresholds, increase bonus densities, broaden the range of mandated concessions, or restrict objective standards cities may apply, each of which would further erode local zoning authority, eliminate remaining discretionary review for qualifying projects, and compound infrastructure capacity burdens by enabling higher densities without commensurate local mitigation authority. The full bill text is not reproduced in the digest, so the precise mechanism of the \"affordable homes bonus\" expansion cannot be confirmed from the summary alone.",
+        "pro_housing_production": "moderate",
+        "densification": "moderate",
+        "reduce_discretion": "moderate",
+        "cost_to_cities": "indirect",
+        "notes": "AB 2433 amends Government Code §65915 (the Density Bonus Law), which by design preempts local zoning by compelling cities to grant density increases, reduced parking, and other concessions to qualifying projects beyond what local plans would otherwise allow. Amendments to this statute typically expand the universe of eligible projects, increase bonus percentages, or broaden the menu of required concessions/incentives — each of which further limits the conditions cities may attach to approvals and reduces discretionary review scope. Infrastructure burden is indirect: more density bonus projects mean greater permitting load and potential capacity strain, but the statute does not explicitly eliminate impact fee authority.",
+        "comms_brief": "AB 2433 amends California's Density Bonus Law (Gov. Code §65915), expanding state mandates that require cities to grant density increases and development concessions beyond what local zoning would permit.\n• Local Control Override: Density Bonus Law amendments directly preempt local zoning by compelling cities to approve additional units and concessions regardless of community land use plans.\n• Removes Discretionary Review: Qualifying density bonus projects already receive ministerial-track processing; amendments that expand eligibility or concession requirements further reduce the conditions and design standards cities may lawfully impose.\n• Mandates Development: Any expansion of bonus percentages, eligible project types, or required incentives constitutes an effective state mandate that cities approve greater density than local deliberation would produce.\nRecommended: Monitor pending amended text — if amendments broaden eligibility thresholds or increase mandatory concession counts, escalate to Oppose on grounds of diminished local planning authority and no offsetting infrastructure funding mechanism.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-16",
+        "analyzed_date": "2026-03-30",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5836,6 +5848,7 @@
       "summary": "An act to amend Section 65589.5 of, and to add Section 65958 to, the Government Code, relating to housing.",
       "subjects": [],
       "committees": [
+        "Local Government",
         "Housing and Community Development"
       ],
       "upcoming_hearings": [],
@@ -5854,22 +5867,33 @@
           "date": "2026-02-23",
           "description": "Referred to Coms. on H. & C.D. and L. GOV.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-03-25",
+          "description": "Coauthors revised.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-03-25",
+          "description": "From committee: Do pass and re-refer to Com. on L. GOV. (Ayes 12. Noes 0.) (March 25). Re-referred to Com. on L. GOV.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2108284",
       "watchlist": true,
       "watchlist_note": "Staff-identified",
-      "legiscan_change_hash": "1916719aa71bdf702f50d482bea0cdee",
+      "legiscan_change_hash": "ce7dcaa2dda596ca7cc6a37891c6251c",
       "first_seen": "2026-03-01T13:27:14.882959",
       "analysis": {
         "pro_housing_production": "strong",
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 1710 amends Government Code §65589.5 — the Housing Accountability Act — and adds §65958, both of which are core state preemption mechanisms. Amendments to §65589.5 typically strengthen HAA's prohibition on local disapproval or conditioning of compliant housing projects, removing discretionary grounds cities may invoke. Adding §65958 likely layers additional mandates or streamlining requirements on local ordinances, policies, and standards, further limiting the conditions cities can impose on housing developments. Together these provisions represent explicit state preemption of local land use authority, elimination or severe restriction of discretionary review for qualifying projects, and effective mandates on cities to approve housing beyond what local deliberation would produce. Infrastructure review authority is also likely constrained to the extent cities cannot condition approvals on capacity or improvement requirements.",
+        "notes": "AB 1710 amends Section 65589.5 (the Housing Accountability Act) and adds Section 65958, which together appear to further restrict cities' ability to deny or condition housing projects and likely expand ministerial/by-right approval pathways, directly preempting local zoning discretion and reducing public review. The bill's unanimous committee passage and dual referral to Housing & Community Development and Local Government committees signals substantial local preemption provisions, and the HAA amendment mechanism typically strips cities of the ability to apply local standards that aren't state-defined \"objective\" criteria, while the new Section 65958 likely adds another streamlining or approval mandate layer.",
+        "comms_brief": "AB 1710 amends the Housing Accountability Act (Gov. Code §65589.5) and adds a new §65958 to further restrict cities' authority to deny, condition, or apply local standards to housing projects, likely extending ministerial or streamlined approval mandates.\n• HAA amendments typically prohibit cities from applying subjective or locally-adopted standards, forcing approval of projects that conflict with community character goals\n• New Section 65958 likely creates an additional by-right or streamlined approval pathway, removing discretionary review, public hearings, or design review for qualifying projects\n• Expanded HAA liability exposure increases legal risk for cities that attempt to apply local conditions, effectively chilling legitimate local planning decisions\n• Unfunded compliance obligations — tracking HAA findings, defending approval denials — shift administrative and legal costs onto city budgets without state offset\nRecommended: Oppose — HAA amendments historically strip cities of meaningful review authority, and the addition of §65958 suggests a new mandate layer with no local mitigation mechanism; full bill text should be reviewed to confirm scope.",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-03-30",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5889,7 +5913,13 @@
       "committees": [
         "Housing and Community Development"
       ],
-      "upcoming_hearings": [],
+      "upcoming_hearings": [
+        {
+          "date": "2026-04-08",
+          "committee": "Assembly Housing And Community Development Hearing",
+          "location": "State Capitol, Room 126"
+        }
+      ],
       "actions": [
         {
           "date": "2026-02-18",
@@ -5910,22 +5940,28 @@
           "date": "2026-03-19",
           "description": "From committee chair, with author's amendments: Amend, and re-refer to Com. on H. & C.D. Read second time and amended.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-03-23",
+          "description": "Re-referred to Com. on H. & C.D.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2119601",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "bf79a972adecdeb1ccec994b2ad1f086",
+      "legiscan_change_hash": "507e0475eca22b6dd1d80feb4aec9424",
       "first_seen": "2026-03-01T13:27:14.883007",
       "analysis": {
         "pro_housing_production": "strong",
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 2074 adds Government Code §65913.13 to create a by-right approval pathway for downtown housing developments in regional transit hub districts, which strongly implies state preemption of local zoning and discretionary review within those geographies. The \"regional transit hub district\" framing and the bill's referral to Housing & Community Development, Local Government, and Natural Resources committees — combined with an appropriation — signals a streamlining/ministerial approval structure that overrides local land use authority, eliminates CEQA and discretionary review, and mandates housing density near transit that cities may not have chosen to permit.",
+        "notes": "AB 2074 adds Government Code §65913.13 to create a ministerial by-right approval pathway for downtown housing developments in regional transit hub districts, explicitly preempting local zoning and discretionary review authority. The bill's title and structure indicate state-imposed development standards for qualifying transit-adjacent sites, removing local design review, CEQA discretion, and conditional approval authority; the appropriation element suggests unfunded compliance obligations or state-directed infrastructure investment that cities cannot fully condition on developer contributions.",
+        "comms_brief": "AB 2074 creates a state-mandated ministerial approval pathway for housing developments in regional transit hub districts, adding Government Code §65913.13 to explicitly override local zoning, discretionary review, and site-specific planning authority in designated downtown transit zones.\n• Explicit state preemption of local zoning: cities in qualifying transit hub districts lose authority to apply locally adopted land use standards to covered projects\n• Ministerial by-right approval eliminates CEQA review, design review, public hearings, and conditional use permits for qualifying downtown housing developments\n• Mandatory approval of qualifying projects forces cities to permit density and development volumes beyond what local planning processes would choose\n• Appropriation and state-directed program structure creates unfunded compliance burdens and limits cities' ability to require developer-funded infrastructure improvements commensurate with project impacts\nRecommended: Oppose — the bill strips cities of all meaningful discretion over high-impact downtown housing projects without providing any mechanism to ensure infrastructure capacity, maintain design standards, or hold developers accountable to community-adopted plans",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-23",
+        "analyzed_date": "2026-03-30",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5933,14 +5969,14 @@
     "SB908": {
       "bill_number": "SB908",
       "session": "2025-2026 Regular Session",
-      "title": "Housing development: transit-oriented development.",
+      "title": "Residential windows: retrofitting: California Energy Code compliance.",
       "author": "Scott Wiener",
       "status": "Introduced",
       "status_date": "2026-01-22",
       "introduced_date": "2026-01-22",
       "last_updated": "2026-01-22",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB908",
-      "summary": "An act relating to land use.",
+      "summary": "An act to add Section 4754 to the Civil Code, and to add Section 65850.73 to the Government Code, relating to windows.",
       "subjects": [],
       "committees": [
         "Rules"
@@ -5961,22 +5997,28 @@
           "date": "2026-02-11",
           "description": "Referred to Com. on RLS.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-03-23",
+          "description": "From committee with author's amendments. Read second time and amended. Re-referred to Com. on RLS.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2091400",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "b25546a61b3b9a688bbfe7895acd0bb5",
+      "legiscan_change_hash": "c62ea4836039ee268a97041fadbfeff9",
       "first_seen": "2026-03-01T13:27:14.883058",
       "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "SB 908 is a transit-oriented development bill by Sen. Wiener, who has authored multiple prior TOD bills (e.g., SB 827, SB 50, SB 1227) that explicitly preempt local zoning near transit corridors, mandate ministerial by-right approvals, eliminate CEQA review, and restrict cities' ability to impose development conditions. Based on the bill's title, author pattern, and session context, this bill almost certainly follows that same structural approach — overriding local zoning near transit stations, removing discretionary review, and mandating density — though full text is needed to confirm precise scope and thresholds. The infrastructure/capacity burden is scored moderate pending confirmation of whether impact fee or improvement conditions are restricted.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "pro_housing_production": "moderate",
+        "densification": "moderate",
+        "reduce_discretion": "indirect",
+        "cost_to_cities": "indirect",
+        "notes": "The bill adds Government Code §65850.73, which suggests a land use preemption tied to residential window retrofitting — likely prohibiting local governments from imposing zoning or permitting barriers that would prevent window replacements compliant with the California Energy Code. This creates a moderate local control override by limiting cities' ability to condition or deny window retrofit permits based on local design standards or discretionary review, and removes some discretionary review authority over qualifying retrofit projects. The infrastructure and mandate risks are indirect, as the bill addresses retrofits rather than new density or development volumes.",
+        "comms_brief": "SB 908 adds Government Code §65850.73 to limit local governments' authority to block or condition residential window retrofits that meet California Energy Code standards, effectively preempting local design and permitting discretion over qualifying projects.\n• Adds a Government Code land use section that could prohibit cities from applying local design review, historic district standards, or objective design criteria to window replacement projects\n• Removes or limits discretionary review authority over retrofit projects by mandating compliance with state energy code as a sufficient approval basis, bypassing local conditions\n• Creates a state-preemption framework that, depending on final bill language, could be expanded by courts or future legislation to cover a broader class of building modifications\nRecommended: Monitor — bill text is still in amendment and full operative language is not yet available; local control risk is real but scope depends heavily on final statutory language in §65850.73 and §4754.",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-03-30",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
