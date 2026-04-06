@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-30T14:32:40.988303",
+  "last_updated": "2026-04-06T14:19:54.936316",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -1104,7 +1104,13 @@
         "Local Government",
         "Rules"
       ],
-      "upcoming_hearings": [],
+      "upcoming_hearings": [
+        {
+          "date": "2026-04-15",
+          "committee": "Senate Local Government Hearing",
+          "location": "1021 O Street, Room 2200"
+        }
+      ],
       "actions": [
         {
           "date": "2026-02-10",
@@ -1120,23 +1126,27 @@
           "date": "2026-02-18",
           "description": "Referred to Coms. on L. GOV. and HOUSING.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-02",
+          "description": "Set for hearing April 15.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2113721",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "57023f8e241e1f93aadded0881910186",
+      "legiscan_change_hash": "2e42331f3e300f1d5a7cef07ac79d063",
       "first_seen": "2026-02-21T14:51:24.210888",
       "analysis": {
-        "pro_housing_production": "strong",
+        "pro_housing_production": "moderate",
         "densification": "moderate",
         "reduce_discretion": "moderate",
         "cost_to_cities": "strong",
-        "notes": "The bill's title — \"Development projects: onsite and offsite improvements\" — and its addition of new Government Code sections (65913.3.2 and 65941.3) strongly suggest it limits the conditions cities may impose on developers regarding on- and off-site infrastructure improvements (e.g., road dedications, utility extensions, frontage work). This directly restricts local impact fee and improvement-condition authority, a hallmark local control risk. The pairing of the new sections with existing housing streamlining statutes (Ch. 65913 series) implies ministerial or by-right approval elements that reduce discretionary review and partially preempt local zoning standards for qualifying projects.",
-        "comms_brief": "SB 1014 adds two new Government Code sections that appear to restrict the onsite and offsite improvement conditions cities may impose on development projects, limiting local infrastructure requirements and reducing discretionary review authority for qualifying projects.\n• Restricts cities' ability to require developer-funded offsite improvements (roads, utilities, frontage) as a condition of approval, shifting capacity costs to existing residents and local budgets.\n• New sections in the 65913 streamlining series imply by-right or ministerial approval pathways that reduce or eliminate discretionary review, design review, and public hearing rights for covered projects.\n• Partial preemption of local zoning and land use standards for qualifying developments, overriding community-determined conditions without a local opt-in.\n• Infrastructure cost burden falls on existing taxpayers when cities cannot require developers to fund capacity improvements triggered by new projects.\nRecommended: Oppose — the bill's placement in the housing streamlining code and its focus on limiting improvement conditions removes both local discretion and infrastructure cost recovery authority, with no apparent replacement mechanism for lost funding or review rights.",
+        "notes": "SB 1014's title — \"Development projects: onsite and offsite improvements\" — directly targets the conditions cities impose on developers for infrastructure improvements (street dedications, utility extensions, frontage upgrades, etc.), a core local revenue and capacity-management tool. Bills adding new Government Code sections under this framing typically limit or standardize the nexus/rough-proportionality conditions cities may require, restrict the scope of offsite improvement obligations, and/or mandate ministerial-style processing that forecloses discretionary conditioning. The infrastructure burden risk is strong because restricting improvement conditions shifts capacity costs to existing residents; local control override and discretionary review risks are moderate because the bill likely constrains the conditions cities may attach rather than fully eliminating review.",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-01",
+        "analyzed_date": "2026-04-06",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
