@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-13T14:34:00.133106",
+  "last_updated": "2026-04-20T14:35:44.711745",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -1101,14 +1101,15 @@
       "summary": "An act to add Section 65941.3 to the Government Code, relating to development projects.",
       "subjects": [],
       "committees": [
-        "Local Government",
-        "Rules"
+        "Housing",
+        "Rules",
+        "Local Government"
       ],
       "upcoming_hearings": [
         {
-          "date": "2026-04-15",
-          "committee": "Senate Local Government Hearing",
-          "location": "1021 O Street, Room 2200"
+          "date": "2026-04-21",
+          "committee": "Senate Housing Hearing",
+          "location": "1021 O Street, Room 1200"
         }
       ],
       "actions": [
@@ -1136,23 +1137,33 @@
           "date": "2026-04-08",
           "description": "From committee with author's amendments. Read second time and amended. Re-referred to Com. on L. GOV.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-15",
+          "description": "Set for hearing April 21 in HOUSING pending receipt.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-15",
+          "description": "From committee: Do pass and re-refer to Com. on HOUSING. (Ayes 5. Noes 2.) (April 15). Re-referred to Com. on HOUSING.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2113721",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "2fcd00b4a8f909fb9dcbc4ffaf82a1b8",
+      "legiscan_change_hash": "6b915e0256f4f6076c13898359f3da09",
       "first_seen": "2026-02-21T14:51:24.210888",
       "analysis": {
-        "pro_housing_production": "none",
+        "pro_housing_production": "moderate",
         "densification": "none",
         "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "SB 1014 adds Government Code Section 65941.3 (and 65913.3.2 per the amended title) to require cities and counties to provide applicants with a preliminary estimate of required onsite and offsite improvements for development projects. This creates an administrative obligation for local agencies to generate and provide early-stage improvement estimates, which imposes a procedural compliance burden without directly restricting fee authority, zoning discretion, or development mandates. The indirect infrastructure/capacity burden score reflects the unfunded staffing and process costs of producing these estimates for all development applicants.",
-        "comms_brief": "",
+        "cost_to_cities": "moderate",
+        "notes": "SB 1014 adds Government Code §65941.3 (and §65913.3.2 per amended title) requiring cities/counties to provide a preliminary estimate of required onsite and offsite improvements to development applicants early in the process. While framed as a transparency measure, it creates a compliance obligation for local agencies to produce formal improvement estimates on demand, which may constrain cities' ability to condition approvals on improvements identified later in review, and could expose local decisions to legal challenge if final conditions differ materially from preliminary estimates — partially limiting infrastructure conditioning authority. The unfunded staffing and administrative burden of generating these estimates across all development applications also represents a moderate capacity cost without state reimbursement.",
+        "comms_brief": "SB 1014 requires local agencies to provide applicants with a preliminary estimate of required onsite and offsite improvements early in the development review process, creating new procedural obligations and potentially constraining how and when cities may impose improvement conditions.\n• Preliminary estimates could be used by applicants to legally challenge later-imposed conditions that exceed the estimate, effectively capping cities' infrastructure conditioning authority at the preliminary stage.\n• The unfunded mandate to generate formal improvement estimates for every qualifying development application imposes new staffing and administrative costs on city planning and public works departments with no identified state reimbursement mechanism.\n• Formalizing improvement estimates early in the process may limit cities' flexibility to respond to project changes, phasing, or new infrastructure data that emerges during full discretionary review.\nRecommended: Monitor with amendments — the transparency goal is reasonable, but language should explicitly preserve cities' full authority to impose conditions at final approval and provide state reimbursement for compliance costs.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-04-13",
+        "analyzed_date": "2026-04-20",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3223,22 +3234,18 @@
       "summary": "An act to amend Section 65915 of the Government Code, relating to housing.",
       "subjects": [],
       "committees": [
-        "Local Government",
-        "Housing and Community Development"
+        "Natural Resources",
+        "Housing and Community Development",
+        "Local Government"
       ],
       "upcoming_hearings": [
         {
-          "date": "2026-04-15",
-          "committee": "Assembly Local Government Hearing",
-          "location": "State Capitol, Room 447"
+          "date": "2026-04-20",
+          "committee": "Assembly Natural Resources Hearing",
+          "location": "State Capitol, Room 437"
         }
       ],
       "actions": [
-        {
-          "date": "2026-02-20",
-          "description": "Read first time. To print.",
-          "chamber": "A"
-        },
         {
           "date": "2026-02-21",
           "description": "From printer. May be heard in committee March 23.",
@@ -3273,23 +3280,38 @@
           "date": "2026-04-08",
           "description": "Re-referred to Com. on L. GOV.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-04-13",
+          "description": "Assembly Rule 56 suspended.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-13",
+          "description": "(Pending re-refer to Com. on NAT. RES.)",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-16",
+          "description": "From committee: Do pass and re-refer to Com. on NAT. RES. (Ayes 10. Noes 0.) (April 15). Re-referred to Com. on NAT. RES.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121510",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "e92bbac8069bbbea06422d792dd19da6",
+      "legiscan_change_hash": "50a3c17597da62558a970c5b917a13c1",
       "first_seen": "2026-02-23T17:38:05.409555",
       "analysis": {
         "pro_housing_production": "moderate",
         "densification": "moderate",
         "reduce_discretion": "moderate",
         "cost_to_cities": "indirect",
-        "notes": "AB 2433 amends Government Code §65915 (the Density Bonus Law), which by design preempts local zoning by requiring cities to grant density bonuses and incentives beyond what local plans permit, further expanding state override of local density and design standards. Amendments to the DBL typically broaden the class of qualifying projects, increase bonus percentages, or restrict the conditions cities may impose — all of which chip away at local discretion over the scale and character of residential development. The infrastructure burden is indirect: more density-bonus projects approved ministerially means incremental capacity pressure without explicit fee elimination.",
-        "comms_brief": "AB 2433 expands the state Density Bonus Law (Gov. Code §65915), further restricting cities' ability to limit density and apply local development standards to qualifying residential projects.\n• Preempts local zoning: cities must grant density increases and incentives regardless of what local general plans or zoning codes permit, reducing community control over neighborhood character and scale.\n• Limits discretionary review conditions: DBL expansions typically narrow the objective standards and conditions cities may apply to bonus projects, reducing design review and planning authority.\n• Effectively mandates higher-density approvals: qualifying projects gain entitlements that override local preference on unit counts, height, and setbacks, functioning as a de facto development mandate.\n• Indirect infrastructure burden: ministerially approved higher-density projects may strain water, sewer, and traffic capacity without restoring cities' authority to require proportionate developer-funded improvements.\nRecommended: Oppose unless amended — bill compounds existing DBL preemptions without restoring any local planning authority or infrastructure mitigation tools.",
+        "notes": "AB 2433 amends Government Code Section 65915, California's Density Bonus Law, which by design overrides local zoning by requiring cities to grant density increases, reduced parking, and other concessions/incentives to qualifying projects — stripping local discretion over project review and approval conditions. Amendments to DBL expansions typically broaden eligibility thresholds or enhance the mandated bonuses, further eroding city authority to apply local standards and resulting in indirect infrastructure capacity pressure from additional units cities cannot condition or refuse.",
+        "comms_brief": "AB 2433 expands California's Density Bonus Law (Gov. Code §65915), requiring cities to grant greater density increases, additional concessions, and reduced parking to a broader set of qualifying projects, overriding local zoning and limiting the conditions cities may impose.\n• Mandatory state override of local zoning: cities must approve density bonuses regardless of local general plan or zoning designations, with no local opt-out.\n• Strips discretionary review: DBL approvals are effectively ministerial — cities cannot impose subjective design, neighborhood compatibility, or planning conditions on qualifying projects.\n• Forces density beyond local choice: any expansion of DBL eligibility or bonus tiers compels cities to approve higher-density projects than the community has chosen through its own planning process.\n• Indirect infrastructure burden: increased unit counts approved ministerially may exceed existing utility, traffic, or school capacity without cities retaining authority to require commensurate improvements.\nRecommended: Oppose — DBL amendments consistently reduce the conditions cities may apply and expand the universe of projects that bypass local deliberation, with no offsetting local authority restoration.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-04-13",
+        "analyzed_date": "2026-04-20",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5470,16 +5492,16 @@
       "session": "2025-2026 Regular Session",
       "title": "Planning and zoning: annual report.",
       "author": "Housing",
-      "status": "Introduced",
-      "status_date": "2026-02-24",
+      "status": "Engrossed",
+      "status_date": "2026-04-16",
       "introduced_date": "2026-02-24",
-      "last_updated": "2026-02-24",
+      "last_updated": "2026-04-16",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1426",
       "summary": "An act to amend Sections 54222.3.1, 54230, 65400, 65583.1, 65852.21, 65852.24, 66411.7 of, and to repeal Sections 65400.1 and 65625 of, the Government Code, relating to land use, and declaring the urgency thereof, to take effect immediately.",
       "subjects": [],
       "committees": [
-        "Housing",
-        "Rules"
+        "Rules",
+        "Housing"
       ],
       "upcoming_hearings": [],
       "actions": [
@@ -5497,20 +5519,46 @@
           "date": "2026-03-04",
           "description": "Referred to Com. on HOUSING.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-03-17",
+          "description": "Set for hearing April 7.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-08",
+          "description": "From committee: Do pass. Ordered to consent calendar. (Ayes 10. Noes 0.) (April 7).",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-09",
+          "description": "Read second time. Ordered to consent calendar.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-16",
+          "description": "Read third time. Urgency clause adopted. Passed. (Ayes 38. Noes 0.) Ordered to the Assembly.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-16",
+          "description": "In Assembly. Read first time. Held at Desk.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2123626",
       "first_seen": "2026-02-25T15:05:23.114521",
       "analysis": {
-        "pro_housing_production": "moderate",
-        "densification": "indirect",
-        "reduce_discretion": "indirect",
-        "cost_to_cities": "moderate",
-        "notes": "SB 1426 amends multiple Government Code sections governing local planning and zoning annual reports (§65400), surplus land procedures (§§54222.3.1, 54230), ADU law (§§65852.21, 65852.24), and subdivision mapping (§66411.7), while repealing two reporting sections (§§65400.1, 65625). The breadth of amendments — touching ADU mandates, surplus land disposition, and housing element compliance reporting — creates moderate local control risk: amended reporting requirements under §65400 often carry compliance enforcement teeth, and changes to ADU sections (§§65852.21, 65852.24) and lot-split rules (§66411.7) may tighten state-imposed ministerial approval obligations. However, the summary is insufficiently detailed to confirm the precise direction of each amendment, and full bill text is needed to score with confidence.",
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "indirect",
+        "notes": "SB 1426 is a technical cleanup bill amending annual planning and zoning reporting requirements under Government Code §65400 and related sections, and repealing two superseded reporting statutes (§65400.1 and §65625). It does not preempt local zoning, eliminate discretionary review, mandate density, or restrict fee authority. The only marginal risk is a minor administrative compliance burden: cities and counties must ensure their annual Housing Element progress reports conform to updated reporting fields or formats, but this is a standard reporting obligation with no enforcement mechanism tied to development approvals.",
+        "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-09",
-        "status_at_analysis": "Introduced",
+        "analyzed_date": "2026-04-20",
+        "status_at_analysis": "Engrossed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -5885,8 +5933,9 @@
       "summary": "An act to amend Section 65589.5 of, and to add Section 65958 to, the Government Code, relating to housing.",
       "subjects": [],
       "committees": [
-        "Local Government",
-        "Housing and Community Development"
+        "Appropriations",
+        "Housing and Community Development",
+        "Local Government"
       ],
       "upcoming_hearings": [],
       "actions": [
@@ -5914,23 +5963,27 @@
           "date": "2026-03-25",
           "description": "From committee: Do pass and re-refer to Com. on L. GOV. (Ayes 12. Noes 0.) (March 25). Re-referred to Com. on L. GOV.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-04-16",
+          "description": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 10. Noes 0.) (April 15). Re-referred to Com. on APPR.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2108284",
       "watchlist": true,
       "watchlist_note": "Staff-identified",
-      "legiscan_change_hash": "ce7dcaa2dda596ca7cc6a37891c6251c",
+      "legiscan_change_hash": "cbe987742ad4031fd5c70269e51c2205",
       "first_seen": "2026-03-01T13:27:14.882959",
       "analysis": {
         "pro_housing_production": "strong",
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 1710 amends Section 65589.5 (the Housing Accountability Act) and adds Section 65958, which together appear to further restrict cities' ability to deny or condition housing projects and likely expand ministerial/by-right approval pathways, directly preempting local zoning discretion and reducing public review. The bill's unanimous committee passage and dual referral to Housing & Community Development and Local Government committees signals substantial local preemption provisions, and the HAA amendment mechanism typically strips cities of the ability to apply local standards that aren't state-defined \"objective\" criteria, while the new Section 65958 likely adds another streamlining or approval mandate layer.",
-        "comms_brief": "AB 1710 amends the Housing Accountability Act (Gov. Code §65589.5) and adds a new §65958 to further restrict cities' authority to deny, condition, or apply local standards to housing projects, likely extending ministerial or streamlined approval mandates.\n• HAA amendments typically prohibit cities from applying subjective or locally-adopted standards, forcing approval of projects that conflict with community character goals\n• New Section 65958 likely creates an additional by-right or streamlined approval pathway, removing discretionary review, public hearings, or design review for qualifying projects\n• Expanded HAA liability exposure increases legal risk for cities that attempt to apply local conditions, effectively chilling legitimate local planning decisions\n• Unfunded compliance obligations — tracking HAA findings, defending approval denials — shift administrative and legal costs onto city budgets without state offset\nRecommended: Oppose — HAA amendments historically strip cities of meaningful review authority, and the addition of §65958 suggests a new mandate layer with no local mitigation mechanism; full bill text should be reviewed to confirm scope.",
+        "notes": "AB 1710 amends Government Code Section 65589.5 (the Housing Accountability Act) and adds Section 65958, which together strengthen state preemption of local ordinances, policies, and standards that would restrict housing development — directly overriding local zoning authority and eliminating or severely limiting discretionary review for qualifying projects. The new Section 65958 likely creates a by-right or ministerial approval pathway, removing CEQA, design review, and conditional use processes for covered housing projects, while the HAA amendment tightens the \"no net effect\" standard cities must meet to deny or reduce projects, adding compliance and legal exposure costs to local governments.",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-30",
+        "analyzed_date": "2026-04-20",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -5948,22 +6001,18 @@
       "summary": "An act to add Section 65913.13 to the Government Code, relating to land use, and making an appropriation therefor.",
       "subjects": [],
       "committees": [
+        "Natural Resources",
         "Housing and Community Development",
         "Local Government"
       ],
       "upcoming_hearings": [
         {
-          "date": "2026-04-15",
-          "committee": "Assembly Local Government Hearing",
-          "location": "State Capitol, Room 447"
+          "date": "2026-04-20",
+          "committee": "Assembly Natural Resources Hearing",
+          "location": "State Capitol, Room 437"
         }
       ],
       "actions": [
-        {
-          "date": "2026-02-18",
-          "description": "Read first time. To print.",
-          "chamber": "A"
-        },
         {
           "date": "2026-02-19",
           "description": "From printer. May be heard in committee March 21.",
@@ -5993,23 +6042,42 @@
           "date": "2026-04-09",
           "description": "Read second time and amended.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-04-13",
+          "description": "Re-referred to Com. on L. GOV.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-13",
+          "description": "Assembly Rule 56 suspended.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-13",
+          "description": "(Pending re-refer to Com. on NAT. RES.)",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-16",
+          "description": "From committee: Do pass and re-refer to Com. on NAT. RES. (Ayes 8. Noes 1.) (April 15). Re-referred to Com. on NAT. RES.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2119601",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "ae7445779b47b5febd62d216c28bd4e1",
+      "legiscan_change_hash": "ea5cb1ae1f7029cb56149097e5c70c47",
       "first_seen": "2026-03-01T13:27:14.883007",
       "analysis": {
         "pro_housing_production": "strong",
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 2074 creates a new Section 65913.13 to the Government Code establishing a streamlined, likely ministerial approval pathway for downtown housing developments within regional transit hub districts, directly preempting local zoning and discretionary review authority in those areas. The bill's framing as a transit-hub overlay with state-defined eligibility criteria and appropriation language strongly suggests it mandates approvals and strips CEQA/design review discretion in qualifying zones, imposing unfunded compliance and infrastructure absorption burdens on host jurisdictions without commensurate local mitigation authority.",
-        "comms_brief": "AB 2074 creates a new state-mandated approval pathway for downtown housing developments in regional transit hub districts, overriding local zoning, eliminating discretionary review, and compelling cities to approve qualifying projects regardless of community planning decisions.\n• Explicit state preemption of local zoning and land use authority within newly defined transit hub district boundaries cities did not draw and cannot opt out of\n• Ministerial or streamlined approval language removes city discretion over design review, CEQA applicability, and conditional use standards for covered projects\n• Cities are effectively forced to approve housing density and development volumes beyond locally adopted general plan and specific plan designations\n• Unfunded compliance burden: cities must absorb increased permitting load, infrastructure demand, and potential service capacity strain with no guaranteed local mitigation authority\nRecommended: Oppose — bill strips local planning authority across multiple dimensions with no meaningful opt-out or local mitigation mechanism, and the appropriation does not flow to impacted cities to offset infrastructure or capacity costs.",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-04-13",
+        "notes": "AB 2074 creates a new Section 65913.13 targeting \"regional transit hub districts\" for downtown housing developments, a structure that typically imposes ministerial/by-right approval mandates overriding local zoning and discretionary review for qualifying projects near transit. The bill's title and Government Code placement strongly indicate state preemption of local land use authority in designated transit hub areas, elimination of discretionary review (CEQA, design review, hearings) for qualifying projects, and an explicit mandate to approve higher-density downtown housing beyond local preference. The infrastructure burden is moderate: ministerial approvals in high-density transit contexts typically prevent cities from conditioning projects on utility upgrades or frontage improvements, shifting capacity costs to existing residents — though the appropriation suggests some state funding offset. Full bill text would confirm precise preemption and fee restriction language.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-04-20",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -6027,14 +6095,15 @@
       "summary": "An act to add Section 4754 to the Civil Code, and to add Section 65850.73 to the Government Code, relating to windows.",
       "subjects": [],
       "committees": [
-        "Local Government",
-        "Rules"
+        "Housing",
+        "Rules",
+        "Local Government"
       ],
       "upcoming_hearings": [
         {
-          "date": "2026-04-15",
-          "committee": "Senate Local Government Hearing",
-          "location": "1021 O Street, Room 2200"
+          "date": "2026-04-21",
+          "committee": "Senate Housing Hearing",
+          "location": "1021 O Street, Room 1200"
         }
       ],
       "actions": [
@@ -6072,23 +6141,33 @@
           "date": "2026-04-09",
           "description": "Set for hearing April 15.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-15",
+          "description": "Set for hearing April 21 in HOUSING pending receipt.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-15",
+          "description": "From committee: Do pass and re-refer to Com. on HOUSING. (Ayes 5. Noes 1.) (April 15). Re-referred to Com. on HOUSING.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2091400",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "6f8dc681c26233cacb0f3444f7152cf9",
+      "legiscan_change_hash": "f5c0bd48a457a9b6d09da39dd2c4e545",
       "first_seen": "2026-03-01T13:27:14.883058",
       "analysis": {
         "pro_housing_production": "moderate",
         "densification": "moderate",
-        "reduce_discretion": "indirect",
+        "reduce_discretion": "none",
         "cost_to_cities": "moderate",
-        "notes": "SB 908 adds Gov. Code §65850.73, which almost certainly limits local authority to deny or condition residential window retrofit projects that meet California Energy Code standards — effectively preempting local design review or permitting conditions that would block compliant window replacements. The Civil Code addition (§4754) likely restricts HOA or local rules from prohibiting energy-code-compliant window retrofits, and the Gov. Code section likely requires ministerial or streamlined approval, removing local discretion over qualifying retrofit projects.",
-        "comms_brief": "SB 908 adds both a Civil Code and Government Code provision to override local and HOA rules that would block or condition residential window retrofits meeting California Energy Code standards, removing local discretion over qualifying projects.\n• Government Code §65850.73 likely mandates ministerial or streamlined approval for compliant window retrofits, stripping cities of design review and conditional permitting authority over these projects.\n• Civil Code §4754 preempts HOA and local rules that restrict energy-code-compliant window replacements, further eroding community-level design and aesthetic standards.\n• Local governments lose the ability to impose conditions (materials, appearance, historic compatibility) on window retrofits once state energy compliance is certified, shifting authority entirely to Sacramento.\nRecommended: Monitor — bill text and full amendments not yet confirmed; risk depends heavily on scope of §65850.73 preemption language and whether any local objective standards are preserved.",
+        "notes": "SB 908 adds Civil Code Section 4754 and Government Code Section 65850.73, which together appear to restrict HOAs and local governments from blocking or conditioning window retrofits that comply with the California Energy Code — limiting local design review or HOA approval authority over qualifying window replacements. The Government Code addition signals a preemptive limitation on local conditions or standards that exceed state energy code requirements, creating a moderate infrastructure/compliance burden on cities to administer a new ministerial or constrained review pathway for window permits.",
+        "comms_brief": "SB 908 limits the ability of local governments (and HOAs) to block or condition window retrofits that meet California Energy Code standards, by adding preemptive provisions to both the Civil Code and Government Code.\n• Government Code Section 65850.73 likely restricts cities from applying local design standards or conditions beyond state energy code compliance for qualifying window replacements, eroding local design review authority.\n• Cities with historic districts, specific plan areas, or adopted design guidelines could lose the ability to enforce appearance and material standards on residential window retrofits.\n• Unfunded administrative burden is created as cities must implement and enforce a new constrained or ministerial review pathway for window permits without state funding.\nRecommended: Monitor with amendments request — seek explicit carve-out for historic preservation districts and locally adopted objective design standards.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-04-13",
+        "analyzed_date": "2026-04-20",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
