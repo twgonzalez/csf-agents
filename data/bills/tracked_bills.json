@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-04-20T14:35:44.711745",
+  "last_updated": "2026-05-04T14:45:09.209184",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
-  "total_bills": 132,
+  "total_bills": 135,
   "bills": {
     "SB1076": {
       "bill_number": "SB1076",
@@ -1101,17 +1101,12 @@
       "summary": "An act to add Section 65941.3 to the Government Code, relating to development projects.",
       "subjects": [],
       "committees": [
-        "Housing",
+        "Appropriations",
         "Rules",
-        "Local Government"
+        "Local Government",
+        "Housing"
       ],
-      "upcoming_hearings": [
-        {
-          "date": "2026-04-21",
-          "committee": "Senate Housing Hearing",
-          "location": "1021 O Street, Room 1200"
-        }
-      ],
+      "upcoming_hearings": [],
       "actions": [
         {
           "date": "2026-02-10",
@@ -1147,23 +1142,33 @@
           "date": "2026-04-15",
           "description": "From committee: Do pass and re-refer to Com. on HOUSING. (Ayes 5. Noes 2.) (April 15). Re-referred to Com. on HOUSING.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-22",
+          "description": "From committee: Do pass as amended and re-refer to Com. on APPR. (Ayes 8. Noes 2.) (April 21).",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-23",
+          "description": "Read second time and amended. Re-referred to Com. on APPR.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2113721",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "6b915e0256f4f6076c13898359f3da09",
+      "legiscan_change_hash": "24b1c0d32a416d74f512339f02dc45f4",
       "first_seen": "2026-02-21T14:51:24.210888",
       "analysis": {
-        "pro_housing_production": "moderate",
+        "pro_housing_production": "none",
         "densification": "none",
         "reduce_discretion": "none",
-        "cost_to_cities": "moderate",
-        "notes": "SB 1014 adds Government Code §65941.3 (and §65913.3.2 per amended title) requiring cities/counties to provide a preliminary estimate of required onsite and offsite improvements to development applicants early in the process. While framed as a transparency measure, it creates a compliance obligation for local agencies to produce formal improvement estimates on demand, which may constrain cities' ability to condition approvals on improvements identified later in review, and could expose local decisions to legal challenge if final conditions differ materially from preliminary estimates — partially limiting infrastructure conditioning authority. The unfunded staffing and administrative burden of generating these estimates across all development applications also represents a moderate capacity cost without state reimbursement.",
-        "comms_brief": "SB 1014 requires local agencies to provide applicants with a preliminary estimate of required onsite and offsite improvements early in the development review process, creating new procedural obligations and potentially constraining how and when cities may impose improvement conditions.\n• Preliminary estimates could be used by applicants to legally challenge later-imposed conditions that exceed the estimate, effectively capping cities' infrastructure conditioning authority at the preliminary stage.\n• The unfunded mandate to generate formal improvement estimates for every qualifying development application imposes new staffing and administrative costs on city planning and public works departments with no identified state reimbursement mechanism.\n• Formalizing improvement estimates early in the process may limit cities' flexibility to respond to project changes, phasing, or new infrastructure data that emerges during full discretionary review.\nRecommended: Monitor with amendments — the transparency goal is reasonable, but language should explicitly preserve cities' full authority to impose conditions at final approval and provide state reimbursement for compliance costs.",
+        "cost_to_cities": "indirect",
+        "notes": "SB 1014 adds Government Code Section 65941.3 to require cities and counties to provide applicants with a preliminary estimate of required onsite and offsite improvements early in the development review process. This creates an administrative compliance obligation — cities must produce improvement estimates on demand — but does not explicitly restrict fee authority, eliminate discretionary review, or mandate project approvals. The indirect infrastructure burden score reflects potential staffing and process costs to prepare these estimates, which are unfunded by the state.",
+        "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-04-20",
+        "analyzed_date": "2026-05-04",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -3234,33 +3239,19 @@
       "summary": "An act to amend Section 65915 of the Government Code, relating to housing.",
       "subjects": [],
       "committees": [
-        "Natural Resources",
+        "Appropriations",
         "Housing and Community Development",
-        "Local Government"
+        "Local Government",
+        "Natural Resources"
       ],
       "upcoming_hearings": [
         {
-          "date": "2026-04-20",
-          "committee": "Assembly Natural Resources Hearing",
-          "location": "State Capitol, Room 437"
+          "date": "2026-05-06",
+          "committee": "Assembly Appropriations Hearing",
+          "location": "1021 O Street, Room 1100"
         }
       ],
       "actions": [
-        {
-          "date": "2026-02-21",
-          "description": "From printer. May be heard in committee March 23.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-03-09",
-          "description": "Referred to Coms. on H. & C.D., L. GOV. and NAT. RES.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-03-25",
-          "description": "From committee: Amend, and do pass as amended and re-refer to Com. on L. GOV. (Ayes 12. Noes 0.) (March 25).",
-          "chamber": "A"
-        },
         {
           "date": "2026-03-26",
           "description": "Read second time and amended.",
@@ -3283,7 +3274,7 @@
         },
         {
           "date": "2026-04-13",
-          "description": "Assembly Rule 56 suspended.",
+          "description": "Assembly Rule 56 suspended. (Page 4581.)",
           "chamber": "A"
         },
         {
@@ -3295,23 +3286,37 @@
           "date": "2026-04-16",
           "description": "From committee: Do pass and re-refer to Com. on NAT. RES. (Ayes 10. Noes 0.) (April 15). Re-referred to Com. on NAT. RES.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-04-21",
+          "description": "From committee: Amend, and do pass as amended and re-refer to Com. on APPR. (Ayes 11. Noes 1.) (April 20).",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-22",
+          "description": "Read second time and amended.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-23",
+          "description": "Re-referred to Com. on APPR.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2121510",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "50a3c17597da62558a970c5b917a13c1",
+      "legiscan_change_hash": "a720cde92d78e1df5b99dac2864de6e7",
       "first_seen": "2026-02-23T17:38:05.409555",
       "analysis": {
         "pro_housing_production": "moderate",
         "densification": "moderate",
         "reduce_discretion": "moderate",
-        "cost_to_cities": "indirect",
-        "notes": "AB 2433 amends Government Code Section 65915, California's Density Bonus Law, which by design overrides local zoning by requiring cities to grant density increases, reduced parking, and other concessions/incentives to qualifying projects — stripping local discretion over project review and approval conditions. Amendments to DBL expansions typically broaden eligibility thresholds or enhance the mandated bonuses, further eroding city authority to apply local standards and resulting in indirect infrastructure capacity pressure from additional units cities cannot condition or refuse.",
-        "comms_brief": "AB 2433 expands California's Density Bonus Law (Gov. Code §65915), requiring cities to grant greater density increases, additional concessions, and reduced parking to a broader set of qualifying projects, overriding local zoning and limiting the conditions cities may impose.\n• Mandatory state override of local zoning: cities must approve density bonuses regardless of local general plan or zoning designations, with no local opt-out.\n• Strips discretionary review: DBL approvals are effectively ministerial — cities cannot impose subjective design, neighborhood compatibility, or planning conditions on qualifying projects.\n• Forces density beyond local choice: any expansion of DBL eligibility or bonus tiers compels cities to approve higher-density projects than the community has chosen through its own planning process.\n• Indirect infrastructure burden: increased unit counts approved ministerially may exceed existing utility, traffic, or school capacity without cities retaining authority to require commensurate improvements.\nRecommended: Oppose — DBL amendments consistently reduce the conditions cities may apply and expand the universe of projects that bypass local deliberation, with no offsetting local authority restoration.",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-04-20",
+        "cost_to_cities": "moderate",
+        "notes": "AB 2433 amends Government Code §65915, the State Density Bonus Law, which by design preempts local zoning to require cities to grant density bonuses and reduced development standards to qualifying projects. Any expansion of §65915 — whether enlarging eligible project types, increasing bonus percentages, or reducing the objective standards cities may apply — would strengthen state override of local zoning and further limit discretionary conditions cities can impose on density bonus projects. Because the summary is minimal and the bill has been amended multiple times, the precise mechanism is uncertain, but all plausible expansions of Density Bonus Law carry moderate-to-strong risks across all four criteria.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-05-04",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -4621,16 +4626,16 @@
       "session": "2025-2026 Regular Session",
       "title": "Joint powers agreements: nonprofit housing developers.",
       "author": "Maria Durazo",
-      "status": "Introduced",
-      "status_date": "2026-02-18",
+      "status": "Engrossed",
+      "status_date": "2026-04-30",
       "introduced_date": "2026-02-18",
-      "last_updated": "2026-02-18",
+      "last_updated": "2026-04-30",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1170",
       "summary": "An act to amend Section 990.8 of, and to add Section 6525.5 to, the Government Code, relating to nonprofit housing developers.",
       "subjects": [],
       "committees": [
-        "Local Government",
-        "Rules"
+        "Rules",
+        "Local Government"
       ],
       "upcoming_hearings": [],
       "actions": [
@@ -4648,6 +4653,26 @@
           "date": "2026-02-26",
           "description": "Referred to Com. on L. GOV.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-09",
+          "description": "Set for hearing April 22.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-22",
+          "description": "From committee: Do pass. Ordered to consent calendar. (Ayes 7. Noes 0.) (April 22).",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-23",
+          "description": "Read second time. Ordered to consent calendar.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-30",
+          "description": "Read third time. Passed. (Ayes 36. Noes 0.) Ordered to the Assembly.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
@@ -4658,11 +4683,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1170 amends Government Code Section 990.8 and adds Section 6525.5 to allow nonprofit housing developers to participate in joint powers agreements (JPAs) — a structural financing and liability-sharing mechanism. This does not preempt local zoning, eliminate discretionary review, mandate approvals, or restrict impact fee authority. Cities retain full control over whether and how to engage with nonprofit developers through JPAs, and participation appears voluntary.",
+        "notes": "SB 1170 amends Government Code Section 990.8 and adds Section 6525.5 to allow joint powers agreements (JPAs) to include nonprofit housing developers as participants. This is a permissive, enabling measure — it expands who may voluntarily participate in JPAs but imposes no mandate on cities or counties to enter any agreement, approve any project, or alter local zoning or land use standards. No local control authority is preempted or restricted.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-03-02",
-        "status_at_analysis": "Introduced",
+        "analyzed_date": "2026-05-04",
+        "status_at_analysis": "Engrossed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -5451,17 +5476,18 @@
     "SCR131": {
       "bill_number": "SCR131",
       "session": "2025-2026 Regular Session",
-      "title": "Housing: functional zero unsheltered homelessness.",
+      "title": "Housing: unsheltered homelessness.",
       "author": "Catherine Blakespear",
-      "status": "Introduced",
-      "status_date": "2026-02-19",
+      "status": "Engrossed",
+      "status_date": "2026-04-27",
       "introduced_date": "2026-02-19",
-      "last_updated": "2026-02-19",
+      "last_updated": "2026-04-27",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SCR131",
       "summary": "Relative to housing.",
       "subjects": [],
       "committees": [
-        "Rules"
+        "Rules",
+        "Housing"
       ],
       "upcoming_hearings": [],
       "actions": [
@@ -5469,6 +5495,36 @@
           "date": "2026-02-19",
           "description": "Introduced. Referred to Com. on RLS.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-03-04",
+          "description": "Re-referred to Com. on HOUSING.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-06",
+          "description": "From committee with author's amendments. Read second time and amended. Re-referred to Com. on HOUSING.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-13",
+          "description": "Set for hearing April 15.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-16",
+          "description": "From committee: Be adopted. Ordered to third reading. (Ayes 8. Noes 0.) (April 15).",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-27",
+          "description": "Read. Adopted. (Ayes 34. Noes 0.) Ordered to the Assembly.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-27",
+          "description": "In Assembly. Held at Desk.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
@@ -5479,11 +5535,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SCR 131 is a Senate Concurrent Resolution — a non-binding legislative statement of intent or policy aspiration. Resolutions do not enact law, preempt local authority, eliminate discretionary review, mandate development approvals, or impose infrastructure burdens. The title references achieving \"functional zero unsheltered homelessness,\" which is a goal-setting measure with no operative local control implications.",
+        "notes": "SCR 131 is a Senate Concurrent Resolution — a non-binding legislative statement \"relative to housing\" and unsheltered homelessness. Concurrent resolutions express the Legislature's sentiment or intent but carry no legal force, impose no mandates, preempt no local authority, and create no enforceable obligations on cities or counties. There is no mechanism in this bill type to override zoning, eliminate discretionary review, mandate development, or restrict infrastructure fee authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-03-02",
-        "status_at_analysis": "Introduced",
+        "analyzed_date": "2026-05-04",
+        "status_at_analysis": "Engrossed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -5968,22 +6024,27 @@
           "date": "2026-04-16",
           "description": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 10. Noes 0.) (April 15). Re-referred to Com. on APPR.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-04-29",
+          "description": "In committee: Set, first hearing. Referred to APPR. suspense file.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2108284",
       "watchlist": true,
       "watchlist_note": "Staff-identified",
-      "legiscan_change_hash": "cbe987742ad4031fd5c70269e51c2205",
+      "legiscan_change_hash": "ed64d55309f3f7e883c34fda2a52a8da",
       "first_seen": "2026-03-01T13:27:14.882959",
       "analysis": {
         "pro_housing_production": "strong",
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 1710 amends Government Code Section 65589.5 (the Housing Accountability Act) and adds Section 65958, which together strengthen state preemption of local ordinances, policies, and standards that would restrict housing development — directly overriding local zoning authority and eliminating or severely limiting discretionary review for qualifying projects. The new Section 65958 likely creates a by-right or ministerial approval pathway, removing CEQA, design review, and conditional use processes for covered housing projects, while the HAA amendment tightens the \"no net effect\" standard cities must meet to deny or reduce projects, adding compliance and legal exposure costs to local governments.",
+        "notes": "AB 1710 amends the Housing Accountability Act (Gov. Code §65589.5) and adds §65958, which together restrict cities from applying local ordinances, policies, and standards that would reduce density or otherwise disapprove qualifying housing projects — a direct state preemption of local zoning and development standards. By expanding HAA protections and adding a new ministerial or by-right framework under §65958, the bill strips discretionary review authority and mandates approval of housing projects meeting baseline criteria regardless of local planning choices. The infrastructure burden is moderate: ministerial or constrained approvals limit cities' ability to impose site-specific infrastructure conditions, shifting some capacity costs to existing systems without guaranteed mitigation authority.",
         "full_text_fetched": false,
-        "analyzed_date": "2026-04-20",
+        "analyzed_date": "2026-05-04",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -6001,23 +6062,13 @@
       "summary": "An act to add Section 65913.13 to the Government Code, relating to land use, and making an appropriation therefor.",
       "subjects": [],
       "committees": [
-        "Natural Resources",
+        "Appropriations",
         "Housing and Community Development",
-        "Local Government"
+        "Local Government",
+        "Natural Resources"
       ],
-      "upcoming_hearings": [
-        {
-          "date": "2026-04-20",
-          "committee": "Assembly Natural Resources Hearing",
-          "location": "State Capitol, Room 437"
-        }
-      ],
+      "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-02-19",
-          "description": "From printer. May be heard in committee March 21.",
-          "chamber": "A"
-        },
         {
           "date": "2026-03-19",
           "description": "Referred to Coms. on H. & C.D., L. GOV. and NAT. RES.",
@@ -6050,7 +6101,7 @@
         },
         {
           "date": "2026-04-13",
-          "description": "Assembly Rule 56 suspended.",
+          "description": "Assembly Rule 56 suspended. (Page 4581.)",
           "chamber": "A"
         },
         {
@@ -6062,22 +6113,28 @@
           "date": "2026-04-16",
           "description": "From committee: Do pass and re-refer to Com. on NAT. RES. (Ayes 8. Noes 1.) (April 15). Re-referred to Com. on NAT. RES.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-04-21",
+          "description": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 11. Noes 3.) (April 20). Re-referred to Com. on APPR.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "2119601",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "ea5cb1ae1f7029cb56149097e5c70c47",
+      "legiscan_change_hash": "c15b6900b7862c0f09ca1c4a6af3264a",
       "first_seen": "2026-03-01T13:27:14.883007",
       "analysis": {
         "pro_housing_production": "strong",
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "AB 2074 creates a new Section 65913.13 targeting \"regional transit hub districts\" for downtown housing developments, a structure that typically imposes ministerial/by-right approval mandates overriding local zoning and discretionary review for qualifying projects near transit. The bill's title and Government Code placement strongly indicate state preemption of local land use authority in designated transit hub areas, elimination of discretionary review (CEQA, design review, hearings) for qualifying projects, and an explicit mandate to approve higher-density downtown housing beyond local preference. The infrastructure burden is moderate: ministerial approvals in high-density transit contexts typically prevent cities from conditioning projects on utility upgrades or frontage improvements, shifting capacity costs to existing residents — though the appropriation suggests some state funding offset. Full bill text would confirm precise preemption and fee restriction language.",
+        "notes": "AB 2074 creates a new \"regional transit hub district\" overlay that would mandate by-right, ministerial approval for downtown housing developments meeting certain criteria, explicitly preempting local zoning and discretionary review — including CEQA and design review — for qualifying projects near major transit hubs. The infrastructure burden risk is moderate because ministerial approvals prevent cities from conditioning projects on site-specific utility, frontage, or capacity improvements, shifting incremental costs to existing systems and taxpayers without a dedicated state offset mechanism.",
+        "comms_brief": "AB 2074 creates a new state-mandated \"regional transit hub district\" overlay that forces cities to grant ministerial, by-right approval for downtown housing developments near major transit stations, stripping local zoning, discretionary review, and CEQA applicability for qualifying projects.\n• Explicit state preemption of local zoning: cities must approve qualifying projects regardless of general plan designations, specific plans, or locally adopted development standards — a direct override of local land use authority.\n• Elimination of discretionary review: ministerial approval language removes public hearings, design review, conditional use permits, and CEQA applicability, ending community input on project-specific impacts.\n• Forced density mandates: cities are compelled to allow housing types and densities well beyond what local deliberation may have chosen, with no opt-out or community-tailored alternative.\n• Infrastructure capacity risk: by-right approvals prevent cities from conditioning projects on utility, traffic, or frontage improvements, shifting capacity costs to existing residents with no state funding backstop.\nRecommended: Oppose — the bill combines explicit zoning preemption, elimination of all discretionary review, and mandatory density without any mechanism for cities to protect infrastructure capacity or reflect community input.",
         "full_text_fetched": false,
-        "analyzed_date": "2026-04-20",
+        "analyzed_date": "2026-05-04",
         "status_at_analysis": "Introduced",
         "model": "claude-sonnet-4-6"
       }
@@ -6085,7 +6142,7 @@
     "SB908": {
       "bill_number": "SB908",
       "session": "2025-2026 Regular Session",
-      "title": "Residential windows: retrofitting: California Energy Code compliance.",
+      "title": "Residential windows: retrofitting: residential window replacement projects: California Building Code compliance.",
       "author": "Scott Wiener",
       "status": "Introduced",
       "status_date": "2026-01-22",
@@ -6095,23 +6152,13 @@
       "summary": "An act to add Section 4754 to the Civil Code, and to add Section 65850.73 to the Government Code, relating to windows.",
       "subjects": [],
       "committees": [
-        "Housing",
+        "Appropriations",
         "Rules",
-        "Local Government"
+        "Local Government",
+        "Housing"
       ],
-      "upcoming_hearings": [
-        {
-          "date": "2026-04-21",
-          "committee": "Senate Housing Hearing",
-          "location": "1021 O Street, Room 1200"
-        }
-      ],
+      "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-01-22",
-          "description": "Introduced. Read first time. To Com. on RLS. for assignment. To print.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-01-23",
           "description": "From printer. May be acted upon on or after February 22.",
@@ -6151,24 +6198,292 @@
           "date": "2026-04-15",
           "description": "From committee: Do pass and re-refer to Com. on HOUSING. (Ayes 5. Noes 1.) (April 15). Re-referred to Com. on HOUSING.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-22",
+          "description": "From committee: Do pass as amended and re-refer to Com. on APPR. (Ayes 9. Noes 1.) (April 21).",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-23",
+          "description": "Read second time and amended. Re-referred to Com. on APPR.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
       "source_id": "2091400",
       "watchlist": true,
       "watchlist_note": "",
-      "legiscan_change_hash": "f5c0bd48a457a9b6d09da39dd2c4e545",
+      "legiscan_change_hash": "6e415774c5db473725bc0349e7222bef",
       "first_seen": "2026-03-01T13:27:14.883058",
       "analysis": {
         "pro_housing_production": "moderate",
         "densification": "moderate",
         "reduce_discretion": "none",
-        "cost_to_cities": "moderate",
-        "notes": "SB 908 adds Civil Code Section 4754 and Government Code Section 65850.73, which together appear to restrict HOAs and local governments from blocking or conditioning window retrofits that comply with the California Energy Code — limiting local design review or HOA approval authority over qualifying window replacements. The Government Code addition signals a preemptive limitation on local conditions or standards that exceed state energy code requirements, creating a moderate infrastructure/compliance burden on cities to administer a new ministerial or constrained review pathway for window permits.",
-        "comms_brief": "SB 908 limits the ability of local governments (and HOAs) to block or condition window retrofits that meet California Energy Code standards, by adding preemptive provisions to both the Civil Code and Government Code.\n• Government Code Section 65850.73 likely restricts cities from applying local design standards or conditions beyond state energy code compliance for qualifying window replacements, eroding local design review authority.\n• Cities with historic districts, specific plan areas, or adopted design guidelines could lose the ability to enforce appearance and material standards on residential window retrofits.\n• Unfunded administrative burden is created as cities must implement and enforce a new constrained or ministerial review pathway for window permits without state funding.\nRecommended: Monitor with amendments request — seek explicit carve-out for historic preservation districts and locally adopted objective design standards.",
+        "cost_to_cities": "indirect",
+        "notes": "SB 908 adds Civil Code Section 4754 (likely limiting HOA or CC&R restrictions on window replacement) and Government Code Section 65850.73 (likely preempting local building/zoning conditions on residential window retrofits to align with California Building Code). The Government Code addition suggests a partial preemption of local authority to impose conditions beyond CBC compliance on window replacement projects, limiting cities' ability to apply stricter local standards or discretionary review conditions to these projects.",
+        "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-04-20",
+        "analyzed_date": "2026-05-04",
         "status_at_analysis": "Introduced",
+        "model": "claude-sonnet-4-6"
+      }
+    },
+    "AB1621": {
+      "bill_number": "AB1621",
+      "session": "2025-2026 Regular Session",
+      "title": "Planning and Zoning Law: postentitlement phase permits: Housing Accountability Act.",
+      "author": "Lori Wilson",
+      "status": "Engrossed",
+      "status_date": "2026-04-27",
+      "introduced_date": "2026-01-22",
+      "last_updated": "2026-04-27",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1621",
+      "summary": "An act to amend Sections 65589.5 and 65913.3 of the Government Code, relating to planning and zoning.",
+      "subjects": [],
+      "committees": [
+        "Rules",
+        "Local Government",
+        "Housing and Community Development",
+        "Appropriations"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-01-23",
+          "description": "From printer. May be heard in committee February 22.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-02-02",
+          "description": "Referred to Coms. on L. GOV. and H. & C.D.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-03-04",
+          "description": "From committee chair, with author's amendments: Amend, and re-refer to Com. on L. GOV. Read second time and amended.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-03-05",
+          "description": "Re-referred to Com. on L. GOV.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-03-25",
+          "description": "From committee: Do pass and re-refer to Com. on H. & C.D. (Ayes 10. Noes 0.) (March 25). Re-referred to Com. on H. & C.D.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-08",
+          "description": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 12. Noes 0.) (April 8). Re-referred to Com. on APPR.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-22",
+          "description": "From committee: Do pass. (Ayes 13. Noes 0.) (April 22).",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-23",
+          "description": "Read second time. Ordered to third reading.",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-27",
+          "description": "Read third time. Passed. Ordered to the Senate. (Ayes 67. Noes 0. Page 4835.)",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-04-28",
+          "description": "In Senate. Read first time. To Com. on RLS. for assignment.",
+          "chamber": "Senate"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2091391",
+      "first_seen": "2026-05-04T14:43:05.199537",
+      "analysis": {
+        "pro_housing_production": "moderate",
+        "densification": "moderate",
+        "reduce_discretion": "moderate",
+        "cost_to_cities": "moderate",
+        "notes": "AB 1621 amends the Housing Accountability Act (HAA) and the postentitlement phase permit statute (Gov. Code §65913.3), which together limit city authority to deny or condition housing projects once entitlements are granted. Amendments to §65589.5 (HAA) typically tighten the findings required to deny or reduce density of housing projects, while §65913.3 already mandates ministerial, timeline-bound processing of postentitlement permits (building, grading, utility) — further amendments likely expand scope or close local workarounds, reducing cities' ability to apply discretionary conditions or delay issuance at the permit stage.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-05-04",
+        "status_at_analysis": "Engrossed",
+        "model": "claude-sonnet-4-6"
+      }
+    },
+    "SB963": {
+      "bill_number": "SB963",
+      "session": "2025-2026 Regular Session",
+      "title": "California Coastal Act of 1976: coastal development permits: appeal: de novo review.",
+      "author": "John Laird",
+      "status": "Engrossed",
+      "status_date": "2026-04-30",
+      "introduced_date": "2026-02-03",
+      "last_updated": "2026-04-30",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB963",
+      "summary": "An act to add Sections 30628 and 30629 to the Public Resources Code, relating to coastal resources.",
+      "subjects": [],
+      "committees": [
+        "Rules",
+        "Natural Resources and Water",
+        "Appropriations"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-03-18",
+          "description": "Re-referred to Com. on N.R. & W.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-03-24",
+          "description": "Set for hearing April 7.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-03-27",
+          "description": "April 7 set for first hearing canceled at the request of author.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-02",
+          "description": "Set for hearing April 14.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-14",
+          "description": "From committee: Do pass and re-refer to Com. on APPR. with recommendation: To consent calendar. (Ayes 7. Noes 0.) (April 14). Re-referred to Com. on APPR.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-17",
+          "description": "Set for hearing April 27.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-27",
+          "description": "From committee: Be ordered to second reading pursuant to Senate Rule 28.8 and ordered to consent calendar.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-28",
+          "description": "Read second time. Ordered to consent calendar.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-30",
+          "description": "Read third time. Passed. (Ayes 36. Noes 0.) Ordered to the Assembly.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-30",
+          "description": "In Assembly. Read first time. Held at Desk.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2106850",
+      "first_seen": "2026-05-04T14:43:05.199612",
+      "analysis": {
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "SB 963 adds Sections 30628 and 30629 to the Public Resources Code, addressing de novo review procedures for appeals under the California Coastal Act. This bill adjusts the appellate process within the Coastal Commission framework — a state-to-state procedural matter — and does not preempt local zoning authority, eliminate discretionary review at the local level, mandate specific housing types or densities, or restrict local impact fee or infrastructure authority.",
+        "comms_brief": "",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-05-04",
+        "status_at_analysis": "Engrossed",
+        "model": "claude-sonnet-4-6"
+      }
+    },
+    "SB969": {
+      "bill_number": "SB969",
+      "session": "2025-2026 Regular Session",
+      "title": "Developmental services: remote services.",
+      "author": "Eloise Reyes",
+      "status": "Engrossed",
+      "status_date": "2026-04-27",
+      "introduced_date": "2026-02-03",
+      "last_updated": "2026-04-27",
+      "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB969",
+      "summary": "An act to add Section 4511.7 to the Welfare and Institutions Code, relating to developmental services.",
+      "subjects": [],
+      "committees": [
+        "Rules",
+        "Human Services",
+        "Appropriations"
+      ],
+      "upcoming_hearings": [],
+      "actions": [
+        {
+          "date": "2026-02-04",
+          "description": "From printer. May be acted upon on or after March 6.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-02-11",
+          "description": "Referred to Com. on HUMAN S.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-03-17",
+          "description": "Set for hearing April 6.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-03-23",
+          "description": "From committee with author's amendments. Read second time and amended. Re-referred to Com. on HUMAN S.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-07",
+          "description": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 5. Noes 0.) (April 6). Re-referred to Com. on APPR.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-10",
+          "description": "Set for hearing April 20.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-20",
+          "description": "From committee: Be ordered to second reading pursuant to Senate Rule 28.8.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-21",
+          "description": "Read second time. Ordered to third reading.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-27",
+          "description": "Read third time. Passed. (Ayes 37. Noes 0.) Ordered to the Assembly.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-04-27",
+          "description": "In Assembly. Read first time. Held at Desk.",
+          "chamber": "A"
+        }
+      ],
+      "source": "legiscan",
+      "source_id": "2106856",
+      "first_seen": "2026-05-04T14:43:05.199675",
+      "analysis": {
+        "pro_housing_production": "none",
+        "densification": "none",
+        "reduce_discretion": "none",
+        "cost_to_cities": "none",
+        "notes": "SB 969 adds Section 4511.7 to the Welfare and Institutions Code to authorize or regulate remote service delivery within California's developmental services system. This bill operates entirely within the state's social services framework and has no connection to local zoning, land use, planning authority, discretionary review, development mandates, or infrastructure financing.",
+        "comms_brief": "",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-05-04",
+        "status_at_analysis": "Engrossed",
         "model": "claude-sonnet-4-6"
       }
     }
