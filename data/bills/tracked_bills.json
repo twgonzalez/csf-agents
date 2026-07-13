@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-06T15:06:37.033202",
+  "last_updated": "2026-07-13T14:59:09.417959",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -8182,14 +8182,14 @@
       "source_id": "2123626",
       "first_seen": "2026-02-25T15:05:23.114521",
       "analysis": {
-        "pro_housing_production": "none",
+        "pro_housing_production": "indirect",
         "densification": "none",
         "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "SB 1426 is a technical cleanup bill that amends and repeals provisions related to local planning and zoning annual reporting requirements (Gov. Code §65400 et seq.). It does not preempt local zoning authority, eliminate discretionary review, mandate housing approvals, or restrict infrastructure fee authority. The urgency clause accelerates effective date but does not alter the substantive local control risk profile.",
+        "cost_to_cities": "indirect",
+        "notes": "SB 1426 amends annual housing element progress reporting requirements under Government Code §65400 and related sections, and repeals redundant or outdated reporting provisions (§65400.1, §65625). It also makes technical amendments to surplus land act and ADU/SB 9 statutes, likely to align cross-references or correct inconsistencies. The indirect local control risk stems from stricter or expanded annual reporting obligations that create modest administrative burden on cities and counties, and any tightened compliance metrics could increase state oversight pressure on local housing programs — but no direct zoning preemption, discretionary review elimination, or development mandate is evident from the bill's scope.",
         "comms_brief": "",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-07-06",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-07-13",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -8473,34 +8473,24 @@
     "SB677": {
       "bill_number": "SB677",
       "session": "2025-2026 Regular Session",
-      "title": "Land use: housing development approvals: tax-exempt private activity bonds: subdivisions: tentative and final maps: appeals.",
+      "title": "Housing financing: joint powers agreements: bond approvals:subdivisions: tentative and final maps: appeals.",
       "author": "Scott Wiener",
       "status": "Engrossed",
       "status_date": "2026-01-26",
       "introduced_date": "2025-02-21",
       "last_updated": "2026-01-26",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB677",
-      "summary": "An act to amend Sections 65589.5, 66452.5, 66458, 66462, and 66474.7 of, and to add Section 66452.8 to, the Government Code, relating to land use.",
+      "summary": "An act to amend Sections 6519, 66452.5, 66458, 66462, and 66474.7 of, to add Sections 6505.7 and 66452.8 to, and to repeal Section 6547.9 of, the Government Code, relating to housing.",
       "subjects": [],
       "committees": [
-        "Local Government",
+        "Appropriations",
         "Rules",
         "Housing",
-        "Appropriations",
+        "Local Government",
         "Housing and Community Development"
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-01-14",
-          "description": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 5. Noes 2. Page 3224.) (January 14). Re-referred to Com. on APPR.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-01-15",
-          "description": "Set for hearing January 20.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-01-20",
           "description": "From committee: Be ordered to second reading pursuant to Senate Rule 28.8.",
@@ -8540,22 +8530,32 @@
           "date": "2026-06-24",
           "description": "From committee with author's amendments. Read second time and amended. Re-referred to Com. on L. GOV.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-07-07",
+          "description": "From committee: Do pass as amended and re-refer to Com. on APPR. (Ayes 9. Noes 0.) (July 1).",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-07-07",
+          "description": "Read second time and amended. Re-referred to Com. on APPR.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
       "source_id": "1980407",
       "watchlist": true,
       "watchlist_note": "Two-year bill",
-      "legiscan_change_hash": "38e13a9b84fac8f97c48657062d7b1d7",
+      "legiscan_change_hash": "7a5eef0754e72719eb0be06be084635e",
       "first_seen": "2026-03-01T13:27:14.882911",
       "analysis": {
-        "pro_housing_production": "strong",
+        "pro_housing_production": "moderate",
         "densification": "moderate",
-        "reduce_discretion": "strong",
+        "reduce_discretion": "moderate",
         "cost_to_cities": "moderate",
-        "notes": "SB 677 amends the Housing Accountability Act (§65589.5) and the Subdivision Map Act to restrict cities' ability to deny or condition housing approvals and subdivision maps, likely expanding ministerial or by-right pathways and tightening appeal rights. The bill's amendments to §66452.5 (tentative map appeals), §66458 (final map approval), §66462 (improvement agreements), and §66474.7 (findings for denial) collectively narrow the grounds on which cities may reject or impose conditions on subdivisions, directly eroding local discretionary authority over project approvals and subdivision design. The addition of §66452.8 likely imposes new timelines or appeal restrictions that compress local review. The HAA amendments strengthen state override of local denial decisions, and the Subdivision Map Act changes limit cities' ability to require infrastructure improvements as conditions of map approval.",
+        "notes": "SB 677 amends joint powers agreement financing authority, bond approval procedures, and subdivision map appeal processes under the Subdivision Map Act. The changes to tentative/final map appeals (Sections 66452.5, 66452.8, 66458, 66462, 66474.7) likely compress timelines or restrict grounds for local denial, reducing cities' discretionary review authority over subdivision approvals. The JPA bond and financing provisions (Sections 6505.7, 6519, repeal of 6547.9) may facilitate housing finance mechanisms that reduce local leverage over project conditions — but the full scope of preemption requires review of bill text to confirm.",
         "full_text_fetched": false,
-        "analyzed_date": "2026-07-06",
+        "analyzed_date": "2026-07-13",
         "status_at_analysis": "Engrossed",
         "model": "claude-sonnet-4-6"
       }
@@ -9000,10 +9000,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 963 adds Sections 30628 and 30629 to the Public Resources Code, addressing appeal procedures and de novo review under the California Coastal Act. This is a procedural refinement to the Coastal Commission's appellate process — not a housing production, zoning preemption, or development mandate bill. It does not override local planning authority, strip discretionary review, mandate density, or restrict infrastructure fee authority. The bill passed all committees unanimously (13-0 and 15-0), consistent with a non-controversial procedural clarification.",
+        "notes": "SB 963 adds Sections 30628 and 30629 to the Public Resources Code, addressing de novo review of coastal development permit appeals under the California Coastal Act of 1976. This is a procedural clarification of Coastal Commission appellate review authority — it does not preempt local zoning, strip discretionary review from cities, mandate housing approvals, or restrict local infrastructure or fee authority.",
         "comms_brief": "",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-07-06",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-07-13",
         "status_at_analysis": "Enrolled",
         "model": "claude-sonnet-4-6"
       }
@@ -9703,10 +9703,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Elder and Dependent Adult Abuse Awareness Month.",
       "author": "Catherine Stefani",
-      "status": "Enrolled",
-      "status_date": "2026-06-25",
+      "status": "Passed",
+      "status_date": "2026-07-06",
       "introduced_date": "2026-05-14",
-      "last_updated": "2026-06-25",
+      "last_updated": "2026-07-06",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260ACR206",
       "summary": "Relative to Elder and Dependent Adult Abuse Awareness Month.",
       "subjects": [],
@@ -9715,16 +9715,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-05-15",
-          "description": "From printer.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-05-18",
-          "description": "Referred to Com. on RLS.",
-          "chamber": "A"
-        },
         {
           "date": "2026-06-01",
           "description": "From committee: Be adopted. To Consent Calendar. (Ayes 8. Noes 0.) (June 1).",
@@ -9764,6 +9754,16 @@
           "date": "2026-06-25",
           "description": "In Assembly. Ordered to Engrossing and Enrolling.",
           "chamber": "A"
+        },
+        {
+          "date": "2026-07-06",
+          "description": "Enrolled and filed with the Secretary of State at 2 p.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-07-06",
+          "description": "Chaptered by Secretary of State - Res. Chapter 146, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
@@ -9774,11 +9774,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "ACR 206 is a symbolic concurrent resolution designating Elder and Dependent Adult Abuse Awareness Month. It imposes no mandates, preemptions, or requirements on local governments and has no bearing on zoning, land use, housing production, or infrastructure authority.",
+        "notes": "ACR 206 is a purely symbolic concurrent resolution designating Elder and Dependent Adult Abuse Awareness Month. It imposes no mandates, preemptions, or requirements of any kind on cities or counties, and has zero relevance to local planning, zoning, or land use authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-07-06",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-07-13",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -12399,13 +12399,12 @@
       "first_seen": "2026-07-06T15:02:34.415623",
       "analysis": {
         "pro_housing_production": "moderate",
-        "densification": "indirect",
+        "densification": "none",
         "reduce_discretion": "moderate",
         "cost_to_cities": "moderate",
-        "notes": "AB 179 is a budget trailer bill amending numerous Health and Safety Code housing finance and program sections (MULTIFAMILY, INFILL, MIXED-INCOME, HOME programs, etc.) as well as building standards and mortgage bond authority. As a trailer bill restructuring state housing program eligibility, funding conditions, and compliance requirements, it carries moderate risk: state-administered programs often attach conditions that constrain local discretion over project approval and design standards, can shift unfunded compliance or staffing burdens to cities, and may mandate approval pathways or density thresholds as conditions of funding access. Without the full amended text it is difficult to confirm the precise mechanism, but the breadth of sections amended — spanning streamlining, density bonus, infill infrastructure, and mixed-income programs — suggests meaningful but not explicit preemption risk.",
-        "comms_brief": "AB 179 is a housing budget trailer bill that amends dozens of state housing finance, program eligibility, and building standards statutes, potentially attaching state conditions that limit local discretion over project approvals and development standards.\n• State housing program conditions tied to funding access can effectively override local zoning and approval standards, creating a \"comply or lose funding\" local control override.\n• Amendments to streamlining and infill infrastructure programs (e.g., Sections 50220–50242) may reduce the conditions cities can impose on qualifying projects, limiting discretionary review authority.\n• Unfunded compliance and administrative obligations embedded in restructured program requirements (staffing, reporting, eligibility tracking) shift capacity costs to local governments without offsetting state support.\nRecommended: Monitor — the breadth of amended sections warrants close review of final enrolled text to confirm whether specific preemptive or fee-limiting provisions were added in Senate amendments.",
+        "notes": "AB 179 is a broad housing budget/omnibus bill amending numerous Health and Safety Code sections governing state housing programs (HCD loan programs, MHSA, CDBG-equivalent programs, and infrastructure financing). The bill's amendments to state housing financing programs (Sections 50220–50242, 50675 series) and addition of new chapters and parts to Division 31 suggest expanded state program authority and eligibility rules that can condition local participation, creating moderate compliance pressure on cities. The addition of new Part 18 (Section 54920+) and Chapter 6.9 (Section 51349.1+) may introduce new state mandates or eligibility frameworks that effectively override local preferences in exchange for state funding, and the Government Code bond allocation amendment (Section 8869.84) ties private activity bond authority to housing production, creating indirect pressure on local land use decisions.",
         "full_text_fetched": false,
-        "analyzed_date": "2026-07-06",
+        "analyzed_date": "2026-07-13",
         "status_at_analysis": "Enrolled",
         "model": "claude-sonnet-4-6"
       }
@@ -12488,10 +12487,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 163 is a developmental services budget/operations bill, amending Welfare & Institutions Code provisions governing regional centers, service providers, and individuals with developmental disabilities. It has no provisions related to zoning, land use, housing approvals, CEQA, impact fees, or local planning authority. All four local control risk criteria score none.",
+        "notes": "SB 163 is a developmental services budget and policy bill amending the Welfare and Institutions Code and related statutes governing regional centers, service provider rates, and related administrative processes. It has no provisions touching local zoning, land use authority, planning discretion, CEQA, impact fees, or housing development mandates. All four local control risk criteria are inapplicable.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-07-06",
+        "analyzed_date": "2026-07-13",
         "status_at_analysis": "Enrolled",
         "model": "claude-sonnet-4-6"
       }
@@ -12577,10 +12576,9 @@
         "densification": "strong",
         "reduce_discretion": "strong",
         "cost_to_cities": "moderate",
-        "notes": "SB 722 amends Government Code §65912.157, which governs the Transit-Oriented Communities (TOC) framework — a by-right, ministerial approval regime that overrides local zoning near transit. The amendment modifies which parcels and sites are \"excluded\" from TOC coverage, meaning it expands or clarifies the set of properties subject to mandatory ministerial approval, stripping local discretionary review, overriding local zoning standards, and forcing approval of qualifying transit-adjacent projects without full CEQA review or public hearings. The infrastructure burden is moderate because ministerial TOC approvals limit cities' ability to condition projects on infrastructure improvements, creating capacity pressure without full fee elimination language.",
-        "comms_brief": "SB 722 amends the Transit-Oriented Communities statute to narrow the \"excluded parcels\" list, expanding the universe of sites subject to mandatory by-right, ministerial housing approval that overrides local zoning near transit stops.\n• Explicit state preemption: qualifying transit-adjacent projects must receive ministerial approval regardless of local zoning, general plan designations, or community-adopted density limits.\n• Eliminates discretionary review: by-right approval removes CEQA applicability, design review authority, conditional use permits, and public hearings for affected projects.\n• Mandates development approval: cities have no legal basis to deny or condition qualifying projects beyond narrow objective standards — effectively a builder's remedy near transit.\n• Infrastructure burden: ministerial approval framework limits cities' ability to require utility, frontage, or capacity improvements as conditions of approval, shifting burden to existing residents.\nRecommended: Oppose — bill expands mandatory state override of local zoning and planning authority near transit with no mechanism for communities to address infrastructure capacity or neighborhood compatibility concerns.",
+        "notes": "SB 722 amends Section 65912.157 of the Government Code, which governs the Transit-Oriented Communities (TOC) framework — a by-right, ministerial housing approval program that overrides local zoning near transit. By amending the \"excluded parcels and sites\" provisions, the bill likely narrows the list of local exclusions cities may invoke to opt parcels out of the TOC scheme, directly expanding the geographic footprint of state preemption of local zoning and removing discretionary review. Cities lose authority to condition or deny qualifying TOC projects on excluded parcels, and ministerial processing eliminates CEQA and public hearing rights. Moderate infrastructure burden arises because ministerial approvals on newly included sites may prevent cities from imposing full infrastructure improvement conditions.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-07-06",
+        "analyzed_date": "2026-07-13",
         "status_at_analysis": "Enrolled",
         "model": "claude-sonnet-4-6"
       }
