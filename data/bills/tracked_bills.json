@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-13T14:59:09.417959",
+  "last_updated": "2026-07-20T14:44:27.496538",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -8926,10 +8926,10 @@
       "session": "2025-2026 Regular Session",
       "title": "California Coastal Act of 1976: coastal development permits: appeal: de novo review.",
       "author": "John Laird",
-      "status": "Enrolled",
-      "status_date": "2026-07-02",
+      "status": "Passed",
+      "status_date": "2026-07-16",
       "introduced_date": "2026-02-03",
-      "last_updated": "2026-07-02",
+      "last_updated": "2026-07-16",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB963",
       "summary": "An act to add Sections 30628 and 30629 to the Public Resources Code, relating to coastal resources.",
       "subjects": [],
@@ -8941,21 +8941,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-04-27",
-          "description": "From committee: Be ordered to second reading pursuant to Senate Rule 28.8 and ordered to consent calendar.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-04-28",
-          "description": "Read second time. Ordered to consent calendar.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-04-30",
-          "description": "Read third time. Passed. (Ayes 36. Noes 0. Page 4114.) Ordered to the Assembly.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-04-30",
           "description": "In Assembly. Read first time. Held at Desk.",
@@ -8990,21 +8975,36 @@
           "date": "2026-07-02",
           "description": "In Senate. Ordered to engrossing and enrolling.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-07-15",
+          "description": "Enrolled and presented to the Governor at 11 a.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-07-16",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-07-16",
+          "description": "Chaptered by Secretary of State. Chapter 103, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
       "source_id": "2106850",
       "first_seen": "2026-05-04T14:43:05.199612",
       "analysis": {
-        "pro_housing_production": "none",
-        "densification": "none",
-        "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "SB 963 adds Sections 30628 and 30629 to the Public Resources Code, addressing de novo review of coastal development permit appeals under the California Coastal Act of 1976. This is a procedural clarification of Coastal Commission appellate review authority — it does not preempt local zoning, strip discretionary review from cities, mandate housing approvals, or restrict local infrastructure or fee authority.",
-        "comms_brief": "",
+        "pro_housing_production": "moderate",
+        "densification": "moderate",
+        "reduce_discretion": "indirect",
+        "cost_to_cities": "indirect",
+        "notes": "SB 963 adds Sections 30628 and 30629 to the Public Resources Code, restructuring how the Coastal Commission conducts de novo review of appealed coastal development permits. By codifying or modifying de novo review procedures, the bill shifts appellate authority upward to the state Coastal Commission, potentially constraining local coastal permit decisions that are appealed — reducing the effective weight of local government determinations and limiting cities' and counties' ability to condition or deny coastal development through their own permitting processes. The infrastructure and staffing burden on local governments is indirect, as increased appellate activity or altered review standards may require additional local resources without state offset.",
+        "comms_brief": "SB 963 codifies de novo review procedures for Coastal Commission appeals of local coastal development permits, effectively elevating state appellate authority over locally-issued permits and constraining the finality of local coastal permitting decisions.\n• De novo review by the Coastal Commission allows the state to fully re-examine and override locally-approved or locally-denied coastal development permits, undermining the weight of local discretionary determinations.\n• Codifying expanded appellate review procedures increases the risk that local coastal permit conditions — negotiated to reflect community standards, infrastructure capacity, and local planning goals — will be stripped or overridden at the state level.\n• Local governments may face increased administrative burden and litigation risk as more decisions are subject to formalized state re-review, without a state funding mechanism to offset added local staffing and legal costs.\nRecommended: Monitor — the full procedural text of Sections 30628 and 30629 should be reviewed to confirm the scope of de novo review expansion and whether any local authority safeguards were included in the chaptered version.",
         "full_text_fetched": true,
-        "analyzed_date": "2026-07-13",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-07-20",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -9774,10 +9774,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "ACR 206 is a purely symbolic concurrent resolution designating Elder and Dependent Adult Abuse Awareness Month. It imposes no mandates, preemptions, or requirements of any kind on cities or counties, and has zero relevance to local planning, zoning, or land use authority.",
+        "notes": "ACR 206 is a pure resolution designating Elder and Dependent Adult Abuse Awareness Month. Concurrent resolutions of this type carry no legal force, impose no mandates, and have no bearing on local zoning, land use, planning authority, or infrastructure. There is no local control risk across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-07-13",
+        "analyzed_date": "2026-07-20",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -12329,10 +12329,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Housing.",
       "author": "Budget",
-      "status": "Enrolled",
-      "status_date": "2026-06-29",
+      "status": "Passed",
+      "status_date": "2026-07-13",
       "introduced_date": "2025-01-08",
-      "last_updated": "2026-06-29",
+      "last_updated": "2026-07-13",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB179",
       "summary": "An act to amend Section 8869.84 of the Government Code, to amend Sections 17929, 18942, 50220, 50220.5, 50220.7, 50220.8, 50223, 50230, 50233, 50235, 50239, 50240, 50241, 50242, 50517.5, 50517.8, 50675, 50675.4, 50675.6, and 50675.15 of, to add Section 50246 to, to add Chapter 3.1 (commencing with Section 50160) to Part 1 of, to add Chapter 6.9 (commencing with Section 51349.1) to Part 3 of, and to add Part 18 (commencing with Section 54920) to, Division 31 of, the Health and Safety Code, to amend Sections 75200.2, 75200.3, 75210, 75212, 75214, 75215, 75216, 75217, 75218, 75218.1, and 75218.2 ",
       "subjects": [],
@@ -12343,16 +12343,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2025-03-20",
-          "description": "In Senate. Read first time. To Com. on RLS. for assignment.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2025-04-02",
-          "description": "Referred to Com. on B. & F. R.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-06-26",
           "description": "From committee chair, with author's amendments: Amend, and re-refer to committee. Read second time, amended, and re-referred to Com. on B. & F. R.",
@@ -12392,20 +12382,31 @@
           "date": "2026-07-02",
           "description": "Enrolled and presented to the Governor at 3 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-07-13",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-07-13",
+          "description": "Chaptered by Secretary of State - Chapter 68, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
       "source_id": "1908164",
       "first_seen": "2026-07-06T15:02:34.415623",
       "analysis": {
-        "pro_housing_production": "moderate",
+        "pro_housing_production": "indirect",
         "densification": "none",
-        "reduce_discretion": "moderate",
-        "cost_to_cities": "moderate",
-        "notes": "AB 179 is a broad housing budget/omnibus bill amending numerous Health and Safety Code sections governing state housing programs (HCD loan programs, MHSA, CDBG-equivalent programs, and infrastructure financing). The bill's amendments to state housing financing programs (Sections 50220–50242, 50675 series) and addition of new chapters and parts to Division 31 suggest expanded state program authority and eligibility rules that can condition local participation, creating moderate compliance pressure on cities. The addition of new Part 18 (Section 54920+) and Chapter 6.9 (Section 51349.1+) may introduce new state mandates or eligibility frameworks that effectively override local preferences in exchange for state funding, and the Government Code bond allocation amendment (Section 8869.84) ties private activity bond authority to housing production, creating indirect pressure on local land use decisions.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-07-13",
-        "status_at_analysis": "Enrolled",
+        "reduce_discretion": "indirect",
+        "cost_to_cities": "indirect",
+        "notes": "AB 179 is a budget-related housing omnibus bill appropriating state funds and amending administrative frameworks for existing housing programs (MHSA, LIHTC, HCD grant/loan programs, Infill Infrastructure Grant, etc.) without explicitly preempting local zoning or eliminating discretionary review. The indirect risks arise from the bill restructuring state funding incentives and program eligibility criteria in ways that may steer local land use decisions toward state-preferred outcomes, and from potential unfunded compliance or administrative obligations tied to new reporting or program participation requirements.",
+        "comms_brief": "",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-07-20",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -12414,10 +12415,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Developmental services.",
       "author": "Budget and Fiscal Review",
-      "status": "Enrolled",
-      "status_date": "2026-06-29",
+      "status": "Passed",
+      "status_date": "2026-07-13",
       "introduced_date": "2025-01-23",
-      "last_updated": "2026-06-29",
+      "last_updated": "2026-07-13",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB163",
       "summary": "An act to amend Sections 14672.9, 15432, 95007, 95008, 95012, and 95024 of, and to add Chapter 3.1 (commencing with Section 95013) to Title 14 of, the Government Code, to amend Section 10295 of the Public Contract Code, to amend Sections 4435.1, 4435.2, 4519.2, 4519.10, 4519.11, 4572, 4620.5, 4622, 4625.5, 4629, 4636, 4648, 4685.8, 4688.21, 4689.1, 4851, and 4856, 4861, and 4865 of, to amend and repeal Sections 4429, 4430, 4474.1, 4474.12, 4474.15, and 4731 of, to amend, repeal, and add Sections 4474.2, 4519.1, 4620.3, and 4691 of, to add Sections 4418.05, 4519.12, 4621.6, 4689.9, and 4868.6 t",
       "subjects": [],
@@ -12428,16 +12429,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2025-03-20",
-          "description": "In Assembly. Read first time. Held at Desk.",
-          "chamber": "A"
-        },
-        {
-          "date": "2025-03-24",
-          "description": "Referred to Com. on BUDGET.",
-          "chamber": "A"
-        },
         {
           "date": "2026-06-26",
           "description": "From committee with author's amendments. Read second time and amended. Re-referred to Com. on BUDGET.",
@@ -12477,6 +12468,16 @@
           "date": "2026-07-01",
           "description": "Enrolled and presented to the Governor at 3 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-07-13",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-07-13",
+          "description": "Chaptered by Secretary of State. Chapter 80, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
@@ -12487,11 +12488,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 163 is a developmental services budget and policy bill amending the Welfare and Institutions Code and related statutes governing regional centers, service provider rates, and related administrative processes. It has no provisions touching local zoning, land use authority, planning discretion, CEQA, impact fees, or housing development mandates. All four local control risk criteria are inapplicable.",
+        "notes": "SB 163 is a developmental services budget and administrative bill, amending Welfare & Institutions Code provisions governing regional centers, consumers, and related state contracts. It contains no provisions touching zoning, land use, housing approvals, CEQA, impact fees, or local planning authority. All four local control risk criteria are inapplicable.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-07-13",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-07-20",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -12500,10 +12501,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Transit-oriented housing development: excluded parcels and sites.",
       "author": "Aisha Wahab",
-      "status": "Enrolled",
-      "status_date": "2026-07-02",
+      "status": "Passed",
+      "status_date": "2026-07-16",
       "introduced_date": "2025-02-21",
-      "last_updated": "2026-07-02",
+      "last_updated": "2026-07-16",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB722",
       "summary": "An act to amend Section 65912.157 of the Government Code, relating to land use, and declaring the urgency thereof, to take effect immediately.",
       "subjects": [],
@@ -12517,21 +12518,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-01-26",
-          "description": "Read third time. Urgency clause adopted. Passed. (Ayes 39. Noes 0. Page 3282.) Ordered to the Assembly.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-01-26",
-          "description": "In Assembly. Read first time. Held at Desk.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-05-04",
-          "description": "Referred to Coms. on H. & C.D. and L. GOV.",
-          "chamber": "A"
-        },
         {
           "date": "2026-06-10",
           "description": "Coauthors revised.",
@@ -12566,20 +12552,36 @@
           "date": "2026-07-02",
           "description": "In Senate. Ordered to engrossing and enrolling.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-07-15",
+          "description": "Enrolled and presented to the Governor at 11 a.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-07-16",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-07-16",
+          "description": "Chaptered by Secretary of State. Chapter 100, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
       "source_id": "1980452",
       "first_seen": "2026-07-06T15:02:34.415746",
       "analysis": {
-        "pro_housing_production": "strong",
-        "densification": "strong",
-        "reduce_discretion": "strong",
-        "cost_to_cities": "moderate",
-        "notes": "SB 722 amends Section 65912.157 of the Government Code, which governs the Transit-Oriented Communities (TOC) framework — a by-right, ministerial housing approval program that overrides local zoning near transit. By amending the \"excluded parcels and sites\" provisions, the bill likely narrows the list of local exclusions cities may invoke to opt parcels out of the TOC scheme, directly expanding the geographic footprint of state preemption of local zoning and removing discretionary review. Cities lose authority to condition or deny qualifying TOC projects on excluded parcels, and ministerial processing eliminates CEQA and public hearing rights. Moderate infrastructure burden arises because ministerial approvals on newly included sites may prevent cities from imposing full infrastructure improvement conditions.",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-07-13",
-        "status_at_analysis": "Enrolled",
+        "pro_housing_production": "moderate",
+        "densification": "moderate",
+        "reduce_discretion": "moderate",
+        "cost_to_cities": "indirect",
+        "notes": "SB 722 amends Government Code §65912.157, which governs the transit-oriented housing development (TOD) streamlining framework — a program that mandates ministerial, by-right approval for qualifying housing near transit. By adjusting which parcels and sites are \"excluded\" from that framework, this bill either expands or contracts the universe of projects entitled to bypass local discretionary review. If it narrows exclusions (expanding TOD eligibility), it strengthens state preemption of local zoning and eliminates discretionary review for more sites; if it broadens exclusions, local control risk is reduced. The summary alone is ambiguous on direction, but the bill's urgency status and TOD context suggest a pro-production clarification. Scoring reflects the baseline risk inherent in the underlying TOD statute it amends.",
+        "comms_brief": "SB 722 amends the transit-oriented housing development streamlining law to adjust which parcels are excluded from mandatory ministerial approval, potentially expanding the set of sites where cities lose discretionary authority over housing projects.\n• Modifies eligibility under a by-right approval framework that already strips cities of discretionary review, CEQA applicability, and design-condition authority for qualifying TOD projects.\n• Changes to \"excluded parcels\" definitions could pull additional sites into the ministerial pipeline, further limiting cities' ability to evaluate project compatibility with local plans and infrastructure.\n• Urgency clause means the change takes effect immediately, foreclosing any local policy response or planning adaptation period.\nRecommended: Monitor — the precise direction of the exclusion amendment (narrowing vs. broadening) is not determinable from the summary alone; fetch full text to confirm whether net local control impact expands or contracts.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-07-20",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     }
