@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-20T14:44:27.496538",
+  "last_updated": "2026-08-03T15:06:54.685934",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
