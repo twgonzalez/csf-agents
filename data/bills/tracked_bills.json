@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-14T19:02:03.985345",
+  "last_updated": "2026-09-21T19:01:12.824283",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -839,10 +839,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Housing omnibus.",
       "author": "Housing",
-      "status": "Enrolled",
-      "status_date": "2026-08-30",
+      "status": "Passed",
+      "status_date": "2026-09-18",
       "introduced_date": "2026-02-13",
-      "last_updated": "2026-08-30",
+      "last_updated": "2026-09-18",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1072",
       "summary": "An act to amend Sections 65589.5, 65863.10, 65863.11, and 66300 of, and to repeal Section 65584.6 of, the Government Code, to amend Sections 50199.7, 50199.15, 50408, 50676, 50827, and 50828 of the Health and Safety Code, and to amend Sections 12206, 17058, and 23610.5 of the Revenue and Taxation Code, relating to housing.",
       "subjects": [],
@@ -856,23 +856,8 @@
       "upcoming_hearings": [],
       "actions": [
         {
-          "date": "2026-06-30",
-          "description": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 7. Noes 0.) (June 29). Re-referred to Com. on APPR.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-08-05",
-          "description": "From committee: Do pass. (Ayes 15. Noes 0.) (August 5).",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-08-06",
-          "description": "Read second time. Ordered to third reading.",
-          "chamber": "A"
-        },
-        {
           "date": "2026-08-21",
-          "description": "Assembly Rule 69(b)(1) suspended.",
+          "description": "Assembly Rule 69(b)(1) suspended. (Ayes 55. Noes 17. Page 6296.)",
           "chamber": "A"
         },
         {
@@ -887,7 +872,7 @@
         },
         {
           "date": "2026-08-27",
-          "description": "Read third time. Passed. Ordered to the Senate.",
+          "description": "Read third time. Passed. (Ayes 78. Noes 0. Page 6703.) Ordered to the Senate.",
           "chamber": "A"
         },
         {
@@ -904,6 +889,21 @@
           "date": "2026-08-30",
           "description": "Assembly amendments concurred in. (Ayes 40. Noes 0.) Ordered to engrossing and enrolling.",
           "chamber": "Senate"
+        },
+        {
+          "date": "2026-09-08",
+          "description": "Enrolled and presented to the Governor at 4 p.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-18",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-18",
+          "description": "Chaptered by Secretary of State. Chapter 322, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
@@ -914,11 +914,10 @@
         "densification": "moderate",
         "reduce_discretion": "moderate",
         "cost_to_cities": "indirect",
-        "notes": "SB 1072 is a housing omnibus bill amending core local land use statutes — including the Housing Accountability Act (§65589.5), anti-downzoning provisions (§66300), and No Net Loss law (§§65863.10–65863.11) — which collectively limit cities' authority to deny, condition, or reduce density on qualifying housing projects. Amendments to LIHTC and state housing finance programs (Health & Safety and Revenue & Taxation Code) expand the pipeline of state-subsidized projects that cities must process, creating indirect permitting and infrastructure capacity pressure without dedicated local funding offsets.",
-        "comms_brief": "SB 1072 amends multiple foundational housing statutes — the Housing Accountability Act, No Net Loss law, and anti-downzoning provisions — simultaneously tightening state constraints on local land use authority across denial, conditioning, and zoning reduction.\n• Strengthens Housing Accountability Act (§65589.5) findings requirements, further restricting cities' legal basis to deny or reduce density on compliant projects\n• Tightens anti-downzoning preemption (§66300), limiting cities' flexibility to adjust zoning designations even in response to legitimate community planning goals\n• Amends No Net Loss provisions (§§65863.10–65863.11), adding state oversight mechanisms that constrain how cities manage site inventories and replacement housing obligations\n• Expands state LIHTC and housing finance programs, increasing the volume of state-subsidized projects cities must receive and process under existing ministerial or streamlined pathways\nRecommended: Oppose — bill packages multiple preemption tightenings into a single omnibus, compounding local control restrictions while providing no offsetting infrastructure funding or community benefit mechanisms",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "notes": "SB 1072 is a housing omnibus bill amending the Housing Accountability Act (§65589.5), anti-downzoning provisions (§66300), LIHTC/housing finance statutes, and No Net Loss rules (§§65863.10–.11), while repealing a RHNA inter-jurisdictional transfer provision. Amendments to §65589.5 (HAA) and §66300 (Housing Crisis Act) reinforce state preemption of local zoning decisions and limit cities' ability to deny or condition qualifying housing projects, representing a moderate override of local land use authority and discretion. The LIHTC and affordable housing finance amendments (Health & Safety and Revenue & Taxation Code sections) are primarily state program administration changes with indirect local impact.",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -2933,10 +2932,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Workforce development: Displaced Oil and Gas Worker Pilot Program: extension.",
       "author": "Isaac Bryan",
-      "status": "Enrolled",
-      "status_date": "2026-08-27",
+      "status": "Passed",
+      "status_date": "2026-09-20",
       "introduced_date": "2026-02-18",
-      "last_updated": "2026-08-27",
+      "last_updated": "2026-09-20",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2157",
       "summary": "An act to amend Section 9921 of, and to repeal and add Section 9925 of, the Unemployment Insurance Code, relating to workforce development.",
       "subjects": [],
@@ -2948,16 +2947,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-06-17",
-          "description": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 4. Noes 1.) (June 17). Re-referred to Com. on APPR.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-06-29",
-          "description": "In committee: Referred to APPR. suspense file.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-08-13",
           "description": "From committee: Do pass. (Ayes 5. Noes 2.) (August 13).",
@@ -2990,12 +2979,22 @@
         },
         {
           "date": "2026-08-27",
-          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 55. Noes 19.).",
+          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 55. Noes 19. Page 6714.).",
           "chamber": "A"
         },
         {
           "date": "2026-09-04",
           "description": "Enrolled and presented to the Governor at 4 p.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Chaptered by Secretary of State - Chapter 385, Statutes of 2026.",
           "chamber": ""
         }
       ],
@@ -3007,11 +3006,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2157 extends a state workforce development pilot program for displaced oil and gas workers under the Unemployment Insurance Code. It operates entirely within the state employment/labor framework and imposes no requirements, mandates, or restrictions on local planning, zoning, land use authority, discretionary review processes, or infrastructure funding mechanisms.",
+        "notes": "AB 2157 extends and modifies a state-administered pilot program for displaced oil and gas workers under the Unemployment Insurance Code. This is entirely a workforce development and unemployment insurance measure with no provisions touching local zoning, land use authority, discretionary review, development mandates, or infrastructure fee authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -3108,10 +3107,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Multifamily housing development: offsite housing factories: backstop financing.",
       "author": "Juan Carrillo",
-      "status": "Enrolled",
-      "status_date": "2026-08-27",
+      "status": "Vetoed",
+      "status_date": "2026-09-18",
       "introduced_date": "2026-02-18",
-      "last_updated": "2026-08-27",
+      "last_updated": "2026-09-18",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2166",
       "summary": "An act to add Chapter 7 (commencing with Section 63089.100) to Division 1 of Title 6.7 of the Government Code, relating to housing.",
       "subjects": [],
@@ -3124,11 +3123,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-07-01",
-          "description": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 8. Noes 0.) (June 30). Re-referred to Com. on APPR.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-08-03",
           "description": "In committee: Referred to APPR. suspense file.",
@@ -3166,13 +3160,18 @@
         },
         {
           "date": "2026-08-27",
-          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 73. Noes 1.).",
+          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 73. Noes 1. Page 6689.).",
           "chamber": "A"
         },
         {
           "date": "2026-09-04",
           "description": "Enrolled and presented to the Governor at 4 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-09-18",
+          "description": "Vetoed by Governor.",
+          "chamber": "A"
         }
       ],
       "source": "legiscan",
@@ -3183,11 +3182,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2166 establishes a state backstop financing mechanism for offsite housing factories (modular/manufactured housing production facilities), operating through the California Infrastructure and Economic Development Bank or a similar state financing entity. This is a state-level financial instrument targeting the supply chain for multifamily construction — it does not preempt local zoning, eliminate discretionary review, mandate approvals, or restrict cities' impact fee or infrastructure conditioning authority. No local control risk is identified across any criterion.",
+        "notes": "AB 2166 establishes a state backstop financing mechanism for offsite housing factories (modular/manufactured housing production facilities) through the California Infrastructure and Economic Development Bank or a similar state entity. This is a state-level financial infrastructure program — it does not preempt local zoning, eliminate discretionary review, mandate approvals, or restrict impact fee or infrastructure improvement authority. Local governments retain full planning and land use control over where and whether modular housing projects are sited.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Vetoed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -3196,10 +3195,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Mobilehomes and manufactured housing: registration and titling documentation.",
       "author": "Natasha Johnson",
-      "status": "Enrolled",
-      "status_date": "2026-08-27",
+      "status": "Passed",
+      "status_date": "2026-09-20",
       "introduced_date": "2026-02-19",
-      "last_updated": "2026-08-27",
+      "last_updated": "2026-09-20",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2174",
       "summary": "An act to amend Section 18100.5 of the Health and Safety Code, relating to housing.",
       "subjects": [],
@@ -3212,16 +3211,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-05-27",
-          "description": "Referred to Coms. on HOUSING and JUD.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-06-25",
-          "description": "From committee: Do pass and re-refer to Com. on JUD. with recommendation: To Consent Calendar. (Ayes 10. Noes 0.) (June 24). Re-referred to Com. on JUD.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-07-01",
           "description": "From committee: Do pass and re-refer to Com. on APPR. with recommendation: To Consent Calendar. (Ayes 13. Noes 0.) (June 30). Re-referred to Com. on APPR.",
@@ -3261,6 +3250,16 @@
           "date": "2026-09-03",
           "description": "Enrolled and presented to the Governor at 4 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Chaptered by Secretary of State - Chapter 386, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
@@ -3271,11 +3270,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2174 amends Health and Safety Code Section 18100.5, which governs registration and titling documentation for mobilehomes and manufactured housing — an administrative/clerical function administered at the state level through HCD. Nothing in the bill's title, summary, or legislative history suggests any preemption of local zoning authority, removal of discretionary review, development mandates, or infrastructure fee restrictions. The bill appears to be a narrow technical correction to titling procedures.",
+        "notes": "AB 2174 amends Health and Safety Code Section 18100.5, which governs registration and titling documentation for mobilehomes and manufactured housing — an administrative/regulatory function of the state's HCD titling system, not a local land use or zoning matter. There is no indication this bill preempts local planning authority, removes discretionary review, mandates development approvals, or restricts infrastructure/impact fee authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -5046,10 +5045,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Common Interest Developments: governing documents: assessments.",
       "author": "Blanca Rubio",
-      "status": "Enrolled",
-      "status_date": "2026-08-28",
+      "status": "Vetoed",
+      "status_date": "2026-09-20",
       "introduced_date": "2026-02-20",
-      "last_updated": "2026-08-28",
+      "last_updated": "2026-09-20",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2439",
       "summary": "An act to amend Sections 5655 and 5690 of, and to add Section 4755 to, the Civil Code, relating to common interest developments.",
       "subjects": [],
@@ -5061,16 +5060,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-05-13",
-          "description": "Referred to Coms. on HOUSING and JUD.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-06-17",
-          "description": "From committee: Amend, and do pass as amended and re-refer to Com. on JUD. (Ayes 8. Noes 1.) (June 16).",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-06-18",
           "description": "Read second time and amended. Re-referred to Com. on JUD.",
@@ -5108,7 +5097,17 @@
         },
         {
           "date": "2026-08-28",
-          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 76. Noes 0.).",
+          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 76. Noes 0. Page 6812.).",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-09-08",
+          "description": "Enrolled and presented to the Governor at 3:30 p.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Vetoed by Governor.",
           "chamber": "A"
         }
       ],
@@ -5120,11 +5119,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2439 amends Civil Code provisions governing Common Interest Developments (HOAs), specifically relating to assessment payment rules and governing document requirements. This is an internal HOA governance and civil law matter — it operates between HOAs and their members, with no preemption of local zoning, no alteration of discretionary review processes, no development mandates, and no restriction on local infrastructure or impact fee authority.",
+        "notes": "AB 2439 amends Civil Code provisions governing common interest developments (HOAs) — specifically assessment-related rules under Sections 5655 and 5690, and adds a new Section 4755. This bill operates entirely within the private HOA governance framework, regulating relationships between HOAs and their members. It does not touch city/county zoning authority, discretionary review processes, development mandates, or local infrastructure fee authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Vetoed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -5347,10 +5346,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Transit-oriented development: exclusions: historic sites.",
       "author": "John Harabedian",
-      "status": "Enrolled",
-      "status_date": "2026-08-20",
+      "status": "Passed",
+      "status_date": "2026-09-15",
       "introduced_date": "2026-02-20",
-      "last_updated": "2026-08-20",
+      "last_updated": "2026-09-15",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2576",
       "summary": "An act to amend Section 65912.161 of the Government Code, relating to land use.",
       "subjects": [],
@@ -5362,16 +5361,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-06-15",
-          "description": "From committee chair, with author's amendments: Amend, and re-refer to committee. Read second time, amended, and re-referred to Com. on HOUSING.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-06-25",
-          "description": "From committee: Do pass and re-refer to Com. on L. GOV. (Ayes 10. Noes 0.) (June 24). Re-referred to Com. on L. GOV.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-07-02",
           "description": "From committee: Do pass. (Ayes 7. Noes 0.) (July 1).",
@@ -5404,12 +5393,22 @@
         },
         {
           "date": "2026-08-20",
-          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 76. Noes 0.).",
+          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 76. Noes 0. Page 6327.).",
           "chamber": "A"
         },
         {
           "date": "2026-08-27",
           "description": "Enrolled and presented to the Governor at 4 p.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-15",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-15",
+          "description": "Chaptered by Secretary of State - Chapter 214, Statutes of 2026.",
           "chamber": ""
         }
       ],
@@ -5421,11 +5420,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2576 amends the transit-oriented development (TOD) statute (Gov. Code §65912.161) to carve out historic sites from its applicability. Rather than expanding state preemption, this bill narrows an existing preemptive TOD framework, effectively restoring or preserving local discretion over historically significant sites. There is no new mandate, no removal of discretionary review, and no infrastructure fee restriction introduced by this amendment.",
+        "notes": "AB 2576 amends Section 65912.161 of the Government Code to add historic sites as an exclusion from transit-oriented development (TOD) provisions. Rather than expanding state preemption or mandating approvals, this bill narrows the scope of TOD streamlining — preserving local (and state historic) review authority over qualifying historic sites. It poses no meaningful local control risk on any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-08-31",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -6459,10 +6458,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Public postsecondary education: student housing: foster youth and homeless youth.",
       "author": "Patrick Ahrens",
-      "status": "Enrolled",
-      "status_date": "2026-08-20",
+      "status": "Passed",
+      "status_date": "2026-09-15",
       "introduced_date": "2026-02-20",
-      "last_updated": "2026-08-20",
+      "last_updated": "2026-09-15",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2766",
       "summary": "An act to amend Sections 66025.9, 76010, 90001.5, and 92660 of the Education Code, relating to public postsecondary education.",
       "subjects": [],
@@ -6475,16 +6474,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-05-27",
-          "description": "Referred to Coms. on ED. and HUMAN S.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-05-28",
-          "description": "From committee chair, with author's amendments: Amend, and re-refer to committee. Read second time, amended, and re-referred to Com. on ED.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-06-10",
           "description": "From committee: Do pass and re-refer to Com. on HUMAN S. (Ayes 7. Noes 0.) (June 10). Re-referred to Com. on HUMAN S.",
@@ -6517,12 +6506,22 @@
         },
         {
           "date": "2026-08-20",
-          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 77. Noes 0.).",
+          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 77. Noes 0. Page 6330.).",
           "chamber": "A"
         },
         {
           "date": "2026-08-27",
           "description": "Enrolled and presented to the Governor at 4 p.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-15",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-15",
+          "description": "Chaptered by Secretary of State - Chapter 216, Statutes of 2026.",
           "chamber": ""
         }
       ],
@@ -6534,11 +6533,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2766 amends Education Code sections governing student housing programs at public postsecondary institutions, specifically targeting protections or services for foster youth and homeless youth. This is entirely within the state's higher education system and involves no preemption of city or county zoning, land use, or planning authority, no changes to discretionary review processes, no development mandates on local governments, and no restrictions on local infrastructure fee authority.",
+        "notes": "AB 2766 amends Education Code sections governing public postsecondary institutions' student housing programs, specifically targeting foster youth and homeless youth populations. This is an internal higher education policy bill — it imposes no requirements on cities or counties, does not preempt local zoning or land use authority, and creates no infrastructure or capacity obligations for local governments.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-08-31",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -7344,10 +7343,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Common interest developments: management.",
       "author": "Aisha Wahab",
-      "status": "Enrolled",
-      "status_date": "2026-08-27",
+      "status": "Vetoed",
+      "status_date": "2026-09-20",
       "introduced_date": "2026-02-19",
-      "last_updated": "2026-08-27",
+      "last_updated": "2026-09-20",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1238",
       "summary": "An act to amend Sections 11500 and 11501 of the Business and Professions Code, and to amend Sections 4525, 5200, 5510, 5550, 5551, 5560, and 5565 of, and to add Section 5390 to, the Civil Code, relating to common interest developments.",
       "subjects": [],
@@ -7361,23 +7360,13 @@
       "upcoming_hearings": [],
       "actions": [
         {
-          "date": "2026-08-03",
-          "description": "Read second time. Ordered to third reading.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-08-19",
-          "description": "Read third time and amended.",
-          "chamber": "A"
-        },
-        {
           "date": "2026-08-19",
           "description": "Ordered to third reading.",
           "chamber": "A"
         },
         {
           "date": "2026-08-21",
-          "description": "Assembly Rule 69(b)(1) suspended.",
+          "description": "Assembly Rule 69(b)(1) suspended. (Ayes 55. Noes 17. Page 6296.)",
           "chamber": "A"
         },
         {
@@ -7392,7 +7381,7 @@
         },
         {
           "date": "2026-08-26",
-          "description": "Read third time. Passed. Ordered to the Senate.",
+          "description": "Read third time. Passed. (Ayes 76. Noes 0. Page 6552.) Ordered to the Senate.",
           "chamber": "A"
         },
         {
@@ -7409,6 +7398,16 @@
           "date": "2026-08-31",
           "description": "Enrolled and presented to the Governor at 6 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Vetoed by the Governor.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-09-20",
+          "description": "In Senate. Consideration of Governor's veto pending.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
@@ -7419,11 +7418,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1238 amends Business and Professions Code sections governing HOA management licensing and Civil Code sections governing common interest development (CID) disclosures, meetings, and elections. These are internal governance and consumer protection reforms applicable to HOAs and their management companies — they do not touch city or county zoning authority, discretionary review processes, development mandates, or infrastructure fee authority. No local control risk is identified across any criterion.",
+        "notes": "SB 1238 addresses internal governance and management requirements for common interest developments (HOAs/condos), amending Business and Professions Code provisions on HOA management licensing and Civil Code provisions on disclosures, records, meetings, and elections. None of these provisions touch city or county zoning authority, discretionary review processes, development mandates, or infrastructure fee authority — the bill operates entirely within the private law framework governing HOA operations.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Vetoed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -8007,10 +8006,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Adult community care facilities: email address of record.",
       "author": "Monique Limon",
-      "status": "Enrolled",
-      "status_date": "2026-08-27",
+      "status": "Passed",
+      "status_date": "2026-09-18",
       "introduced_date": "2026-02-20",
-      "last_updated": "2026-08-27",
+      "last_updated": "2026-09-18",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1410",
       "summary": "An act to amend Sections 1509.56, 1509.6, 1568.023, and 1569.15 of the Health and Safety Code, relating to community care facilities.",
       "subjects": [],
@@ -8021,11 +8020,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-06-17",
-          "description": "From committee with author's amendments. Read second time and amended. Re-referred to Com. on HUM. S.",
-          "chamber": "A"
-        },
         {
           "date": "2026-07-01",
           "description": "From committee: Do pass and re-refer to Com. on APPR. with recommendation: To consent calendar. (Ayes 7. Noes 0.) (June 30). Re-referred to Com. on APPR.",
@@ -8039,11 +8033,6 @@
         {
           "date": "2026-08-06",
           "description": "Read second time. Ordered to consent calendar.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-08-13",
-          "description": "Read third time. Passed. Ordered to the Senate.",
           "chamber": "A"
         },
         {
@@ -8070,6 +8059,16 @@
           "date": "2026-09-04",
           "description": "Enrolled and presented to the Governor at 2 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-09-18",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-18",
+          "description": "Chaptered by Secretary of State. Chapter 327, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
@@ -8080,11 +8079,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1410 amends Health and Safety Code sections governing adult community care facilities solely to add email address of record requirements — an administrative licensing/notification mechanism. The bill has no bearing on local zoning authority, land use discretion, development mandates, or infrastructure funding.",
+        "notes": "SB 1410 amends Health and Safety Code sections governing adult community care facilities solely to add or update email address of record requirements — an administrative/notification provision with no bearing on local zoning, land use, planning authority, or infrastructure. There is no local control risk across any of the four criteria.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -9975,10 +9974,10 @@
       "session": "2025-2026 Regular Session",
       "title": "State Housing Law: remote inspections.",
       "author": "Juan Carrillo",
-      "status": "Enrolled",
-      "status_date": "2026-08-24",
+      "status": "Passed",
+      "status_date": "2026-09-18",
       "introduced_date": "2026-02-05",
-      "last_updated": "2026-08-24",
+      "last_updated": "2026-09-18",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1738",
       "summary": "An act to add Section 17970.9 to the Health and Safety Code, relating to housing.",
       "subjects": [],
@@ -9991,16 +9990,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-06-18",
-          "description": "From committee: Amend, and do pass as amended and re-refer to Com. on HOUSING. (Ayes 4. Noes 1.) (June 17).",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-06-22",
-          "description": "Read second time and amended. Re-referred to Com. on HOUSING.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-07-01",
           "description": "From committee: Amend, and do pass as amended and re-refer to Com. on APPR. (Ayes 7. Noes 2.) (June 30).",
@@ -10033,12 +10022,22 @@
         },
         {
           "date": "2026-08-24",
-          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 68. Noes 0.).",
+          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 68. Noes 0. Page 6402.).",
           "chamber": "A"
         },
         {
           "date": "2026-08-28",
           "description": "Enrolled and presented to the Governor at 3:30 p.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-18",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-18",
+          "description": "Chaptered by Secretary of State - Chapter 271, Statutes of 2026.",
           "chamber": ""
         }
       ],
@@ -10049,12 +10048,12 @@
         "pro_housing_production": "none",
         "densification": "none",
         "reduce_discretion": "none",
-        "cost_to_cities": "indirect",
-        "notes": "AB 1738 adds Section 17970.9 to the Health and Safety Code to authorize remote inspections under State Housing Law. This is primarily a procedural/administrative modernization bill — it does not preempt local zoning, eliminate discretionary review, mandate density or development volumes, or restrict impact fee authority. The sole indirect risk is a modest unfunded compliance burden: local enforcement agencies may need to adapt inspection workflows, invest in technology or staff training to conduct remote inspections, and integrate new procedures — with no state funding offset indicated.",
+        "cost_to_cities": "none",
+        "notes": "AB 1738 adds Section 17970.9 to the Health and Safety Code to authorize remote inspections under State Housing Law. This is an administrative modernization measure — it does not preempt local zoning, eliminate discretionary review, mandate density or approvals, or restrict local impact fee or infrastructure authority. No local control risk is identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -12863,10 +12862,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Mandated reporters of suspected financial abuse of an elder or dependent adult.",
       "author": "Catherine Stefani",
-      "status": "Enrolled",
-      "status_date": "2026-08-20",
+      "status": "Passed",
+      "status_date": "2026-09-20",
       "introduced_date": "2025-02-19",
-      "last_updated": "2026-08-20",
+      "last_updated": "2026-09-20",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB871",
       "summary": "An act to amend, repeal, and add Section 15630.1 of the Welfare and Institutions Code, relating to elder and dependent adults.",
       "subjects": [],
@@ -12879,16 +12878,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-06-18",
-          "description": "From committee: Amend, and do pass as amended and re-refer to Com. on JUD. (Ayes 7. Noes 0.) (June 17).",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-06-22",
-          "description": "Read second time and amended. Re-referred to Com. on JUD.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-07-01",
           "description": "From committee: Do pass and re-refer to Com. on APPR. (Ayes 13. Noes 0.) (June 30). Re-referred to Com. on APPR.",
@@ -12921,12 +12910,22 @@
         },
         {
           "date": "2026-08-20",
-          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 78. Noes 0.).",
+          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 78. Noes 0. Page 6310.).",
           "chamber": "A"
         },
         {
           "date": "2026-08-27",
           "description": "Enrolled and presented to the Governor at 4 p.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Chaptered by Secretary of State - Chapter 360, Statutes of 2026.",
           "chamber": ""
         }
       ],
@@ -12938,11 +12937,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 871 amends Welfare and Institutions Code Section 15630.1 to update mandated reporter requirements for suspected financial abuse of elders and dependent adults. This bill operates entirely within the elder abuse reporting framework and has no connection to land use, zoning, housing approvals, or infrastructure authority. There is no local control risk across any of the four criteria.",
+        "notes": "AB 871 amends Welfare and Institutions Code Section 15630.1 to update mandated reporter requirements for suspected financial abuse of elders and dependent adults. This is a consumer protection/elder care bill with no provisions touching local zoning, land use, planning authority, discretionary review, development mandates, or infrastructure funding — it poses zero local control risk across all four criteria.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-08-31",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -13566,10 +13565,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Public retirement systems: development projects: labor standards.",
       "author": "Robert Garcia",
-      "status": "Enrolled",
-      "status_date": "2026-08-27",
+      "status": "Passed",
+      "status_date": "2026-09-20",
       "introduced_date": "2025-02-21",
-      "last_updated": "2026-08-27",
+      "last_updated": "2026-09-20",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB1439",
       "summary": "An act to add Section 7513.77 to the Government Code, relating to public retirement systems.",
       "subjects": [],
@@ -13581,16 +13580,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-06-10",
-          "description": "From committee: Amend, and do pass as amended and re-refer to Com. on APPR. (Ayes 4. Noes 1.) (June 10).",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-06-11",
-          "description": "Read second time and amended. Re-referred to Com. on APPR.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-06-22",
           "description": "In committee: Referred to APPR. suspense file.",
@@ -13623,12 +13612,22 @@
         },
         {
           "date": "2026-08-27",
-          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 60. Noes 9.).",
+          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 60. Noes 9. Page 6680.).",
           "chamber": "A"
         },
         {
           "date": "2026-09-04",
           "description": "Enrolled and presented to the Governor at 4 p.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Chaptered by Secretary of State - Chapter 365, Statutes of 2026.",
           "chamber": ""
         }
       ],
@@ -13640,11 +13639,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 1439 adds Section 7513.77 to the Government Code governing public retirement systems and their investment in development projects conditioned on labor standards. This bill operates at the level of public pension fund investment policy — it does not preempt local zoning authority, eliminate discretionary review, mandate housing approvals, or restrict local impact fee or infrastructure authority. It is a labor/pension regulation with no direct local land use mechanism.",
+        "notes": "AB 1439 adds Section 7513.77 to the Government Code governing public retirement systems in the context of development projects and labor standards. Based on the title and summary, this bill appears to regulate how public pension funds (e.g., CalPERS, CalSTRS) consider or apply labor standards when investing in or relating to development projects — a matter of state fiduciary/investment policy internal to retirement systems. There is no evident preemption of local zoning authority, removal of discretionary review, mandate on city approvals, or restriction on infrastructure fee authority. The summary is short, but the title and code section targeted (Government Code § 7513.77, within the public retirement law) confirm the bill's scope is limited to pension system governance, not land use.",
         "comms_brief": "",
-        "full_text_fetched": true,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "full_text_fetched": false,
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -15016,10 +15015,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Developmental services: community placement plans and community resource development plans.",
       "author": "Budget",
-      "status": "Enrolled",
-      "status_date": "2026-08-31",
+      "status": "Passed",
+      "status_date": "2026-09-18",
       "introduced_date": "2025-01-08",
-      "last_updated": "2026-08-31",
+      "last_updated": "2026-09-18",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB175",
       "summary": "An act to amend Sections 4437, 4474.17, 4648, 4677, 4679.1, 4684.50, 4684.53, 4684.55, 4684.58, 4684.81, 4698, and 4781.6 of, and to amend, repeal, and add Sections 4418.25 and 4679 of, the Welfare and Institutions Code, relating to developmental services, and making an appropriation therefor, to take effect immediately, bill related to the budget.",
       "subjects": [],
@@ -15030,16 +15029,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2025-03-20",
-          "description": "In Senate. Read first time. To Com. on RLS. for assignment.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2025-04-02",
-          "description": "Referred to Com. on B. & F. R.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-08-28",
           "description": "From committee chair, with author's amendments: Amend, and re-refer to committee. Read second time, amended, and re-referred to Com. on B. & F. R.",
@@ -15079,6 +15068,16 @@
           "date": "2026-09-08",
           "description": "Enrolled and presented to the Governor at 3:30 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-09-18",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-18",
+          "description": "Chaptered by Secretary of State - Chapter 253, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
@@ -15089,11 +15088,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB175 is a developmental services budget bill amending Welfare and Institutions Code provisions related to community placement plans and community resource development plans for individuals with developmental disabilities. It contains no provisions affecting local zoning, land use authority, discretionary review, development mandates, or infrastructure fee authority. This is a state-level program administration and appropriations measure with no local control implications.",
+        "notes": "AB 175 amends the Welfare and Institutions Code provisions governing developmental services, specifically community placement plans and community resource development plans administered by the Department of Developmental Services. This bill operates entirely within the state's developmental services system and does not touch local zoning, land use authority, CEQA, impact fees, or planning processes in any way.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-14",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-21",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
