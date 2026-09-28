@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-21T19:01:12.824283",
+  "last_updated": "2026-09-28T20:22:03.423207",
   "agent": "legislative_tracker",
   "schema_version": "1.0",
   "description": "CA Legislature housing bills tracked by CSF Legislative Tracker. Read by pattern_analyzer, newsletter_composer, and other agents.",
@@ -911,12 +911,12 @@
       "first_seen": "2026-02-21T14:51:24.210578",
       "analysis": {
         "pro_housing_production": "moderate",
-        "densification": "moderate",
-        "reduce_discretion": "moderate",
+        "densification": "none",
+        "reduce_discretion": "indirect",
         "cost_to_cities": "indirect",
-        "notes": "SB 1072 is a housing omnibus bill amending the Housing Accountability Act (§65589.5), anti-downzoning provisions (§66300), LIHTC/housing finance statutes, and No Net Loss rules (§§65863.10–.11), while repealing a RHNA inter-jurisdictional transfer provision. Amendments to §65589.5 (HAA) and §66300 (Housing Crisis Act) reinforce state preemption of local zoning decisions and limit cities' ability to deny or condition qualifying housing projects, representing a moderate override of local land use authority and discretion. The LIHTC and affordable housing finance amendments (Health & Safety and Revenue & Taxation Code sections) are primarily state program administration changes with indirect local impact.",
-        "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "notes": "SB 1072 is a housing omnibus bill amending the Housing Accountability Act (§65589.5), anti-downzoning provisions (§66300), housing element no-net-loss statutes (§§65863.10–.11), and low-income housing tax credit/financing programs — collectively tightening state oversight of local land use decisions and restricting cities' ability to reduce residential capacity. The repeal of §65584.6 and amendments to §66300 reinforce anti-downzoning rules, constituting a moderate Local Control Override; the HAA strengthening and tax credit program updates create indirect pressure on cities to approve qualifying projects and comply with state financing criteria.",
+        "full_text_fetched": true,
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -2455,10 +2455,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Workforce Housing Enhanced Infrastructure Financing Act.",
       "author": "Natasha Johnson",
-      "status": "Enrolled",
-      "status_date": "2026-08-31",
+      "status": "Passed",
+      "status_date": "2026-09-20",
       "introduced_date": "2026-02-18",
-      "last_updated": "2026-08-31",
+      "last_updated": "2026-09-20",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB2110",
       "summary": "An act to add Article 6 (commencing with Section 53399) to Chapter 2.99 of Part 1 of Division 2 of Title 5 of the Government Code, relating to local government.",
       "subjects": [],
@@ -2471,31 +2471,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-06-03",
-          "description": "Referred to Coms. on L. GOV. and HOUSING.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-06-09",
-          "description": "From committee chair, with author's amendments: Amend, and re-refer to committee. Read second time, amended, and re-referred to Com. on L. GOV.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-06-17",
-          "description": "From committee: Do pass and re-refer to Com. on HOUSING. (Ayes 6. Noes 0.) (June 17). Re-referred to Com. on HOUSING.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-06-22",
-          "description": "From committee chair, with author's amendments: Amend, and re-refer to committee. Read second time, amended, and re-referred to Com. on HOUSING.",
-          "chamber": "Senate"
-        },
-        {
-          "date": "2026-07-01",
-          "description": "From committee: Do pass and re-refer to Com. on APPR. with recommendation: To Consent Calendar. (Ayes 9. Noes 0.) (June 30). Re-referred to Com. on APPR.",
-          "chamber": "Senate"
-        },
         {
           "date": "2026-08-03",
           "description": "From committee: Be ordered to second reading file pursuant to Senate Rule 28.8 and ordered to Consent Calendar.",
@@ -2512,6 +2487,11 @@
           "chamber": "Senate"
         },
         {
+          "date": "2026-08-10",
+          "description": "Read third time. Passed. Ordered to the Assembly. (Ayes 39. Noes 0. Page 5323.).",
+          "chamber": "Senate"
+        },
+        {
           "date": "2026-08-11",
           "description": "In Assembly. Concurrence in Senate amendments pending.",
           "chamber": "A"
@@ -2520,6 +2500,26 @@
           "date": "2026-08-31",
           "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 76. Noes 0.).",
           "chamber": "A"
+        },
+        {
+          "date": "2026-08-31",
+          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 76. Noes 0. Page 7067.).",
+          "chamber": "A"
+        },
+        {
+          "date": "2026-09-15",
+          "description": "Enrolled and presented to the Governor at 3 p.m.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Chaptered by Secretary of State - Chapter 381, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
@@ -2530,11 +2530,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2110 creates a new Enhanced Infrastructure Financing District (EIFD) framework specifically for workforce housing, a voluntary financing tool that cities and counties opt into — it does not preempt local zoning, mandate approvals, strip discretionary review, or restrict impact fee authority. Because participation is locally initiated and governed, there is no meaningful local control risk across any criterion.",
+        "notes": "AB 2110 creates a new Enhanced Infrastructure Financing District (EIFD) article specifically for workforce housing — a voluntary, locally-initiated financing mechanism. EIFDs are opt-in tools that cities and counties use to capture tax increment revenue for infrastructure and housing; they do not preempt local zoning, remove discretionary review, mandate approvals, or restrict impact fee authority. No local control risk is identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-14",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-28",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -3006,10 +3006,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2157 extends and modifies a state-administered pilot program for displaced oil and gas workers under the Unemployment Insurance Code. This is entirely a workforce development and unemployment insurance measure with no provisions touching local zoning, land use authority, discretionary review, development mandates, or infrastructure fee authority.",
+        "notes": "AB 2157 extends the Displaced Oil and Gas Worker Pilot Program under the Unemployment Insurance Code — a state workforce development initiative with no provisions touching local zoning, land use authority, planning discretion, or infrastructure fee authority. This bill operates entirely within state labor and employment law and poses no local control risk across any of the four criteria.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -3182,10 +3182,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2166 establishes a state backstop financing mechanism for offsite housing factories (modular/manufactured housing production facilities) through the California Infrastructure and Economic Development Bank or a similar state entity. This is a state-level financial infrastructure program — it does not preempt local zoning, eliminate discretionary review, mandate approvals, or restrict impact fee or infrastructure improvement authority. Local governments retain full planning and land use control over where and whether modular housing projects are sited.",
+        "notes": "AB 2166 establishes a state-level backstop financing mechanism for offsite (modular/factory-built) housing factories, administered through the California Infrastructure and Economic Development Bank or a similar state entity. This is a supply-side financial instrument targeting manufacturing capacity — it does not preempt local zoning, eliminate discretionary review, mandate approvals, or restrict cities' impact fee or infrastructure conditioning authority. No local control risk is present in any of the four criteria.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Vetoed",
         "model": "claude-sonnet-4-6"
       }
@@ -3270,10 +3270,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2174 amends Health and Safety Code Section 18100.5, which governs registration and titling documentation for mobilehomes and manufactured housing — an administrative/regulatory function of the state's HCD titling system, not a local land use or zoning matter. There is no indication this bill preempts local planning authority, removes discretionary review, mandates development approvals, or restricts infrastructure/impact fee authority.",
+        "notes": "AB 2174 amends Health and Safety Code Section 18100.5, which governs registration and titling documentation for mobilehomes and manufactured housing — an administrative/procedural matter handled at the state level through HCD. There is no indication this bill touches local zoning authority, discretionary review processes, development mandates, or infrastructure fee authority. The summary is brief, but the subject matter (title/registration paperwork) is administrative in nature and poses no meaningful local control risk.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -5119,10 +5119,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2439 amends Civil Code provisions governing common interest developments (HOAs) — specifically assessment-related rules under Sections 5655 and 5690, and adds a new Section 4755. This bill operates entirely within the private HOA governance framework, regulating relationships between HOAs and their members. It does not touch city/county zoning authority, discretionary review processes, development mandates, or local infrastructure fee authority.",
+        "notes": "AB 2439 amends Civil Code provisions governing common interest developments (HOAs) — specifically rules around assessments and governing documents. This is an internal HOA governance bill with no provisions touching city or county zoning, land use authority, permitting, CEQA, development mandates, or infrastructure fee authority. Local governments are not a regulated party under this bill.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Vetoed",
         "model": "claude-sonnet-4-6"
       }
@@ -5420,10 +5420,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2576 amends Section 65912.161 of the Government Code to add historic sites as an exclusion from transit-oriented development (TOD) provisions. Rather than expanding state preemption or mandating approvals, this bill narrows the scope of TOD streamlining — preserving local (and state historic) review authority over qualifying historic sites. It poses no meaningful local control risk on any criterion.",
+        "notes": "AB 2576 amends the transit-oriented development statute (Gov. Code §65912.161) to add or clarify an exclusion for historic sites, which narrows — rather than expands — the scope of state TOD preemption. An exclusion carve-out restores, not removes, local discretion over historic properties, posing no meaningful local control risk on any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -6533,10 +6533,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 2766 amends Education Code sections governing public postsecondary institutions' student housing programs, specifically targeting foster youth and homeless youth populations. This is an internal higher education policy bill — it imposes no requirements on cities or counties, does not preempt local zoning or land use authority, and creates no infrastructure or capacity obligations for local governments.",
+        "notes": "AB 2766 amends Education Code sections governing public postsecondary institutions' obligations around student housing for foster youth and homeless youth. This is an internal higher education policy bill operating entirely within the UC, CSU, and community college systems — it imposes no requirements on city or county zoning, land use, permitting, or infrastructure. No local control mechanisms are implicated.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -7418,10 +7418,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1238 addresses internal governance and management requirements for common interest developments (HOAs/condos), amending Business and Professions Code provisions on HOA management licensing and Civil Code provisions on disclosures, records, meetings, and elections. None of these provisions touch city or county zoning authority, discretionary review processes, development mandates, or infrastructure fee authority — the bill operates entirely within the private law framework governing HOA operations.",
+        "notes": "SB 1238 amends Business and Professions Code sections governing HOA management licensing and Civil Code sections governing common interest development (CID) disclosures, records, and meeting procedures. These are purely internal governance and consumer protection reforms for HOAs — they impose no requirements on city or county zoning, planning, discretionary review, or infrastructure authority. The bill's mechanism operates entirely between HOAs, their managers, and their members, with no local land use implications.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Vetoed",
         "model": "claude-sonnet-4-6"
       }
@@ -7475,10 +7475,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Common interest developments: electric vehicle charging stations owned by members in common areas.",
       "author": "Benjamin Allen",
-      "status": "Enrolled",
-      "status_date": "2026-08-25",
+      "status": "Passed",
+      "status_date": "2026-09-20",
       "introduced_date": "2026-02-19",
-      "last_updated": "2026-08-25",
+      "last_updated": "2026-09-20",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1267",
       "summary": "An act to amend Section 4745 of the Civil Code, relating to common interest developments.",
       "subjects": [],
@@ -7490,16 +7490,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-05-07",
-          "description": "In Assembly. Read first time. Held at Desk.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-05-26",
-          "description": "Referred to Coms. on H. & C.D. and JUD.",
-          "chamber": "A"
-        },
         {
           "date": "2026-06-10",
           "description": "From committee: Do pass and re-refer to Com. on JUD. (Ayes 11. Noes 0.) (June 10). Re-referred to Com. on JUD.",
@@ -7522,7 +7512,7 @@
         },
         {
           "date": "2026-08-24",
-          "description": "Read third time. Passed. Ordered to the Senate.",
+          "description": "Read third time. Passed. (Ayes 78. Noes 0. Page 6370.) Ordered to the Senate.",
           "chamber": "A"
         },
         {
@@ -7539,6 +7529,16 @@
           "date": "2026-08-30",
           "description": "Enrolled and presented to the Governor at 6 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Chaptered by Secretary of State. Chapter 350, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
@@ -7549,11 +7549,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1267 amends Civil Code Section 4745 to address EV charging stations owned by members in common interest development (CID/HOA) common areas. This is a private property law bill governing HOA rules — it has no bearing on city or county zoning authority, land use discretion, development mandates, or infrastructure fee authority. No local control risk identified across any criterion.",
+        "notes": "SB 1267 amends Civil Code Section 4745 to address EV charging stations owned by members in common interest development (CID) common areas — a matter of HOA governance and property rights between private parties. This bill operates entirely within the civil/HOA law framework and imposes no obligations on cities or counties, does not affect zoning or land use authority, and creates no local infrastructure burden. No local control risk identified across any criterion.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-28",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -8079,10 +8079,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 1410 amends Health and Safety Code sections governing adult community care facilities solely to add or update email address of record requirements — an administrative/notification provision with no bearing on local zoning, land use, planning authority, or infrastructure. There is no local control risk across any of the four criteria.",
+        "notes": "SB 1410 amends Health and Safety Code provisions governing adult community care facilities solely to require or update email address of record requirements for licensees. This is an administrative/regulatory notification measure with no bearing on local zoning, land use authority, discretionary review processes, development mandates, or infrastructure fee authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -10049,10 +10049,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 1738 adds Section 17970.9 to the Health and Safety Code to authorize remote inspections under State Housing Law. This is an administrative modernization measure — it does not preempt local zoning, eliminate discretionary review, mandate density or approvals, or restrict local impact fee or infrastructure authority. No local control risk is identified across any criterion.",
+        "notes": "AB 1738 adds Section 17970.9 to the Health and Safety Code to authorize remote inspections under State Housing Law. This is an administrative modernization measure — it does not preempt local zoning, eliminate discretionary review, mandate housing approvals, or restrict impact fee or infrastructure authority. Local jurisdictions retain full planning and land use control.",
         "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -10234,10 +10234,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Residential property insurance: loss estimate transparency.",
       "author": "Sasha Renee Perez",
-      "status": "Enrolled",
-      "status_date": "2026-08-31",
+      "status": "Vetoed",
+      "status_date": "2026-09-27",
       "introduced_date": "2026-01-06",
-      "last_updated": "2026-08-31",
+      "last_updated": "2026-09-27",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB877",
       "summary": "An act to amend Section 2071 of the Insurance Code, relating to insurance.",
       "subjects": [],
@@ -10248,16 +10248,6 @@
       ],
       "upcoming_hearings": [],
       "actions": [
-        {
-          "date": "2026-08-13",
-          "description": "Assembly Rule 63 suspended.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-08-13",
-          "description": "From committee: Do pass. (Ayes 15. Noes 0.) (August 13).",
-          "chamber": "A"
-        },
         {
           "date": "2026-08-13",
           "description": "Read second time. Ordered to third reading.",
@@ -10297,6 +10287,16 @@
           "date": "2026-09-09",
           "description": "Enrolled and presented to the Governor at 2 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-09-27",
+          "description": "Vetoed by the Governor.",
+          "chamber": "Senate"
+        },
+        {
+          "date": "2026-09-27",
+          "description": "In Senate. Consideration of Governor's veto pending.",
+          "chamber": "Senate"
         }
       ],
       "source": "legiscan",
@@ -10307,11 +10307,11 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 877 amends Section 2071 of the Insurance Code to require transparency in loss estimates for residential property insurance — a state insurance regulation matter. This bill operates entirely within the insurance regulatory framework and has no bearing on local zoning, land use authority, discretionary review processes, development mandates, or infrastructure fee authority.",
+        "notes": "SB 877 amends the Insurance Code to require transparency in loss estimates for residential property insurance policies. This is a state-level insurance regulation with no nexus to local land use authority, zoning, development approval processes, or infrastructure funding. It poses no local control risk across any of the four criteria.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-14",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-28",
+        "status_at_analysis": "Vetoed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -11717,10 +11717,10 @@
       "session": "2025-2026 Regular Session",
       "title": "California Environmental Quality Act: environmental leadership development projects: data centers: geothermal powerplant projects.",
       "author": "Steve Padilla",
-      "status": "Enrolled",
-      "status_date": "2026-08-31",
+      "status": "Passed",
+      "status_date": "2026-09-21",
       "introduced_date": "2026-01-13",
-      "last_updated": "2026-08-31",
+      "last_updated": "2026-09-21",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB887",
       "summary": "An act to amend Sections 21084, 21180, and 21183.6 of, and to add Sections 21061.6 and 21080.08 to, the Public Resources Code, relating to environmental quality.",
       "subjects": [],
@@ -11736,22 +11736,12 @@
       "actions": [
         {
           "date": "2026-08-21",
-          "description": "Assembly Rule 69(b)(1) suspended. (Ayes 55. Noes 17. Page 6296.)",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-08-21",
-          "description": "Read third time and amended.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-08-21",
           "description": "Ordered to third reading.",
           "chamber": "A"
         },
         {
           "date": "2026-08-27",
-          "description": "Joint Rule 61(b)(16) suspended.",
+          "description": "Joint Rule 61(b)(16) suspended. (Ayes 58. Noes 1. Page 6727.)",
           "chamber": "A"
         },
         {
@@ -11783,6 +11773,16 @@
           "date": "2026-09-09",
           "description": "Enrolled and presented to the Governor at 2 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-09-21",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-21",
+          "description": "Chaptered by Secretary of State. Chapter 439, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
@@ -11793,11 +11793,11 @@
         "densification": "moderate",
         "reduce_discretion": "none",
         "cost_to_cities": "indirect",
-        "notes": "SB 887 expands California's Environmental Leadership Development Project (ELDP) CEQA streamlining program to include data centers and geothermal powerplant projects, and adds a categorical exemption for small geothermal projects. This limits the scope of CEQA review cities and counties can apply to qualifying projects, reducing local discretionary environmental oversight. The infrastructure burden is indirect — accelerated approvals for large data centers and power facilities may strain local utility and transportation capacity without commensurate local mitigation authority.",
+        "notes": "SB 887 expands CEQA's Environmental Leadership Development Project (ELDP) streamlining program to cover data centers and geothermal powerplant projects, and adds a categorical exemption for certain geothermal projects. This limits the scope of discretionary environmental review cities and counties can apply to qualifying projects by compressing or eliminating portions of CEQA review. The infrastructure burden is indirect — increased permitting load and utility/grid capacity pressure from data center approvals without a clear local mitigation mechanism.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-14",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-28",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -12937,10 +12937,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 871 amends Welfare and Institutions Code Section 15630.1 to update mandated reporter requirements for suspected financial abuse of elders and dependent adults. This is a consumer protection/elder care bill with no provisions touching local zoning, land use, planning authority, discretionary review, development mandates, or infrastructure funding — it poses zero local control risk across all four criteria.",
+        "notes": "AB 871 amends the Welfare and Institutions Code to modify mandated reporter obligations related to suspected financial abuse of elders and dependent adults. This is an elder protection measure with no connection to zoning, land use, housing production, discretionary review, or local infrastructure authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -13639,10 +13639,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 1439 adds Section 7513.77 to the Government Code governing public retirement systems in the context of development projects and labor standards. Based on the title and summary, this bill appears to regulate how public pension funds (e.g., CalPERS, CalSTRS) consider or apply labor standards when investing in or relating to development projects — a matter of state fiduciary/investment policy internal to retirement systems. There is no evident preemption of local zoning authority, removal of discretionary review, mandate on city approvals, or restriction on infrastructure fee authority. The summary is short, but the title and code section targeted (Government Code § 7513.77, within the public retirement law) confirm the bill's scope is limited to pension system governance, not land use.",
+        "notes": "AB 1439 adds Section 7513.77 to the Government Code governing public retirement systems in the context of development projects and labor standards. Based on the title and summary, this bill appears to regulate how public pension funds (e.g., CalPERS, CalSTRS) engage with or invest in development projects — likely by requiring labor standards compliance as a condition of retirement system investment or involvement. This is a state-level investment/fiduciary policy for public pension funds and does not preempt local zoning, strip discretionary review, mandate density approvals, or restrict local infrastructure fee authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
@@ -14133,10 +14133,10 @@
       "session": "2025-2026 Regular Session",
       "title": "California Environmental Quality Act: exemption: day care center: zoning.",
       "author": "Christopher Cabaldon",
-      "status": "Enrolled",
-      "status_date": "2026-08-27",
+      "status": "Passed",
+      "status_date": "2026-09-20",
       "introduced_date": "2025-02-10",
-      "last_updated": "2026-08-27",
+      "last_updated": "2026-09-20",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB299",
       "summary": "An act to add Section 21080.68 to the Public Resources Code, relating to environmental quality.",
       "subjects": [],
@@ -14151,23 +14151,13 @@
       "upcoming_hearings": [],
       "actions": [
         {
-          "date": "2026-08-05",
-          "description": "Coauthors revised.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-08-05",
-          "description": "From committee: Do pass. (Ayes 15. Noes 0.) (August 5).",
-          "chamber": "A"
-        },
-        {
           "date": "2026-08-06",
           "description": "Read second time. Ordered to third reading.",
           "chamber": "A"
         },
         {
           "date": "2026-08-21",
-          "description": "Assembly Rule 69(b)(1) suspended.",
+          "description": "Assembly Rule 69(b)(1) suspended. (Ayes 55. Noes 17. Page 6296.)",
           "chamber": "A"
         },
         {
@@ -14182,7 +14172,7 @@
         },
         {
           "date": "2026-08-25",
-          "description": "Read third time. Passed. Ordered to the Senate.",
+          "description": "Read third time. Passed. (Ayes 76. Noes 0. Page 6518.) Ordered to the Senate.",
           "chamber": "A"
         },
         {
@@ -14199,21 +14189,31 @@
           "date": "2026-09-02",
           "description": "Enrolled and presented to the Governor at 3 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Chaptered by Secretary of State. Chapter 413, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
       "source_id": "1964719",
       "first_seen": "2026-08-31T19:45:35.332476",
       "analysis": {
-        "pro_housing_production": "moderate",
+        "pro_housing_production": "indirect",
         "densification": "moderate",
-        "reduce_discretion": "indirect",
+        "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "SB 299 adds Section 21080.68 to the Public Resources Code to create a CEQA exemption for day care centers that are consistent with local zoning — removing environmental review as a tool cities use to condition or shape such projects. While the zoning-consistency requirement limits the override to already-permitted uses, stripping CEQA review still reduces the discretionary leverage cities retain over project-level decisions (siting, design, traffic, noise), which scores moderate on both local control override and removal of discretionary review. The mandate pressure is indirect: cities are not forced to approve projects, but losing CEQA as a condition-setting tool erodes practical local authority.",
-        "comms_brief": "SB 299 creates a blanket CEQA exemption for day care centers that comply with local zoning, removing environmental review as a discretionary tool cities use to shape, condition, or mitigate individual project impacts.\n• Eliminates CEQA review for qualifying day care projects, stripping cities of the primary mechanism to impose project-specific conditions on traffic, noise, parking, and site design.\n• Even where local zoning permits day care uses, CEQA has historically allowed cities to require mitigations tailored to specific sites — this exemption removes that authority entirely for qualifying projects.\n• The zoning-consistency requirement does not restore city discretion lost at the project level; cities cannot re-impose conditions that would otherwise flow from an environmental review process.\nRecommended: Monitor — the exemption is scoped to zoning-compliant uses, limiting the override, but the elimination of CEQA leverage is a meaningful reduction in city authority over project-level outcomes.",
+        "notes": "SB 299 adds Section 21080.68 to the Public Resources Code, creating a CEQA exemption for day care center projects that are consistent with local zoning. Because the exemption applies where zoning already allows the use, it does not override local land use authority or mandate approvals — cities retain full discretion over whether and how to permit day care centers. The indirect local control erosion is minimal: by removing CEQA review for a narrow, zoning-consistent use, cities lose one procedural tool but retain substantive zoning and permitting authority. The CEQA removal is the primary scored risk (Criterion B), though it is scoped to zoning-compliant projects, limiting its reach.",
+        "comms_brief": "",
         "full_text_fetched": true,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-28",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -14750,10 +14750,10 @@
       "session": "2025-2026 Regular Session",
       "title": "Housing finance and development: Sacramento Regional Housing and Homelessness Joint Powers Authority Act.",
       "author": "Angelique Ashby",
-      "status": "Enrolled",
-      "status_date": "2026-08-27",
+      "status": "Passed",
+      "status_date": "2026-09-20",
       "introduced_date": "2025-02-21",
-      "last_updated": "2026-08-27",
+      "last_updated": "2026-09-20",
       "text_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB802",
       "summary": "An act to add Article 1.5 (commencing with Section 6539.9.5) to Chapter 5 of Division 7 of Title 1 of the Government Code, relating to housing.",
       "subjects": [],
@@ -14768,23 +14768,13 @@
       "upcoming_hearings": [],
       "actions": [
         {
-          "date": "2026-08-13",
-          "description": "Read second time. Ordered to third reading.",
-          "chamber": "A"
-        },
-        {
-          "date": "2026-08-20",
-          "description": "Read third time and amended.",
-          "chamber": "A"
-        },
-        {
           "date": "2026-08-20",
           "description": "Ordered to third reading.",
           "chamber": "A"
         },
         {
           "date": "2026-08-21",
-          "description": "Assembly Rule 69(b)(1) suspended.",
+          "description": "Assembly Rule 69(b)(1) suspended. (Ayes 55. Noes 17. Page 6296.)",
           "chamber": "A"
         },
         {
@@ -14799,7 +14789,7 @@
         },
         {
           "date": "2026-08-26",
-          "description": "Read third time. Passed. Ordered to the Senate.",
+          "description": "Read third time. Passed. (Ayes 78. Noes 0. Page 6555.) Ordered to the Senate.",
           "chamber": "A"
         },
         {
@@ -14816,6 +14806,16 @@
           "date": "2026-09-02",
           "description": "Enrolled and presented to the Governor at 3 p.m.",
           "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Approved by the Governor.",
+          "chamber": ""
+        },
+        {
+          "date": "2026-09-20",
+          "description": "Chaptered by Secretary of State. Chapter 417, Statutes of 2026.",
+          "chamber": ""
         }
       ],
       "source": "legiscan",
@@ -14825,12 +14825,12 @@
         "pro_housing_production": "none",
         "densification": "none",
         "reduce_discretion": "none",
-        "cost_to_cities": "none",
-        "notes": "SB 802 establishes a Joint Powers Authority (JPA) framework for Sacramento-region entities to collaborate on housing finance and homelessness — a voluntary intergovernmental structure. JPAs by design do not preempt local zoning or land use authority, mandate approvals, strip discretionary review, or restrict impact fee authority; participation and any resulting decisions remain locally controlled. No mechanism in this bill overrides city or county planning autonomy.",
+        "cost_to_cities": "indirect",
+        "notes": "SB 802 establishes a Joint Powers Authority (JPA) for regional housing and homelessness coordination in the Sacramento area — a voluntary intergovernmental structure that does not preempt local zoning, eliminate discretionary review, or mandate development approvals. The indirect infrastructure/capacity score reflects that JPA participation, while voluntary, may carry administrative and compliance obligations for member agencies not fully offset by state funding, though this risk is minimal and speculative at the summary level.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-07",
-        "status_at_analysis": "Enrolled",
+        "analyzed_date": "2026-09-28",
+        "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
     },
@@ -15056,12 +15056,12 @@
         },
         {
           "date": "2026-08-31",
-          "description": "Assembly Rule 63 suspended.",
+          "description": "Assembly Rule 63 suspended. (Page 7016.)",
           "chamber": "A"
         },
         {
           "date": "2026-08-31",
-          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 79. Noes 0.).",
+          "description": "Senate amendments concurred in. To Engrossing and Enrolling. (Ayes 79. Noes 0. Page 7020.).",
           "chamber": "A"
         },
         {
@@ -15088,10 +15088,10 @@
         "densification": "none",
         "reduce_discretion": "none",
         "cost_to_cities": "none",
-        "notes": "AB 175 amends the Welfare and Institutions Code provisions governing developmental services, specifically community placement plans and community resource development plans administered by the Department of Developmental Services. This bill operates entirely within the state's developmental services system and does not touch local zoning, land use authority, CEQA, impact fees, or planning processes in any way.",
+        "notes": "AB 175 amends the Welfare and Institutions Code to update provisions governing developmental services, specifically community placement plans and community resource development plans administered through regional centers. This bill operates entirely within the state's developmental services framework and does not touch local zoning, land use, planning authority, discretionary review processes, development mandates, or infrastructure fee authority.",
         "comms_brief": "",
         "full_text_fetched": false,
-        "analyzed_date": "2026-09-21",
+        "analyzed_date": "2026-09-28",
         "status_at_analysis": "Passed",
         "model": "claude-sonnet-4-6"
       }
